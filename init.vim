@@ -8,6 +8,7 @@ Plug 'roxma/nvim-completion-manager'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 colorscheme gruvbox
