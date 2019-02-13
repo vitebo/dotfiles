@@ -20,6 +20,8 @@ set hidden
 set mouse=a
 set number
 set relativenumber
+set foldmethod=syntax
+set foldlevel=1
 
 set expandtab
 set tabstop=2
