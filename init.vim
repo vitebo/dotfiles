@@ -9,6 +9,7 @@ Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 colorscheme gruvbox

@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/vitebo/work/maratona_fatec_xiv'
 let g:netrw_dirhist_2='/home/andre/work/quero/university_panel'
+let g:netrw_dirhist_3='/home/andre/work/quero/cortex'
+let g:netrw_dirhist_4='/home/andre/work/quero'
