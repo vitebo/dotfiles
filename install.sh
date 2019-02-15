@@ -8,3 +8,7 @@ ln -s ~/.dotfiles/.bashrc ~/.bashrc
 
 mv ~/.ctags ~/.ctags.old
 ln -s ~/.dotfiles/.ctags ~/.ctags
+
+mv ~/.tmux.conf ~/.tmux.conf.old
+ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+

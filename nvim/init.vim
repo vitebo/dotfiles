@@ -43,8 +43,9 @@ set incsearch
 set hlsearch
 
 let mapleader="\<space>"
+nnoremap <leader>tv :vsplit ~/.tmux.conf<cr>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sv :source ~/.config/nvrm/init.vim<cr>
 
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<cr>
