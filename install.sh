@@ -3,10 +3,12 @@
 # .bashrc
 mv ~/.bashrc ~/.bashrc.old
 ln -s ~/.dotfiles/.bashrc ~/.bashrc
+source ~/.bashrc
 
 # .profile
 mv ~/.profile ~/.profile.old
 ln -s ~/.dotfiles/.profile ~/.profile
+source ~/.profile
 
 # neovim
 sudo apt-get install software-properties-common
