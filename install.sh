@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# updata packages
+sudo apt-get update
+sudo apt-get upgrade
+
 # .bashrc
 mv ~/.bashrc ~/.bashrc.old
 ln -s ~/.dotfiles/.bashrc ~/.bashrc
