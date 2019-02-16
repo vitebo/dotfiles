@@ -29,9 +29,13 @@ sudo update-alternatives --config editor
 mv ~/.config/nvim ~/.config/nvim.old
 ln -s ~/.dotfiles/nvim/ ~/.config/nvim
 
+# ag
+sudo apt-get install silversearcher-ag
+
 # vim-plug
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim + 'PlugInstall --sync' +qa
 
 # .ctags
 sudo apt-get install ctags
