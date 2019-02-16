@@ -25,6 +25,10 @@ sudo update-alternatives --config editor
 mv ~/.config/nvim ~/.config/nvim.old
 ln -s ~/.dotfiles/nvim/ ~/.config/nvim
 
+# vim-plug
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # .ctags
 sudo apt-get install ctags
 mv ~/.ctags ~/.ctags.old
