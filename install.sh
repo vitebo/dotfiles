@@ -24,6 +24,8 @@ sudo apt-get install ctags
 mv ~/.ctags ~/.ctags.old
 ln -s ~/.dotfiles/.ctags ~/.ctags
 
+# tmux
+sudo apt-get install tmux
 mv ~/.tmux.conf ~/.tmux.conf.old
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
