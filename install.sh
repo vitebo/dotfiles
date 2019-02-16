@@ -42,3 +42,5 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | b
 nvm install 10.15.1
 nvm alias default 10.15.1
 
+# yarn
+sudo apt-get install --no-install-recommends yarn
