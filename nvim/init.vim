@@ -24,6 +24,7 @@ set number
 set relativenumber
 set foldmethod=syntax
 set foldlevel=1
+set tags=tags
 
 set expandtab
 set tabstop=2

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# install neovim
+# neovim
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
@@ -12,13 +12,15 @@ sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
 sudo update-alternatives --config vim
 sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 sudo update-alternatives --config editor
-
 mv ~/.config/nvim ~/.config/nvim.old
 ln -s ~/.dotfiles/nvim/ ~/.config/nvim
 
+# .bashrc
 mv ~/.bashrc ~/.bashrc.old
 ln -s ~/.dotfiles/.bashrc ~/.bashrc
 
+# .ctags
+sudo apt-get install ctags
 mv ~/.ctags ~/.ctags.old
 ln -s ~/.dotfiles/.ctags ~/.ctags
 
