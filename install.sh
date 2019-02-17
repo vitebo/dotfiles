@@ -49,6 +49,7 @@ ln -s ~/.dotfiles/.ctags ~/.ctags
 sudo apt-get install tmux
 mv ~/.tmux.conf ~/.tmux.conf.old
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/.tmux ~/.tmux
 
 # fonts
 sudo apt-get install fonts-powerline
