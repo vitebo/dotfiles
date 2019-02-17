@@ -126,4 +126,4 @@ export NVM_DIR="$HOME/.nvm"
 
 alias node=nodejs
 
-tmux
+. ~/bin/powerline/powerline/bindings/bash/powerline.sh

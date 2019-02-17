@@ -7,6 +7,13 @@ sudo apt-get upgrade
 # curl
 sudo apt install curl
 
+# powerline
+sudo apt-get install powerline fonts-powerline
+mkdir ~/bin/powerline
+git clone https://github.com/powerline/powerline.git ~/bin/powerline/
+sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O /usr/share/fonts/PowerlineSymbols.otf
+sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O /etc/fonts/conf.d/10-powerline-symbols.conf
+
 # .bashrc
 mv ~/.bashrc ~/.bashrc.old
 ln -s ~/.dotfiles/.bashrc ~/.bashrc
@@ -50,9 +57,6 @@ sudo apt-get install tmux
 mv ~/.tmux.conf ~/.tmux.conf.old
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/.tmux ~/.tmux
-
-# fonts
-sudo apt-get install fonts-powerline
 
 # nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
