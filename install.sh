@@ -47,6 +47,9 @@ sudo apt-get install tmux
 mv ~/.tmux.conf ~/.tmux.conf.old
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
+# fonts
+sudo apt-get install fonts-powerline
+
 # nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
