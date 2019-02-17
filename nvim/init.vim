@@ -10,6 +10,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 colorscheme gruvbox
@@ -19,6 +20,11 @@ filetype plugin indent on
 syntax on
 
 set hidden
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+nnoremap <C-l> :bnext<CR>
+nnoremap <C-h> :bprev<CR>
+
 set mouse=a
 set number
 set relativenumber
