@@ -4,6 +4,9 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+# curl
+sudo apt install curl
+
 # .bashrc
 mv ~/.bashrc ~/.bashrc.old
 ln -s ~/.dotfiles/.bashrc ~/.bashrc
