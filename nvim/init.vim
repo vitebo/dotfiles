@@ -1,5 +1,4 @@
 call plug#begin()
-Plug 'morhetz/gruvbox'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -11,9 +10,10 @@ Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 call plug#end()
 
-colorscheme gruvbox
+colorscheme Tomorrow-Night
 set background=dark
 
 filetype plugin indent on
