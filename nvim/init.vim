@@ -50,3 +50,4 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<cr>
+nnoremap <c-e> :NERDTreeToggle<cr>
