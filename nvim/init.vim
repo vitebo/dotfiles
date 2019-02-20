@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'ap/vim-css-color'
 call plug#end()
 
 colorscheme Tomorrow-Night
