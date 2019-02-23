@@ -28,6 +28,11 @@ let g:airline_powerline_fonts = 1
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 
+" NERDTree
+nnoremap <s-e> :NERDTreeToggle<cr>
+nnoremap <s-f> :NERDTreeFind<cr>
+let NERDTreeShowHidden=1
+
 set mouse=a
 set number
 set relativenumber
@@ -59,6 +64,4 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<cr>
-nnoremap <s-e> :NERDTreeToggle<cr>
-nnoremap <s-f> :NERDTreeFind<cr>
 
