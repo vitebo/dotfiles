@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# require nerd-fonts
+
 # updata packages
 sudo apt-get update
 sudo apt-get upgrade
