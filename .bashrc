@@ -125,3 +125,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . ~/bin/powerline/powerline/bindings/bash/powerline.sh
+
+# include .private if it exists
+if [ -f "$HOME/.private.sh" ]; then
+  source "$HOME/.private.sh"
+fi
