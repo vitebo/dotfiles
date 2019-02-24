@@ -130,3 +130,9 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f "$HOME/.private.sh" ]; then
   source "$HOME/.private.sh"
 fi
+
+# open tmux
+if [[ ! $TERM =~ screen ]]; then
+  exec tmux
+fi
+
