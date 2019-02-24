@@ -29,11 +29,6 @@ let g:airline_powerline_fonts = 1
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 
-" NERDTree
-nnoremap <s-e> :NERDTreeToggle<cr>
-nnoremap <s-f> :NERDTreeFind<cr>
-let NERDTreeShowHidden=1
-
 set mouse=a
 set number
 set relativenumber
@@ -62,6 +57,11 @@ let mapleader="\<space>"
 nnoremap <leader>tv :vsplit ~/.tmux.conf<cr>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+
+" NERDTree
+nnoremap <s-e> :NERDTreeToggle<cr>
+nnoremap <leader>e :NERDTreeFind<cr>
+let NERDTreeShowHidden=1
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-p> :Files<cr>
