@@ -1,4 +1,5 @@
 .netrwhist
+.tmux/reset
 .tmux/plugins/
 nvim/plugged
 nvim/autoload/
