@@ -63,6 +63,7 @@ nnoremap <leader>tv :vsplit ~/.tmux.conf<cr>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<cr>
 
