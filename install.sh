@@ -62,7 +62,9 @@ ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/.tmux ~/.tmux
 curl -Lo ~/.tmux/reset --create-dirs \
     https://raw.githubusercontent.com/hallazzang/tmux-reset/master/tmux-reset
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 source-file ~/.tmux.conf
+~/.tmux/plugins/tpm/bin/install_plugins
 
 # nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
