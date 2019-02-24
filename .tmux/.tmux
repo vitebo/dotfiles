@@ -1,1 +1,0 @@
-/home/vitebo/.dotfiles/.tmux
