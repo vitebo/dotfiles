@@ -118,7 +118,14 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# elasticsearch
+PATH=$PATH:/usr/share/elasticsearch/bin
+
 export PS1='\u \w\[\033[0;32m\]$(__git_ps1 " (%s)")\[\033[01;34m\]$\[\033[00m\] '
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -135,4 +142,14 @@ fi
 if [[ ! $TERM =~ screen ]]; then
   exec tmux
 fi
+
+alias rails_c='yarn && rails c'
+alias rails_s='yarn && rails s'
+alias sidekiq_s='yarn && sidekiq'
+alias solano_run='solano run --host ci.solanolabs.com --insecure'
+alias iex_s='iex -S mix phx.server'
+alias quero_bolsa='cd ~/work/quero/quero_bolsa/'
+alias quero_alunos='cd ~/work/quero/university_panel/'
+alias aurelium='cd ~/work/quero/aurelium/'
+alias upa_deploy='quero_alunos && sudo ./bin/release -r -k ~/.ssh/id_rsa -h upa-shared.querobolsa.space'
 
