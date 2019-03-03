@@ -35,6 +35,7 @@ set relativenumber
 set foldmethod=syntax
 set foldlevel=1
 set tags=tags
+set clipboard=unnamedplus
 
 set expandtab
 set tabstop=2
