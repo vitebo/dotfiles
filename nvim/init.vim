@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
+Plug 'JulesWang/css.vim'
 call plug#end()
 
 colorscheme Tomorrow-Night
