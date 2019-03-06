@@ -66,6 +66,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 source-file ~/.tmux.conf
 ~/.tmux/plugins/tpm/bin/install_plugins
 
+#asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.0
+
 # nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
