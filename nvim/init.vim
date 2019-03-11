@@ -15,6 +15,7 @@ Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'JulesWang/css.vim'
 call plug#end()
 
 colorscheme Tomorrow-Night
