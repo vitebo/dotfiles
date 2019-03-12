@@ -16,6 +16,8 @@ Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'JulesWang/css.vim'
+Plug 'autozimu/LanguageClient-neovim'
+Plug 'nikvdp/ejs-syntax'
 call plug#end()
 
 colorscheme Tomorrow-Night
