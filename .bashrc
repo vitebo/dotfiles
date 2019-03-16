@@ -153,3 +153,4 @@ alias quero_alunos='cd ~/work/quero/university_panel/'
 alias aurelium='cd ~/work/quero/aurelium/'
 alias upa_deploy='quero_alunos && sudo ./bin/release -r -k ~/.ssh/id_rsa -h upa-shared.querobolsa.space'
 
+export PATH="$(yarn global bin):$PATH"
