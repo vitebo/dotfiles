@@ -143,13 +143,3 @@ if [[ ! $TERM =~ screen ]]; then
   exec tmux
 fi
 
-alias rails_c='yarn && rails c'
-alias rails_s='yarn && rails s'
-alias sidekiq_s='yarn && sidekiq'
-alias solano_run='solano run --host ci.solanolabs.com --insecure'
-alias iex_s='iex -S mix phx.server'
-alias quero_bolsa='cd ~/work/quero/quero_bolsa/'
-alias quero_alunos='cd ~/work/quero/university_panel/'
-alias aurelium='cd ~/work/quero/aurelium/'
-alias upa_deploy='quero_alunos && sudo ./bin/release -r -k ~/.ssh/id_rsa -h upa-shared.querobolsa.space'
-
