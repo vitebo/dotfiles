@@ -18,6 +18,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 colorscheme Tomorrow-Night
