@@ -31,8 +31,6 @@ set hidden
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
-nnoremap <C-l> :bnext<CR>
-nnoremap <C-h> :bprev<CR>
 
 set mouse=a
 set number
@@ -63,6 +61,8 @@ let mapleader="\<space>"
 nnoremap <leader>tv :vsplit ~/.tmux.conf<cr>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>l :bnext<CR>
+nnoremap <leader>h :bprev<CR>
 
 " NERDTree
 nnoremap <s-e> :NERDTreeToggle<cr>

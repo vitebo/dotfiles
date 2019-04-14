@@ -28,6 +28,7 @@ ln -s ~/.dotfiles/.profile ~/.profile
 source ~/.profile
 
 # neovim
+alias vim=nvim
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
@@ -39,6 +40,7 @@ sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
 sudo update-alternatives --config vim
 sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 sudo update-alternatives --config editor
+sudo rm /usr/bin/vim && sudo ln -s /usr/bin/nvim /usr/bin/vim
 mv ~/.config/nvim ~/.config/nvim.old
 ln -s ~/.dotfiles/nvim/ ~/.config/nvim
 

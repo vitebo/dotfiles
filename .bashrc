@@ -143,3 +143,4 @@ if [[ ! $TERM =~ screen ]]; then
   exec tmux
 fi
 
+alias vim=nvim
