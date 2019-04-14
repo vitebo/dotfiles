@@ -36,7 +36,6 @@ set mouse=a
 set number
 set relativenumber
 set foldmethod=syntax
-set foldlevel=1
 set tags=tags
 set clipboard=unnamedplus
 
@@ -74,7 +73,8 @@ nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<cr>
 
 " Maps Alt-[h,j,k,l] to resizing a window split
-map <silent> <A-h> <C-w><
-map <silent> <A-k> <C-W>-
-map <silent> <A-j> <C-W>+
-map <silent> <A-l> <C-w>>
+map <silent> <A-H> <C-w><
+map <silent> <A-K> <C-W>-
+map <silent> <A-J> <C-W>+
+map <silent> <A-L> <C-w>>
+

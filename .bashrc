@@ -144,3 +144,4 @@ if [[ ! $TERM =~ screen ]]; then
 fi
 
 alias vim=nvim
+export PATH="$(yarn global bin):$PATH"
