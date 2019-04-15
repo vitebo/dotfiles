@@ -18,7 +18,6 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
-Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 colorscheme Tomorrow-Night
@@ -69,8 +68,8 @@ nnoremap <leader>e :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-nnoremap <c-p> :Files<cr>
-nnoremap <c-f> :Ag<cr>
+nnoremap <c-P> :Files<cr>
+nnoremap <c-F> :Ag<cr>
 
 " Maps Alt-[h,j,k,l] to resizing a window split
 map <silent> <A-H> <C-w><
