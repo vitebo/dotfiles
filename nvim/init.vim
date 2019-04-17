@@ -66,6 +66,8 @@ nnoremap <leader>h :bprev<CR>
 nnoremap <s-e> :NERDTreeToggle<cr>
 nnoremap <leader>e :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-P> :Files<cr>
