@@ -61,7 +61,6 @@ ln -s ~/.dotfiles/.ctags ~/.ctags
 sudo apt-get install tmux
 mv ~/.tmux.conf ~/.tmux.conf.old
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/.dotfiles/.tmux ~/.tmux
 curl -Lo ~/.tmux/reset --create-dirs \
     https://raw.githubusercontent.com/hallazzang/tmux-reset/master/tmux-reset
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
