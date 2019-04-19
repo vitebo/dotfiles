@@ -1,5 +1,7 @@
 # Dotfiles
 
+*ubuntu 18.04*
+
 ## Automatic installation
 
 ```bash
@@ -14,10 +16,29 @@ $ ./install.sh
 
 ### Basic configs
 
+- update packages
+```bash
+$ sudo apt-get update && sudo apt-get upgrade
+```
+
 - create `.bash_aliases` file
-```ssh
+```bash
 $ touch .bash_aliases
 ``` 
+
+### Git
+
+- install git
+```bash
+$ sudo apt-get install git
+```
+
+- config git
+```bash
+$ git config --global user.name "username"
+$ git config --global user.email "email"
+$ git config --global core.editor vi
+```
 
 ### Sublime text
 
