@@ -44,6 +44,12 @@ $ ./install.sh
 
 - install [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
+### Fonts
+
+- install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts#option-3-install-script)
+
+- install [powerline](https://powerline.readthedocs.io/en/master/installation.html#generic-requirements)
+
 ### Tmux
 
 - install tmux
