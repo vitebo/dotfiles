@@ -11,17 +11,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
+Plug 'cormacrelf/vim-colors-github'
 call plug#end()
 
-colorscheme Tomorrow-Night
-set background=dark
+colorscheme github
 
 filetype plugin indent on
 syntax on
@@ -30,6 +29,8 @@ set hidden
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
+let g:airline_theme = "github"
+let g:lightline = { 'colorscheme': 'github' }
 
 set mouse=a
 set number
