@@ -24,7 +24,7 @@ $ ./install.sh
 - create `.bash_aliases` file
   ```bash
   $ touch .bash_aliases
-  ``` 
+  ```
 
 ### Git
 
@@ -83,6 +83,56 @@ $ ./install.sh
   sudo apt-get install --assume-yes xclip
   ```
 
+### ASDF
+
+- install asdf
+  ```bash
+  $ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.1
+  ```
+
+- install the dependencies
+  ```bash
+  $ sudo apt-get -y install build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop
+  ```
+
+- install erlang
+  ```bash
+  $ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+
+  $ asdf install erlang 2.3.5
+
+  $ asdf global erlang 2.3.5
+  ```
+
+- install elixir
+  ```bash
+  $ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+
+  $ asdf install elixir 1.8
+
+  $ asdf global elixir 1.8
+  ```
+
+- install ruby
+  ```bash
+  $ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+
+  $ asdf install ruby 2.6.3
+
+  $ asdf global ruby 2.6.3
+  ```
+
+- install nodejs
+  ```bash
+  $ asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+
+  $ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+  $ asdf install nodejs 11.14.0
+
+  $ asdf global nodejs 11.14.0
+  ```
+
 ### Neovim
 
 - install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
@@ -118,3 +168,4 @@ $ ./install.sh
   ```bash
   $ echo "alias subl='/opt/sublime_text/sublime_text'" >> .bash_aliases
   ```
+
