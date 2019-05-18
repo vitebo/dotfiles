@@ -17,10 +17,10 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
-Plug 'cormacrelf/vim-colors-github'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
-colorscheme github
+colorscheme iceberg
 
 filetype plugin indent on
 syntax on
@@ -29,8 +29,6 @@ set hidden
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "github"
-let g:lightline = { 'colorscheme': 'github' }
 
 set mouse=a
 set number
