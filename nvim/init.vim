@@ -21,6 +21,7 @@ Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 colorscheme iceberg
+set colorcolumn=120
 
 filetype plugin indent on
 syntax on
