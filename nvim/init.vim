@@ -18,6 +18,7 @@ Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
 Plug 'cocopon/iceberg.vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 colorscheme iceberg
