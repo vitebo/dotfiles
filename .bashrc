@@ -118,20 +118,11 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# elasticsearch
-PATH=$PATH:/usr/share/elasticsearch/bin
-
 export PS1='\u \w\[\033[0;32m\]$(__git_ps1 " (%s)")\[\033[01;34m\]$\[\033[00m\] '
 
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-. ~/bin/powerline/powerline/bindings/bash/powerline.sh
 
 # include .private if it exists
 if [ -f "$HOME/.private.sh" ]; then
