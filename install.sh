@@ -9,14 +9,6 @@ sudo apt-get upgrade
 # curl
 sudo apt install curl
 
-# powerline
-sudo apt-get install powerline fonts-powerline
-mkdir -p ~/bin/powerline
-git clone https://github.com/powerline/powerline.git ~/bin/powerline/
-sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O /usr/share/fonts/PowerlineSymbols.otf
-sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O /etc/fonts/conf.d/10-powerline-symbols.conf
-ln -s ~/.dotfiles/powerline/ ~/.config/
-
 # .bashrc
 mv ~/.bashrc ~/.bashrc.old
 ln -s ~/.dotfiles/.bashrc ~/.bashrc
