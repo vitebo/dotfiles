@@ -14,19 +14,19 @@ $ ./install.sh
 
 ## Manual installation
 
-### Basic configs
+### Basic packages
 
 - update packages
   ```bash
   $ sudo apt-get update && sudo apt-get upgrade
   ```
 
-- create `.bash_aliases` file
+- install curl
   ```bash
-  $ touch .bash_aliases
+  $ sudo apt install curl
   ```
 
-### Git
+#### Git
 
 - install git
   ```bash
@@ -38,6 +38,28 @@ $ ./install.sh
   $ git config --global user.name "username"
   $ git config --global user.email "email"
   $ git config --global core.editor vi
+  ```
+
+### Project
+
+- clone project
+  ```bash
+  $ git clone https://github.com/vitebo/dotfiles.git ~/.dotfiles
+  ```
+
+### Basic configs
+
+- create config files
+  ```bash
+  $ touch .bash_aliases
+
+  $ mv ~/.bashrc ~/.bashrc.old
+  $ ln -s ~/.dotfiles/.bashrc ~/.bashrc
+  $ source ~/.bashrc
+
+  $ mv ~/.profile ~/.profile.old
+  $ ln -s ~/.dotfiles/.profile ~/.profile
+  $ source ~/.profile
   ```
 
 ### Docker
@@ -99,27 +121,27 @@ $ ./install.sh
   ```bash
   $ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 
-  $ asdf install erlang 2.3.5
+  $ asdf install erlang <VERSION>
 
-  $ asdf global erlang 2.3.5
+  $ asdf global erlang <VERSION>
   ```
 
 - install elixir
   ```bash
   $ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
-  $ asdf install elixir 1.8
+  $ asdf install elixir <VERSION>
 
-  $ asdf global elixir 1.8
+  $ asdf global elixir <VERSION>
   ```
 
 - install ruby
   ```bash
   $ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
 
-  $ asdf install ruby 2.6.3
+  $ asdf install ruby <VERSION>
 
-  $ asdf global ruby 2.6.3
+  $ asdf global ruby <VERSION>
   ```
 
 - install nodejs
@@ -128,9 +150,9 @@ $ ./install.sh
 
   $ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
-  $ asdf install nodejs 11.14.0
+  $ asdf install nodejs <VERSION>
 
-  $ asdf global nodejs 11.14.0
+  $ asdf global nodejs <VERSION>
   ```
 
 ### Neovim
@@ -143,4 +165,21 @@ $ ./install.sh
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   $ nvim + 'PlugInstall --sync' +qa
+  ```
+
+## Ag
+  ```bash
+  $ sudo apt-get install silversearcher-ag
+  ```
+
+## Ctags
+  ```bash
+  $ sudo apt-get install ctags
+  $ mv ~/.ctags ~/.ctags.old
+  $ ln -s ~/.dotfiles/.ctags ~/.ctags
+  ```
+
+## Yarn
+  ```bash
+  $ sudo apt-get install --no-install-recommends yarn
   ```
