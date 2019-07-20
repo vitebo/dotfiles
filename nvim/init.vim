@@ -3,7 +3,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'roxma/nvim-completion-manager'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
@@ -18,6 +17,10 @@ Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
 Plug 'cocopon/iceberg.vim'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path' 
 call plug#end()
 
 colorscheme iceberg
@@ -78,4 +81,3 @@ map <silent> <A-H> <C-w><
 map <silent> <A-K> <C-W>-
 map <silent> <A-J> <C-W>+
 map <silent> <A-L> <C-w>>
-
