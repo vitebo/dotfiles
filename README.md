@@ -1,20 +1,6 @@
 # Dotfiles
 
-*ubuntu 18.04*
-
-## Automatic installation
-
-```bash
-$ git clone https://github.com/vitebo/dotfiles.git ~/.dotfiles
-
-$ cd ~/.dotfiles
-
-$ ./install.sh
-```
-
-## Manual installation
-
-### Basic packages
+## Basic packages
 
 - update packages
   ```bash
@@ -26,7 +12,7 @@ $ ./install.sh
   $ sudo apt install curl
   ```
 
-#### Git
+### Git
 
 - install git
   ```bash
@@ -35,19 +21,19 @@ $ ./install.sh
 
 - config git
   ```bash
-  $ git config --global user.name "username"
-  $ git config --global user.email "email"
+  $ git config --global user.name "vitebo"
+  $ git config --global user.email "vitebo@hotmail.com"
   $ git config --global core.editor vi
   ```
 
-### Project
+## Project
 
 - clone project
   ```bash
   $ git clone https://github.com/vitebo/dotfiles.git ~/.dotfiles
   ```
 
-### Basic configs
+## Basic configs
 
 - create config files
   ```bash
@@ -63,17 +49,15 @@ $ ./install.sh
   $ source ~/.profile
   ```
 
-### Docker
+## Docker
 
 - install [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-### Fonts
+## Fonts
 
 - install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts#option-3-install-script)
 
-- install [powerline](https://powerline.readthedocs.io/en/master/installation.html#generic-requirements)
-
-### Tmux
+## Tmux
 
 - install tmux
   ```bash
@@ -106,7 +90,7 @@ $ ./install.sh
   sudo apt-get install --assume-yes xclip
   ```
 
-### ASDF
+## ASDF
 
 - install asdf
   ```bash
@@ -147,7 +131,7 @@ $ ./install.sh
   $ ln -s ~/.dotfiles/.tool-versions ~/.tool-versions
   ```
 
-### Neovim
+## Neovim
 
 - install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
   ```bash

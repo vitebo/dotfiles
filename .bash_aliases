@@ -20,3 +20,4 @@ alias l='ls -CF'
 
 # vim
 alias vim=nvim
+alias vi=nvim
