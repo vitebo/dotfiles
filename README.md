@@ -121,28 +121,16 @@ $ ./install.sh
 - install erlang
   ```bash
   $ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-
-  $ asdf install erlang <VERSION>
-
-  $ asdf global erlang <VERSION>
   ```
 
 - install elixir
   ```bash
   $ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-
-  $ asdf install elixir <VERSION>
-
-  $ asdf global elixir <VERSION>
   ```
 
 - install ruby
   ```bash
   $ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-
-  $ asdf install ruby <VERSION>
-
-  $ asdf global ruby <VERSION>
   ```
 
 - install nodejs
@@ -151,11 +139,12 @@ $ ./install.sh
 
   $ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
-  $ asdf install nodejs <VERSION>
-
-  $ asdf global nodejs <VERSION>
-
   $ npm install -g yarn
+  ```
+
+- move versions
+  ```bash
+  $ ln -s ~/.dotfiles/.tool-versions ~/.tool-versions
   ```
 
 ### Neovim
