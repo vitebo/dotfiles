@@ -51,7 +51,8 @@ $ ./install.sh
 
 - create config files
   ```bash
-  $ touch .bash_aliases
+  $ mv ~/.bash_aliases ~/.bash_aliases.old
+  $ ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
 
   $ mv ~/.bashrc ~/.bashrc.old
   $ ln -s ~/.dotfiles/.bashrc ~/.bashrc
