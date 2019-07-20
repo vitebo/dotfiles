@@ -42,3 +42,6 @@ fi
 if [[ ! $TERM =~ screen ]]; then
   exec tmux
 fi
+
+# a command-line fuzzy finder
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

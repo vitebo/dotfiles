@@ -150,6 +150,25 @@ $ ./install.sh
 ### Neovim
 
 - install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
+  ```bash
+  $ sudo apt-get install neovim
+  ```
+
+- set default editor
+  ```bash
+  $ sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+  $ sudo update-alternatives --config vi
+  $ sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+  $ sudo update-alternatives --config vim
+  $ sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+  $ sudo update-alternatives --config editor
+  $ sudo rm /usr/bin/vim && sudo ln -s /usr/bin/nvim /usr/bin/vim
+  ```
+
+- move config
+  ```bash
+  $ ln -s ~/.dotfiles/nvim/ ~/.config/nvim
+  ```
 
 - install *vim-plug*
   ```bash
