@@ -154,6 +154,8 @@ $ ./install.sh
   $ asdf install nodejs <VERSION>
 
   $ asdf global nodejs <VERSION>
+
+  $ npm install -g yarn
   ```
 
 ### Neovim
@@ -178,9 +180,4 @@ $ ./install.sh
   $ sudo apt-get install ctags
   $ mv ~/.ctags ~/.ctags.old
   $ ln -s ~/.dotfiles/.ctags ~/.ctags
-  ```
-
-## Yarn
-  ```bash
-  $ sudo apt-get install --no-install-recommends yarn
   ```
