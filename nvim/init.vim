@@ -22,6 +22,7 @@ Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path' 
 Plug 'mattn/emmet-vim'
+Plug 'junegunn/vim-emoji'
 call plug#end()
 
 colorscheme iceberg
@@ -83,3 +84,15 @@ map <silent> <A-H> <C-w><
 map <silent> <A-K> <C-W>-
 map <silent> <A-J> <C-W>+
 map <silent> <A-L> <C-w>>
+
+" Using Emojis as Git Gutter symbols
+if emoji#available()
+  let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+  let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+  let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+  let g:gitgutter_sign_modified_removed = emoji#for('collision')
+endif
+
+" Emoji completion - <c-x> <c-u>
+set completefunc=emoji#complete
+
