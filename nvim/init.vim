@@ -21,6 +21,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path' 
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 colorscheme iceberg
@@ -53,6 +54,7 @@ set encoding=utf-8
 set list
 set listchars=tab:>-,trail:.
 set lcs+=space:.
+set backupcopy=yes
 
 set inccommand=split
 set incsearch
