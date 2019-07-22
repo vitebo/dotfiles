@@ -3,7 +3,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'roxma/nvim-completion-manager'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
@@ -19,6 +18,13 @@ Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
 Plug 'cocopon/iceberg.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path' 
+Plug 'mattn/emmet-vim'
+Plug 'junegunn/vim-emoji'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 colorscheme iceberg
@@ -51,6 +57,7 @@ set encoding=utf-8
 set list
 set listchars=tab:>-,trail:.
 set lcs+=space:.
+set backupcopy=yes
 
 set inccommand=split
 set incsearch
@@ -79,4 +86,15 @@ map <silent> <A-H> <C-w><
 map <silent> <A-K> <C-W>-
 map <silent> <A-J> <C-W>+
 map <silent> <A-L> <C-w>>
+
+" Using Emojis as Git Gutter symbols
+if emoji#available()
+  let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+  let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+  let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+  let g:gitgutter_sign_modified_removed = emoji#for('collision')
+endif
+
+" Emoji completion - <c-x> <c-u>
+set completefunc=emoji#complete
 

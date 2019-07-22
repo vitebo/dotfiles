@@ -1,29 +1,15 @@
 # Dotfiles
 
-*ubuntu 18.04*
-
-## Automatic installation
-
-```bash
-$ git clone https://github.com/vitebo/dotfiles.git ~/.dotfiles
-
-$ cd ~/.dotfiles
-
-$ ./install.sh
-```
-
-## Manual installation
-
-### Basic configs
+## Basic packages
 
 - update packages
   ```bash
   $ sudo apt-get update && sudo apt-get upgrade
   ```
 
-- create `.bash_aliases` file
+- install curl
   ```bash
-  $ touch .bash_aliases
+  $ sudo apt install curl
   ```
 
 ### Git
@@ -35,22 +21,43 @@ $ ./install.sh
 
 - config git
   ```bash
-  $ git config --global user.name "username"
-  $ git config --global user.email "email"
+  $ git config --global user.name "vitebo"
+  $ git config --global user.email "vitebo@hotmail.com"
   $ git config --global core.editor vi
   ```
 
-### Docker
+## Project
+
+- clone project
+  ```bash
+  $ git clone https://github.com/vitebo/dotfiles.git ~/.dotfiles
+  ```
+
+## Basic configs
+
+- create config files
+  ```bash
+  $ mv ~/.bash_aliases ~/.bash_aliases.old
+  $ ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
+
+  $ mv ~/.bashrc ~/.bashrc.old
+  $ ln -s ~/.dotfiles/.bashrc ~/.bashrc
+  $ source ~/.bashrc
+
+  $ mv ~/.profile ~/.profile.old
+  $ ln -s ~/.dotfiles/.profile ~/.profile
+  $ source ~/.profile
+  ```
+
+## Docker
 
 - install [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-### Fonts
+## Fonts
 
 - install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts#option-3-install-script)
 
-- install [powerline](https://powerline.readthedocs.io/en/master/installation.html#generic-requirements)
-
-### Tmux
+## Tmux
 
 - install tmux
   ```bash
@@ -83,7 +90,7 @@ $ ./install.sh
   sudo apt-get install --assume-yes xclip
   ```
 
-### ASDF
+## ASDF
 
 - install asdf
   ```bash
@@ -98,28 +105,16 @@ $ ./install.sh
 - install erlang
   ```bash
   $ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-
-  $ asdf install erlang 2.3.5
-
-  $ asdf global erlang 2.3.5
   ```
 
 - install elixir
   ```bash
   $ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-
-  $ asdf install elixir 1.8
-
-  $ asdf global elixir 1.8
   ```
 
 - install ruby
   ```bash
   $ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-
-  $ asdf install ruby 2.6.3
-
-  $ asdf global ruby 2.6.3
   ```
 
 - install nodejs
@@ -128,14 +123,36 @@ $ ./install.sh
 
   $ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
-  $ asdf install nodejs 11.14.0
-
-  $ asdf global nodejs 11.14.0
+  $ npm install -g yarn
   ```
 
-### Neovim
+- move versions
+  ```bash
+  $ ln -s ~/.dotfiles/.tool-versions ~/.tool-versions
+  ```
+
+## Neovim
 
 - install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
+  ```bash
+  $ sudo apt-get install neovim
+  ```
+
+- set default editor
+  ```bash
+  $ sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+  $ sudo update-alternatives --config vi
+  $ sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+  $ sudo update-alternatives --config vim
+  $ sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+  $ sudo update-alternatives --config editor
+  $ sudo rm /usr/bin/vim && sudo ln -s /usr/bin/nvim /usr/bin/vim
+  ```
+
+- move config
+  ```bash
+  $ ln -s ~/.dotfiles/nvim/ ~/.config/nvim
+  ```
 
 - install *vim-plug*
   ```bash
@@ -145,27 +162,14 @@ $ ./install.sh
   $ nvim + 'PlugInstall --sync' +qa
   ```
 
-### Sublime text
-
-- download [sublime-text](https://www.sublimetext.com/3)
-
-- extract file
+## Ag
   ```bash
-  $ tar -jxvf sublime_text.tar.bz2
+  $ sudo apt-get install silversearcher-ag
   ```
 
-- move to `/opt` directory
+## Ctags
   ```bash
-  $ sudo mv sublime_text /opt/
+  $ sudo apt-get install ctags
+  $ mv ~/.ctags ~/.ctags.old
+  $ ln -s ~/.dotfiles/.ctags ~/.ctags
   ```
-
-- add desktop
-  ```bash
-  $ cp /opt/sublime_text/sublime_text.desktop ~/.local/share/applications/
-  ```
-
-- add alias
-  ```bash
-  $ echo "alias subl='/opt/sublime_text/sublime_text'" >> .bash_aliases
-  ```
-
