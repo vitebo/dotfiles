@@ -69,6 +69,9 @@ nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprev<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gs :Gstatus<CR>
 
 " NERDTree
 nnoremap <s-e> :NERDTreeToggle<cr>
