@@ -25,6 +25,7 @@ Plug 'ncm2/ncm2-path'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/vim-emoji'
 Plug 'tpope/vim-fugitive'
+Plug 'ngmy/vim-rubocop'
 call plug#end()
 
 colorscheme iceberg
