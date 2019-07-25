@@ -72,6 +72,7 @@ nnoremap <leader>h :bprev<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gs :Gstatus<CR>
+tnoremap <Esc> <C-\><C-n>
 
 " NERDTree
 nnoremap <s-e> :NERDTreeToggle<cr>
