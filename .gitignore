@@ -1,6 +1,10 @@
+# secret keys
 .private.sh
-.netrwhist
+
+# tmux
 .tmux/reset
 .tmux/plugins/
+
+# vim
 nvim/plugged
 nvim/autoload/
