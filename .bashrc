@@ -3,7 +3,7 @@ export OSH=$HOME/.oh-my-bash
 
 # set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="font"
+OSH_THEME="simple"
 
 # enable command auto-correction.
 ENABLE_CORRECTION="true"
