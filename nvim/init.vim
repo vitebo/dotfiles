@@ -16,7 +16,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
-Plug 'cocopon/iceberg.vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
@@ -28,11 +28,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'ngmy/vim-rubocop'
 call plug#end()
 
-colorscheme iceberg
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
+
 set colorcolumn=120
 
 filetype plugin indent on
-syntax on
 
 set hidden
 let g:airline#extensions#tabline#enabled = 1
