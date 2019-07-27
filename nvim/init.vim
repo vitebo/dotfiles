@@ -31,7 +31,7 @@ call plug#end()
 syntax enable
 set background=dark
 colorscheme solarized
-let g:solarized_termcolors=256
+call togglebg#map("<F5>")
 
 set colorcolumn=120
 
