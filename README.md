@@ -173,3 +173,11 @@
   $ mv ~/.ctags ~/.ctags.old
   $ ln -s ~/.dotfiles/.ctags ~/.ctags
   ```
+
+## Oh my bash
+  ```bash
+  $ git clone git://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
+  $ rm -rf ~/.oh-my-bash/custom/
+  $ ln -s ~/.dotfiles/oh-my-bash/custom ~/.oh-my-bash/
+  ```
+

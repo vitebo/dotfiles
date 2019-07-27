@@ -1,49 +1,37 @@
-# if not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+# path to your oh-my-bash installation.
+export OSH=$HOME/.oh-my-bash
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
+# set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-bash is loaded.
+OSH_THEME="font"
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+# enable command auto-correction.
+ENABLE_CORRECTION="true"
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+# the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
 
-# check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+completions=(
+  git
+  ssh
+)
 
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+aliases=(
+  general
+)
 
-# PS1
-export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+plugins=(
+  git
+  bashmarks
+)
 
-# ASDF config: https://asdf-vm.com/#/core-manage-asdf-vm
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+source $OSH/oh-my-bash.sh
 
-# PATH
-export PATH="$(yarn global bin):$PATH"
+# Preferred editor for local and remote sessions
+export EDITOR='nvim'
 
-# alias definitions.
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
 
-# include .private if it exists
-if [ -f "$HOME/.private.sh" ]; then
-  source "$HOME/.private.sh"
-fi
-
-# open tmux
-if [[ ! $TERM =~ screen ]]; then
-  exec tmux
-fi
-
-# a command-line fuzzy finder
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
