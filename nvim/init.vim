@@ -26,6 +26,7 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/vim-emoji'
 Plug 'tpope/vim-fugitive'
 Plug 'ngmy/vim-rubocop'
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 syntax enable
@@ -34,14 +35,20 @@ colorscheme solarized
 call togglebg#map("<F5>")
 
 set colorcolumn=120
+set hidden
 
 filetype plugin indent on
 
-set hidden
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
+let g:tmuxline_preset = {
+  \ 'a': '#S',
+  \ 'win': '#I #W',
+  \ 'cwin': '#I #W',
+  \ 'options': { 'status-justify': 'left' }
+\}
 
 set mouse=a
 set number
