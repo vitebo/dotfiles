@@ -16,7 +16,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'JulesWang/css.vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'nikvdp/ejs-syntax'
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
@@ -31,8 +31,7 @@ call plug#end()
 
 syntax enable
 set background=dark
-colorscheme solarized
-call togglebg#map("<F5>")
+colorscheme gruvbox
 
 set colorcolumn=120
 set hidden
@@ -42,7 +41,7 @@ filetype plugin indent on
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='gruvbox'
 let g:tmuxline_preset = {
   \ 'a': '#S',
   \ 'win': '#I #W',

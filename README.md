@@ -181,3 +181,8 @@
   $ ln -s ~/.dotfiles/oh-my-bash/custom ~/.oh-my-bash/
   ```
 
+## Gogh
+  ```bash
+  $ sudo apt-get install dconf-cli uuid-runtime
+  $ bash -c  "$(wget -qO- https://git.io/vQgMr)" 
+  ```
