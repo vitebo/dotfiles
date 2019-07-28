@@ -25,6 +25,8 @@ Plug 'ncm2/ncm2-path'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/vim-emoji'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'edkolev/tmuxline.vim'
 call plug#end()
