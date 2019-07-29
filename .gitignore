@@ -8,3 +8,4 @@ oh-my-bash/custom/private.sh
 # vim
 nvim/plugged
 nvim/autoload/
+nvim/.netrwhist
