@@ -48,7 +48,8 @@ let g:tmuxline_preset = {
   \ 'a': '#S',
   \ 'win': '#I #W',
   \ 'cwin': '#I #W',
-  \ 'options': { 'status-justify': 'left' }
+  \ 'options': { 'status-justify': 'left' },
+  \ 'x': '#(/bin/bash $HOME/.tmux/kube-tmux/kube.tmux)'
 \}
 
 set mouse=a
