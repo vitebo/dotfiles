@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ ! $TERM =~ screen ]]; then
+if [[ ! $TERM =~ screen && ! $TMUX ]]; then
   exec tmux
 fi
