@@ -55,7 +55,7 @@ let g:tmuxline_preset = {
 set mouse=a
 set number
 set relativenumber
-set foldmethod=syntax
+set foldmethod=manual
 set tags=tags
 set clipboard=unnamedplus
 
