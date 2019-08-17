@@ -5,7 +5,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 
 " interface
-Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -43,6 +43,9 @@ set foldmethod=manual
 set clipboard=unnamedplus
 set backupcopy=yes
 set inccommand=split
+filetype plugin indent on
+syntax enable
+set colorcolumn=120
 
 " hidden characters
 set hidden
@@ -51,11 +54,9 @@ set listchars=tab:>-,trail:.
 set lcs+=space:.
 
 " theme
-set colorcolumn=120
-set background=dark
-colorscheme gruvbox
-filetype plugin indent on
-syntax enable
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
 
 " enable mouse
 set mouse=a
@@ -137,7 +138,7 @@ set completefunc=emoji#complete
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+let g:airline_theme='minimalist'
 
 " tmux
 let g:tmuxline_preset = {
