@@ -14,8 +14,21 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" highlight
+" languages
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'vim-scripts/svg.vim'
+Plug 'othree/html5.vim'
+Plug 'digitaltoad/vim-pug'
+Plug 'elzr/vim-json'
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-git'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'vim-ruby/vim-ruby'
 
 " icons
 Plug 'junegunn/vim-emoji'
@@ -148,4 +161,3 @@ let g:tmuxline_preset = {
   \ 'options': { 'status-justify': 'left' },
   \ 'x': '#(/bin/bash $HOME/.tmux/kube-tmux/kube.tmux)'
 \}
-
