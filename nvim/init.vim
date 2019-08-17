@@ -18,6 +18,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'vim-scripts/svg.vim'
@@ -161,3 +162,28 @@ let g:tmuxline_preset = {
   \ 'options': { 'status-justify': 'left' },
   \ 'x': '#(/bin/bash $HOME/.tmux/kube-tmux/kube.tmux)'
 \}
+
+" typescript
+setlocal indentkeys+=0.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" vue
+let g:vue_pre_processors = 'detect_on_enter'
+
+" css
+augroup VimCSS3Syntax
+  autocmd!
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
+
+" sass
+autocmd FileType scss set iskeyword+=-
+
+" markdown
+set conceallevel=2
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_folding_disabled = 1
+
+" elixir
+setlocal formatprg=mix\ format\ -
