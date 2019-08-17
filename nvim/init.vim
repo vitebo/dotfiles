@@ -1,83 +1,103 @@
 call plug#begin()
+" autocomplete
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
+Plug 'mattn/emmet-vim'
+
+" interface
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" finder
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" highlight
 Plug 'ap/vim-css-color'
-Plug 'ryanoasis/vim-devicons'
-Plug 'morhetz/gruvbox'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'mattn/emmet-vim'
+
+" icons
 Plug 'junegunn/vim-emoji'
+Plug 'ryanoasis/vim-devicons'
+
+" tmux
+Plug 'edkolev/tmuxline.vim'
+
+" lint
+Plug 'ngmy/vim-rubocop'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+" git
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'ngmy/vim-rubocop'
-Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
-syntax enable
+" leader key
+let mapleader="\<space>"
+
+" commons
+set foldmethod=manual
+set clipboard=unnamedplus
+set backupcopy=yes
+set inccommand=split
+
+" hidden characters
+set hidden
+set list
+set listchars=tab:>-,trail:.
+set lcs+=space:.
+
+" theme
+set colorcolumn=120
 set background=dark
 colorscheme gruvbox
-
-set colorcolumn=120
-set hidden
-
 filetype plugin indent on
+syntax enable
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
-let g:tmuxline_preset = {
-  \ 'a': '#S',
-  \ 'win': '#I #W',
-  \ 'cwin': '#I #W',
-  \ 'options': { 'status-justify': 'left' },
-  \ 'x': '#(/bin/bash $HOME/.tmux/kube-tmux/kube.tmux)'
-\}
-
+" enable mouse
 set mouse=a
+
+" lines with relative numbers
 set number
 set relativenumber
-set foldmethod=manual
-set tags=tags
-set clipboard=unnamedplus
 
+" encoding
+set fileencoding=utf-8
+set encoding=utf-8
+
+" spaces
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set backspace=2
 set softtabstop=2
 
-set fileencoding=utf-8
-set encoding=utf-8
+" ctags
+set tags=tags
 
-set list
-set listchars=tab:>-,trail:.
-set lcs+=space:.
-set backupcopy=yes
-
-set inccommand=split
-set incsearch
-set hlsearch
-
-let mapleader="\<space>"
-nnoremap <leader>tv :vsplit ~/.tmux.conf<cr>
-nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+" update neovim
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+
+" navigate between buffers
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprev<CR>
+
+" open common files
+nnoremap <leader>tv :vsplit ~/.tmux.conf<cr>
+nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+
+" git
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>dg :diffget<CR>
 nnoremap <leader>dp :diffput<CR>
+
+" escape the terminal
 tnoremap <Esc> <C-\><C-n>
 
 " NERDTree
@@ -87,6 +107,11 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" search
+set incsearch
+set hlsearch
+
+" fuzzy finder
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-P> :Files<cr>
 nnoremap <c-F> :Ag<cr>
@@ -107,4 +132,19 @@ endif
 
 " Emoji completion - <c-x> <c-u>
 set completefunc=emoji#complete
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='gruvbox'
+
+" tmux
+let g:tmuxline_preset = {
+  \ 'a': '#S',
+  \ 'win': '#I #W',
+  \ 'cwin': '#I #W',
+  \ 'options': { 'status-justify': 'left' },
+  \ 'x': '#(/bin/bash $HOME/.tmux/kube-tmux/kube.tmux)'
+\}
 
