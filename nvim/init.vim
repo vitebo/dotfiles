@@ -62,10 +62,14 @@ set list
 set listchars=tab:>-,trail:.
 set lcs+=space:.
 
-" theme
-if has('termguicolors')
+" Enable true color
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+
+" theme
 syntax enable
 set background=dark
 let g:dracula_colorterm=0
@@ -124,6 +128,7 @@ let NERDTreeDirArrows = 1
 " search
 set incsearch
 set hlsearch
+nnoremap <leader>h :nohlsearch<cr>
 
 " fuzzy finder
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
