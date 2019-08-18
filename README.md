@@ -57,6 +57,16 @@
 
 - install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts#option-3-install-script)
 
+## Terminator
+
+- install terminator
+
+  ```bash
+  $ sudo apt-get install terminator
+  $ rm ~/.config/terminator/config
+  $ ln -s ~/.dotfiles/config ~/.config/terminator/config
+  ```
+
 ## Tmux
 
 - install tmux

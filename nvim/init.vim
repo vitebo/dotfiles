@@ -73,6 +73,7 @@ if has('termguicolors')
 endif
 syntax enable
 set background=dark
+let g:dracula_colorterm=0
 color dracula
 
 " enable mouse
