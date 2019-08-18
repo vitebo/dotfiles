@@ -5,7 +5,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 
 " interface
-Plug 'tomasr/molokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -59,7 +59,6 @@ set clipboard=unnamedplus
 set backupcopy=yes
 set inccommand=split
 filetype plugin indent on
-syntax enable
 set colorcolumn=120
 
 " hidden characters
@@ -69,9 +68,12 @@ set listchars=tab:>-,trail:.
 set lcs+=space:.
 
 " theme
-let g:molokai_original = 1
-let g:rehash256 = 1
-colorscheme molokai
+if has('termguicolors')
+  set termguicolors
+endif
+syntax enable
+set background=dark
+color dracula
 
 " enable mouse
 set mouse=a
