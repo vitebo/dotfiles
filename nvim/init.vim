@@ -41,6 +41,7 @@ Plug 'edkolev/tmuxline.vim'
 " lint
 Plug 'ngmy/vim-rubocop'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'dense-analysis/ale'
 
 " git
 Plug 'airblade/vim-gitgutter'
@@ -152,6 +153,7 @@ set completefunc=emoji#complete
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 let g:airline_theme='minimalist'
 
 " tmux
@@ -187,3 +189,9 @@ let g:vim_markdown_folding_disabled = 1
 
 " elixir
 setlocal formatprg=mix\ format\ -
+
+" ale
+let g:ale_linters_explicit = 1
+let g:ale_linter_aliases = {'javascript': ['vue', 'javascript']}
+let g:ale_linters = {'javascript': ['eslint'], 'ruby': ['rubocop']}
+
