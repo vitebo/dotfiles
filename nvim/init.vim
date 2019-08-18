@@ -24,9 +24,6 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'vim-scripts/svg.vim'
 Plug 'othree/html5.vim'
 Plug 'digitaltoad/vim-pug'
-Plug 'elzr/vim-json'
-Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-git'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'vim-ruby/vim-ruby'
@@ -39,8 +36,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'edkolev/tmuxline.vim'
 
 " lint
-Plug 'ngmy/vim-rubocop'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'dense-analysis/ale'
 
 " git
@@ -184,11 +179,6 @@ augroup END
 
 " sass
 autocmd FileType scss set iskeyword+=-
-
-" markdown
-set conceallevel=2
-let g:vim_markdown_new_list_item_indent = 2
-let g:vim_markdown_folding_disabled = 1
 
 " elixir
 setlocal formatprg=mix\ format\ -
