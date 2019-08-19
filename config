@@ -1,35 +1,40 @@
 [global_config]
+  borderless = True
   handle_size = 0
+  homogeneous_tabbar = False
+  scroll_tabbar = True
   tab_position = hidden
   title_hide_sizetext = True
-  title_transmit_fg_color = "#bd93f9"
-  title_transmit_bg_color = "#282a36"
-  title_receive_fg_color = "#8be9fd"
-  title_receive_bg_color = "#282a36"
-  title_inactive_fg_color = "#f8f8f2"
   title_inactive_bg_color = "#282a36"
+  title_inactive_fg_color = "#f8f8f2"
+  title_receive_bg_color = "#282a36"
+  title_receive_fg_color = "#8be9fd"
+  title_transmit_bg_color = "#282a36"
+  title_transmit_fg_color = "#bd93f9"
 [keybindings]
-[profiles]
-  [[default]]
-    icon_bell = False
-    background_color = "#1e1f29"
-    cursor_color = "#bbbbbb"
-    font = Hack 12
-    foreground_color = "#f8f8f2"
-    show_titlebar = False
-    scrollbar_position = hidden
-    scrollback_infinite = True
-    palette = "#000000:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#bbbbbb:#555555:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#ffffff"
-    login_shell = True
-    copy_on_selection = True
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
+      command = ""
       parent = window0
       profile = default
-      command = ""
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#1e1f29"
+    backspace_binding = automatic
+    copy_on_selection = True
+    cursor_color = "#bbbbbb"
+    delete_binding = automatic
+    font = Sans 12
+    foreground_color = "#f8f8f2"
+    icon_bell = False
+    login_shell = True
+    palette = "#000000:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#bbbbbb:#555555:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
