@@ -128,7 +128,7 @@ let NERDTreeDirArrows = 1
 " search
 set incsearch
 set hlsearch
-nnoremap <leader>h :nohlsearch<cr>
+nnoremap <leader>s :nohlsearch<cr>
 
 " fuzzy finder
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
