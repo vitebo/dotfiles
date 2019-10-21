@@ -1,9 +1,10 @@
 [global_config]
-  borderless = True
+  extra_styling = False
   handle_size = 0
   homogeneous_tabbar = False
   scroll_tabbar = True
   tab_position = hidden
+  title_font = Ubuntu Mono 10
   title_hide_sizetext = True
   title_inactive_bg_color = "#282a36"
   title_inactive_fg_color = "#f8f8f2"
@@ -11,7 +12,28 @@
   title_receive_fg_color = "#8be9fd"
   title_transmit_bg_color = "#282a36"
   title_transmit_fg_color = "#bd93f9"
+  title_use_system_font = False
 [keybindings]
+  go_down = None
+  go_left = None
+  go_next = None
+  go_prev = None
+  go_right = None
+  go_up = None
+  group_all = None
+  help = None
+  hide_window = None
+  insert_number = None
+  insert_padded = None
+  move_tab_left = None
+  move_tab_right = None
+  new_tab = None
+  new_terminator = None
+  new_window = None
+  next_tab = None
+  prev_tab = None
+  split_horiz = None
+  split_vert = None
 [layouts]
   [[default]]
     [[[child1]]]
@@ -30,7 +52,7 @@
     copy_on_selection = True
     cursor_color = "#bbbbbb"
     delete_binding = automatic
-    font = Sans 12
+    font = Ubuntu Mono 10
     foreground_color = "#f8f8f2"
     icon_bell = False
     login_shell = True
@@ -38,3 +60,4 @@
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False
+    use_system_font = False
