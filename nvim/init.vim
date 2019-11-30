@@ -5,9 +5,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 
 " interface
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " finder
 Plug 'scrooloose/nerdtree'
@@ -27,6 +28,7 @@ Plug 'digitaltoad/vim-pug'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'vim-ruby/vim-ruby'
+Plug 'nikvdp/ejs-syntax'
 
 " icons
 Plug 'junegunn/vim-emoji'
@@ -62,18 +64,11 @@ set list
 set listchars=tab:>-,trail:.
 set lcs+=space:.
 
-" Enable true color
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
 " theme
 syntax enable
 set background=dark
-let g:dracula_colorterm=0
-color dracula
+colorscheme solarized
+call togglebg#map("<F5>")
 
 " enable mouse
 set mouse=a
@@ -157,7 +152,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme='minimalist'
+let g:airline_theme='solarized'
 
 " tmux
 let g:tmuxline_preset = {
