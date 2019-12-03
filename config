@@ -3,6 +3,7 @@
   extra_styling = False
   handle_size = 0
   homogeneous_tabbar = False
+  inactive_color_offset = 1.0
   scroll_tabbar = True
   tab_position = hidden
   title_font = Ubuntu Mono 10
