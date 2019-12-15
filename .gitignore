@@ -1,5 +1,5 @@
 # secret keys
-oh-my-bash/custom/private.sh
+oh-my-zsh/secrets.zsh
 
 # tmux
 .tmux/reset
