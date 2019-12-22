@@ -5,7 +5,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 
 " interface
-Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -67,8 +67,7 @@ set lcs+=space:.
 " theme
 syntax enable
 set background=dark
-colorscheme solarized
-call togglebg#map("<F5>")
+colorscheme base16-default-dark
 
 " enable mouse
 set mouse=a
@@ -152,7 +151,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme='solarized'
 
 " tmux
 let g:tmuxline_preset = {
@@ -188,3 +186,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linter_aliases = {'javascript': ['vue', 'javascript']}
 let g:ale_linters = {'javascript': ['eslint'], 'ruby': ['rubocop']}
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif

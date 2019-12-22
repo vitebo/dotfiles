@@ -1,86 +1,42 @@
 [global_config]
-  handle_size = 0
-  tab_position = hidden
-  scroll_tabbar = True
-  homogeneous_tabbar = False
-  title_hide_sizetext = True
-  title_transmit_fg_color = "#bd93f9"
-  title_transmit_bg_color = "#282a36"
-  title_receive_fg_color = "#8be9fd"
-  title_receive_bg_color = "#282a36"
-  title_inactive_fg_color = "#f8f8f2"
-  title_inactive_bg_color = "#282a36"
-  inactive_color_offset = 1.0
+  always_split_with_profile = True
+  borderless = True
   enabled_plugins = TerminatorThemes, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  extra_styling = False
+  handle_size = 0
+  homogeneous_tabbar = False
+  inactive_color_offset = 1.0
+  scroll_tabbar = True
+  tab_position = hidden
+  title_font = FiraCode Nerd Font Medium 10
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#000000"
+  title_receive_bg_color = "#000000"
+  title_receive_fg_color = "#000000"
+  title_transmit_bg_color = "#000000"
+  title_transmit_fg_color = "#000000"
   title_use_system_font = False
-  title_font = RobotoMono Nerd Font Medium 10
 [keybindings]
-  new_tab = None
-  go_next = None
-  go_prev = None
-  go_up = None
   go_down = None
   go_left = None
+  go_next = None
+  go_prev = None
   go_right = None
-  split_horiz = None
-  split_vert = None
-  move_tab_right = None
-  move_tab_left = None
-  next_tab = None
-  prev_tab = None
-  hide_window = None
+  go_up = None
   group_all = None
-  new_window = None
-  new_terminator = None
+  help = None
+  hide_window = None
   insert_number = None
   insert_padded = None
-  help = None
-[profiles]
-  [[default]]
-    icon_bell = False
-    background_color = "#1e1f29"
-    backspace_binding = automatic
-    delete_binding = automatic
-    cursor_color = "#bbbbbb"
-    font = Ubuntu Mono 10
-    foreground_color = "#f8f8f2"
-    show_titlebar = False
-    scrollbar_position = hidden
-    scrollback_infinite = True
-    palette = "#000000:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#bbbbbb:#555555:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#ffffff"
-    login_shell = True
-    use_system_font = False
-    copy_on_selection = True
-  [[Solarized Dark]]
-    icon_bell = False
-    background_color = "#001e27"
-    backspace_binding = automatic
-    delete_binding = automatic
-    cursor_color = "#708284"
-    font = RobotoMono Nerd Font Medium 10
-    foreground_color = "#708284"
-    show_titlebar = False
-    scrollbar_position = hidden
-    scrollback_infinite = True
-    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#001e27:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
-    login_shell = True
-    use_system_font = False
-    copy_on_selection = True
-  [[Solarized Light]]
-    icon_bell = False
-    background_color = "#fcf4dc"
-    backspace_binding = automatic
-    delete_binding = automatic
-    cursor_color = "#536870"
-    font = RobotoMono Nerd Font Medium 10
-    foreground_color = "#536870"
-    show_titlebar = False
-    scrollbar_position = hidden
-    scrollback_infinite = True
-    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#001e27:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
-    login_shell = True
-    use_system_font = False
-    copy_on_selection = True
+  move_tab_left = None
+  move_tab_right = None
+  new_tab = None
+  new_terminator = None
+  new_window = None
+  next_tab = None
+  prev_tab = None
+  split_horiz = None
+  split_vert = None
 [layouts]
   [[default]]
     [[[child0]]]
@@ -97,7 +53,24 @@
     [[[terminal1]]]
       order = 0
       parent = child0
-      profile = Material
+      profile = Solarized Dark
       type = Terminal
       uuid = f7357fc3-db84-4b1b-831b-3218915971df
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#2d2d2d"
+    backspace_binding = automatic
+    copy_on_selection = True
+    cursor_color = "#d3d0c8"
+    delete_binding = automatic
+    font = FiraCode Nerd Font Medium 10
+    foreground_color = "#d3d0c8"
+    icon_bell = False
+    login_shell = True
+    palette = "#2d2d2d:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+    use_theme_colors = True
