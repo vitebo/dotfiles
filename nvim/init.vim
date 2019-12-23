@@ -68,6 +68,10 @@ set lcs+=space:.
 syntax enable
 set background=dark
 colorscheme base16-default-dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " enable mouse
 set mouse=a
@@ -186,7 +190,5 @@ let g:ale_linters_explicit = 1
 let g:ale_linter_aliases = {'javascript': ['vue', 'javascript']}
 let g:ale_linters = {'javascript': ['eslint'], 'ruby': ['rubocop']}
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+" emmet
+let g:user_emmet_leader_key=','
