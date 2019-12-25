@@ -1,4 +1,7 @@
 call plug#begin()
+" monitoring
+Plug 'wakatime/vim-wakatime'
+
 " autocomplete
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
@@ -192,3 +195,11 @@ let g:ale_linters = {'javascript': ['eslint'], 'ruby': ['rubocop']}
 
 " emmet
 let g:user_emmet_leader_key=','
+
+" fzf
+let g:fzf_action = {
+  \ 'ctrl-d': 'bd',
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+\}

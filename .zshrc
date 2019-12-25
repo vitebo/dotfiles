@@ -72,6 +72,7 @@ plugins=(
   git
   docker
   docker-compose
+  wakatime
 )
 
 ZSH_COMPDUMP="~/.cache/zsh/zcompdump-$ZSH_VERSION"
