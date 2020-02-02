@@ -137,10 +137,10 @@ nnoremap <c-P> :Files<cr>
 nnoremap <c-F> :Ag<cr>
 
 " Maps Alt-[h,j,k,l] to resizing a window split
-map <silent> <A-H> <C-w><
-map <silent> <A-K> <C-W>-
-map <silent> <A-J> <C-W>+
-map <silent> <A-L> <C-w>>
+map <silent> <A-H> 5<C-w><
+map <silent> <A-K> 5<C-W>-
+map <silent> <A-J> 5<C-W>+
+map <silent> <A-L> 5<C-w>>
 
 " Using Emojis as Git Gutter symbols
 if emoji#available()
@@ -203,3 +203,6 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
 \}
+
+nnoremap <leader>gl :Glog! -10 --<CR>
+nnoremap <leader>gf :Glog! -10 -- %<CR>
