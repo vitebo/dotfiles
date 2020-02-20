@@ -5,7 +5,7 @@
   extra_styling = False
   handle_size = 0
   homogeneous_tabbar = False
-  inactive_color_offset = 1.0
+  inactive_color_offset = 0.80608365019
   scroll_tabbar = True
   tab_position = hidden
   title_font = FiraCode Nerd Font Medium 10
@@ -40,7 +40,7 @@
 [layouts]
   [[default]]
     [[[child0]]]
-      fullscreen = True
+      fullscreen = False
       last_active_term = f7357fc3-db84-4b1b-831b-3218915971df
       last_active_window = True
       maximised = False
@@ -60,6 +60,7 @@
 [profiles]
   [[default]]
     background_color = "#2d2d2d"
+    background_type = transparent
     backspace_binding = automatic
     copy_on_selection = True
     cursor_color = "#d3d0c8"
