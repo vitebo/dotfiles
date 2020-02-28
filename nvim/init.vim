@@ -6,6 +6,8 @@ Plug 'wakatime/vim-wakatime'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'SirVer/ultisnips'
 
 " interface
 Plug 'chriskempson/base16-vim'
@@ -205,3 +207,10 @@ let g:fzf_action = {
 
 nnoremap <leader>gl :Glog! -10 --<CR>
 nnoremap <leader>gf :Glog! -10 -- %<CR>
+
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+nnoremap <leader>ue :UltiSnipsEdit<cr>
+
