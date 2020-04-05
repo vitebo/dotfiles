@@ -49,6 +49,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
+
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 call plug#end()
 
 " leader key
@@ -214,3 +216,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 nnoremap <leader>ue :UltiSnipsEdit<cr>
 
+autocmd BufNewFile,BufRead *.mdx set filetype=markdown.mdx

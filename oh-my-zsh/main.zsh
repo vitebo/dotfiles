@@ -1,6 +1,14 @@
 # fuzzy-finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# yarn
+export PATH="$(yarn global bin):$PATH"
+
+# ASDF
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
@@ -54,3 +62,4 @@ function mix() {
 function dk-exec() {
   docker exec -it $(docker ps -qf name=$1) bash
 }
+export GTK_IM_MODULE=ibus
