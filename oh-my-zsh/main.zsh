@@ -21,6 +21,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export UID=$(id -u)
 export GID=$(id -g)
 
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export ANDROID_HOME=/home/vitebo/android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:~/android-studio/bin
+
 alias src='source ~/.zshrc'
 
 alias exercism='docker run \
