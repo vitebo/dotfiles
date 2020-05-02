@@ -1,0 +1,113 @@
+[
+  // sidebar
+  {
+    "key": "ctrl+b ctrl+a",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "ctrl+b ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b ctrl+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+b ctrl+f",
+    "commd": "workbench.action.findInFiles"
+  },
+  {
+    "key": "ctrl+b ctrl+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "ctrl+b ctrl+d",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "ctrl+b ctrl+x",
+    "command": "workbench.view.extensions"
+  },
+  // sugestions
+  {
+    "key": "ctrl+n",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  //panes
+  {
+    "key": "alt+l",
+    "command": "workbench.action.increaseViewSize"
+  },
+  {
+    "key": "alt+h",
+    "command": "workbench.action.decreaseViewSize"
+  },
+  {
+    "key": "alt+shift+j",
+    "command": "workbench.action.moveActiveEditorGroupDown"
+  },
+  {
+    "key": "alt+shift+h",
+    "command": "workbench.action.moveActiveEditorGroupLeft"
+  },
+  {
+    "key": "alt+shift+l",
+    "command": "workbench.action.moveActiveEditorGroupRight"
+  },
+  {
+    "key": "alt+shift+k",
+    "command": "workbench.action.moveActiveEditorGroupUp"
+  },
+  // editor
+  {
+    "command": "editor.action.moveLinesDownAction",
+    "key": "alt+j",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+j",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+k",
+    "command": "editor.action.copyLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // use "ctrl+p ctrl+q" for detach docker container
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "workbench.action.quit",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quit"
+  },
+  // git
+  // {
+  //   "key": "space g b",
+  //   "command": "gitlens.toggleFileBlame",
+  //   "when": "editorTextFocus && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /blameable/"
+  // },
+]
