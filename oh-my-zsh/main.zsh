@@ -29,6 +29,8 @@ export PATH=$PATH:~/android-studio/bin
 
 alias src='source ~/.zshrc'
 
+alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME gnome-control-center'
+
 alias exercism='docker run \
   --name exercism \
   --rm \
