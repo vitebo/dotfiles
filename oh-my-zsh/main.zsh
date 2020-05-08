@@ -65,6 +65,13 @@ function mix() {
   docker run --rm -it -v "$(pwd)":/usr/src/app -w /usr/src/app elixir mix "$@"
 }
 
+function deploy-homolog() {
+  git branch -D homolog
+  git switch -c homolog
+  git push origin homolog --force
+  git switch -
+}
+
 function dk-exec() {
   docker exec -it $(docker ps -qf name=$1) bash
 }
