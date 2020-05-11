@@ -112,6 +112,7 @@ nnoremap <leader>tv :vsplit ~/.tmux.conf<cr>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 
 " git
+nnoremap <c-b><c-g> :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gs :Gstatus<CR>
@@ -123,8 +124,8 @@ nnoremap <leader>dp :diffput<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " NERDTree
-nnoremap <s-e> :NERDTreeToggle<cr>
-nnoremap <leader>e :NERDTreeFind<cr>
+nnoremap <c-b><c-b> :NERDTreeToggle<cr>
+nnoremap <c-b><c-e> :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
