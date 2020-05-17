@@ -89,5 +89,6 @@
   },
   "docker.certPath": "/home/vitebo/work/quero/docker-compose.yml",
   "eslint.packageManager": "yarn",
-  "git.autofetch": true
+  "git.autofetch": true,
+  "timeline.excludeSources": []
 }

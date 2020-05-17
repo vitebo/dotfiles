@@ -1,9 +1,6 @@
 # fuzzy-finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# yarn
-export PATH="$(yarn global bin):$PATH"
-
 # ASDF
 . $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -78,3 +75,8 @@ function dk-exec() {
   docker exec -it $(docker ps -qf name=$1) bash
 }
 export GTK_IM_MODULE=ibus
+
+# yarn
+export PATH="$(yarn global bin):$PATH"
+
+neofetch

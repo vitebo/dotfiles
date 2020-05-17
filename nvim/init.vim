@@ -62,7 +62,7 @@ set clipboard=unnamedplus
 set backupcopy=yes
 set inccommand=split
 filetype plugin indent on
-set colorcolumn=120
+set colorcolumn=80
 
 " hidden characters
 set hidden
