@@ -16,7 +16,9 @@
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontFamily": "Jetbrains Mono",
   "terminal.integrated.shell.linux": "/bin/zsh",
+	"workbench.panel.defaultLocation": "right",
   // vim
+  "vim.foldfix": true,
   "vim.overrideCopy": true,
 	"vim.replaceWithRegister": true,
   "vim.hlsearch": true,
@@ -50,7 +52,7 @@
   "explorer.confirmDragAndDrop": false,
   // workbench
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.labelFormat": "short",
   // extensions
@@ -76,7 +78,7 @@
   "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "editor.codeActionsOnSave": {
@@ -90,5 +92,9 @@
   "docker.certPath": "/home/vitebo/work/quero/docker-compose.yml",
   "eslint.packageManager": "yarn",
   "git.autofetch": true,
-  "timeline.excludeSources": []
+  "timeline.excludeSources": [],
+  "svelte.language-server.runtime": "/home/vitebo/.asdf/installs/nodejs/10.20.1/bin/node",
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "jsannotations.enabled": false
 }
