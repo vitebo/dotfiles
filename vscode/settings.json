@@ -52,7 +52,7 @@
   "explorer.confirmDragAndDrop": false,
   // workbench
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.labelFormat": "short",
   // extensions
