@@ -1,6 +1,11 @@
 # docker
-alias dkc='docker-compose'
-alias dkc-run='docker-compose run --service-ports --use-alias --rm'
+alias dkc='\
+  docker-compose \
+  -f /home/vitebo/work/quero/docker-compose.yml \
+  --env-file /home/vitebo/work/quero/.env \
+'
+
+alias dkc-run='dkc run --service-ports --use-alias --rm'
 
 #editor
 alias nvim=~/.local/share/nvim/nvim.appimage
