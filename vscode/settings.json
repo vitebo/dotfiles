@@ -52,7 +52,7 @@
   "explorer.confirmDragAndDrop": false,
   // workbench
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.labelFormat": "short",
   // extensions
@@ -93,8 +93,7 @@
   "eslint.packageManager": "yarn",
   "git.autofetch": true,
   "timeline.excludeSources": [],
-  "svelte.language-server.runtime": "/home/vitebo/.asdf/installs/nodejs/10.20.1/bin/node",
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
-  "jsannotations.enabled": false
+  "diffEditor.ignoreTrimWhitespace": false,
 }
