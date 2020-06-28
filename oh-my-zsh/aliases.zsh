@@ -7,6 +7,10 @@ alias dkc='\
 
 alias dkc-run='dkc run --service-ports --use-alias --rm'
 
+dkbash () {
+  ID=$(docker ps -qf name=$1)  && docker exec -it $ID bash
+}
+
 #editor
 alias nvim=~/.local/share/nvim/nvim.appimage
 alias vim=~/.local/share/nvim/nvim.appimage
