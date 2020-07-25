@@ -96,4 +96,31 @@
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
   "diffEditor.ignoreTrimWhitespace": false,
+  "cSpell.language": "en,pt",
+  "cSpell.enableFiletypes": [
+    "eex",
+    "elixir",
+    "git-rebase",
+    "html (eex)",
+    "mdx",
+    "sass",
+    "sass.hover",
+    "sql",
+    "vimrc",
+    "vue",
+    "vue-html",
+    "vue-postcss"
+  ],
+  "cSpell.userWords": [
+    "devtools",
+    "esnext",
+    "keyframes",
+    "mixins",
+    "noopener",
+    "scripthost",
+    "vuejs",
+    "vuex",
+    "zilla",
+    "zillado"
+  ],
 }
