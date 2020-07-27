@@ -1,10 +1,25 @@
 # Dotfiles
 
 ## Basic packages
-
 update packages
 ```sh
 $ sudo apt update && sudo apt upgrade
+```
+
+### Git
+install git
+```sh
+$ add-apt-repository ppa:git-core/ppa
+
+$ sudo apt update
+
+$ sudo apt install git
+```
+
+## Project
+clone project
+```sh
+$ git clone https://github.com/vitebo/dotfiles.git $HOME/.dotfiles
 ```
 
 ### ZSH
@@ -17,7 +32,8 @@ $ chsh -s $(which zsh)
 
 install oh-my-zsh
 ```sh
-$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$ sh -c \
+  "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 install plugins
@@ -33,26 +49,7 @@ $ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 $ source $HOME/.zshrc
 ```
 
-### Git
-
-install git
-```sh
-$ add-apt-repository ppa:git-core/ppa
-
-$ sudo apt update
-
-$ sudo apt install git
-```
-
-## Project
-
-clone project
-```sh
-$ git clone https://github.com/vitebo/dotfiles.git $HOME/.dotfiles
-```
-
 ## Docker
-
 install docker
 ```sh
 $ sudo apt install \
@@ -91,7 +88,9 @@ $ sudo chmod g+rwx "$HOME/.docker" -R
 
 install docker-compose
 ```sh
-$ sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo curl -L \
+  "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" \
+  -o /usr/local/bin/docker-compose
 
 $ sudo chmod +x /usr/local/bin/docker-compose
 
@@ -99,11 +98,9 @@ $ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 ## Fonts
-
 install [jetbrains-mono](https://www.jetbrains.com/pt-pt/lp/mono/)
 
 ## ASDF
-
 install asdf
 ```sh
 $ git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.7.1
@@ -143,8 +140,7 @@ $ ln -s $HOME/.dotfiles/.tool-versions $HOME/.tool-versions
 ```
 
 ## Neovim
-
-install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
+install
 ```sh
 $ sudo snap install nvim --beta --classic
 ```
@@ -167,4 +163,19 @@ $ nvim + 'PlugInstall --sync' +qa
 ## Ag
 ```sh
 $ sudo apt install silversearcher-ag
+```
+
+## VSCode
+install
+```sh
+$ sudo snap install code --classic
+```
+
+link files
+```sh
+$ ln -s $HOME/.dotfiles/vscode/settings.json \
+  $HOME/.config/Code/User/settings.json
+
+$ ln -s $HOME/.dotfiles/vscode/keybindings.json \
+  $HOME/.config/Code/User/keybindings.json
 ```
