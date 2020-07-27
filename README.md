@@ -2,197 +2,169 @@
 
 ## Basic packages
 
-- update packages
-  ```bash
-  $ sudo apt-get update && sudo apt-get upgrade
-  ```
+update packages
+```sh
+$ sudo apt update && sudo apt upgrade
+```
 
-- install curl
-  ```bash
-  $ sudo apt install curl
-  ```
+### ZSH
+install zsh
+```sh
+$ sudo apt install zsh
+
+$ chsh -s $(which zsh)
+```
+
+install oh-my-zsh
+```sh
+$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+install plugins
+```sh
+$ git clone https://github.com/zsh-users/zsh-autosuggestions \
+  ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+```
+
+link files
+```sh
+$ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+
+$ source $HOME/.zshrc
+```
 
 ### Git
 
-- install git
-  ```bash
-  $ sudo apt-get install git
-  ```
+install git
+```sh
+$ add-apt-repository ppa:git-core/ppa
 
-- config git
-  ```bash
-  $ git config --global user.name "vitebo"
-  $ git config --global user.email "vitebo@hotmail.com"
-  $ git config --global core.editor vi
-  ```
+$ sudo apt update
+
+$ sudo apt install git
+```
 
 ## Project
 
-- clone project
-  ```bash
-  $ git clone https://github.com/vitebo/dotfiles.git ~/.dotfiles
-  ```
-
-## Basic configs
-
-- create config files
-  ```bash
-  $ mv ~/.bash_aliases ~/.bash_aliases.old
-  $ ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
-
-  $ mv ~/.bashrc ~/.bashrc.old
-  $ ln -s ~/.dotfiles/.bashrc ~/.bashrc
-  $ source ~/.bashrc
-
-  $ mv ~/.profile ~/.profile.old
-  $ ln -s ~/.dotfiles/.profile ~/.profile
-  $ source ~/.profile
-  ```
+clone project
+```sh
+$ git clone https://github.com/vitebo/dotfiles.git $HOME/.dotfiles
+```
 
 ## Docker
 
-- install [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+install docker
+```sh
+$ sudo apt install \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gnupg-agent \
+  software-properties-common
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+$ sudo apt-key fingerprint 0EBFCD88
+
+$ sudo add-apt-repository \
+ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+ $(lsb_release -cs) \
+ stable"
+
+$ sudo apt update
+
+$ sudo apt install docker-ce docker-ce-cli containerd.io
+```
+
+manage Docker as a non-root user
+```sh
+$ sudo groupadd docker
+
+$ sudo usermod -aG docker $USER
+
+$ newgrp docker 
+
+$ sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+
+$ sudo chmod g+rwx "$HOME/.docker" -R
+```
+
+install docker-compose
+```sh
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+$ sudo chmod +x /usr/local/bin/docker-compose
+
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
 
 ## Fonts
 
-- install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts#option-3-install-script)
-
-## Terminator
-
-- install terminator
-
-  ```bash
-  $ sudo apt-get install terminator
-  $ rm ~/.config/terminator/config
-  $ ln -s ~/.dotfiles/config ~/.config/terminator/config
-  ```
-
-## Tmux
-
-- install tmux
-  ```bash
-  $ sudo apt-get install tmux
-  ```
-
-- use *dotfiles* settings
-  ```bash
-  $ ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-  ```
-
-- add reset script
-  ```bash
-  $ curl -Lo ~/.tmux/reset --create-dirs \
-      https://raw.githubusercontent.com/hallazzang/tmux-reset/master/tmux-reset
-  ```
-
-- add plugins manager
-  ```bash
-  $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  ```
-
-- install plugins
-  ```bash
-  $ ~/.tmux/plugins/tpm/bin/install_plugins
-  ```
-
-- copy from tmux buffer to system buffer (clipboard)
-  ```bash
-  sudo apt-get install --assume-yes xclip
-  ```
+install [jetbrains-mono](https://www.jetbrains.com/pt-pt/lp/mono/)
 
 ## ASDF
 
-- install asdf
-  ```bash
-  $ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.1
-  ```
+install asdf
+```sh
+$ git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.7.1
+```
 
-- install the dependencies
-  ```bash
-  $ sudo apt-get -y install build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop
-  ```
+install the dependencies
+```sh
+$ sudo apt -y install \
+  build-essential \
+  autoconf \
+  m4 \
+  libncurses5-dev \
+  libwxgtk3.0-dev \
+  libgl1-mesa-dev \
+  libglu1-mesa-dev \
+  libpng-dev \
+  libssh-dev \
+  unixodbc-dev \
+  xsltproc \
+  fop
+```
 
-- install erlang
-  ```bash
-  $ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-  ```
+install languages
+```sh
+$ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 
-- install elixir
-  ```bash
-  $ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-  ```
+$ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
-- install ruby
-  ```bash
-  $ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-  ```
+$ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
 
-- install nodejs
-  ```bash
-  $ asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+$ asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+```
 
-  $ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-
-  $ npm install -g yarn
-  ```
-
-- move versions
-  ```bash
-  $ ln -s ~/.dotfiles/.tool-versions ~/.tool-versions
-  ```
+move versions
+```sh
+$ ln -s $HOME/.dotfiles/.tool-versions $HOME/.tool-versions
+```
 
 ## Neovim
 
-- install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
-  ```bash
-  $ sudo apt-get install neovim
-  ```
+install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
+```sh
+$ sudo snap install nvim --beta --classic
+```
 
-- set default editor
-  ```bash
-  $ sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-  $ sudo update-alternatives --config vi
-  $ sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-  $ sudo update-alternatives --config vim
-  $ sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
-  $ sudo update-alternatives --config editor
-  $ sudo rm /usr/bin/vim && sudo ln -s /usr/bin/nvim /usr/bin/vim
-  ```
+move config
+```sh
+$ rm -rf $HOME/.config/nvim
 
-- move config
-  ```bash
-  $ ln -s ~/.dotfiles/nvim/ ~/.config/nvim
-  ```
+$ ln -s $HOME/.dotfiles/nvim/ $HOME/.config/nvim
+```
 
-- install *vim-plug*
-  ```bash
-  $ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+install vim-plug
+```sh
+$ curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  $ nvim + 'PlugInstall --sync' +qa
-  ```
+$ nvim + 'PlugInstall --sync' +qa
+```
 
 ## Ag
-  ```bash
-  $ sudo apt-get install silversearcher-ag
-  ```
-
-## Ctags
-  ```bash
-  $ sudo apt-get install ctags
-  $ mv ~/.ctags ~/.ctags.old
-  $ ln -s ~/.dotfiles/.ctags ~/.ctags
-  ```
-
-## Oh my bash
-  ```bash
-  $ git clone git://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
-  $ rm -rf ~/.oh-my-bash/custom/
-  $ ln -s ~/.dotfiles/oh-my-bash/custom ~/.oh-my-bash/
-  ```
-
-## Gogh
-  ```bash
-  $ sudo apt-get install dconf-cli uuid-runtime
-  $ bash -c  "$(wget -qO- https://git.io/vQgMr)" 
-  ```
+```sh
+$ sudo apt install silversearcher-ag
+```

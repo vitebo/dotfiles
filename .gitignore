@@ -1,9 +1,8 @@
 # secret keys
 oh-my-zsh/secrets.zsh
 
-# tmux
-.tmux/reset
-.tmux/plugins/
+# oh-my-zsh
+oh-my-zsh/plugins
 
 # vim
 nvim/plugged
