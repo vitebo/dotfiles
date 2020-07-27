@@ -55,7 +55,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh
+ZSH_CUSTOM=$HOME/.dotfiles/zsh
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
