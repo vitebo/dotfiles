@@ -22,4 +22,5 @@ function deploy-homolog() {
   git switch -
 }
 
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+# FZF
+export FZF_BASE=$HOME/.fzf

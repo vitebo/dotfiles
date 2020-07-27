@@ -49,6 +49,11 @@ $ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 $ source $HOME/.zshrc
 ```
 
+## Fuzzy Finder
+```sh
+$ git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+```
+
 ## Docker
 install docker
 ```sh

@@ -5,8 +5,6 @@ Plug 'jiangmiao/auto-pairs'
 
 " finder
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
 " lint
 Plug 'dense-analysis/ale'
