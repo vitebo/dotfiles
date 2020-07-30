@@ -14,6 +14,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
+
+" theme
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " leader key
@@ -74,7 +77,7 @@ map <silent> <A-L> 5<C-w>>
 syntax on
 set termguicolors
 set background=dark
-colorscheme ThemerVim
+colorscheme onedark
 
 " NERDTree
 nnoremap <c-b><c-b> :NERDTreeToggle<cr>
