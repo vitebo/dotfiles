@@ -12,8 +12,9 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias zshconfig='vi $HOME/.zshrc'
-alias ohmyzsh='vi $HOME.dotfiles/oh-my-zsh'
 alias dotfiles='vi $HOME/.dotfiles'
+alias awsconfig='vi $HOME/.aws/config'
+alias kconfig='vi $HOME/.kube/b2b-homolog.yml'
 
 function deploy-homolog() {
   git branch -D homolog
@@ -24,3 +25,6 @@ function deploy-homolog() {
 
 # FZF
 export FZF_BASE=$HOME/.fzf
+
+# Yarn
+export PATH="$(yarn global bin):$PATH"
