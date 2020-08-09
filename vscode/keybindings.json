@@ -1,34 +1,39 @@
 [
-  // sidebar
   {
     "key": "ctrl+b ctrl+a",
-    "command": "workbench.action.toggleActivityBarVisibility"
+    "command": "workbench.action.toggleActivityBarVisibility",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+b ctrl+b",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+b ctrl+e",
-    "command": "workbench.view.explorer"
+    "command": "workbench.view.explorer",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+b ctrl+f",
-    "commd": "workbench.action.findInFiles"
+    "commd": "workbench.action.findInFiles",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+b ctrl+g",
-    "command": "workbench.view.scm"
+    "command": "workbench.view.scm",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+b ctrl+d",
-    "command": "workbench.view.debug"
+    "command": "workbench.view.debug",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+b ctrl+x",
-    "command": "workbench.view.extensions"
+    "command": "workbench.view.extensions",
+    "when": "!terminalFocus"
   },
-  // sugestions
   {
     "key": "ctrl+n",
     "command": "selectNextSuggestion",
@@ -39,7 +44,6 @@
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
-  //panes
   {
     "key": "alt+l",
     "command": "workbench.action.increaseViewSize"
@@ -64,7 +68,6 @@
     "key": "alt+shift+k",
     "command": "workbench.action.moveActiveEditorGroupUp"
   },
-  // editor
   {
     "command": "editor.action.moveLinesDownAction",
     "key": "alt+j",
@@ -85,7 +88,6 @@
     "command": "editor.action.copyLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  // use "ctrl+p ctrl+q" for detach docker container
   {
     "key": "ctrl+p",
     "command": "workbench.action.quickOpen",
@@ -103,11 +105,5 @@
   {
     "key": "ctrl+q",
     "command": "-workbench.action.quit"
-  },
-  // git
-  // {
-  //   "key": "space g b",
-  //   "command": "gitlens.toggleFileBlame",
-  //   "when": "editorTextFocus && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /blameable/"
-  // },
+  }
 ]

@@ -1,5 +1,4 @@
 {
-  // editor
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
@@ -11,12 +10,10 @@
   "editor.rulers": [80, 120],
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 120,
-  // terminal
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontFamily": "Jetbrains Mono",
   "terminal.integrated.shell.linux": "/bin/zsh",
-	"workbench.panel.defaultLocation": "right",
-  // vim 
+  "workbench.panel.defaultLocation": "right",
   "vim.foldfix": true,
   "vim.overrideCopy": true,
 	"vim.replaceWithRegister": true,
@@ -42,47 +39,39 @@
     { "before": [">"], "commands": ["editor.action.indentLines"] },
     { "before": ["<"], "commands": ["editor.action.outdentLines"] },
   ],
-  // explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  // workbench
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Themer Dark",
+  "workbench.colorTheme": "Atom One Dark",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.labelFormat": "short",
-  // extensions
   "extensions.ignoreRecommendations": true,
-  // emmet
   "emmet.syntaxProfiles": { "javascript": "jsx" },
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
-    "HTML (Eex)": "html"
+    "HTML (Eex)": "html",
+    "Vue": "vue",
   },
-  // eslint
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
+    "vue",
   ],
-  // others
-  "javascript.updateImportsOnFileMove.enabled": "never",
   "typescript.updateImportsOnFileMove.enabled": "never",
   "material-icon-theme.folders.theme": "specific",
   "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.formatOnSave": true
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.tslint": true,
     "source.fixAll.stylelint": true
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "eslint.packageManager": "yarn",
   "git.autofetch": true,
@@ -107,14 +96,18 @@
   ],
   "cSpell.userWords": [
     "ASDF",
+    "CSRF",
     "Dotfiles",
+    "Rollbar",
     "autoconf",
     "autoload",
+    "axios",
     "chmod",
     "chown",
     "containerd",
     "devtools",
     "esnext",
+    "focusable",
     "gnupg",
     "jetbrains",
     "keyframes",
