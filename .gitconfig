@@ -2,4 +2,4 @@
 	name = vitebo
 	email = vitebo@hotmail.com
 [core]
-	editor = vi
+	editor = nvim
