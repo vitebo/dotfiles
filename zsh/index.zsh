@@ -23,6 +23,11 @@ function deploy-homolog() {
   git switch -
 }
 
+function git-reset-hard() {
+  git add .
+  git reset --hard HEAD
+}
+
 # FZF
 export FZF_BASE=$HOME/.fzf
 
