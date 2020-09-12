@@ -1,5 +1,5 @@
 # configure keyboard
-# setxkbmap -model pc104 -layout us_intl
+setxkbmap -model pc104 -layout us_intl
 
 alias src='source $HOME/.zshrc'
 

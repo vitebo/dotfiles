@@ -5,6 +5,8 @@ Plug 'jiangmiao/auto-pairs'
 
 " finder
 Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " lint
 Plug 'dense-analysis/ale'
@@ -68,10 +70,10 @@ set hlsearch
 nnoremap <leader>s :nohlsearch<cr>
 
 " Maps Alt-[h,j,k,l] to resizing a window split
-map <silent> <A-H> 5<C-w><
-map <silent> <A-K> 5<C-W>-
-map <silent> <A-J> 5<C-W>+
-map <silent> <A-L> 5<C-w>>
+map <silent> <A-H> 10<C-w><
+map <silent> <A-K> 10<C-W>-
+map <silent> <A-J> 10<C-W>+
+map <silent> <A-L> 10<C-w>>
 
 " theme
 syntax on
@@ -80,5 +82,16 @@ set background=dark
 colorscheme onedark
 
 " NERDTree
-nnoremap <c-b><c-b> :NERDTreeToggle<cr>
-nnoremap <c-b><c-e> :NERDTreeFind<cr>
+map <A-1> :NERDTreeToggle<CR>
+map <A-2> :NERDTreeFind<CR>
+
+" fzf
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+nnoremap <c-p> :Files<cr>
+nnoremap <c-F> :Ag<cr>
+let g:fzf_action = {
+  \ 'ctrl-d': 'bd',
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+\}
