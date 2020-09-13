@@ -9,7 +9,7 @@
   "editor.renderLineHighlight": "gutter",
   "editor.rulers": [80, 120],
   "editor.tabSize": 2,
-  // "editor.wordWrapColumn": 120,
+  "editor.wordWrapColumn": 120,
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontFamily": "Jetbrains Mono",
   "terminal.integrated.shell.linux": "/bin/zsh",
@@ -22,11 +22,12 @@
   "vim.leader": "<space>",
   "vim.ignorecase": false,
   "vim.smartcase": false,
-  // "vim.textwidth": 120,
+  "vim.textwidth": 120,
   "vim.handleKeys": {
     "<C-f>": false,
     "<C-g>": false,
-    "<C-a>": false
+    "<C-a>": false,
+    "<C-d>": false,
   },
   "vim.insertModeKeyBindings": [
     { "before": ["j", "j"], "after": ["<Esc>"] }
@@ -42,7 +43,7 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Laravel Extra - JetBrains Clasic",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.labelFormat": "short",
   "extensions.ignoreRecommendations": true,
