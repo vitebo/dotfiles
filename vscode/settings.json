@@ -23,11 +23,12 @@
   "vim.ignorecase": false,
   "vim.smartcase": false,
   "vim.textwidth": 120,
+  "vim.useCtrlKeys": true,
+  "vim.enableNeovim": true,
   "vim.handleKeys": {
     "<C-f>": false,
     "<C-g>": false,
     "<C-a>": false,
-    "<C-d>": false,
   },
   "vim.insertModeKeyBindings": [
     { "before": ["j", "j"], "after": ["<Esc>"] }

@@ -82,8 +82,8 @@ set background=dark
 colorscheme onedark
 
 " NERDTree
-map <A-1> :NERDTreeToggle<CR>
-map <A-2> :NERDTreeFind<CR>
+map <C-b><C-b> :NERDTreeToggle<CR>
+map <C-b><C-e> :NERDTreeFind<CR>
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'

@@ -35,12 +35,12 @@
     "when": "!terminalFocus"
   },
   {
-    "key": "ctrl+n",
+    "key": "ctrl+j",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   {
-    "key": "ctrl+shift+n",
+    "key": "ctrl+k",
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
@@ -105,5 +105,5 @@
   {
     "key": "ctrl+q",
     "command": "-workbench.action.quit"
-  }
+  },
 ]
