@@ -1,0 +1,14 @@
+{
+  "cSpell.enabled": true,
+  "cSpellExt.enableDictionaries": ["portuguese-brazilian"],
+  "cSpell.language": "en,pt,pt_BR",
+  "cSpell.words": [
+    "Zilla"
+  ],
+  "cSpell.ignorePaths": [
+    "node_modules",
+    "node_modules/**",
+    "**/node_modules",
+    "**/node_modules/**"
+  ]
+}
