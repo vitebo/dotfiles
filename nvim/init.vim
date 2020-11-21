@@ -4,6 +4,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'mattn/emmet-vim'
 
 " languages
 Plug 'sheerun/vim-polyglot'
@@ -25,11 +26,9 @@ Plug 'tpope/vim-rhubarb'
 Plug 'editorconfig/editorconfig-vim'
 
 " theme
-Plug 'mhartington/oceanic-next'
-Plug 'glepnir/oceanic-material'
+Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " leader key
@@ -75,9 +74,6 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 " open common files
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 
-" escape the terminal
-tnoremap <Esc> <C-\><C-n>
-
 " search
 set incsearch
 set hlsearch
@@ -109,41 +105,41 @@ let g:ale_fixers = {
 
 " theme
 set termguicolors
-syntax enable
+syntax on
 set background=dark
-let g:oceanic_material_allow_bold = 1
-let g:oceanic_material_allow_italic = 1
-let g:oceanic_material_allow_underline = 1
-let g:oceanic_material_allow_undercurl = 1
-let g:oceanic_material_allow_reverse = 1
-colorscheme oceanic_material
+let g:gruvbox_contrast_dark='soft'
+colorscheme gruvbox
 
 "icons
+let g:DevIconsEnableFolderExtensionPatternMatching = 1
+let g:WebDevIconsUnicodeByteOrderMarkerDefaultSymbol = ''
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_ctrlp = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_unite = 1
+let g:webdevicons_enable_vimfiler = 1
 
 "airline
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+set guifont=FiraMono\ Nerd\ Font\ Medium\ 11
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline_theme='oceanicnext'
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_ctrlp = 1
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
-let g:WebDevIconsUnicodeByteOrderMarkerDefaultSymbol = ''
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFolderExtensionPatternMatching = 1
-set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\ %=\ %P%)
 
 " NERDTree
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-b><C-b> :NERDTreeToggle<CR>
 map <C-b><C-e> :NERDTreeFind<CR>
+
+" Terminal
+map <C-w>t :vsplit term://zsh<CR>
+tnoremap <Esc> <C-\><C-n>
 
 " Coc
 let g:coc_global_extensions = [ 'coc-tsserver' ]
