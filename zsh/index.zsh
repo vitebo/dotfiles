@@ -18,6 +18,7 @@ alias zshconfig='vi $HOME/.zshrc'
 alias dotfiles='vi $HOME/.dotfiles'
 alias awsconfig='vi $HOME/.aws/config'
 alias kconfig='vi $HOME/.kube/b2b-homolog.yml'
+alias githelp='vi $HOME/.oh-my-zsh/plugins/git/README.md'
 
 function deploy-homolog() {
   git branch -D homolog
@@ -30,9 +31,3 @@ function git-reset-hard() {
   git add .
   git reset --hard HEAD
 }
-
-# FZF
-export FZF_BASE=$HOME/.fzf
-
-# Yarn
-export PATH="$(yarn global bin):$PATH"
