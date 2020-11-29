@@ -3,7 +3,9 @@
   "cSpellExt.enableDictionaries": ["portuguese-brazilian"],
   "cSpell.language": "en,pt,pt_BR",
   "cSpell.words": [
-    "Zilla"
+    "Zilla",
+    "whatsapp",
+    "Rollbar"
   ],
   "cSpell.ignorePaths": [
     "node_modules",
