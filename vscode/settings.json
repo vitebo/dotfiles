@@ -44,7 +44,6 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Laravel Extra - JetBrains Clasic",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.labelFormat": "short",
   "extensions.ignoreRecommendations": true,
@@ -70,7 +69,7 @@
   "vetur.validation.template": true,
   "vetur.validation.script": true,
   "vetur.validation.style": true,
-  "vetur.experimental.templateInterpolationService": true,
+  "vetur.experimental.templateInterpolationService": false,
   "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
@@ -114,5 +113,16 @@
   "git.supportCancellation": true,
   "git.rebaseWhenSync": true,
   "prettier.vueIndentScriptAndStyle": true,
-  "vetur.trace.server": "verbose"
+  "vetur.trace.server": "verbose",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.implicitProjectConfig.checkJs": true,
+  "cSpell.userWords": [
+    "contato",
+    "repos"
+  ],
+  "workbench.colorTheme": "GitHub Dark",
+  "files.watcherExclude": {
+    "**/public/**": true,
+    "**/.cache/**": true
+  }
 }
