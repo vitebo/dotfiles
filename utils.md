@@ -40,3 +40,10 @@ list screen
 ```
 screen -ls
 ```
+
+## docker
+
+remove volumes
+```
+docker volume rm -f $(docker volume ls | grep -i -v quero_)
+```
