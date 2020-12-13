@@ -19,6 +19,7 @@ alias dotfiles='vi $HOME/.dotfiles'
 alias awsconfig='vi $HOME/.aws/config'
 alias kconfig='vi $HOME/.kube/b2b-homolog.yml'
 alias githelp='vi $HOME/.oh-my-zsh/plugins/git/README.md'
+alias tmuxhelp='vi $HOME/.oh-my-zsh/plugins/tmux/README.md'
 
 function deploy-homolog() {
   git branch -D homolog
