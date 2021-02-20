@@ -1,6 +1,3 @@
-# configure keyboard
-setxkbmap -model pc104 -layout us_intl
-
 alias src='source $HOME/.zshrc'
 
 alias dkc='\
@@ -10,9 +7,6 @@ alias dkc='\
 '
 
 alias dkc-run='dkc run --service-ports --use-alias --rm'
-
-alias vi='nvim'
-alias vim='nvim'
 
 alias zshconfig='vi $HOME/.zshrc'
 alias dotfiles='vi $HOME/.dotfiles'
