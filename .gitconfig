@@ -3,3 +3,8 @@
 	email = vitebo@hotmail.com
 [core]
 	editor = nvim
+[pull]
+	rebase = true
+[fetch]
+	prune = false
+	pruneTags = true

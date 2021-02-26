@@ -13,3 +13,6 @@ export ARCHFLAGS="-arch x86_64"
 
 # Yarn
 PATH="$(yarn global bin):$PATH"
+
+# ngrok
+# PATH=$(/home/vitebo/softwares/ngrok):$PATH

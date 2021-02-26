@@ -43,8 +43,7 @@
   ],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "workbench.activityBar.visible": false,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vs-nomo-dark",
   "workbench.editor.labelFormat": "short",
   "extensions.ignoreRecommendations": true,
   "emmet.syntaxProfiles": { "javascript": "jsx" },
@@ -120,9 +119,10 @@
     "contato",
     "repos"
   ],
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Default High Contrast",
   "files.watcherExclude": {
     "**/public/**": true,
     "**/.cache/**": true
-  }
+  },
+  "workbench.activityBar.visible": false
 }
