@@ -41,43 +41,8 @@
   ],
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 120,
-  "terminal.integrated.fontSize": 12,
-  "terminal.integrated.fontFamily": "Jetbrains Mono",
-  "terminal.integrated.shell.linux": "/bin/zsh",
-  "workbench.panel.defaultLocation": "right",
-  "vim.foldfix": true,
-  "vim.overrideCopy": true,
-	"vim.replaceWithRegister": true,
-  "vim.useSystemClipboard": true,
-  "vim.hlsearch": true,
-  "vim.leader": "<space>",
-  "vim.ignorecase": false,
-  "vim.smartcase": false,
-  "vim.textwidth": 120,
-  "vim.useCtrlKeys": true,
-  "vim.enableNeovim": true,
-  "vim.handleKeys": {
-    "<C-f>": false,
-    "<C-g>": false,
-    "<C-a>": false,
-  },
-  "vim.insertModeKeyBindings": [
-    { "before": ["j", "j"], "after": ["<Esc>"] }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    { "before": ["leader", "s"], "commands": [":nohl"] },
-    { "before": ["leader", "w"], "commands": ["workbench.action.files.save"] }
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    { "before": [">"], "commands": ["editor.action.indentLines"] },
-    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
-  ],
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.editor.labelFormat": "short",
-  "extensions.ignoreRecommendations": true,
-  "emmet.syntaxProfiles": { "javascript": "jsx" },
+  "elixirLS.dialyzerEnabled": false,
+  "elixirLS.suggestSpecs": false,
   "emmet.includeLanguages": {
     "HTML (Eex)": "html",
     "javascript": "javascriptreact",
@@ -139,20 +104,80 @@
   "vetur.experimental.templateInterpolationService": false,
   "vetur.format.enable": true,
   "vetur.trace.server": "verbose",
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "javascript.implicitProjectConfig.checkJs": true,
-  "cSpell.userWords": [
-    "contato",
-    "repos"
+  "vetur.validation.script": true,
+  "vetur.validation.style": true,
+  "vetur.validation.template": true,
+  "vim.foldfix": true,
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-g>": false,
+    "<C-q>": false,
+    "<C-b>": false
+  },
+  "vim.hlsearch": true,
+  "vim.ignorecase": false,
+  "vim.insertModeKeyBindings": [
+    {
+      "after": [
+        "<Esc>"
+      ],
+      "before": [
+        "j",
+        "j"
+      ]
+    }
   ],
-  "workbench.colorTheme": "GitHub Dark",
-  "files.watcherExclude": {
-    "**/public/**": true,
-    "**/.cache/**": true
-  },
-  "workbench.activityBar.visible": false,
-  "launch": {
-    "configurations": [],
-    "compounds": []
-  },
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "s"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    }
+  ],
+  "vim.overrideCopy": true,
+  "vim.replaceWithRegister": true,
+  "vim.smartcase": false,
+  "vim.textwidth": 120,
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": true,
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    }
+  ],
+  "window.menuBarVisibility": "toggle",
+  "window.zoomLevel": 0,
+  "workbench.editor.labelFormat": "short",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.panel.defaultLocation": "right",
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.activityBar.visible": false
 }

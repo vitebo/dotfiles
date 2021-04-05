@@ -2,7 +2,7 @@
 	name = vitebo
 	email = vitebo@hotmail.com
 [core]
-	editor = nvim
+	editor = vi
 [pull]
 	rebase = true
 [fetch]
