@@ -12,7 +12,9 @@ export EDITOR='vi'
 export ARCHFLAGS="-arch x86_64"
 
 # Yarn
-PATH="$(yarn global bin):$PATH"
+if [ -x yarn ]; then
+  PATH="$(yarn global bin):$PATH"
+fi
 
 # ngrok
 # PATH=$(/home/vitebo/softwares/ngrok):$PATH

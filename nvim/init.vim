@@ -26,9 +26,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'editorconfig/editorconfig-vim'
 
 " theme
-Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " leader key
@@ -94,8 +93,8 @@ map <silent> <A-J> 10<C-W>+
 map <silent> <A-L> 10<C-w>>
 
 " lint
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \'javascript': ['eslint'],
@@ -105,10 +104,8 @@ let g:ale_fixers = {
 
 " theme
 set termguicolors
-syntax on
-set background=dark
-let g:gruvbox_contrast_dark='soft'
-colorscheme gruvbox
+let ayucolor="mirage"
+colorscheme ayu
 
 "icons
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
@@ -117,19 +114,10 @@ let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 let g:webdevicons_enable = 1
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_unite = 1
 let g:webdevicons_enable_vimfiler = 1
-
-"airline
-set guifont=FiraMono\ Nerd\ Font\ Medium\ 11
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#left_sep = ' '
 
 " NERDTree
 " close vim if the only window left open is a NERDTree
