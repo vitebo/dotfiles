@@ -78,14 +78,6 @@ set incsearch
 set hlsearch
 nnoremap <leader>s :nohlsearch<cr>
 
-" git
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>dg :diffget<CR>
-nnoremap <leader>dp :diffput<CR>
-
 " Maps Alt-[h,j,k,l] to resizing a window split
 map <silent> <A-H> 10<C-w><
 map <silent> <A-K> 10<C-W>-
@@ -93,8 +85,6 @@ map <silent> <A-J> 10<C-W>+
 map <silent> <A-L> 10<C-w>>
 
 " lint
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \'javascript': ['eslint'],
@@ -106,18 +96,6 @@ let g:ale_fixers = {
 set termguicolors
 let ayucolor="mirage"
 colorscheme ayu
-
-"icons
-let g:DevIconsEnableFolderExtensionPatternMatching = 1
-let g:WebDevIconsUnicodeByteOrderMarkerDefaultSymbol = ''
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_ctrlp = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_unite = 1
-let g:webdevicons_enable_vimfiler = 1
 
 " NERDTree
 " close vim if the only window left open is a NERDTree

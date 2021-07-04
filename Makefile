@@ -6,6 +6,7 @@ setup:
 	sudo apt update
 	sudo apt upgrade
 	$(MAKE) apt-install
+	$(MAKE) install-snap-packages
 	$(MAKE) setup-zsh
 	$(MAKE) setup-fuzzy-finder
 	$(MAKE) setup-docker
@@ -41,6 +42,12 @@ apt-install:
 		xclip \
 		xsltproc \
 		zsh
+
+install-snap-packages:
+	sudo snap install nvim --beta --classic
+	sudo snap install spotify
+	sudo snap install slack --classic
+	sudo snap install universal-ctags
 
 setup-zsh:
 	chsh -s $(which zsh)
@@ -86,7 +93,6 @@ setup-asdf:
 	asdf install
 
 setup-neovim:
-	sudo snap install nvim --beta --classic
 	ln -s $HOME/.dotfiles/nvim/ $HOME/.config/nvim
 	curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
