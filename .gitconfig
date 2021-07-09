@@ -2,9 +2,12 @@
 	name = vitebo
 	email = vitebo@hotmail.com
 [core]
-	editor = vi
+	editor = nvim
 [pull]
 	rebase = true
 [fetch]
 	prune = false
 	pruneTags = true
+[alias]
+	prev = checkout HEAD^1
+	next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
