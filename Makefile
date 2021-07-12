@@ -32,7 +32,6 @@ apt-install:
 		libncurses5-dev \
 		libpng-dev \
 		libssh-dev \
-		libwxgtk3.0-dev \
 		lsb-release \
 		m4 \
 		silversearcher-ag \
