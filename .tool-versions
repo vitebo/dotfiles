@@ -1,5 +1,4 @@
 nodejs 14.15.5
-elixir 1.6.0-otp-20
-erlang 20.3.2
+elixir 1.13.1
+erlang 22.3.4.24
 ruby 2.7.1
-python 3.6.12 2.7.13
