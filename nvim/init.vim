@@ -1,130 +1,102 @@
-call plug#begin()
-" autocomplete
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'mattn/emmet-vim'
+syntax on
 
-" languages
-Plug 'sheerun/vim-polyglot'
-
-" finder
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" lint
-Plug 'dense-analysis/ale'
-
-" git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-
-" format
-Plug 'editorconfig/editorconfig-vim'
-
-" theme
-Plug 'ayu-theme/ayu-vim'
-Plug 'ryanoasis/vim-devicons'
-call plug#end()
-
-" leader key
-let mapleader="\<space>"
-
-" commons
-set foldmethod=manual
-set clipboard=unnamedplus
-set backupcopy=yes
-set inccommand=split
 filetype plugin indent on
+
+let mapleader = " "
+
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+set background=dark
+set backspace=2
+set backupcopy=yes
+set clipboard=unnamedplus
 set colorcolumn=80,120
-
-" ctags
-set tags=tags
-
-" hidden characters
+set encoding=UTF-8
+set expandtab
+set fileencoding=UTF-8
+set foldmethod=manual
 set hidden
+set hlsearch
+set inccommand=split
+set incsearch
 set list
 set listchars=tab:>-,trail:.,space:.
-
-" enable mouse
 set mouse=a
-
-" lines with relative numbers
+set nobackup
+set noerrorbells
+set noswapfile
+set nowrap
+set nu
 set number
 set relativenumber
-
-" encoding
-set fileencoding=UTF-8
-set encoding=UTF-8
-
-" spaces
-set expandtab
-set tabstop=2
 set shiftwidth=2
-set backspace=2
+set smartcase
+set smartindent
 set softtabstop=2
+set tabstop=2
+set tags=tags
+set termguicolors
+set undodir=~/.vim/undodir
+set undofile
 
-" update neovim
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+call plug#begin()
 
-" open common files
-nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+Plug 'airblade/vim-gitgutter'
+Plug 'ayu-theme/ayu-vim'
+Plug 'dense-analysis/ale'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'lyuts/vim-rtags'
+Plug 'mattn/emmet-vim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'vim-utils/vim-man'
 
-" search
-set incsearch
-set hlsearch
-nnoremap <leader>s :nohlsearch<cr>
+call plug#end()
 
-" Maps Alt-[h,j,k,l] to resizing a window split
+let ayucolor="mirage"
+colorscheme ayu
+
 map <silent> <A-H> 10<C-w><
 map <silent> <A-K> 10<C-W>-
 map <silent> <A-J> 10<C-W>+
 map <silent> <A-L> 10<C-w>>
+map <C-b><C-b> :NERDTreeToggle<CR>
+map <C-b><C-e> :NERDTreeFind<CR>
+map <C-w>t :vsplit term://zsh<CR>
 
-" lint
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>s :nohlsearch<cr>
+nnoremap <c-p> :Files<cr>
+nnoremap <c-F> :Ag<cr>
+
+tnoremap <Esc> <C-\><C-n>
+
+" Ale
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \'javascript': ['eslint'],
   \'typescript': ['eslint'],
-  \'vue': ['eslint'],
+  \'vue': ['eslint', 'stylelint'],
 \}
-
-" theme
-set termguicolors
-let ayucolor="mirage"
-colorscheme ayu
 
 " NERDTree
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-b><C-b> :NERDTreeToggle<CR>
-map <C-b><C-e> :NERDTreeFind<CR>
-
-" Terminal
-map <C-w>t :vsplit term://zsh<CR>
-tnoremap <Esc> <C-\><C-n>
-
-" Coc
-let g:coc_global_extensions = [ 'coc-tsserver' ]
-" Use K to show documentation in preview window.
-nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-nnoremap <c-p> :Files<cr>
-nnoremap <c-F> :Ag<cr>
 let g:fzf_action = {
   \'ctrl-d': 'bd',
   \'ctrl-t': 'tab split',

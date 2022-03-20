@@ -29,3 +29,5 @@ function git-reset-hard() {
   git add .
   git reset --hard HEAD
 }
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
