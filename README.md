@@ -11,34 +11,34 @@ system through symlinks — nothing inside `$HOME` is edited directly.
 ```sh
 git clone <this-repo> ~/.dotfiles
 cd ~/.dotfiles
-./install
+./install.sh
 ```
 
-Running `./install` with no arguments performs a full, idempotent bootstrap.
+Running `./install.sh` with no arguments performs a full, idempotent bootstrap.
 Re-running it is always safe.
 
 ### Dev Containers
 
-Point the `dotfiles` feature at this repository with `./install` as the
+Point the `dotfiles` feature at this repository with `./install.sh` as the
 install command. No absolute paths are used, so it works unchanged.
 
 ## Tasks
 
 ```sh
-./install            # full installation
-./install packages   # install required system packages
-./install symlinks   # link home/ -> ~/ and config/ -> ~/.config/
-./install secrets    # prepare ~/.config/dotfiles/secrets.zsh
-./install ohmyzsh    # install Oh My Zsh (keeps existing .zshrc)
-./install doctor     # validate the environment
-./install help       # usage
+./install.sh            # full installation
+./install.sh packages   # install required system packages
+./install.sh symlinks   # link home/ -> ~/ and config/ -> ~/.config/
+./install.sh secrets    # prepare ~/.config/dotfiles/secrets.zsh
+./install.sh ohmyzsh    # install Oh My Zsh (keeps existing .zshrc)
+./install.sh doctor     # validate the environment
+./install.sh help       # usage
 ```
 
 ## Layout
 
 ```
 dotfiles/
-├── install              # single entry point (Bash; no .sh extension)
+├── install.sh           # single entry point (Bash)
 ├── lib/                 # automation modules — functions only, no side effects
 │   ├── common.sh        #   logging, colors, helpers
 │   ├── os.sh            #   OS / package-manager detection
@@ -61,7 +61,7 @@ dotfiles/
   `$HOME/`, and every entry of `config/` into `$HOME/.config/`. Adding a new
   file to the repo is all it takes — there are no hard-coded lists. Existing
   real files are backed up (`*.backup.<timestamp>`) before being replaced.
-- **Only the entry point knows paths.** `install` computes `DOTFILES_ROOT`,
+- **Only the entry point knows paths.** `install.sh` computes `DOTFILES_ROOT`,
   `DOTFILES_LIB`, `DOTFILES_HOME` and `DOTFILES_CONFIG` and loads the modules.
   Modules never source each other and never recompute the root.
 - **Secrets are never versioned.** They live at

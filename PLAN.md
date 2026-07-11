@@ -43,7 +43,7 @@ Nenhum arquivo de configuração deve instalar pacotes ou alterar o sistema.
 
 Executar:
 
-./install
+./install.sh
 
 múltiplas vezes nunca deve quebrar o ambiente.
 
@@ -103,7 +103,7 @@ Estrutura do projeto
 
 dotfiles/
 │
-├── install
+├── install.sh
 │
 ├── lib/
 │   ├── common.sh
@@ -133,17 +133,15 @@ Entry Point
 
 O projeto possuirá apenas um ponto de entrada:
 
-./install
+./install.sh
 
-Não utilizar extensão .sh no executável principal.
-
-Internamente ele continuará sendo um script Bash.
+O executável principal utiliza a extensão .sh e continua sendo um script Bash.
 
 ⸻
 
 Responsabilidades do entrypoint
 
-O arquivo install deve:
+O arquivo install.sh deve:
 
 * configurar o ambiente do bootstrap;
 * descobrir a raiz do repositório;
@@ -182,7 +180,7 @@ Somente o entrypoint pode carregar módulos.
 
 Exemplo:
 
-install
+install.sh
  ├── common.sh
  ├── os.sh
  ├── packages.sh
@@ -324,11 +322,11 @@ O entrypoint deve aceitar subcomandos.
 
 Exemplos:
 
-./install
-./install packages
-./install symlinks
-./install ohmyzsh
-./install doctor
+./install.sh
+./install.sh packages
+./install.sh symlinks
+./install.sh ohmyzsh
+./install.sh doctor
 
 Quando nenhuma task for informada, executar a instalação completa.
 
