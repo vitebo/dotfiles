@@ -11,6 +11,7 @@ run_doctor() {
 
     _doctor_os || failures=$((failures + 1))
     _doctor_commands || failures=$((failures + 1))
+    _doctor_neovim || failures=$((failures + 1))
     _doctor_ohmyzsh || failures=$((failures + 1))
     _doctor_symlinks || failures=$((failures + 1))
     _doctor_secrets || failures=$((failures + 1))
@@ -35,7 +36,7 @@ _doctor_os() {
 
 _doctor_commands() {
     local ok=0 cmd
-    for cmd in git zsh nvim curl uv; do
+    for cmd in git zsh curl uv; do
         if _command_exists "$cmd"; then
             log_success "command available: $cmd"
         else
@@ -44,6 +45,15 @@ _doctor_commands() {
         fi
     done
     return "$ok"
+}
+
+_doctor_neovim() {
+    if _nvim_is_recent; then
+        log_success "neovim present and recent (>= 0.10)"
+    else
+        log_error "neovim missing or too old (NvChad needs >= 0.11; vim.uv needs >= 0.10)"
+        return 1
+    fi
 }
 
 _doctor_ohmyzsh() {

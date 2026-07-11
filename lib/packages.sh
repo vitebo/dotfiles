@@ -5,9 +5,11 @@
 # This module only defines functions. It runs no code when loaded.
 
 # Core packages the environment depends on. Kept as a function-local list so
-# the module has no top-level state.
+# the module has no top-level state. Neovim is intentionally NOT here: distro
+# packages (notably apt) ship versions too old for NvChad (needs >= 0.11 /
+# vim.uv needs >= 0.10), so it is handled by _install_neovim instead.
 _core_packages() {
-    printf '%s\n' git zsh neovim curl
+    printf '%s\n' git zsh curl
 }
 
 install_packages() {
@@ -25,7 +27,68 @@ install_packages() {
 
     # Tools that are not reliably packaged across distros are handled on their
     # own, after the core packages (and their prerequisites like curl) exist.
+    _install_neovim
     _install_uv
+}
+
+# --- Neovim --------------------------------------------------------------
+# NvChad requires a recent Neovim (>= 0.11); vim.uv (used by init.lua) needs
+# >= 0.10. Distro packages are often older, so prefer Homebrew and otherwise
+# install the official stable release into ~/.local.
+_install_neovim() {
+    if _nvim_is_recent; then
+        log_info "neovim already present and recent enough"
+        return 0
+    fi
+
+    if _command_exists brew; then
+        log_step "Installing neovim (Homebrew)"
+        brew install neovim
+        return 0
+    fi
+
+    _install_neovim_release
+}
+
+# True when nvim exists and reports version >= 0.10.
+_nvim_is_recent() {
+    _command_exists nvim || return 1
+    local ver major minor
+    ver="$(nvim --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9]+' | head -1)"
+    [ -n "$ver" ] || return 1
+    major="${ver%%.*}"
+    minor="${ver#*.}"
+    [ "$major" -gt 0 ] || [ "$minor" -ge 10 ]
+}
+
+_install_neovim_release() {
+    local arch
+    case "$(uname -m)" in
+        x86_64 | amd64)  arch="x86_64" ;;
+        aarch64 | arm64) arch="arm64" ;;
+        *)
+            log_error "Unsupported architecture for Neovim release: $(uname -m)"
+            return 1
+            ;;
+    esac
+
+    local asset="nvim-linux-${arch}"
+    local url="https://github.com/neovim/neovim/releases/download/stable/${asset}.tar.gz"
+    local dest="$HOME/.local"
+    local tmp
+    tmp="$(mktemp -d)"
+
+    log_step "Installing Neovim stable release (${arch})"
+    curl -fsSL "$url" -o "$tmp/nvim.tar.gz"
+    tar -xzf "$tmp/nvim.tar.gz" -C "$tmp"
+
+    mkdir -p "$dest/bin"
+    rm -rf "$dest/nvim"
+    mv "$tmp/$asset" "$dest/nvim"
+    ln -sf "$dest/nvim/bin/nvim" "$dest/bin/nvim"
+    rm -rf "$tmp"
+
+    log_success "Neovim installed to $dest/nvim (linked into ~/.local/bin)"
 }
 
 # uv (Astral) — required by the Neovim toolchain (Mason). Not consistently

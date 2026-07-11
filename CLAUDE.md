@@ -12,7 +12,7 @@ Files reach the system only through symlinks — nothing in `$HOME` is edited in
 
 ```sh
 ./install.sh            # full idempotent bootstrap (default when no task given)
-./install.sh packages   # install core packages (git zsh neovim curl) + uv
+./install.sh packages   # install core packages (git zsh curl) + neovim + uv
 ./install.sh symlinks   # link home/ -> ~/ and config/ -> ~/.config/
 ./install.sh secrets    # create ~/.config/dotfiles/secrets.zsh from the example
 ./install.sh ohmyzsh    # install Oh My Zsh (keeps existing .zshrc)
@@ -73,9 +73,12 @@ Machine-specific git identity goes in `~/.config/dotfiles/gitconfig.local` (incl
 `config/nvim/` is versioned NvChad config (installed once from the starter, `.git`
 removed) — **treated as data, not automation; there is no install task for it.**
 `create_symlinks` maps it to `~/.config/nvim`; lazy.nvim installs plugins on first launch.
-The Neovim toolchain (Mason) needs `uv`, so `install_packages` installs it via `_install_uv`
-(Homebrew, else Astral's standalone installer) into `~/.local/bin` — added to PATH by both
-`.zshrc` and `install.sh`.
+Neovim is installed by `_install_neovim`, **not** from distro packages: apt/dnf ship
+versions too old for NvChad (`init.lua` calls `vim.uv`, which needs Neovim >= 0.10; NvChad
+wants >= 0.11). It prefers Homebrew, else downloads the official stable release into
+`~/.local/nvim` and links it into `~/.local/bin`. The Mason toolchain also needs `uv`
+(`_install_uv`: Homebrew, else Astral's installer, into `~/.local/bin`). `~/.local/bin` is
+added to PATH by both `.zshrc` and `install.sh`. `doctor` verifies the Neovim version.
 Override a NvChad plugin by adding a spec with a **table** `opts` in
 `config/nvim/lua/plugins/init.lua` — lazy.nvim deep-merges it onto NvChad's defaults, so
 you keep the inherited config. Do not use `config = function() ... setup() end`, which
