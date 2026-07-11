@@ -29,8 +29,7 @@ install command. No absolute paths are used, so it works unchanged.
 ./install packages   # install required system packages
 ./install symlinks   # link home/ -> ~/ and config/ -> ~/.config/
 ./install secrets    # prepare ~/.config/dotfiles/secrets.zsh
-./install ohmyzsh     # install Oh My Zsh (keeps existing .zshrc)
-./install nvchad     # scaffold + sync NvChad
+./install ohmyzsh    # install Oh My Zsh (keeps existing .zshrc)
 ./install doctor     # validate the environment
 ./install help       # usage
 ```
@@ -46,11 +45,10 @@ dotfiles/
 │   ├── packages.sh      #   package installation
 │   ├── symlinks.sh      #   generic symlink creation
 │   ├── ohmyzsh.sh       #   Oh My Zsh installation
-│   ├── nvchad.sh        #   NvChad scaffolding + plugin sync
 │   ├── secrets.sh       #   local secrets management
 │   └── doctor.sh        #   environment diagnostics
 ├── home/                # linked into $HOME/         (e.g. .zshrc, .gitconfig)
-├── config/              # linked into $HOME/.config/  (e.g. nvim/)
+├── config/              # linked into $HOME/.config/  (e.g. nvim/ — NvChad)
 ├── scripts/             # standalone helper scripts
 ├── secrets.example.zsh  # documents expected secret variables
 ├── README.md
@@ -70,10 +68,15 @@ dotfiles/
   `~/.config/dotfiles/secrets.zsh` and are sourced by `.zshrc` only when
   present. The repo ships only `secrets.example.zsh`. Machine-specific git
   settings go in `~/.config/dotfiles/gitconfig.local`.
+- **Neovim / NvChad is versioned config, not automation.** The NvChad starter
+  was installed once (per the [official docs](https://nvchad.com/docs/quickstart/install)),
+  its `.git` removed, and the generated files committed under `config/nvim`.
+  `create_symlinks` links it to `~/.config/nvim`; on first `nvim` launch,
+  lazy.nvim installs the plugins. Update with `:Lazy sync` from inside Neovim.
 
 ## Conventions
 
 - Scripts start with `#!/usr/bin/env bash` and `set -Eeuo pipefail`.
 - Public functions: `install_packages`, `create_symlinks`, `install_ohmyzsh`,
-  `install_nvchad`, `detect_os`, ... Private helpers are prefixed with `_`.
+  `detect_os`, ... Private helpers are prefixed with `_`.
 - All code aims to be idempotent, single-responsibility and ShellCheck-clean.

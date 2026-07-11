@@ -7,6 +7,3 @@ gitconfig.local
 .DS_Store
 *.swp
 *~
-
-# Neovim runtime state that may land inside config/nvim
-config/nvim/lazy-lock.json

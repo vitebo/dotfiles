@@ -38,7 +38,7 @@ export DOTFILES_ROOT DOTFILES_LIB DOTFILES_HOME DOTFILES_CONFIG
 # Modules only export functions; loading them has no side effects.
 _load_modules() {
     local module
-    for module in common os packages symlinks ohmyzsh nvchad secrets doctor; do
+    for module in common os packages symlinks ohmyzsh secrets doctor; do
         # shellcheck source=/dev/null
         source "$DOTFILES_LIB/$module.sh"
     done
@@ -54,7 +54,6 @@ Tasks:
   symlinks   Create configuration symlinks
   secrets    Prepare the local secrets directory
   ohmyzsh    Install Oh My Zsh
-  nvchad     Install NvChad requirements and configuration
   doctor     Validate the environment and report inconsistencies
   help       Show this message
 EOF
@@ -67,7 +66,6 @@ _task_all() {
     create_symlinks
     setup_secrets
     install_ohmyzsh
-    install_nvchad
     log_success "Bootstrap complete"
 }
 
@@ -81,7 +79,6 @@ main() {
         symlinks) create_symlinks ;;
         secrets)  setup_secrets ;;
         ohmyzsh)  install_ohmyzsh ;;
-        nvchad)   install_nvchad ;;
         doctor)   run_doctor ;;
         help | -h | --help) usage ;;
         *)

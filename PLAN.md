@@ -61,7 +61,6 @@ Exemplo:
 * instalação de pacotes
 * criação de symlinks
 * instalação do Oh My Zsh
-* instalação do NvChad
 
 Cada módulo deve possuir apenas funções relacionadas ao seu domínio.
 
@@ -111,8 +110,7 @@ dotfiles/
 │   ├── os.sh
 │   ├── packages.sh
 │   ├── symlinks.sh
-│   ├── ohmyzsh.sh
-│   └── nvchad.sh
+│   └── ohmyzsh.sh
 │
 ├── home/
 │   ├── .zshrc
@@ -189,8 +187,7 @@ install
  ├── os.sh
  ├── packages.sh
  ├── symlinks.sh
- ├── ohmyzsh.sh
- └── nvchad.sh
+ └── ohmyzsh.sh
 
 Os módulos nunca devem fazer source entre si.
 
@@ -228,7 +225,6 @@ Convenções
 Funções públicas
 
 install_packages
-install_nvchad
 install_ohmyzsh
 create_symlinks
 detect_os
@@ -316,9 +312,9 @@ Não sobrescrever configurações existentes sem confirmação.
 
 NvChad
 
-A configuração personalizada ficará dentro do repositório.
+Seguindo a documentação oficial (https://nvchad.com/docs/quickstart/install), o NvChad é instalado uma única vez manualmente, o diretório .git do starter é removido, e os arquivos de configuração gerados passam a viver versionados dentro do repositório em config/nvim.
 
-O bootstrap será responsável apenas por instalar os requisitos necessários e posicionar a configuração corretamente.
+Não há script de instalação para o NvChad. A configuração é tratada como dado: o módulo de symlinks a mapeia para ~/.config/nvim. Na primeira execução do nvim, o lazy.nvim instala os plugins; atualizações são feitas com :Lazy sync.
 
 ⸻
 
@@ -332,7 +328,6 @@ Exemplos:
 ./install packages
 ./install symlinks
 ./install ohmyzsh
-./install nvchad
 ./install doctor
 
 Quando nenhuma task for informada, executar a instalação completa.
@@ -397,7 +392,7 @@ Implementar instalação do Oh My Zsh.
 
 Fase 8
 
-Implementar instalação do NvChad.
+Posicionar a configuração do NvChad (instalada uma única vez, sem script) como dado versionado, mapeada via symlinks.
 
 ⸻
 
