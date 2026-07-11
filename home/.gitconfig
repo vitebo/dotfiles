@@ -1,0 +1,26 @@
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+	autocrlf = input
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[color]
+	ui = auto
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	lg = log --oneline --graph --decorate
+
+# Machine-specific settings (user.name, user.email, signing keys, ...).
+# This file is not versioned; git silently ignores it when missing.
+[include]
+	path = ~/.config/dotfiles/gitconfig.local

@@ -1,0 +1,12 @@
+# Never version state, secrets, or generated artifacts.
+secrets.zsh
+gitconfig.local
+*.backup.*
+
+# OS / editor noise
+.DS_Store
+*.swp
+*~
+
+# Neovim runtime state that may land inside config/nvim
+config/nvim/lazy-lock.json
