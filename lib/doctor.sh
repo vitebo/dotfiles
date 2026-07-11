@@ -35,7 +35,7 @@ _doctor_os() {
 
 _doctor_commands() {
     local ok=0 cmd
-    for cmd in git zsh nvim curl; do
+    for cmd in git zsh nvim curl uv; do
         if _command_exists "$cmd"; then
             log_success "command available: $cmd"
         else

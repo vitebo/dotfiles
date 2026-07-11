@@ -22,6 +22,28 @@ install_packages() {
             return 1
             ;;
     esac
+
+    # Tools that are not reliably packaged across distros are handled on their
+    # own, after the core packages (and their prerequisites like curl) exist.
+    _install_uv
+}
+
+# uv (Astral) — required by the Neovim toolchain (Mason). Not consistently
+# available in apt/dnf, so prefer Homebrew and fall back to the official
+# standalone installer. INSTALLER_NO_MODIFY_PATH keeps it from editing shell
+# profiles; PATH is managed by our own .zshrc instead.
+_install_uv() {
+    if _command_exists uv; then
+        log_info "already installed: uv"
+        return 0
+    fi
+
+    log_step "Installing uv"
+    if _command_exists brew; then
+        brew install uv
+    else
+        curl -LsSf https://astral.sh/uv/install.sh | INSTALLER_NO_MODIFY_PATH=1 sh
+    fi
 }
 
 # --- macOS ---------------------------------------------------------------

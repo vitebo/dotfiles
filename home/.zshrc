@@ -11,6 +11,9 @@ plugins=(git)
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# User-local binaries (uv, pipx, ...).
+export PATH="$HOME/.local/bin:$PATH"
+
 # Homebrew (macOS / Linuxbrew) if present.
 if [ -x /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"

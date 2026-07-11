@@ -34,6 +34,10 @@ DOTFILES_HOME="$DOTFILES_ROOT/home"
 DOTFILES_CONFIG="$DOTFILES_ROOT/config"
 export DOTFILES_ROOT DOTFILES_LIB DOTFILES_HOME DOTFILES_CONFIG
 
+# Make user-local binaries (e.g. uv) discoverable during the bootstrap so that
+# re-runs detect what was just installed.
+export PATH="$HOME/.local/bin:$PATH"
+
 # --- Module loading ------------------------------------------------------
 # Modules only export functions; loading them has no side effects.
 _load_modules() {
