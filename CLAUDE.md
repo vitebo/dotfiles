@@ -85,3 +85,22 @@ you keep the inherited config. Do not use `config = function() ... setup() end`,
 replaces the defaults. Extract growing opts into `config/nvim/lua/configs/<plugin>.lua`
 and reference with `opts = require "configs.<plugin>"` (organizational only; merge is
 unchanged). `lazy-lock.json` is versioned for reproducible plugin versions.
+
+## Dev Containers
+
+`config/zsh/devcontainer.zsh` (sourced by `.zshrc`) defines the `dev*` helpers —
+`devup`, `devexec`, `devlogs`, `devstatus`, `devstop`, `devrm`, `devid`. They locate
+the container by its `devcontainer.local_folder` label (the current directory), never
+by name — nothing renames containers or sets `container_name`. The `dev` prefix avoids
+the `dc*` aliases from Oh My Zsh's docker plugins. Private helpers (`_dev_*`) hold the
+shared logic (`_dev_container_id`, `_dev_require_container`).
+
+`devup` mounts a shared named volume (`dotfiles-nvim-cache`) so Neovim's plugins
+(lazy.nvim) and tooling (Mason) survive container recreation. **The mount target is
+outside `$HOME` (`/dotfiles-cache`) on purpose:** mounting inside `~/.local` makes
+Docker create `~/.local` root-owned, which breaks `install.sh`'s non-root
+`mkdir ~/.local/bin` during `devcontainer up`. `.zshrc` redirects `XDG_DATA_HOME` there
+only when the directory exists, so it is a no-op on the host. A fresh volume is
+root-owned, so `devup` chowns it to the container's real UID/GID after `up`
+(`_dev_cache_ownership`). Override `DEVCONTAINER_CACHE_VOLUME` / `DEVCONTAINER_CACHE_DIR`
+to isolate or relocate.
