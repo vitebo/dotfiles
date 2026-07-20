@@ -65,8 +65,10 @@ correct existing symlinks are left untouched.
 
 Never versioned. Live at `~/.config/dotfiles/secrets.zsh`, sourced by `.zshrc` only if
 present. The repo ships `secrets.example.zsh` documenting expected variables.
-Machine-specific git identity goes in `~/.config/dotfiles/gitconfig.local` (included by
-`home/.gitconfig`; git ignores it silently when missing).
+The default git identity (`user.name`, `user.email`) is versioned in `home/.gitconfig`.
+Machine-specific overrides go in `~/.config/dotfiles/gitconfig.local` (included last by
+`home/.gitconfig`, so it overrides the versioned defaults; git ignores it silently when
+missing).
 
 ## Neovim / NvChad
 
