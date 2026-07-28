@@ -42,7 +42,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # Modules only export functions; loading them has no side effects.
 _load_modules() {
     local module
-    for module in common os packages symlinks ohmyzsh secrets doctor; do
+    for module in common os packages symlinks ohmyzsh doctor; do
         # shellcheck source=/dev/null
         source "$DOTFILES_LIB/$module.sh"
     done
@@ -56,7 +56,6 @@ Tasks:
   (none)     Run the full installation
   packages   Install required system packages
   symlinks   Create configuration symlinks
-  secrets    Prepare the local secrets directory
   ohmyzsh    Install Oh My Zsh
   doctor     Validate the environment and report inconsistencies
   help       Show this message
@@ -68,7 +67,6 @@ _task_all() {
     log_step "Bootstrapping dotfiles ($(detect_os))"
     install_packages
     create_symlinks
-    setup_secrets
     install_ohmyzsh
     log_success "Bootstrap complete"
 }
@@ -81,7 +79,6 @@ main() {
         all)      _task_all ;;
         packages) install_packages ;;
         symlinks) create_symlinks ;;
-        secrets)  setup_secrets ;;
         ohmyzsh)  install_ohmyzsh ;;
         doctor)   run_doctor ;;
         help | -h | --help) usage ;;
