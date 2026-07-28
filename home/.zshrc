@@ -40,5 +40,5 @@ DOTFILES_DEVCONTAINER="$HOME/.config/zsh/devcontainer.zsh"
 [ -f "$DOTFILES_DEVCONTAINER" ] && source "$DOTFILES_DEVCONTAINER"
 
 # --- Secrets (never versioned) -------------------------------------------
-DOTFILES_SECRETS="$HOME/.config/dotfiles/secrets.zsh"
+DOTFILES_SECRETS="$HOME/secrets.zsh"
 [ -f "$DOTFILES_SECRETS" ] && source "$DOTFILES_SECRETS"
