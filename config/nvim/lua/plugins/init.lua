@@ -22,6 +22,12 @@ return {
     },
   },
 
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+    event='VeryLazy'
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
