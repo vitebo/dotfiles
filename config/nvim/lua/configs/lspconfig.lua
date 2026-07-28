@@ -8,6 +8,7 @@ local servers = {
   "html",
   "jsonls",
   "lua_ls",
+  "rubocop",
   "ruby_lsp",
   "tailwindcss",
   "ts_ls",
