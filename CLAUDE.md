@@ -36,6 +36,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - On mac, zsh has no `_brew.sh`: the system zsh is used (avoids `/etc/shells` changes).
   - `_dot_sudo` only uses `sudo` when not root (containers often run as root).
   - `chsh` to zsh only on linux; failure is a warning, not an error.
+- **Linux is always a devcontainer**: GUI apps (brew casks, eg `19-mac-ghostty`,
+  `18-mac-nerd-font`) and anything rendered by the host are `mac` scope only, with
+  just a `_brew.sh`.
+- **Versioned app config**: when a package configures an app, its config file lives in
+  the package's `config/` and is symlinked to where the app reads it (eg
+  `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults.
 - **Devcontainers via the devcontainer CLI** (not an editor integration): don't
   mention any editor in docs. The repo may be cloned anywhere (eg `~/dotfiles`), so
   paths are always resolved relative to the script, never hardcoded.

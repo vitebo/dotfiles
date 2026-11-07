@@ -68,6 +68,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [16-any-tree-sitter](16-any-tree-sitter/README.md) | tree-sitter CLI |
 | [17-any-neovim](17-any-neovim/README.md) | Neovim, as the default editor |
 | [18-mac-nerd-font](18-mac-nerd-font/README.md) | JetBrainsMono Nerd Font |
+| [19-mac-ghostty](19-mac-ghostty/README.md) | Ghostty terminal (config versioned in the repo) |
 | [20-any-nvchad](20-any-nvchad/README.md) | NvChad config for Neovim (versioned in the repo) |
 
 ## Local config
