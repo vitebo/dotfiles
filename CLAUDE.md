@@ -58,6 +58,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
   its own account, so personal and work machines share the same config.
 - **AeroSpace owns `alt` + `h/j/k/l`**: it grabs them globally, so terminal tools
   can't use them (eg tmux panes are `prefix + h/j/k/l`, unlike gnugat's `alt`).
+- **AeroSpace is the only hotkey daemon**: no skhd (gnugat's skhdrc only holds his
+  company's scripts, and a second daemon would compete for the same keys). Hotkeys to
+  launch apps or run commands go in `aerospace.toml` (`exec-and-forget`), never on
+  `alt` + letter (it types characters like `ç`). Planned, not done yet: `alt-enter`
+  for a new Ghostty window, `ctrl-alt-<letter>` to open apps; work-only hotkeys stay
+  out of the repo.
 - **AeroSpace manages windows, apps don't tab**: apps with macOS native tabs (eg
   Ghostty) are configured to open windows instead, since native tabs are separate
   windows that AeroSpace tiles one by one; AeroSpace's accordion layout plays the tab
