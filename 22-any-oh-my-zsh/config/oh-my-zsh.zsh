@@ -10,6 +10,10 @@ plugins=(git)
 if (( $+commands[fzf] )); then
     plugins+=(fzf)
 fi
+# zoxide's z / zi (33-any-zoxide), only when zoxide is installed: same reason.
+if (( $+commands[zoxide] )); then
+    plugins+=(zoxide)
+fi
 
 if [[ -f "${ZSH}/oh-my-zsh.sh" ]]; then
     source "${ZSH}/oh-my-zsh.sh"
