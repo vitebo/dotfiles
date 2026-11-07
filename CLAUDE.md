@@ -120,11 +120,14 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack and
-  the AWS CLI for now; oh-my-zsh with its defaults.
+  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
+  the AWS CLI and mise (Node.js 22) for now; oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
-  (eg the AWS CLI) are `mac` scope here; inside devcontainers each project installs
+  (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
+- **Runtimes via mise**: language runtimes on the mac (eg Node.js 22, the global
+  `node`) are declared in mise's versioned global config (`40-mac-mise`) and
+  installed by its `install.sh`; never through brew (`brew install node`).
 - **Docker**: Docker Desktop on every mac (`37-mac-docker`), not inside
   devcontainers; simpler than gnugat's per-machine runtimes (OrbStack, Rancher).
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
@@ -143,7 +146,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
     elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
     into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
-  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`, `aws`) is enabled in `oh-my-zsh.zsh` only when the
+  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`, `aws`, `mise`) is enabled in `oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
     snippet.

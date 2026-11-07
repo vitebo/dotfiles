@@ -89,6 +89,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [37-mac-docker](37-mac-docker/README.md) | Docker Desktop (container runtime and `docker` CLI) |
 | [38-mac-slack](38-mac-slack/README.md) | Slack, on AeroSpace workspace 9 with unread count in SketchyBar |
 | [39-mac-aws-cli](39-mac-aws-cli/README.md) | AWS CLI v2 |
+| [40-mac-mise](40-mac-mise/README.md) | mise runtime manager, with Node.js 22 as the global `node` |
 
 ## Local config
 
