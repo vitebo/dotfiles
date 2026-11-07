@@ -134,8 +134,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
-  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm and Dia for
-  now; oh-my-zsh with its defaults.
+  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Dia and
+  herdr for now; oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
@@ -203,6 +203,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
     use `paths` frontmatter for rules that only matter for some files). Keep them
     short, simple and valid on both machines; anything project-specific belongs in
     that project's own `CLAUDE.md`.
+  - Hooks from other tools (eg herdr's `SessionStart` hook): the tool's package
+    versions and links the script into `~/.claude/hooks/`; `settings.json` calls it
+    through `$HOME` and only when the file exists (`[ ! -f "$f" ] || bash "$f"`),
+    never with the absolute path the tool's installer writes.
   - Claude runs on the host; `rules/devcontainer.md` makes it run project commands
     inside the project's devcontainer (devcontainer CLI) when there is one.
   - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.

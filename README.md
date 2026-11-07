@@ -96,6 +96,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [44-mac-kubectl](44-mac-kubectl/README.md) | kubectl; local cluster from Docker Desktop's Kubernetes |
 | [45-mac-helm](45-mac-helm/README.md) | Helm, Kubernetes package manager |
 | [46-mac-dia](46-mac-dia/README.md) | Dia web browser, the default browser |
+| [47-mac-herdr](47-mac-herdr/README.md) | herdr, terminal workspace for coding agents, with the Claude Code hook |
 
 ## Local config
 
