@@ -203,6 +203,14 @@ repo should behave is made (structure, conventions, tooling, workflow).
   [Conventional Commits](https://www.conventionalcommits.org) (`feat(zsh): ...`,
   `fix(core): ...`, `docs: ...`), scoped by package name when it applies, one logical
   change per commit.
+  - Several Claude sessions may work on this repo: before committing, Claude checks
+    `git status` for changes it didn't make and asks about them instead of
+    committing them silently. Git commands run one at a time (never in parallel
+    with another session's), since concurrent writes once lost a commit's objects.
+  - If git reports a missing object (`bad object`, `invalid sha1 pointer`), Claude
+    stops, backs up `.git`, and checks integrity with
+    `git rev-list --objects --all | cut -d' ' -f1 | git cat-file --batch-check`
+    before changing any ref.
 
 ## Adding a package
 
