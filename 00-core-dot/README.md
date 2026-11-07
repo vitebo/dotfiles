@@ -13,5 +13,6 @@ Internal functions used by the `install.sh` scripts (`_dot_*` prefix). It has no
 | `_dot_apt_install <pkgs>` | non-interactive `apt-get install` |
 | `_dot_link <source> <target>` | symlink, keeping an existing regular file as `.bak` |
 | `_dot_append_line <file> <line>` | appends a line only if it isn't there yet |
+| `_dot_require <cmds>` | fails when a prerequisite command is missing |
 
 Each function lives in `functions/<name>.sh`; `lib.sh` loads them all.
