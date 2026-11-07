@@ -16,7 +16,8 @@ replacing the macOS menu bar (formula from the author's tap).
 Setup: hide the macOS menu bar (System Settings → Control Center → Automatically
 hide and show the menu bar → Always), the bar takes its place.
 
-Reload the bar after editing its config: `sketchybar --reload`.
+Reload the bar after editing its config: `alt-shift-;` then `esc` (AeroSpace's
+service mode reloads both), or `sketchybar --reload`.
 
 Prerequisites:
 

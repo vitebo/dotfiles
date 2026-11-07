@@ -23,6 +23,6 @@ Main bindings (`alt` is `Option ⌥`):
 | `alt-/` / `alt-,` | tiles / accordion layout (toggles orientation) |
 | `alt--` / `alt-=` | resize |
 | `alt-tab` | previous workspace |
-| `alt-shift-;` | service mode (`esc` reload, `r` reset layout, `f` float/tile) |
+| `alt-shift-;` | service mode (`esc` reload AeroSpace + SketchyBar, `r` reset layout, `f` float/tile) |
 
 mac only: it's a GUI app, and linux is always a devcontainer.

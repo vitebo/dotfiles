@@ -176,7 +176,8 @@ gaps.outer.right =      0
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-    esc = ['reload-config', 'mode main']
+    # dotfiles: also reload SketchyBar (24-mac-sketchybar)
+    esc = ['reload-config', 'exec-and-forget sketchybar --reload', 'mode main']
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     backspace = ['close-all-windows-but-current', 'mode main']
