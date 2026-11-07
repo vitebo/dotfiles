@@ -9,8 +9,11 @@ The same config is used on every machine (personal and work), whatever account
 is logged in:
 
 - `~/.claude/settings.json` -> `config/settings.json`
-- `~/.claude/CLAUDE.md` -> `config/CLAUDE.md` (when present)
-- `~/.claude/rules/<name>.md` -> `config/rules/<name>.md` (each file linked on its own)
+- `~/.claude/CLAUDE.md` -> `config/CLAUDE.md`: personal instructions (communication,
+  working style)
+- `~/.claude/rules/<name>.md` -> `config/rules/<name>.md` (each file linked on its own):
+  - `git.md`: Conventional Commits, commit/push etiquette
+  - `shell-scripts.md`: portable bash, loaded only for `*.sh` files (`paths` frontmatter)
 - `~/.config/zsh/21-claude-code.zsh` -> `config/claude-code.zsh`: puts `~/.local/bin` first in PATH
 
 Claude Code writes `settings.json` itself (`/config`, `/model`...): those changes
