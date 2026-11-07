@@ -53,9 +53,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
   Exception: files the app rewrites itself (eg gh's `config.yml`, Claude Code's
   `settings.json`) stay exactly as the app writes them, since it drops our comments;
   their explanation goes in the package README.
-- **Per-machine logins**: CLI tools with an account (gh, Claude Code) keep their login
-  out of the repo (`hosts.yml`, `~/.claude.json`, keychain); each machine logs in with
-  its own account, so personal and work machines share the same config.
+- **Per-machine logins**: CLI tools with an account (gh, Claude Code, docker) keep
+  their login out of the repo (`hosts.yml`, `~/.claude.json`, `~/.docker/config.json`,
+  keychain); each machine logs in with its own account, so personal and work machines
+  share the same config. Files mixing app-managed state and logins (eg
+  `~/.docker/config.json`) aren't versioned at all.
 - **AeroSpace owns `alt` + `h/j/k/l`**: it grabs them globally, so terminal tools
   can't use them (eg tmux panes are `prefix + h/j/k/l`, unlike gnugat's `alt`).
 - **AeroSpace is the only hotkey daemon**: no skhd (gnugat's skhdrc only holds his
@@ -135,7 +137,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
     elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
     into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
-  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`) is enabled in `oh-my-zsh.zsh` only when the
+  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`) is enabled in `oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
     snippet.

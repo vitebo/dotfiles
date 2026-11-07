@@ -9,7 +9,12 @@ Installs [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - The cask asks for the `sudo` password (it creates `/usr/local/bin`), so run the
   install from a terminal.
 - First launch: open Docker Desktop once to finish its setup (privileged helper,
-  terms). Its settings and `~/.docker/config.json` (registry logins) are per
-  machine, not versioned.
+  terms).
+- Not versioned: Docker Desktop's settings and `~/.docker/config.json`, which it
+  writes itself (`credsStore`, `currentContext`, plugin hooks) and which lists the
+  registry logins (`docker login`), per machine like gh's `hosts.yml`.
+- Completions for `docker` / `docker-compose` come with the cask. oh-my-zsh's
+  `docker` plugin ([22-any-oh-my-zsh](../22-any-oh-my-zsh)) adds aliases (`dps`,
+  `dils`, `dxcit`...), enabled when docker is installed.
 - Licensing: free for personal use and small companies; larger companies need a
   paid subscription.
