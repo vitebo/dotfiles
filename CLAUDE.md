@@ -175,7 +175,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
     `kubectl`, `helm`) is enabled in `oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
-    snippet.
+    snippet. These plugins share one list in a loop (plugin named like its
+    command), so adding one is one word plus a comment line. The check runs at
+    shell startup, not at install time, so package order doesn't matter for
+    enabling them.
   - Functions in package snippets call tools with `command <tool>` when oh-my-zsh
     aliases that tool (eg `tmux`): aliases expand when the function is defined.
   - Our own aliases/options go in package snippets (no `$ZSH_CUSTOM`). Packages that
