@@ -192,3 +192,9 @@ gaps.outer.right =      10
     alt-shift-j = ['join-with down', 'mode main']
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
+
+# dotfiles: Slack (38-mac-slack) always opens on workspace 9.
+# Find an app's id with `aerospace list-apps`.
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace 9']
