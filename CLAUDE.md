@@ -84,9 +84,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
   zsh snippet (the installer itself doesn't edit rc files).
   - Versioned: `~/.claude/settings.json`, `~/.claude/CLAUDE.md` (personal
     instructions for every project) and `~/.claude/rules/*.md` (one topic per file;
-    use `paths` frontmatter for rules that only matter for some files, eg
-    `shell-scripts.md`). Keep them short, simple and valid on both machines; anything
-    project-specific belongs in that project's own `CLAUDE.md`.
+    use `paths` frontmatter for rules that only matter for some files). Keep them
+    short, simple and valid on both machines; anything project-specific belongs in
+    that project's own `CLAUDE.md`.
+  - Claude runs on the host; `rules/devcontainer.md` makes it run project commands
+    inside the project's devcontainer (devcontainer CLI) when there is one.
   - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.
   - Work-only: managed settings from the org, plain files in `~/.claude/rules/`,
     env vars in `~/.zshrc.local`.
