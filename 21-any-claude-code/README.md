@@ -17,6 +17,9 @@ is logged in:
     (tests, lint, build, servers...) inside it with the devcontainer CLI, while
     Claude itself runs on the host
 - `~/.config/zsh/21-claude-code.zsh` -> `config/claude-code.zsh`: puts `~/.local/bin` first in PATH
+- `settings.json` hooks: `SessionStart` runs herdr's hook
+  (`~/.claude/hooks/herdr-agent-state.sh`, from [47-mac-herdr](../47-mac-herdr)) only
+  when it exists, so machines without herdr are unaffected.
 
 Claude Code writes `settings.json` itself (`/config`, `/model`...): those changes
 show up as a diff in this repo. Commit them if they apply to every machine,
