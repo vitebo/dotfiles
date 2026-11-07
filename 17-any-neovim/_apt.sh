@@ -16,6 +16,8 @@ case "$(uname -m)" in
         ;;
 esac
 
+_dot_require curl tar
+
 download_dir="$(mktemp -d)"
 curl -fsSL "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz" \
     | tar -xz -C "${download_dir}"

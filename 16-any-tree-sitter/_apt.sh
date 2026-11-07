@@ -14,6 +14,8 @@ case "$(uname -m)" in
         ;;
 esac
 
+_dot_require curl gunzip
+
 download_dir="$(mktemp -d)"
 curl -fsSL "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-${arch}.gz" \
     | gunzip > "${download_dir}/tree-sitter"
