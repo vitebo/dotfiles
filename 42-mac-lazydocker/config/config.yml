@@ -1,0 +1,5 @@
+# ~/.config/lazydocker/config.yml -> 42-mac-lazydocker/config/config.yml
+#
+# lazydocker config: only our changes, lazydocker's defaults apply for everything
+# else (see them with `lazydocker --config`).
+# Reference: https://github.com/jesseduffield/lazydocker/blob/master/docs/Config.md
