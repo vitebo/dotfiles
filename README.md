@@ -37,7 +37,8 @@ Nothing depends on the `~/.dotfiles` path, and the installation never prompts.
 └── install.sh         # runs the packages in order
 ```
 
-- `NN`: execution order (00–99).
+- `NN`: execution order (00–99). Prerequisites are packages too, with a lower `NN`
+  than the packages that need them.
 - `scope`: where the package runs.
   - `core`: internal functions (`_dot_*`), nothing to install — see [00-core-dot](00-core-dot/README.md)
   - `any`: mac and linux
@@ -49,7 +50,7 @@ To choose manually:
 
 ```sh
 DOT_SCOPES="any" bash install.sh        # cross-platform packages only
-bash 20-any-nvim/install.sh             # a single package
+bash 15-any-ripgrep/install.sh          # a single package (its prerequisites must be installed)
 DOT_PM=brew bash install.sh             # force a package manager
 ```
 
@@ -59,7 +60,15 @@ DOT_PM=brew bash install.sh             # force a package manager
 | --- | --- |
 | [01-mac-homebrew](01-mac-homebrew/README.md) | Homebrew |
 | [10-any-zsh](10-any-zsh/README.md) | zsh: history, completion, aliases, prompt |
-| [20-any-nvim](20-any-nvim/README.md) | Neovim with NvChad (config versioned in the repo) |
+| [11-any-curl](11-any-curl/README.md) | curl |
+| [12-any-git](12-any-git/README.md) | git |
+| [13-any-build-tools](13-any-build-tools/README.md) | C compiler and make |
+| [14-any-unzip](14-any-unzip/README.md) | unzip |
+| [15-any-ripgrep](15-any-ripgrep/README.md) | ripgrep (`rg`) |
+| [16-any-tree-sitter](16-any-tree-sitter/README.md) | tree-sitter CLI |
+| [17-any-neovim](17-any-neovim/README.md) | Neovim, as the default editor |
+| [18-mac-nerd-font](18-mac-nerd-font/README.md) | JetBrainsMono Nerd Font |
+| [20-any-nvchad](20-any-nvchad/README.md) | NvChad config for Neovim (versioned in the repo) |
 
 ## Local config
 
