@@ -1,0 +1,29 @@
+" ~/.vimrc -> 20-any-vim/config/vimrc
+
+set nocompatible
+syntax on
+filetype plugin indent on
+
+" Indentation: 4 spaces
+set expandtab shiftwidth=4 softtabstop=4 tabstop=4 smartindent
+
+" Interface
+set number relativenumber
+set colorcolumn=81,121
+set laststatus=2
+set showcmd
+set wildmenu
+set scrolloff=5
+set backspace=indent,eol,start
+
+" Search
+set incsearch hlsearch
+set ignorecase smartcase
+
+" Files
+set encoding=utf-8
+set autoread
+set noswapfile
+
+let mapleader = " "
+nnoremap <leader><space> :nohlsearch<CR>
