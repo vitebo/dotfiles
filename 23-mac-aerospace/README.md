@@ -6,7 +6,8 @@ manager for macOS (brew cask from the author's tap).
 - `~/.config/aerospace/aerospace.toml` -> `config/aerospace.toml`: AeroSpace's
   default config, with a few changes marked `dotfiles:` (starts at login, reloads
   on save, numbered workspaces only so `alt-<letter>` keeps typing characters
-  like `ç`).
+  like `ç`), and the SketchyBar integration (starts it, notifies it of workspace
+  changes, 40px top gap for the bar).
 
 First launch: open AeroSpace and grant it the Accessibility permission
 (System Settings → Privacy & Security → Accessibility).

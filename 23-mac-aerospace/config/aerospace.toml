@@ -10,7 +10,14 @@ config-version = 2
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+# dotfiles: start SketchyBar (24-mac-sketchybar) with AeroSpace; it won't run twice
+# when AeroSpace restarts (default: [])
+after-startup-command = ['exec-and-forget sketchybar']
+
+# dotfiles: notify SketchyBar about workspace changes, to highlight the focused one
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
 
 # Start AeroSpace at login
 # dotfiles: true, so it's always running (default: false)
@@ -80,7 +87,8 @@ gaps.inner.horizontal = 0
 gaps.inner.vertical =   0
 gaps.outer.left =       0
 gaps.outer.bottom =     0
-gaps.outer.top =        0
+# dotfiles: room for SketchyBar's 40px bar, which replaces the (hidden) macOS menu bar
+gaps.outer.top =        40
 gaps.outer.right =      0
 
 # 'main' binding mode declaration
