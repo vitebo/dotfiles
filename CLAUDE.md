@@ -111,6 +111,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   so XDG tools (lazygit, lazydocker, k9s...) use `~/.config` on macOS instead of
   `~/Library/Application Support`. Only the config dir: data / cache / state stay
   where each tool puts them.
+- **Guard against tools writing a file that shadows ours**: when a tool always writes
+  a config path that takes precedence over our XDG file (eg OpenRig's `rig setup` and
+  `~/.tmux.conf`), that path also links to our file, which already holds the tool's
+  managed block (markers kept verbatim), so the tool edits it in place with no diff.
 - **`$HOME` only holds symlinks into the repo**: installers never append to or edit
   files in `$HOME`; any config file we care about is versioned and linked. Prefer the
   XDG location (`~/.config/<app>/`) when the app supports it, like gnugat (eg git uses
@@ -134,14 +138,18 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
-  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Dia and
-  herdr for now; oh-my-zsh with its defaults.
+  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Dia, herdr
+  and OpenRig for now; oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
 - **Runtimes via mise**: language runtimes on the mac (eg Node.js 22, the global
   `node`) are declared in mise's versioned global config (`40-mac-mise`) and
   installed by its `install.sh`; never through brew (`brew install node`).
+  - CLIs distributed through npm (eg OpenRig) are mise tools too (`npm:<package>`),
+    never `npm install -g` (lost on Node.js upgrades): their package links its own
+    `~/.config/mise/conf.d/<name>.toml` and runs `mise install`, without editing
+    mise's package.
 - **Docker**: Docker Desktop on every mac (`37-mac-docker`), not inside
   devcontainers; simpler than gnugat's per-machine runtimes (OrbStack, Rancher).
 - **Kubernetes**: the local cluster is Docker Desktop's built-in one (enabled in its
