@@ -130,8 +130,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
-  the AWS CLI, mise (Node.js 22), lazygit, lazydocker and k9s for now; oh-my-zsh with
-  its defaults.
+  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl and Helm for now;
+  oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
@@ -140,6 +140,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   installed by its `install.sh`; never through brew (`brew install node`).
 - **Docker**: Docker Desktop on every mac (`37-mac-docker`), not inside
   devcontainers; simpler than gnugat's per-machine runtimes (OrbStack, Rancher).
+- **Kubernetes**: the local cluster is Docker Desktop's built-in one (enabled in its
+  settings), no kind / minikube. kubectl is its own brew package (`44-mac-kubectl`),
+  not the one Docker Desktop ships; kubeconfig and Helm repos stay per machine.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them. Where we style our own UI, we use
   the same neutral palette: light `#e2e2e3` on `#414550` for the active item
@@ -156,7 +159,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
     elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
     into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
-  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`, `aws`, `mise`) is enabled in `oh-my-zsh.zsh` only when the
+  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`, `aws`, `mise`,
+    `kubectl`, `helm`) is enabled in `oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
     snippet.

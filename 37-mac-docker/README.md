@@ -16,5 +16,7 @@ Installs [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - Completions for `docker` / `docker-compose` come with the cask. oh-my-zsh's
   `docker` plugin ([22-any-oh-my-zsh](../22-any-oh-my-zsh)) adds aliases (`dps`,
   `dils`, `dxcit`...), enabled when docker is installed.
+- Kubernetes: Docker Desktop's built-in cluster is the local one (Settings →
+  Kubernetes → Enable Kubernetes); see [44-mac-kubectl](../44-mac-kubectl).
 - Licensing: free for personal use and small companies; larger companies need a
   paid subscription.

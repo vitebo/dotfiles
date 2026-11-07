@@ -93,6 +93,8 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [41-mac-lazygit](41-mac-lazygit/README.md) | lazygit, terminal UI for git (`lg`), with delta diffs |
 | [42-mac-lazydocker](42-mac-lazydocker/README.md) | lazydocker, terminal UI for docker (`lzd`) |
 | [43-mac-k9s](43-mac-k9s/README.md) | k9s, terminal UI for Kubernetes |
+| [44-mac-kubectl](44-mac-kubectl/README.md) | kubectl; local cluster from Docker Desktop's Kubernetes |
+| [45-mac-helm](45-mac-helm/README.md) | Helm, Kubernetes package manager |
 
 ## Local config
 
