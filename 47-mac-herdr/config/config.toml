@@ -1,3 +1,4 @@
+onboarding = false
 # ~/.config/herdr/config.toml -> 47-mac-herdr/config/config.toml
 #
 # herdr config: only our changes, herdr's defaults apply for the rest (see them
