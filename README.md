@@ -74,6 +74,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [22-any-oh-my-zsh](22-any-oh-my-zsh/README.md) | oh-my-zsh: prompt, plugins, completion, history (config versioned in the repo) |
 | [23-mac-aerospace](23-mac-aerospace/README.md) | AeroSpace tiling window manager (config versioned in the repo) |
 | [24-mac-sketchybar](24-mac-sketchybar/README.md) | SketchyBar status bar, with AeroSpace workspaces |
+| [25-mac-jankyborders](25-mac-jankyborders/README.md) | JankyBorders: border around the focused window |
 
 ## Local config
 

@@ -57,6 +57,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `brew services` like gnugat, so there's no LaunchAgent written in `~/Library`.
   The glue lives in `aerospace.toml` (one file can't be split across packages), so
   `24-mac-sketchybar` requires `aerospace` and the AeroSpace config mentions it.
+  - Same pattern for JankyBorders (`25-mac-jankyborders`), which highlights the
+    focused window (gnugat has no focus indicator; AeroSpace's goodies recommend it):
+    started by AeroSpace, configured by a versioned `bordersrc`.
+  - AeroSpace's service mode `esc` reloads AeroSpace and every tool it starts.
 - **Third-party brew taps**: when a tool isn't in the official casks/formulae,
   `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap, like
   gnugat (eg `nikitabobko/tap/aerospace`).
@@ -77,8 +81,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
-  prerequisites, Ghostty, Claude Code, AeroSpace and SketchyBar for now; oh-my-zsh
-  with its defaults.
+  prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar and JankyBorders for
+  now; oh-my-zsh with its defaults.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal
