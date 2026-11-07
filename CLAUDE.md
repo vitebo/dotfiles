@@ -100,7 +100,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   fastfetch, bat, delta, fd, eza, fzf, zoxide and tmux for now; oh-my-zsh with its
   defaults.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
-  default theme until we pick one for all of them.
+  default theme until we pick one for all of them. Where we style our own UI, we use
+  the same neutral palette: light `#e2e2e3` on `#414550` for the active item
+  (JankyBorders' colors), grays for the others (eg tmux's status line, whose colors
+  live in `@dot_*` options so a future theme changes them in one place).
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal
