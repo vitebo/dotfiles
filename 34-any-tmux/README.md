@@ -8,6 +8,10 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   splits in the current directory, `prefix h/j/k/l` for panes, vim copy mode,
   clipboard through the terminal, `prefix r` to reload, 10ms escape time).
   No theme or plugins (gnugat uses Catppuccin and TPM).
+- `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
+  top, laid out like gnugat's: sessions (`*` current, `-` last), windows, user, with
+  rounded edges. Neutral colors matching JankyBorders / SketchyBar, defined once as
+  `@dot_*` options at the top of the file.
 - `~/.config/zsh/34-tmux.zsh` -> `config/tmux.zsh`: `tz <query>` opens (or goes
   back to) a session in the directory [33-any-zoxide](../33-any-zoxide) finds,
   named after it.
