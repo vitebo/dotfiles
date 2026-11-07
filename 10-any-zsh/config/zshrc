@@ -2,8 +2,9 @@
 #
 # Loads ~/.config/zsh/*.zsh and, last, ~/.zshrc.local
 # (machine specific config, kept out of the repository).
+# `(N-.)` skips dangling symlinks, eg from a removed package.
 
-for _dot_zsh_file in "${HOME}"/.config/zsh/*.zsh(N); do
+for _dot_zsh_file in "${HOME}"/.config/zsh/*.zsh(N-.); do
     source "${_dot_zsh_file}"
 done
 unset _dot_zsh_file
