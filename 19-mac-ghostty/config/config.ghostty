@@ -13,3 +13,10 @@ keybind = super+t=new_window
 # `window-decoration = none`, the frame and rounded corners stay. Applies to new
 # windows. (default: transparent)
 macos-titlebar-style = hidden
+
+# dotfiles: more room between the text and the window edges (default: 2 points
+# each), and the leftover space (window size not a multiple of the cell size)
+# spread over all edges instead of only the right / bottom. Applies to new windows.
+window-padding-x = 12
+window-padding-y = 8
+window-padding-balance = true

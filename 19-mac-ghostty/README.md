@@ -10,6 +10,8 @@ Installs the [Ghostty](https://ghostty.org) terminal (brew cask).
   - no titlebar (`macos-titlebar-style = hidden`): AeroSpace places and sizes the
     windows, so the close / minimize / maximize bar only takes space. The frame and
     rounded corners stay; `option`+drag on the frame still moves a window.
+  - more padding around the text (12 points left / right, 8 top / bottom, balanced),
+    instead of 2.
 
 mac only: it's a GUI app, and linux is always a devcontainer.
 
