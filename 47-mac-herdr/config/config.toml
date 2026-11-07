@@ -1,0 +1,10 @@
+# ~/.config/herdr/config.toml -> 47-mac-herdr/config/config.toml
+#
+# herdr config: only our changes, herdr's defaults apply for the rest (see them
+# with `herdr --default-config`; validate with `herdr config check`).
+# Reference: https://herdr.dev/docs/configuration/
+
+[theme]
+# dotfiles: follow the terminal's (Ghostty's) palette instead of a built-in theme,
+# since we don't use a color theme yet. (default: catppuccin)
+name = "terminal"
