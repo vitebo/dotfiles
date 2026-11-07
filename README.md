@@ -70,6 +70,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [18-mac-nerd-font](18-mac-nerd-font/README.md) | JetBrainsMono Nerd Font |
 | [19-mac-ghostty](19-mac-ghostty/README.md) | Ghostty terminal (config versioned in the repo) |
 | [20-any-nvchad](20-any-nvchad/README.md) | NvChad config for Neovim (versioned in the repo) |
+| [21-any-claude-code](21-any-claude-code/README.md) | Claude Code, with config shared across machines |
 
 ## Local config
 

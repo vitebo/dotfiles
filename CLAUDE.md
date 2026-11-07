@@ -61,8 +61,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Portability**: bash scripts with `set -euo pipefail`; resolve dirs with
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
-- **Start minimal**: only homebrew (mac bootstrap), zsh, NvChad and its prerequisites
-  for now; no zsh plugins yet.
+- **Start minimal**: only homebrew (mac bootstrap), zsh, NvChad and its prerequisites,
+  Ghostty and Claude Code for now; no zsh plugins yet.
 - **Editor is Neovim + NvChad** (`17-any-neovim` + `20-any-nvchad`), replacing vim:
   - The [NvChad starter](https://github.com/NvChad/starter) is vendored in
     `20-any-nvchad/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
@@ -72,6 +72,22 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - linux: apt's Neovim is too old (NvChad needs 0.11+) and tree-sitter isn't packaged,
     so both come from their GitHub releases (latest). mac: brew.
   - The nerd font is `mac` scope only: in a devcontainer the host terminal renders it.
+- **Same dotfiles on personal and work machines**: the repo holds one shared config;
+  never version per-machine or per-account variants (no profiles), so nothing from
+  the company ends up in this repo. Per-machine differences live out of the repo:
+  credentials stay where the tool keeps them, env vars go in `~/.zshrc.local`, extra
+  files sit next to the linked ones, and org policy comes from the org's own tooling.
+  This is why config dirs that mix shared files and machine files (eg `~/.claude`)
+  are linked file by file, never as a whole directory.
+- **Claude Code** (`21-any-claude-code`): native installer (`curl … | bash`, like
+  gnugat) on mac and linux, so it auto-updates; `~/.local/bin` is put in PATH by its
+  zsh snippet (the installer itself doesn't edit rc files).
+  - Versioned: `~/.claude/settings.json`, and `CLAUDE.md` / `rules/*.md` when added.
+  - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.
+  - Work-only: managed settings from the org, plain files in `~/.claude/rules/`,
+    env vars in `~/.zshrc.local`.
+  - Claude Code rewrites `settings.json` (`/config`, `/model`); review those diffs:
+    commit if shared, otherwise revert and set locally.
 - **Packages own their shell env**: a package may ship `config/<name>.zsh` and link it
   with `_dot_link_zsh` to `~/.config/zsh/<NN>-<name>.zsh`; `~/.zshrc` loads them in
   package order (skipping dangling symlinks). Eg `EDITOR` lives in
