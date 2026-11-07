@@ -96,6 +96,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
     into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
   - Our own aliases/options go in package snippets (no `$ZSH_CUSTOM`). Packages that
     extend `fpath` need a lower `NN` than oh-my-zsh, which runs `compinit`.
+  - A tool package may deliberately replace an oh-my-zsh alias from its snippet: it
+    needs a higher `NN` than oh-my-zsh (loaded after it) and says so in its README
+    (eg `26-any-tree` replaces `l` / `la` / `ll`, like gnugat).
 - **Editor is Neovim + NvChad** (`17-any-neovim` + `20-any-nvchad`), replacing vim:
   - The [NvChad starter](https://github.com/NvChad/starter) is vendored in
     `20-any-nvchad/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
