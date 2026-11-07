@@ -84,6 +84,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [32-any-fzf](32-any-fzf/README.md) | fzf fuzzy finder: history, files, `cd`, `**` completion |
 | [33-any-zoxide](33-any-zoxide/README.md) | zoxide, a smarter `cd` (`z`, `zi`) |
 | [34-any-tmux](34-any-tmux/README.md) | tmux terminal multiplexer, with `tz` (zoxide sessions) |
+| [35-any-gh](35-any-gh/README.md) | GitHub CLI, also git's credentials for github.com |
 
 ## Local config
 

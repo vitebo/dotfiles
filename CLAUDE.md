@@ -50,6 +50,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults:
   when the app ships a default config file, copy it as is and mark each of our
   changes with a `dotfiles:` comment explaining why (eg `23-mac-aerospace`).
+  Exception: files the app rewrites itself (eg gh's `config.yml`, Claude Code's
+  `settings.json`) stay exactly as the app writes them, since it drops our comments;
+  their explanation goes in the package README.
+- **Per-machine logins**: CLI tools with an account (gh, Claude Code) keep their login
+  out of the repo (`hosts.yml`, `~/.claude.json`, keychain); each machine logs in with
+  its own account, so personal and work machines share the same config.
 - **AeroSpace owns `alt` + `h/j/k/l`**: it grabs them globally, so terminal tools
   can't use them (eg tmux panes are `prefix + h/j/k/l`, unlike gnugat's `alt`).
 - **AeroSpace manages windows, apps don't tab**: apps with macOS native tabs (eg
@@ -97,8 +103,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta, fd, eza, fzf, zoxide and tmux for now; oh-my-zsh with its
-  defaults.
+  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux and gh for now; oh-my-zsh with
+  its defaults.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them. Where we style our own UI, we use
   the same neutral palette: light `#e2e2e3` on `#414550` for the active item
