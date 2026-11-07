@@ -72,6 +72,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
     focused window (gnugat has no focus indicator; AeroSpace's goodies recommend it):
     started by AeroSpace, configured by a versioned `bordersrc`.
   - AeroSpace's service mode `esc` reloads AeroSpace and every tool it starts.
+- **Challenge packages that don't fit**: before adding a package (even one gnugat
+  has), Claude checks it makes sense for this repo (mac host + linux devcontainers,
+  existing packages, decisions here) and, when it may not, says so and explains why,
+  suggesting an alternative if there is one, instead of adding it. Eg xclip: X11
+  clipboard for a Linux desktop, useless in a devcontainer (no display); tmux's OSC 52
+  clipboard already covers it.
 - **Ask before integrating packages**: when a new package can integrate with packages
   already in the repo (eg fzf using fd as source and bat/eza for previews, delta as
   git's pager), Claude lists each possible integration, explains how it would work,
