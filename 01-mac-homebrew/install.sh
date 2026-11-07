@@ -12,11 +12,6 @@ if ! _dot_select_package_manager; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew; do
-    if [ -x "${brew_bin}" ]; then
-        _dot_append_line "${HOME}/.zprofile" "eval \"\$(${brew_bin} shellenv zsh)\""
-        break
-    fi
-done
+_dot_link_zsh "${DOT_PACKAGE_DIR}/config/homebrew.zsh"
 
 _dot_ok "homebrew installed"
