@@ -1,4 +1,4 @@
-# General options, history and completion.
+# General options, history and completion style.
 
 HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=50000
@@ -9,6 +9,5 @@ setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS INTERACTIVE_COMMENTS
 
 bindkey -e
 
-autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
