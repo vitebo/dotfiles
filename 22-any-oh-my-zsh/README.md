@@ -9,10 +9,11 @@ and common aliases.
 - `~/.config/zsh/22-oh-my-zsh.zsh` -> `config/oh-my-zsh.zsh`: the versioned config
   (theme, plugins), loaded by `~/.zshrc` like any package snippet. Defaults for now
   (`robbyrussell` theme, `git` plugin), plus the `fzf` / `zoxide` / `tmux` / `docker`
-  / `aws` / `mise` plugins when [32-any-fzf](../32-any-fzf) /
-  [33-any-zoxide](../33-any-zoxide) / [34-any-tmux](../34-any-tmux) /
-  [37-mac-docker](../37-mac-docker) / [39-mac-aws-cli](../39-mac-aws-cli) /
-  [40-mac-mise](../40-mac-mise) are installed.
+  / `aws` / `mise` / `kubectl` / `helm` plugins when their tool is installed
+  ([32-any-fzf](../32-any-fzf), [33-any-zoxide](../33-any-zoxide),
+  [34-any-tmux](../34-any-tmux), [37-mac-docker](../37-mac-docker),
+  [39-mac-aws-cli](../39-mac-aws-cli), [40-mac-mise](../40-mac-mise),
+  [44-mac-kubectl](../44-mac-kubectl), [45-mac-helm](../45-mac-helm)).
 
 Personal aliases or options go in a package's own zsh snippet (loaded in package
 order, after oh-my-zsh when the package `NN` is higher), not in `$ZSH_CUSTOM`.

@@ -30,6 +30,13 @@ fi
 if (( $+commands[mise] )); then
     plugins+=(mise)
 fi
+# kubectl / helm aliases and completion (44-mac-kubectl, 45-mac-helm), when installed.
+if (( $+commands[kubectl] )); then
+    plugins+=(kubectl)
+fi
+if (( $+commands[helm] )); then
+    plugins+=(helm)
+fi
 
 if [[ -f "${ZSH}/oh-my-zsh.sh" ]]; then
     source "${ZSH}/oh-my-zsh.sh"
