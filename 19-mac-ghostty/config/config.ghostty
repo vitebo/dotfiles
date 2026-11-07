@@ -7,3 +7,9 @@
 # separate windows for tiling window managers, so AeroSpace (23-mac-aerospace)
 # tiles each tab on its own; its accordion layout (alt-,) acts as tabs instead.
 keybind = super+t=new_window
+
+# dotfiles: no titlebar (close / minimize / maximize buttons): AeroSpace
+# (23-mac-aerospace) places and sizes windows, so it only takes space. Unlike
+# `window-decoration = none`, the frame and rounded corners stay. Applies to new
+# windows. (default: transparent)
+macos-titlebar-style = hidden
