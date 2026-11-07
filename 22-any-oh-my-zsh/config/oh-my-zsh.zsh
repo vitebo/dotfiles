@@ -26,6 +26,10 @@ fi
 if (( $+commands[aws] )); then
     plugins+=(aws)
 fi
+# mise activation and completion (40-mac-mise), only when installed.
+if (( $+commands[mise] )); then
+    plugins+=(mise)
+fi
 
 if [[ -f "${ZSH}/oh-my-zsh.sh" ]]; then
     source "${ZSH}/oh-my-zsh.sh"
