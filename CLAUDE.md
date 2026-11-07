@@ -224,6 +224,13 @@ repo should behave is made (structure, conventions, tooling, workflow).
     `git status` for changes it didn't make and asks about them instead of
     committing them silently. Git commands run one at a time (never in parallel
     with another session's), since concurrent writes once lost a commit's objects.
+  - Before committing, Claude also checks no rebase / merge / cherry-pick is in
+    progress (`.git/rebase-merge`, `.git/rebase-apply`, `.git/MERGE_HEAD`,
+    `.git/CHERRY_PICK_HEAD`; `git status --short` doesn't show it) and asks instead
+    of committing: aborting it later resets the branch and drops those commits.
+  - Commits dropped by a reset or an aborted rebase are recovered from
+    `git reflog`: back up `.git`, check the lost commit descends from the branch
+    (`git merge-base --is-ancestor`), then `git merge --ff-only <commit>`.
   - If git reports a missing object (`bad object`, `invalid sha1 pointer`), Claude
     stops, backs up `.git`, and checks integrity with
     `git rev-list --objects --all | cut -d' ' -f1 | git cat-file --batch-check`
