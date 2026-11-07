@@ -115,8 +115,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh and jq for now; oh-my-zsh
-  with its defaults.
+  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq and Docker Desktop for
+  now; oh-my-zsh with its defaults.
+- **Docker**: Docker Desktop on every mac (`37-mac-docker`), not inside
+  devcontainers; simpler than gnugat's per-machine runtimes (OrbStack, Rancher).
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them. Where we style our own UI, we use
   the same neutral palette: light `#e2e2e3` on `#414550` for the active item
