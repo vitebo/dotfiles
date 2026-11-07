@@ -47,6 +47,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults:
   when the app ships a default config file, copy it as is and mark each of our
   changes with a `dotfiles:` comment explaining why (eg `23-mac-aerospace`).
+- **AeroSpace manages windows, apps don't tab**: apps with macOS native tabs (eg
+  Ghostty) are configured to open windows instead, since native tabs are separate
+  windows that AeroSpace tiles one by one; AeroSpace's accordion layout plays the tab
+  role, like i3's tabbed layout.
 - **Third-party brew taps**: when a tool isn't in the official casks/formulae,
   `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap, like
   gnugat (eg `nikitabobko/tap/aerospace`).
