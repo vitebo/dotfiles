@@ -2,3 +2,8 @@
 #
 # Ghostty defaults for now. Options: https://ghostty.org/docs/config/reference
 # Reload with cmd+shift+, ; list every option with `ghostty +show-config --default --docs`.
+
+# dotfiles: cmd+t opens a new window instead of a native tab. macOS native tabs are
+# separate windows for tiling window managers, so AeroSpace (23-mac-aerospace)
+# tiles each tab on its own; its accordion layout (alt-,) acts as tabs instead.
+keybind = super+t=new_window
