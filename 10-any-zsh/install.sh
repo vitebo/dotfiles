@@ -12,6 +12,7 @@ _dot_select_package_manager || true
 _dot_install_with_package_manager "${DOT_PACKAGE_DIR}"
 
 _dot_link "${DOT_PACKAGE_DIR}/config/zshrc" "${HOME}/.zshrc"
+_dot_link_zsh "${DOT_PACKAGE_DIR}/config/xdg.zsh"
 
 # zsh is already the default shell on mac; on linux switch to it if needed.
 if [ "${DOT_OS}" = "linux" ]; then
