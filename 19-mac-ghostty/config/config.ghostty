@@ -1,0 +1,4 @@
+# ~/.config/ghostty/config.ghostty -> 19-mac-ghostty/config/config.ghostty
+#
+# Ghostty defaults for now. Options: https://ghostty.org/docs/config/reference
+# Reload with cmd+shift+, ; list every option with `ghostty +show-config --default --docs`.
