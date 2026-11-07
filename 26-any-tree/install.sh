@@ -10,6 +10,4 @@ _dot_title "tree"
 _dot_select_package_manager || true
 _dot_install_with_package_manager "${DOT_PACKAGE_DIR}"
 
-_dot_link_zsh "${DOT_PACKAGE_DIR}/config/tree.zsh"
-
 _dot_ok "tree installed"
