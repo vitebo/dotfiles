@@ -53,9 +53,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   Exception: files the app rewrites itself (eg gh's `config.yml`, Claude Code's
   `settings.json`) stay exactly as the app writes them, since it drops our comments;
   their explanation goes in the package README.
-- **Per-machine logins**: CLI tools with an account (gh, Claude Code, docker) keep
+- **Per-machine logins**: CLI tools with an account (gh, Claude Code, docker, aws) keep
   their login out of the repo (`hosts.yml`, `~/.claude.json`, `~/.docker/config.json`,
-  keychain); each machine logs in with its own account, so personal and work machines
+  `~/.aws/`, keychain); each machine logs in with its own account, so personal and work machines
   share the same config. Files mixing app-managed state and logins (eg
   `~/.docker/config.json`) aren't versioned at all.
 - **AeroSpace owns `alt` + `h/j/k/l`**: it grabs them globally, so terminal tools
@@ -120,8 +120,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop and Slack
-  for now; oh-my-zsh with its defaults.
+  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack and
+  the AWS CLI for now; oh-my-zsh with its defaults.
+- **Project tools stay in the project's devcontainer**: tools a project needs at work
+  (eg the AWS CLI) are `mac` scope here; inside devcontainers each project installs
+  them from its own `devcontainer.json`, with its own credentials.
 - **Docker**: Docker Desktop on every mac (`37-mac-docker`), not inside
   devcontainers; simpler than gnugat's per-machine runtimes (OrbStack, Rancher).
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
@@ -140,7 +143,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
     elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
     into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
-  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`) is enabled in `oh-my-zsh.zsh` only when the
+  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`, `aws`) is enabled in `oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
     snippet.
