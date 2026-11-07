@@ -5,7 +5,7 @@
 # Highlights the item of the focused AeroSpace workspace ($1 is its id).
 
 # dotfiles: on the first run (`sketchybar --update`) there's no workspace change
-# event yet, so ask AeroSpace for the focused workspace (like gnugat).
+# event yet, so ask AeroSpace for the focused workspace.
 if [ -z "$FOCUSED_WORKSPACE" ]; then
     FOCUSED_WORKSPACE="$(aerospace list-workspaces --focused)"
 fi

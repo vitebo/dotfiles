@@ -5,8 +5,8 @@ highlighting and git integration.
 
 - `~/.config/bat/config` -> `config/config`: bat's default config
   (`bat --generate-config-file`).
-- `~/.config/zsh/28-bat.zsh` -> `config/bat.zsh`, like gnugat:
+- `~/.config/zsh/28-bat.zsh` -> `config/bat.zsh`:
   - `bat` alias to `batcat` on Debian/Ubuntu, where the binary is renamed;
   - colored man pages (`MANPAGER` through bat).
 
-Unlike gnugat, no Catppuccin themes: bat's default theme for now.
+bat's default theme for now (no color theme yet).

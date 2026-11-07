@@ -15,5 +15,3 @@ global tools from its config.
 
 Update the global Node.js: `mise upgrade node`. `mise use -g <tool>@<version>`
 edits the versioned config.
-
-gnugat only installs mise (no activation nor global tools).

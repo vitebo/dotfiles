@@ -84,7 +84,7 @@ key-mapping.preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-# dotfiles: 10px between windows and around them, like gnugat (default: 0);
+# dotfiles: 10px between windows and around them (default: 0);
 # top is SketchyBar's 40px bar (it replaces the hidden macOS menu bar) + 10px.
 # The MacBook's built-in display (notch) always reserves 32pt at the top, even with
 # the menu bar hidden, and the gap is added below it: 40 + 10 - 32 = 18 there.

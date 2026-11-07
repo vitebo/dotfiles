@@ -1,4 +1,4 @@
-# bat: `batcat` alias on Debian/Ubuntu, and colored man pages (like gnugat).
+# bat: `batcat` alias on Debian/Ubuntu, and colored man pages.
 
 _dot_bat="bat"
 if (( ! $+commands[bat] )) && (( $+commands[batcat] )); then

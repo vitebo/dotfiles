@@ -3,5 +3,4 @@
 Installs [tree](https://oldmanprogrammer.net/source.php?dir=projects/tree): list
 directory contents in a tree-like format (`tree`, `tree -L 2`, `tree -a`).
 
-The listing aliases (`l`, `la`, `ll`, `lla`) belong to [31-any-eza](../31-any-eza)
-(gnugat defines them in both packages, eza overriding tree's).
+The listing aliases (`l`, `la`, `ll`, `lla`) belong to [31-any-eza](../31-any-eza).

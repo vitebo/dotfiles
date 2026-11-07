@@ -1,6 +1,6 @@
 # tz <query>: tmux session in the directory zoxide (33-any-zoxide) finds for the
 # query, named after it; attaches to it if it already exists (switches to it when
-# already in tmux). Inspired by gnugat's RipTide scripts.
+# already in tmux).
 
 (( $+commands[tmux] && $+commands[zoxide] )) || return 0
 

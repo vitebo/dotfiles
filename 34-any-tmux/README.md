@@ -7,15 +7,15 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   `Ctrl+b`) plus a few essentials marked `dotfiles:` (mouse, numbering from 1,
   splits in the current directory, `prefix h/j/k/l` for panes, vim copy mode,
   clipboard through the terminal, `prefix r` to reload, 10ms escape time).
-  No theme or plugins (gnugat uses Catppuccin and TPM).
+  No theme or plugins.
 - `~/.tmux.conf` -> `config/tmux.conf` too: tmux reads `~/.tmux.conf` instead of the
   XDG file when it exists, so tools that write to it (OpenRig's `rig setup`) edit this
   file instead of shadowing it. It holds OpenRig's managed block (mouse,
   `history-limit 10000`), which setup replaces in place.
 - `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
-  top, laid out like gnugat's: sessions (`*` current, `-` last), windows, user, with
-  rounded edges. Neutral colors matching JankyBorders / SketchyBar, defined once as
-  `@dot_*` options at the top of the file.
+  top: sessions (`*` current, `-` last), windows, user, with rounded edges.
+  Neutral colors matching JankyBorders / SketchyBar, defined once as `@dot_*`
+  options at the top of the file.
 - `~/.config/zsh/34-tmux.zsh` -> `config/tmux.zsh`: `tz <query>` opens (or goes
   back to) a session in the directory [33-any-zoxide](../33-any-zoxide) finds,
   named after it.

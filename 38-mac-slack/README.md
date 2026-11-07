@@ -12,5 +12,3 @@ GUI app. Login is per machine (personal / work workspaces), nothing versioned.
   dimmed when Slack is closed), refreshed every 10s and when switching apps; click
   opens Slack. Notification contents aren't shown: macOS doesn't expose them, and
   Slack's API would need a per-account token.
-
-Unlike gnugat: no Catppuccin theme for now.

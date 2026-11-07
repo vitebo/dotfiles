@@ -1,6 +1,6 @@
-# Listing aliases with eza, one level as a tree, like gnugat. Loaded after
+# Listing aliases with eza, one level as a tree. Loaded after
 # oh-my-zsh (higher NN), so they replace its l / la / ll aliases.
-# Unlike gnugat, colors and icons stay `auto` (only on a terminal), so piping
+# Colors and icons stay `auto` (only on a terminal), so piping
 # (eg `ll | grep`) gets plain text.
 
 if (( $+commands[eza] )); then

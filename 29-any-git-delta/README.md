@@ -6,7 +6,7 @@ command): a syntax-highlighting pager for `git diff`, `git show`, `git log -p`,
 
 - `~/.config/git-delta/git-delta.config` -> `config/git-delta.config`: delta's
   recommended git config (pager, `n` / `N` to jump between files, `zdiff3`
-  conflicts), like gnugat but without the Catppuccin theme.
+  conflicts), without a theme.
 - The git config ([12-any-git](../12-any-git)) includes that file; git ignores
   the include when it's missing, so git only uses delta where it's installed.
 

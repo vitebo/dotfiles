@@ -8,7 +8,7 @@ learns the directories you visit.
 - `z dotfiles`: jump to the best match (eg `~/.dotfiles`), from anywhere
 - `z dot nv`: several words narrow the match
 - `zi`: pick interactively with fzf
-- `cd` is unchanged (like gnugat), zoxide learns from it too
+- `cd` is unchanged, zoxide learns from it too
 
 ## Integrations
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# dotfiles: Slack (38-mac-slack) state from its Dock badge, like gnugat's slack item,
+# dotfiles: Slack (38-mac-slack) state from its Dock badge,
 # styled with our neutral palette (active: light on #414550):
 # - Slack closed: dimmed icon;
 # - nothing unread: icon only;

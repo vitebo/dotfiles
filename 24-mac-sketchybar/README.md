@@ -8,7 +8,7 @@ replacing the macOS menu bar (formula from the author's tap).
   - AeroSpace workspaces (clickable, focused one highlighted) instead of Mission
     Control spaces, from [AeroSpace's integration](https://nikitabobko.github.io/AeroSpace/goodies);
   - JetBrainsMono Nerd Font.
-  - Apple logo and user name, first on the left (like gnugat's hostname item).
+  - Apple logo and user name, first on the left.
   - Slack ([38-mac-slack](../38-mac-slack)) icon with its unread state: number of
     mentions / DMs highlighted, `•` for unread channels, dimmed icon when Slack is
     closed. Refreshed every 10s and when the focused app changes; click opens Slack.

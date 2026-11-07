@@ -1,19 +1,18 @@
 # CLAUDE.md
 
-Personal dotfiles, inspired by [gnugat/dotfiles](https://github.com/gnugat/dotfiles)
-but intentionally kept small. Read `README.md` for usage.
+Personal dotfiles, intentionally kept small. Read `README.md` for usage.
 
 ## Decisions
 
 Claude must update this list, in the same change, whenever a decision about how the
 repo should behave is made (structure, conventions, tooling, workflow).
 
-- **Compare with gnugat first**: before deciding how to handle something new, look at
-  how [gnugat/dotfiles](https://github.com/gnugat/dotfiles/tree/main) does it, then
-  follow it or record here why we diverge.
+- **Initial inspiration credited once**: only the root `README.md` names the dotfiles
+  this repo started from; it has diverged since. Code, comments and docs explain
+  decisions on their own, without comparing to it.
 - **Language**: everything in the repo (code, comments, messages, docs) is in English.
-- **Own naming**: never use `ssdf` (gnugat's term). Our prefix is `dot`:
-  functions `_dot_*`, variables `DOT_*`, internal package `00-core-dot`.
+- **Own naming**: our prefix is `dot`: functions `_dot_*`, variables `DOT_*`,
+  internal package `00-core-dot`.
 - **Small packages**: each tool is a self-contained `<NN>-<scope>-<name>/` folder with
   `install.sh`, optional `_apt.sh` / `_brew.sh`, `config/` and `README.md`.
   Package-specific helpers stay inside the package folder.
@@ -29,7 +28,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     (eg `11-any-curl` has `_apt.sh` only, macOS ships curl).
   - A tool and its config are separate packages when the config is a project of its
     own (eg `17-any-neovim` installs nvim, `20-any-nvchad` is the config).
-- **Folder prefix** `<NN>-<scope>-<name>`, replacing gnugat's numeric tags:
+- **Folder prefix** `<NN>-<scope>-<name>`:
   - `NN`: global execution order (00–99), the shell glob sorts them.
   - `scope`: `core` (library, no `install.sh`), `any` (mac + linux), `mac`, `linux`.
   - Root `install.sh` runs `DOT_SCOPES="any <os>"` by default; overridable via env.
@@ -62,13 +61,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
   share the same config. Files mixing app-managed state and logins (eg
   `~/.docker/config.json`) aren't versioned at all.
 - **AeroSpace owns `alt` + `h/j/k/l`**: it grabs them globally, so terminal tools
-  can't use them (eg tmux panes are `prefix + h/j/k/l`, unlike gnugat's `alt`).
-- **AeroSpace is the only hotkey daemon**: no skhd (gnugat's skhdrc only holds his
-  company's scripts, and a second daemon would compete for the same keys). Hotkeys to
-  launch apps or run commands go in `aerospace.toml` (`exec-and-forget`), never on
-  `alt` + letter (it types characters like `ç`). Planned, not done yet: `alt-enter`
-  for a new Ghostty window, `ctrl-alt-<letter>` to open apps; work-only hotkeys stay
-  out of the repo.
+  can't use them (eg tmux panes are `prefix + h/j/k/l`).
+- **AeroSpace is the only hotkey daemon**: no skhd (a second daemon would compete for
+  the same keys). Hotkeys to launch apps or run commands go in `aerospace.toml`
+  (`exec-and-forget`), never on `alt` + letter (it types characters like `ç`).
+  Planned, not done yet: `alt-enter` for a new Ghostty window, `ctrl-alt-<letter>`
+  to open apps; work-only hotkeys stay out of the repo.
 - **Apps pinned to AeroSpace workspaces**: an app package that wants a fixed
   workspace adds an `[[on-window-detected]]` rule (by app id) at the end of
   `aerospace.toml`, with a comment naming the package (eg Slack on 9).
@@ -79,35 +77,35 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **AeroSpace + SketchyBar**: SketchyBar replaces the macOS menu bar (hidden by hand
   in System Settings) and shows AeroSpace workspaces, following AeroSpace's official
   integration. AeroSpace starts it (`after-startup-command`) instead of
-  `brew services` like gnugat, so there's no LaunchAgent written in `~/Library`.
+  `brew services`, so there's no LaunchAgent written in `~/Library`.
   The glue lives in `aerospace.toml` (one file can't be split across packages), so
   `24-mac-sketchybar` requires `aerospace` and the AeroSpace config mentions it.
   - Same pattern for JankyBorders (`25-mac-jankyborders`), which highlights the
-    focused window (gnugat has no focus indicator; AeroSpace's goodies recommend it):
-    started by AeroSpace, configured by a versioned `bordersrc`.
+    focused window (AeroSpace's goodies recommend it): started by AeroSpace,
+    configured by a versioned `bordersrc`.
   - AeroSpace's service mode `esc` reloads AeroSpace and every tool it starts.
-- **Challenge packages that don't fit**: before adding a package (even one gnugat
-  has), Claude checks it makes sense for this repo (mac host + linux devcontainers,
-  existing packages, decisions here) and, when it may not, says so and explains why,
-  suggesting an alternative if there is one, instead of adding it. Eg xclip: X11
+- **Challenge packages that don't fit**: before adding a package, Claude checks it
+  makes sense for this repo (mac host + linux devcontainers, existing packages,
+  decisions here) and, when it may not, says so and explains why, suggesting an
+  alternative if there is one, instead of adding it. Eg xclip: X11
   clipboard for a Linux desktop, useless in a devcontainer (no display); tmux's OSC 52
   clipboard already covers it.
 - **Ask before integrating packages**: when a new package can integrate with packages
   already in the repo (eg fzf using fd as source and bat/eza for previews, delta as
   git's pager), Claude lists each possible integration, explains how it would work,
   and asks which ones to add before implementing them. Never wire integrations in
-  silently, even when gnugat does.
+  silently.
 - **Plugging into another package's config**: when a tool configures another one
   (eg delta in git), it ships its own linked file and the host config includes it
-  with a mechanism that ignores missing files (git `[include]`), like gnugat; so the
+  with a mechanism that ignores missing files (git `[include]`), so the
   host package keeps working where the tool isn't installed. When the host has no
   such include, its snippet adds the file only when the tool exists (eg lazygit's
   `LG_CONFIG_FILE` merges `delta.yml` when delta is installed). The include line lives
   in the host config with a comment naming the package.
 - **Third-party brew taps**: when a tool isn't in the official casks/formulae,
-  `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap, like
-  gnugat (eg `nikitabobko/tap/aerospace`).
-- **`XDG_CONFIG_HOME=~/.config`** is exported by `10-any-zsh` (`xdg.zsh`), like gnugat,
+  `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap (eg
+  `nikitabobko/tap/aerospace`).
+- **`XDG_CONFIG_HOME=~/.config`** is exported by `10-any-zsh` (`xdg.zsh`),
   so XDG tools (lazygit, lazydocker, k9s...) use `~/.config` on macOS instead of
   `~/Library/Application Support`. Only the config dir: data / cache / state stay
   where each tool puts them.
@@ -117,7 +115,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
   managed block (markers kept verbatim), so the tool edits it in place with no diff.
 - **`$HOME` only holds symlinks into the repo**: installers never append to or edit
   files in `$HOME`; any config file we care about is versioned and linked. Prefer the
-  XDG location (`~/.config/<app>/`) when the app supports it, like gnugat (eg git uses
+  XDG location (`~/.config/<app>/`) when the app supports it (eg git uses
   `~/.config/git/config`, so `~/.gitconfig` must not exist). State files (shell
   history, `.zcompdump`, caches) are not versioned and stay where the tool puts them.
 - **Migrations**: when a change moves or renames a linked file, installers don't delete
@@ -133,7 +131,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **System preferences are set by hand**: installers don't change macOS preferences
   (default browser, menu bar, Mission Control...), which may need confirmation
-  dialogs or a logout; like gnugat, the steps are documented in the package README
+  dialogs or a logout; the steps are documented in the package README
   (eg Dia as default browser in `46-mac-dia`).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
@@ -150,22 +148,22 @@ repo should behave is made (structure, conventions, tooling, workflow).
     never `npm install -g` (lost on Node.js upgrades): their package links its own
     `~/.config/mise/conf.d/<name>.toml` and runs `mise install`, without editing
     mise's package.
-- **Docker**: Docker Desktop on every mac (`37-mac-docker`), not inside
-  devcontainers; simpler than gnugat's per-machine runtimes (OrbStack, Rancher).
+- **Docker**: Docker Desktop on every mac (`37-mac-docker`), the same runtime on
+  each, not inside devcontainers.
 - **Kubernetes**: the local cluster is Docker Desktop's built-in one (enabled in its
   settings), no kind / minikube. kubectl is its own brew package (`44-mac-kubectl`),
   not the one Docker Desktop ships; kubeconfig and Helm repos stay per machine.
-- **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
-  default theme until we pick one for all of them. Where we style our own UI, we use
-  the same neutral palette: light `#e2e2e3` on `#414550` for the active item
+- **Themes**: no color theme yet; tools keep their default theme until we
+  pick one for all of them. Where we style our own UI, we use the same neutral
+  palette: light `#e2e2e3` on `#414550` for the active item
   (JankyBorders' colors), grays for the others (eg tmux's status line, whose colors
   live in `@dot_*` options so a future theme changes them in one place).
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal
   changes are tracked without vendoring the framework.
-- **Shell: zsh + oh-my-zsh** (diverges from gnugat, which sets up zsh by hand with
-  setopt/compinit and uses starship):
+- **Shell: zsh + oh-my-zsh** (rather than setting up zsh by hand with
+  setopt/compinit, or starship):
   - `10-any-zsh` is only the shell and its loader (`~/.zshrc`, `chsh`).
   - `22-any-oh-my-zsh` owns the shell setup: theme/prompt, plugins, completion
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
@@ -188,8 +186,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     tool is installed, and says so in its README (eg `31-any-eza` replaces `l` /
     `la` / `ll`).
   - One owner per alias: never define the same alias in two packages relying on
-    `NN` order to pick one (gnugat defines `l` / `ll`... in both tree and eza; here
-    only eza does).
+    `NN` order to pick one (eg `l` / `ll`... are only defined by eza, not by tree).
 - **Editor is Neovim + NvChad** (`17-any-neovim` + `20-any-nvchad`), replacing vim:
   - The [NvChad starter](https://github.com/NvChad/starter) is vendored in
     `20-any-nvchad/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
@@ -206,9 +203,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   files sit next to the linked ones, and org policy comes from the org's own tooling.
   This is why config dirs that mix shared files and machine files (eg `~/.claude`)
   are linked file by file, never as a whole directory.
-- **Claude Code** (`21-any-claude-code`): native installer (`curl … | bash`, like
-  gnugat) on mac and linux, so it auto-updates; `~/.local/bin` is put in PATH by its
-  zsh snippet (the installer itself doesn't edit rc files).
+- **Claude Code** (`21-any-claude-code`): native installer (`curl … | bash`) on mac and
+  linux, so it auto-updates; `~/.local/bin` is put in PATH by its zsh snippet (the
+  installer itself doesn't edit rc files).
   - Versioned: `~/.claude/settings.json`, `~/.claude/CLAUDE.md` (personal
     instructions for every project) and `~/.claude/rules/*.md` (one topic per file;
     use `paths` frontmatter for rules that only matter for some files). Keep them
@@ -229,8 +226,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   with `_dot_link_zsh` to `~/.config/zsh/<NN>-<name>.zsh`; `~/.zshrc` loads them in
   package order (skipping dangling symlinks). Eg `EDITOR` lives in
   `17-any-neovim/config/neovim.zsh`, brew's env in `01-mac-homebrew/config/homebrew.zsh`.
-  - Only `~/.zshrc` is used: no `~/.zprofile` / `~/.zshenv` (gnugat also sets PATH
-    from the rc). Interactive shells are the target.
+  - Only `~/.zshrc` is used: no `~/.zprofile` / `~/.zshenv` (PATH included).
+    Interactive shells are the target.
   - `compinit` is run by oh-my-zsh, from its snippet (see "Shell: zsh + oh-my-zsh").
   - A snippet that prints something at startup (eg `27-mac-fastfetch`) only does it
     when stdout is a terminal (`[[ -t 1 ]]`), so scripts and tools spawning a shell

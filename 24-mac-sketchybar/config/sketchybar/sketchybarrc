@@ -39,8 +39,8 @@ default=(
 sketchybar --default "${default[@]}"
 
 ##### Adding User Indicator #####
-# dotfiles: Apple logo (nf-fa-apple) and the user name, first on the left (like
-# gnugat's hostname item). The user name doesn't change, so no plugin script.
+# dotfiles: Apple logo (nf-fa-apple) and the user name, first on the left.
+# The user name doesn't change, so no plugin script.
 
 sketchybar --add item user left \
            --set user icon= label="$(id -un)"
@@ -112,9 +112,9 @@ sketchybar --add item clock right \
 
 ##### Adding Slack Unread Indicator #####
 # dotfiles: Slack (38-mac-slack) icon (nf-fa-slack) with its unread state (see
-# plugins/slack.sh), like gnugat's slack item. Refreshed every 10s and when the
-# focused app changes (eg after reading messages); a click opens Slack (AeroSpace
-# then shows its workspace, 9).
+# plugins/slack.sh). Refreshed every 10s and when the focused app changes (eg
+# after reading messages); a click opens Slack (AeroSpace then shows its
+# workspace, 9).
 
 sketchybar --add item slack right \
            --set slack icon= update_freq=10 script="$PLUGIN_DIR/slack.sh" \

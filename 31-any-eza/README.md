@@ -1,7 +1,7 @@
 # 31-any-eza
 
 Installs [eza](https://github.com/eza-community/eza), a modern alternative to `ls`,
-and uses it for the listing aliases (one level as a tree, like gnugat):
+and uses it for the listing aliases (one level as a tree):
 
 | Alias | Lists |
 | --- | --- |
@@ -14,4 +14,4 @@ and uses it for the listing aliases (one level as a tree, like gnugat):
   installed. `NN` is above [22-any-oh-my-zsh](../22-any-oh-my-zsh), so they replace
   its `l` / `la` / `ll`; without eza, oh-my-zsh's (`ls`) ones apply.
 - Icons need a Nerd Font in the terminal ([18-mac-nerd-font](../18-mac-nerd-font)).
-- Unlike gnugat: colors and icons are `auto` (plain text when piped), no theme.
+- Colors and icons are `auto` (plain text when piped), no theme.

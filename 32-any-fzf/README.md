@@ -18,7 +18,7 @@ In the finder: `ctrl-j` / `ctrl-k` (or `ctrl-n` / `ctrl-p`) to move, `tab` /
 
 ## Integrations
 
-`~/.config/zsh/32-fzf.zsh` -> `config/fzf.zsh`, like gnugat (each one only when the
+`~/.config/zsh/32-fzf.zsh` -> `config/fzf.zsh` (each one only when the
 tool is installed):
 
 - [30-any-fd](../30-any-fd) as source: hidden files included, `.git` and
@@ -26,4 +26,4 @@ tool is installed):
 - [28-any-bat](../28-any-bat) preview of the highlighted file (`ctrl-t`, `**`).
 - [31-any-eza](../31-any-eza) tree preview of the highlighted directory (`alt-c`, `cd **`).
 
-Unlike gnugat: no Catppuccin colors, and the oh-my-zsh plugin instead of `fzf --zsh`.
+No color theme, and the oh-my-zsh plugin instead of `fzf --zsh`.

@@ -1,4 +1,4 @@
-# fzf integrations with other packages, like gnugat: fd (30-any-fd) as source,
+# fzf integrations with other packages: fd (30-any-fd) as source,
 # bat (28-any-bat) and eza (31-any-eza) for previews. Each one only when its tool
 # is installed. Key bindings and ** completion come from oh-my-zsh's fzf plugin
 # (22-any-oh-my-zsh).
