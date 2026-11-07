@@ -81,8 +81,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
-  prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree and
-  fastfetch for now; oh-my-zsh with its defaults.
+  prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
+  fastfetch and bat for now; oh-my-zsh with its defaults.
+- **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
+  default theme until we pick one for all of them.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal
