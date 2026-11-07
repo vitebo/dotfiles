@@ -8,6 +8,9 @@ but intentionally kept small. Read `README.md` for usage.
 Claude must update this list, in the same change, whenever a decision about how the
 repo should behave is made (structure, conventions, tooling, workflow).
 
+- **Compare with gnugat first**: before deciding how to handle something new, look at
+  how [gnugat/dotfiles](https://github.com/gnugat/dotfiles/tree/main) does it, then
+  follow it or record here why we diverge.
 - **Language**: everything in the repo (code, comments, messages, docs) is in English.
 - **Own naming**: never use `ssdf` (gnugat's term). Our prefix is `dot`:
   functions `_dot_*`, variables `DOT_*`, internal package `00-core-dot`.
@@ -42,12 +45,19 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Versioned app config**: when a package configures an app, its config file lives in
   the package's `config/` and is symlinked to where the app reads it (eg
   `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults.
+- **`$HOME` only holds symlinks into the repo**: installers never append to or edit
+  files in `$HOME`; any config file we care about is versioned and linked. Prefer the
+  XDG location (`~/.config/<app>/`) when the app supports it, like gnugat (eg git uses
+  `~/.config/git/config`, so `~/.gitconfig` must not exist). State files (shell
+  history, `.zcompdump`, caches) are not versioned and stay where the tool puts them.
+- **Migrations**: when a change moves or renames a linked file, installers don't delete
+  the old one (they never remove user files); Claude cleans the stale files on this
+  machine by hand, after checking their content is now in the repo.
 - **Devcontainers via the devcontainer CLI** (not an editor integration): don't
   mention any editor in docs. The repo may be cloned anywhere (eg `~/dotfiles`), so
   paths are always resolved relative to the script, never hardcoded.
 - **Non-interactive and idempotent**: no prompts (no `cp -i`), safe to re-run.
-  Config files are symlinked with `_dot_link` (existing regular files become `.bak`);
-  lines are appended with `_dot_append_line` (no duplicates).
+  Config files are symlinked with `_dot_link` (existing regular files become `.bak`).
 - **Portability**: bash scripts with `set -euo pipefail`; resolve dirs with
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
@@ -63,8 +73,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
     so both come from their GitHub releases (latest). mac: brew.
   - The nerd font is `mac` scope only: in a devcontainer the host terminal renders it.
 - **Packages own their shell env**: a package may ship `config/<name>.zsh` and link it
-  into `~/.config/zsh/`, which `~/.zshrc` loads (skipping dangling symlinks). Eg
-  `EDITOR` lives in `17-any-neovim/config/neovim.zsh`, not in the zsh package.
+  with `_dot_link_zsh` to `~/.config/zsh/<NN>-<name>.zsh`; `~/.zshrc` loads them in
+  package order (skipping dangling symlinks). Eg `EDITOR` lives in
+  `17-any-neovim/config/neovim.zsh`, brew's env in `01-mac-homebrew/config/homebrew.zsh`.
+  - Only `~/.zshrc` is used: no `~/.zprofile` / `~/.zshenv` (gnugat also sets PATH
+    from the rc). Interactive shells are the target.
+  - `compinit` runs in `~/.zshrc` after all snippets, so packages can extend `fpath`.
 - **Commits**: Claude may commit as work progresses, without asking. Always follow
   [Conventional Commits](https://www.conventionalcommits.org) (`feat(zsh): ...`,
   `fix(core): ...`, `docs: ...`), scoped by package name when it applies, one logical
@@ -77,7 +91,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
    a tool, `20-any-nvchad` for a config), with `NN` above its prerequisites.
 3. `install.sh`: resolve `DOT_PACKAGE_DIR` / `DOT_ROOT`, `source 00-core-dot/lib.sh`,
    then `_dot_require` (prerequisites), `_dot_select_package_manager || true` +
-   `_dot_install_with_package_manager` (installs), `_dot_link` (config).
+   `_dot_install_with_package_manager` (installs), `_dot_link` / `_dot_link_zsh` (config).
 4. Add `_apt.sh` / `_brew.sh` as needed, a `README.md` (with "Prerequisites"), and a
    row in the root README table.
 
