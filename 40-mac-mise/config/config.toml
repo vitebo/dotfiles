@@ -1,0 +1,9 @@
+# ~/.config/mise/config.toml -> 40-mac-mise/config/config.toml
+#
+# mise's global config: tools available everywhere, unless a project pins its own
+# versions (mise.toml, .tool-versions, .nvmrc...).
+# Reference: https://mise.jdx.dev/configuration.html
+
+[tools]
+# Latest Node.js 22.x, the default `node` / `npm`.
+node = "22"
