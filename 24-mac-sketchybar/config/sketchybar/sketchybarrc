@@ -50,6 +50,8 @@ sketchybar --add item user left \
 # doesn't use them), from AeroSpace's SketchyBar integration:
 # https://nikitabobko.github.io/AeroSpace/goodies
 # AeroSpace triggers aerospace_workspace_change (see its exec-on-workspace-change).
+# dotfiles: no icon and even label padding (like the demo's space items), so the
+# number stays centered in the highlight.
 
 sketchybar --add event aerospace_workspace_change
 
@@ -61,7 +63,10 @@ for sid in $(aerospace list-workspaces --all); do
         background.corner_radius=5 \
         background.height=20 \
         background.drawing=off \
+        icon.drawing=off \
         label="$sid" \
+        label.padding_left=7 \
+        label.padding_right=7 \
         click_script="aerospace workspace $sid" \
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
