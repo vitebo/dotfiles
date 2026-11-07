@@ -101,5 +101,12 @@ sketchybar --add item clock right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
 
+##### Adding Slack Unread Indicator #####
+# dotfiles: Slack (38-mac-slack) icon (nf-fa-slack) with the number of unread
+# direct messages, refreshed every minute (like gnugat's slack item).
+
+sketchybar --add item slack right \
+           --set slack icon= update_freq=60 script="$PLUGIN_DIR/slack.sh"
+
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

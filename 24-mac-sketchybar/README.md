@@ -9,7 +9,8 @@ replacing the macOS menu bar (formula from the author's tap).
     Control spaces, from [AeroSpace's integration](https://nikitabobko.github.io/AeroSpace/goodies);
   - JetBrainsMono Nerd Font.
   - Apple logo and user name, first on the left (like gnugat's hostname item).
-  - Right side: clock, volume, battery. Left side: user, workspaces, focused app.
+  - Slack icon with the unread direct messages count ([38-mac-slack](../38-mac-slack)).
+  - Right side: clock, volume, battery, Slack. Left side: user, workspaces, focused app.
 - Started by AeroSpace (`after-startup-command` in `23-mac-aerospace`), which also
   notifies it of workspace changes (`exec-on-workspace-change`) and leaves a 40px
   top gap for it.
