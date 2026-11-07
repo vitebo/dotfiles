@@ -49,7 +49,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   the package's `config/` and is symlinked to where the app reads it (eg
   `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults:
   when the app ships a default config file, copy it as is and mark each of our
-  changes with a `dotfiles:` comment explaining why (eg `23-mac-aerospace`).
+  changes with a `dotfiles:` comment explaining why (eg `23-mac-aerospace`). When the
+  app only prints a full dump of its defaults (eg `lazygit --config`), start from a
+  minimal file instead (header + link to the docs + our changes): copying the dump
+  would freeze today's defaults.
   Exception: files the app rewrites itself (eg gh's `config.yml`, Claude Code's
   `settings.json`) stay exactly as the app writes them, since it drops our comments;
   their explanation goes in the package README.
@@ -97,11 +100,17 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Plugging into another package's config**: when a tool configures another one
   (eg delta in git), it ships its own linked file and the host config includes it
   with a mechanism that ignores missing files (git `[include]`), like gnugat; so the
-  host package keeps working where the tool isn't installed. The include line lives
+  host package keeps working where the tool isn't installed. When the host has no
+  such include, its snippet adds the file only when the tool exists (eg lazygit's
+  `LG_CONFIG_FILE` merges `delta.yml` when delta is installed). The include line lives
   in the host config with a comment naming the package.
 - **Third-party brew taps**: when a tool isn't in the official casks/formulae,
   `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap, like
   gnugat (eg `nikitabobko/tap/aerospace`).
+- **`XDG_CONFIG_HOME=~/.config`** is exported by `10-any-zsh` (`xdg.zsh`), like gnugat,
+  so XDG tools (lazygit, lazydocker, k9s...) use `~/.config` on macOS instead of
+  `~/Library/Application Support`. Only the config dir: data / cache / state stay
+  where each tool puts them.
 - **`$HOME` only holds symlinks into the repo**: installers never append to or edit
   files in `$HOME`; any config file we care about is versioned and linked. Prefer the
   XDG location (`~/.config/<app>/`) when the app supports it, like gnugat (eg git uses
@@ -121,7 +130,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
-  the AWS CLI and mise (Node.js 22) for now; oh-my-zsh with its defaults.
+  the AWS CLI, mise (Node.js 22), lazygit, lazydocker and k9s for now; oh-my-zsh with
+  its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.

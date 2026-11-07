@@ -90,6 +90,9 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [38-mac-slack](38-mac-slack/README.md) | Slack, on AeroSpace workspace 9 with unread count in SketchyBar |
 | [39-mac-aws-cli](39-mac-aws-cli/README.md) | AWS CLI v2 |
 | [40-mac-mise](40-mac-mise/README.md) | mise runtime manager, with Node.js 22 as the global `node` |
+| [41-mac-lazygit](41-mac-lazygit/README.md) | lazygit, terminal UI for git (`lg`), with delta diffs |
+| [42-mac-lazydocker](42-mac-lazydocker/README.md) | lazydocker, terminal UI for docker (`lzd`) |
+| [43-mac-k9s](43-mac-k9s/README.md) | k9s, terminal UI for Kubernetes |
 
 ## Local config
 
