@@ -153,11 +153,24 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Kubernetes**: the local cluster is Docker Desktop's built-in one (enabled in its
   settings), no kind / minikube. kubectl is its own brew package (`44-mac-kubectl`),
   not the one Docker Desktop ships; kubeconfig and Helm repos stay per machine.
-- **Themes**: no color theme yet; tools keep their default theme until we
-  pick one for all of them. Where we style our own UI, we use the same neutral
-  palette: light `#e2e2e3` on `#414550` for the active item
-  (JankyBorders' colors), grays for the others (eg tmux's status line, whose colors
-  live in `@dot_*` options so a future theme changes them in one place).
+- **Themes: Catppuccin, following the macOS appearance**: Latte in light mode,
+  Mocha in dark mode, switching live when macOS switches. Tools without a
+  Catppuccin option (eg Claude Code) use their own light / dark theme, switched
+  with the mode.
+  - Ghostty follows macOS natively (`theme = light:…,dark:…`) and is the source of
+    truth for everything running in a terminal, on the host and in devcontainers
+    (their TUIs render in the same Ghostty, so nothing in a container reads macOS).
+  - Terminal tools get the mode from the terminal, never from macOS: use the 16
+    ANSI colors when the tool allows it (they change with Ghostty's palette), else
+    the tool's light / dark detection, else a light and a dark palette switched on
+    the terminal's report (eg tmux's `light-theme-*` / `dark-theme-*` colours).
+    Detection is either a query of the background color (OSC 11, read once at
+    start) or a notification on each change (mode 2031, live); multiplexers (tmux,
+    herdr) must pass both through to the apps inside them.
+  - Only host GUI tools (SketchyBar, JankyBorders) listen to macOS directly.
+  - Colors we set by hand come from the official Catppuccin palettes and live in one
+    place per tool (eg tmux's `@dot_*` options). Tools not migrated yet keep the old
+    neutral palette (light `#e2e2e3` on `#414550` for the active item, grays).
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal

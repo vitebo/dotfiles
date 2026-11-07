@@ -3,6 +3,11 @@
 # Ghostty defaults for now. Options: https://ghostty.org/docs/config/reference
 # Reload with cmd+shift+, ; list every option with `ghostty +show-config --default --docs`.
 
+# dotfiles: Catppuccin, Latte in light mode and Mocha in dark mode, following the
+# macOS appearance live. Terminal tools (host and devcontainers) are configured to
+# follow Ghostty's colors and light / dark mode. (default: none)
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+
 # dotfiles: cmd+t opens a new window instead of a native tab. macOS native tabs are
 # separate windows for tiling window managers, so AeroSpace (23-mac-aerospace)
 # tiles each tab on its own; its accordion layout (alt-,) acts as tabs instead.

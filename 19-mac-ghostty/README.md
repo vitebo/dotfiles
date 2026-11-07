@@ -4,6 +4,9 @@ Installs the [Ghostty](https://ghostty.org) terminal (brew cask).
 
 - `~/.config/ghostty/config.ghostty` -> `config/config.ghostty`: versioned here so
   changes can be tracked. Ghostty defaults, except:
+  - Catppuccin theme, Latte in light mode and Mocha in dark mode, switching live
+    with the macOS appearance. Terminal tools (on the mac and in devcontainers)
+    are configured to follow Ghostty's colors and light / dark mode.
   - `cmd+t` opens a new window instead of a native tab: native tabs are separate
     windows for AeroSpace, which would tile each one. Use AeroSpace's accordion
     layout (`alt-,`) for tabs, or Ghostty splits (`cmd+d` / `cmd+shift+d`).
