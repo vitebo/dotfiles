@@ -1,0 +1,5 @@
+# ~/.config/git/config -> 12-any-git/config/config
+
+[user]
+    name = vitebo
+    email = vitebo@hotmail.com
