@@ -44,7 +44,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
   just a `_brew.sh`.
 - **Versioned app config**: when a package configures an app, its config file lives in
   the package's `config/` and is symlinked to where the app reads it (eg
-  `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults.
+  `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults:
+  when the app ships a default config file, copy it as is and mark each of our
+  changes with a `dotfiles:` comment explaining why (eg `23-mac-aerospace`).
+- **Third-party brew taps**: when a tool isn't in the official casks/formulae,
+  `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap, like
+  gnugat (eg `nikitabobko/tap/aerospace`).
 - **`$HOME` only holds symlinks into the repo**: installers never append to or edit
   files in `$HOME`; any config file we care about is versioned and linked. Prefer the
   XDG location (`~/.config/<app>/`) when the app supports it, like gnugat (eg git uses
@@ -62,7 +67,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
-  prerequisites, Ghostty and Claude Code for now; oh-my-zsh with its defaults.
+  prerequisites, Ghostty, Claude Code and AeroSpace for now; oh-my-zsh with its defaults.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal

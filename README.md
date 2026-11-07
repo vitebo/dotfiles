@@ -72,6 +72,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [20-any-nvchad](20-any-nvchad/README.md) | NvChad config for Neovim (versioned in the repo) |
 | [21-any-claude-code](21-any-claude-code/README.md) | Claude Code, with config shared across machines |
 | [22-any-oh-my-zsh](22-any-oh-my-zsh/README.md) | oh-my-zsh: prompt, plugins, completion, history (config versioned in the repo) |
+| [23-mac-aerospace](23-mac-aerospace/README.md) | AeroSpace tiling window manager (config versioned in the repo) |
 
 ## Local config
 
