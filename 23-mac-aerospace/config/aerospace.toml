@@ -10,9 +10,10 @@ config-version = 2
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-# dotfiles: start SketchyBar (24-mac-sketchybar) with AeroSpace; it won't run twice
-# when AeroSpace restarts (default: [])
-after-startup-command = ['exec-and-forget sketchybar']
+# dotfiles: start SketchyBar (24-mac-sketchybar) and JankyBorders (25-mac-jankyborders,
+# reads ~/.config/borders/bordersrc) with AeroSpace; they won't run twice when
+# AeroSpace restarts (default: [])
+after-startup-command = ['exec-and-forget sketchybar', 'exec-and-forget borders']
 
 # dotfiles: notify SketchyBar about workspace changes, to highlight the focused one
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -83,13 +84,14 @@ key-mapping.preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-gaps.inner.horizontal = 0
-gaps.inner.vertical =   0
-gaps.outer.left =       0
-gaps.outer.bottom =     0
-# dotfiles: room for SketchyBar's 40px bar, which replaces the (hidden) macOS menu bar
-gaps.outer.top =        40
-gaps.outer.right =      0
+# dotfiles: 10px between windows and around them, like gnugat (default: 0);
+# top is SketchyBar's 40px bar (it replaces the hidden macOS menu bar) + 10px
+gaps.inner.horizontal = 10
+gaps.inner.vertical =   10
+gaps.outer.left =       10
+gaps.outer.bottom =     10
+gaps.outer.top =        50
+gaps.outer.right =      10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -176,8 +178,9 @@ gaps.outer.right =      0
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-    # dotfiles: also reload SketchyBar (24-mac-sketchybar)
-    esc = ['reload-config', 'exec-and-forget sketchybar --reload', 'mode main']
+    # dotfiles: also reload SketchyBar (24-mac-sketchybar) and JankyBorders (25-mac-jankyborders)
+    esc = ['reload-config', 'exec-and-forget sketchybar --reload',
+           'exec-and-forget ~/.config/borders/bordersrc', 'mode main']
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     backspace = ['close-all-windows-but-current', 'mode main']
