@@ -247,6 +247,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - Commits dropped by a reset or an aborted rebase are recovered from
     `git reflog`: back up `.git`, check the lost commit descends from the branch
     (`git merge-base --is-ancestor`), then `git merge --ff-only <commit>`.
+  - OpenRig rigs may work directly in this repo (`~/.dotfiles`), knowing every edit
+    changes this machine's config right away ($HOME links point here). While a rig
+    is active, it is the only one committing: other Claude sessions don't commit.
+    OpenRig's managed blocks in `CLAUDE.md` (between its markers) and its files
+    (`.openrig/`, `CLAUDE.local.md`, `.mcp.json`, `.claude/settings.local.json`) are
+    never committed; `rig down` removes the blocks.
   - If git reports a missing object (`bad object`, `invalid sha1 pointer`), Claude
     stops, backs up `.git`, and checks integrity with
     `git rev-list --objects --all | cut -d' ' -f1 | git cat-file --batch-check`
