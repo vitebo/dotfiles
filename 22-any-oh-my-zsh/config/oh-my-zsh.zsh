@@ -18,6 +18,10 @@ fi
 if (( $+commands[tmux] )); then
     plugins+=(tmux)
 fi
+# docker aliases (37-mac-docker), only when docker is installed: same reason.
+if (( $+commands[docker] )); then
+    plugins+=(docker)
+fi
 
 if [[ -f "${ZSH}/oh-my-zsh.sh" ]]; then
     source "${ZSH}/oh-my-zsh.sh"
