@@ -81,6 +81,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [29-any-git-delta](29-any-git-delta/README.md) | delta, syntax-highlighting pager for git |
 | [30-any-fd](30-any-fd/README.md) | fd, a fast alternative to `find` |
 | [31-any-eza](31-any-eza/README.md) | eza, a modern `ls`, used by the `l` / `la` / `ll` / `lla` aliases |
+| [32-any-fzf](32-any-fzf/README.md) | fzf fuzzy finder: history, files, `cd`, `**` completion |
 
 ## Local config
 
