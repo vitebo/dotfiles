@@ -87,6 +87,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [35-any-gh](35-any-gh/README.md) | GitHub CLI, also git's credentials for github.com |
 | [36-any-jq](36-any-jq/README.md) | jq, command-line JSON processor |
 | [37-mac-docker](37-mac-docker/README.md) | Docker Desktop (container runtime and `docker` CLI) |
+| [38-mac-slack](38-mac-slack/README.md) | Slack, on AeroSpace workspace 9 with unread count in SketchyBar |
 
 ## Local config
 

@@ -66,6 +66,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `alt` + letter (it types characters like `ç`). Planned, not done yet: `alt-enter`
   for a new Ghostty window, `ctrl-alt-<letter>` to open apps; work-only hotkeys stay
   out of the repo.
+- **Apps pinned to AeroSpace workspaces**: an app package that wants a fixed
+  workspace adds an `[[on-window-detected]]` rule (by app id) at the end of
+  `aerospace.toml`, with a comment naming the package (eg Slack on 9).
 - **AeroSpace manages windows, apps don't tab**: apps with macOS native tabs (eg
   Ghostty) are configured to open windows instead, since native tabs are separate
   windows that AeroSpace tiles one by one; AeroSpace's accordion layout plays the tab
@@ -117,8 +120,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq and Docker Desktop for
-  now; oh-my-zsh with its defaults.
+  fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop and Slack
+  for now; oh-my-zsh with its defaults.
 - **Docker**: Docker Desktop on every mac (`37-mac-docker`), not inside
   devcontainers; simpler than gnugat's per-machine runtimes (OrbStack, Rancher).
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
