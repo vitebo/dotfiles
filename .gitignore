@@ -1,3 +1,7 @@
 *.local
 *.bak
 *.swp
+
+# OpenRig, when a rig runs in this repo (see CLAUDE.md)
+.openrig/
+CLAUDE.local.md
