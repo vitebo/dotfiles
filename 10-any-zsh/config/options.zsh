@@ -1,8 +1,5 @@
 # General options, history and completion.
 
-export EDITOR="vim"
-export VISUAL="vim"
-
 HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=50000
