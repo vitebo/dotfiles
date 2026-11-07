@@ -39,6 +39,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - On mac, zsh has no `_brew.sh`: the system zsh is used (avoids `/etc/shells` changes).
   - `_dot_sudo` only uses `sudo` when not root (containers often run as root).
   - `chsh` to zsh only on linux; failure is a warning, not an error.
+  - Tools that Debian/Ubuntu install under another name (`batcat`, `fdfind`) get an
+    alias back to their usual name in the package's zsh snippet, so commands are the
+    same on mac and linux.
 - **Linux is always a devcontainer**: GUI apps (brew casks, eg `19-mac-ghostty`,
   `18-mac-nerd-font`) and anything rendered by the host are `mac` scope only, with
   just a `_brew.sh`.
@@ -87,7 +90,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat and delta for now; oh-my-zsh with its defaults.
+  fastfetch, bat, delta and fd for now; oh-my-zsh with its defaults.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
