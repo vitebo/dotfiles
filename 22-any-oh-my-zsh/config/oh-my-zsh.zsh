@@ -22,6 +22,10 @@ fi
 if (( $+commands[docker] )); then
     plugins+=(docker)
 fi
+# aws completion and profile helpers (39-mac-aws-cli), only when installed.
+if (( $+commands[aws] )); then
+    plugins+=(aws)
+fi
 
 if [[ -f "${ZSH}/oh-my-zsh.sh" ]]; then
     source "${ZSH}/oh-my-zsh.sh"
