@@ -14,6 +14,10 @@ fi
 if (( $+commands[zoxide] )); then
     plugins+=(zoxide)
 fi
+# tmux aliases (34-any-tmux), only when tmux is installed: same reason.
+if (( $+commands[tmux] )); then
+    plugins+=(tmux)
+fi
 
 if [[ -f "${ZSH}/oh-my-zsh.sh" ]]; then
     source "${ZSH}/oh-my-zsh.sh"
