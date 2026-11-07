@@ -127,11 +127,15 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Portability**: bash scripts with `set -euo pipefail`; resolve dirs with
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
+- **System preferences are set by hand**: installers don't change macOS preferences
+  (default browser, menu bar, Mission Control...), which may need confirmation
+  dialogs or a logout; like gnugat, the steps are documented in the package README
+  (eg Dia as default browser in `46-mac-dia`).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
-  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl and Helm for now;
-  oh-my-zsh with its defaults.
+  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm and Dia for
+  now; oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
