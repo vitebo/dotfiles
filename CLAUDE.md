@@ -50,6 +50,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults:
   when the app ships a default config file, copy it as is and mark each of our
   changes with a `dotfiles:` comment explaining why (eg `23-mac-aerospace`).
+- **AeroSpace owns `alt` + `h/j/k/l`**: it grabs them globally, so terminal tools
+  can't use them (eg tmux panes are `prefix + h/j/k/l`, unlike gnugat's `alt`).
 - **AeroSpace manages windows, apps don't tab**: apps with macOS native tabs (eg
   Ghostty) are configured to open windows instead, since native tabs are separate
   windows that AeroSpace tiles one by one; AeroSpace's accordion layout plays the tab
@@ -95,7 +97,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta, fd, eza, fzf and zoxide for now; oh-my-zsh with its defaults.
+  fastfetch, bat, delta, fd, eza, fzf, zoxide and tmux for now; oh-my-zsh with its
+  defaults.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
@@ -109,10 +112,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
     elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
     into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
-  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`) is enabled in `oh-my-zsh.zsh` only when the
+  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`) is enabled in `oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
     snippet.
+  - Functions in package snippets call tools with `command <tool>` when oh-my-zsh
+    aliases that tool (eg `tmux`): aliases expand when the function is defined.
   - Our own aliases/options go in package snippets (no `$ZSH_CUSTOM`). Packages that
     extend `fpath` need a lower `NN` than oh-my-zsh, which runs `compinit`.
   - A tool package may deliberately replace an oh-my-zsh alias from its snippet: it

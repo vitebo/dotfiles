@@ -83,6 +83,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [31-any-eza](31-any-eza/README.md) | eza, a modern `ls`, used by the `l` / `la` / `ll` / `lla` aliases |
 | [32-any-fzf](32-any-fzf/README.md) | fzf fuzzy finder: history, files, `cd`, `**` completion |
 | [33-any-zoxide](33-any-zoxide/README.md) | zoxide, a smarter `cd` (`z`, `zi`) |
+| [34-any-tmux](34-any-tmux/README.md) | tmux terminal multiplexer, with `tz` (zoxide sessions) |
 
 ## Local config
 
