@@ -3,3 +3,8 @@
 [user]
     name = vitebo
     email = vitebo@hotmail.com
+
+# delta (29-any-git-delta) as the pager; ignored when the file doesn't exist,
+# ie where the package isn't installed.
+[include]
+    path = ~/.config/git-delta/git-delta.config
