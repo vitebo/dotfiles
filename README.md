@@ -75,11 +75,12 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [23-mac-aerospace](23-mac-aerospace/README.md) | AeroSpace tiling window manager (config versioned in the repo) |
 | [24-mac-sketchybar](24-mac-sketchybar/README.md) | SketchyBar status bar, with AeroSpace workspaces |
 | [25-mac-jankyborders](25-mac-jankyborders/README.md) | JankyBorders: border around the focused window |
-| [26-any-tree](26-any-tree/README.md) | tree, used by the `l` / `la` / `ll` / `lla` aliases |
+| [26-any-tree](26-any-tree/README.md) | tree, directory listing as a tree |
 | [27-mac-fastfetch](27-mac-fastfetch/README.md) | fastfetch system summary, shown when a terminal opens |
 | [28-any-bat](28-any-bat/README.md) | bat (`cat` with syntax highlighting), also for man pages |
 | [29-any-git-delta](29-any-git-delta/README.md) | delta, syntax-highlighting pager for git |
 | [30-any-fd](30-any-fd/README.md) | fd, a fast alternative to `find` |
+| [31-any-eza](31-any-eza/README.md) | eza, a modern `ls`, used by the `l` / `la` / `ll` / `lla` aliases |
 
 ## Local config
 

@@ -90,7 +90,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta and fd for now; oh-my-zsh with its defaults.
+  fastfetch, bat, delta, fd and eza for now; oh-my-zsh with its defaults.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
@@ -107,8 +107,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - Our own aliases/options go in package snippets (no `$ZSH_CUSTOM`). Packages that
     extend `fpath` need a lower `NN` than oh-my-zsh, which runs `compinit`.
   - A tool package may deliberately replace an oh-my-zsh alias from its snippet: it
-    needs a higher `NN` than oh-my-zsh (loaded after it) and says so in its README
-    (eg `26-any-tree` replaces `l` / `la` / `ll`, like gnugat).
+    needs a higher `NN` than oh-my-zsh (loaded after it), defines it only when the
+    tool is installed, and says so in its README (eg `31-any-eza` replaces `l` /
+    `la` / `ll`).
+  - One owner per alias: never define the same alias in two packages relying on
+    `NN` order to pick one (gnugat defines `l` / `ll`... in both tree and eza; here
+    only eza does).
 - **Editor is Neovim + NvChad** (`17-any-neovim` + `20-any-nvchad`), replacing vim:
   - The [NvChad starter](https://github.com/NvChad/starter) is vendored in
     `20-any-nvchad/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
