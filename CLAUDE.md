@@ -95,7 +95,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch, bat, delta, fd, eza and fzf for now; oh-my-zsh with its defaults.
+  fastfetch, bat, delta, fd, eza, fzf and zoxide for now; oh-my-zsh with its defaults.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
@@ -109,7 +109,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
     elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
     into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
-  - A tool's oh-my-zsh plugin (eg `fzf`) is enabled in `oh-my-zsh.zsh` only when the
+  - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`) is enabled in `oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
     snippet.
