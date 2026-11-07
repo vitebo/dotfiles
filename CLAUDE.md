@@ -61,6 +61,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
     focused window (gnugat has no focus indicator; AeroSpace's goodies recommend it):
     started by AeroSpace, configured by a versioned `bordersrc`.
   - AeroSpace's service mode `esc` reloads AeroSpace and every tool it starts.
+- **Plugging into another package's config**: when a tool configures another one
+  (eg delta in git), it ships its own linked file and the host config includes it
+  with a mechanism that ignores missing files (git `[include]`), like gnugat; so the
+  host package keeps working where the tool isn't installed. The include line lives
+  in the host config with a comment naming the package.
 - **Third-party brew taps**: when a tool isn't in the official casks/formulae,
   `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap, like
   gnugat (eg `nikitabobko/tap/aerospace`).
@@ -82,7 +87,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
-  fastfetch and bat for now; oh-my-zsh with its defaults.
+  fastfetch, bat and delta for now; oh-my-zsh with its defaults.
 - **Themes**: no color theme yet (gnugat uses Catppuccin everywhere); tools keep their
   default theme until we pick one for all of them.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
