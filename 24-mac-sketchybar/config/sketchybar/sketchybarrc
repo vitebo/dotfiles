@@ -38,6 +38,13 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
+##### Adding User Indicator #####
+# dotfiles: Apple logo (nf-fa-apple) and the user name, first on the left (like
+# gnugat's hostname item). The user name doesn't change, so no plugin script.
+
+sketchybar --add item user left \
+           --set user icon= label="$(id -un)"
+
 ##### Adding AeroSpace Workspace Indicators #####
 # dotfiles: AeroSpace workspaces instead of Mission Control spaces (AeroSpace
 # doesn't use them), from AeroSpace's SketchyBar integration:
