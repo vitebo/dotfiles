@@ -82,7 +82,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Claude Code** (`21-any-claude-code`): native installer (`curl … | bash`, like
   gnugat) on mac and linux, so it auto-updates; `~/.local/bin` is put in PATH by its
   zsh snippet (the installer itself doesn't edit rc files).
-  - Versioned: `~/.claude/settings.json`, and `CLAUDE.md` / `rules/*.md` when added.
+  - Versioned: `~/.claude/settings.json`, `~/.claude/CLAUDE.md` (personal
+    instructions for every project) and `~/.claude/rules/*.md` (one topic per file;
+    use `paths` frontmatter for rules that only matter for some files, eg
+    `shell-scripts.md`). Keep them short, simple and valid on both machines; anything
+    project-specific belongs in that project's own `CLAUDE.md`.
   - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.
   - Work-only: managed settings from the org, plain files in `~/.claude/rules/`,
     env vars in `~/.zshrc.local`.
