@@ -76,6 +76,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [24-mac-sketchybar](24-mac-sketchybar/README.md) | SketchyBar status bar, with AeroSpace workspaces |
 | [25-mac-jankyborders](25-mac-jankyborders/README.md) | JankyBorders: border around the focused window |
 | [26-any-tree](26-any-tree/README.md) | tree, used by the `l` / `la` / `ll` / `lla` aliases |
+| [27-mac-fastfetch](27-mac-fastfetch/README.md) | fastfetch system summary, shown when a terminal opens |
 
 ## Local config
 

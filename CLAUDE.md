@@ -81,8 +81,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
-  prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar and JankyBorders for
-  now; oh-my-zsh with its defaults.
+  prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree and
+  fastfetch for now; oh-my-zsh with its defaults.
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal
@@ -137,6 +137,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - Only `~/.zshrc` is used: no `~/.zprofile` / `~/.zshenv` (gnugat also sets PATH
     from the rc). Interactive shells are the target.
   - `compinit` is run by oh-my-zsh, from its snippet (see "Shell: zsh + oh-my-zsh").
+  - A snippet that prints something at startup (eg `27-mac-fastfetch`) only does it
+    when stdout is a terminal (`[[ -t 1 ]]`), so scripts and tools spawning a shell
+    get no extra output.
 - **Commits**: Claude may commit as work progresses, without asking. Always follow
   [Conventional Commits](https://www.conventionalcommits.org) (`feat(zsh): ...`,
   `fix(core): ...`, `docs: ...`), scoped by package name when it applies, one logical
