@@ -61,8 +61,21 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Portability**: bash scripts with `set -euo pipefail`; resolve dirs with
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
-- **Start minimal**: only homebrew (mac bootstrap), zsh, NvChad and its prerequisites,
-  Ghostty and Claude Code for now; no zsh plugins yet.
+- **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
+  prerequisites, Ghostty and Claude Code for now; oh-my-zsh with its defaults.
+- **Frameworks: external code, versioned config**: for a framework (NvChad,
+  oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
+  `~/.local/share/<name>`) and only our config of it is versioned, so personal
+  changes are tracked without vendoring the framework.
+- **Shell: zsh + oh-my-zsh** (diverges from gnugat, which sets up zsh by hand with
+  setopt/compinit and uses starship):
+  - `10-any-zsh` is only the shell and its loader (`~/.zshrc`, `chsh`).
+  - `22-any-oh-my-zsh` owns the shell setup: theme/prompt, plugins, completion
+    (`compinit`), history options, key bindings, common aliases. Don't re-set those
+    elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
+    into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
+  - Our own aliases/options go in package snippets (no `$ZSH_CUSTOM`). Packages that
+    extend `fpath` need a lower `NN` than oh-my-zsh, which runs `compinit`.
 - **Editor is Neovim + NvChad** (`17-any-neovim` + `20-any-nvchad`), replacing vim:
   - The [NvChad starter](https://github.com/NvChad/starter) is vendored in
     `20-any-nvchad/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
@@ -100,7 +113,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
   `17-any-neovim/config/neovim.zsh`, brew's env in `01-mac-homebrew/config/homebrew.zsh`.
   - Only `~/.zshrc` is used: no `~/.zprofile` / `~/.zshenv` (gnugat also sets PATH
     from the rc). Interactive shells are the target.
-  - `compinit` runs in `~/.zshrc` after all snippets, so packages can extend `fpath`.
+  - `compinit` is run by oh-my-zsh, from its snippet (see "Shell: zsh + oh-my-zsh").
 - **Commits**: Claude may commit as work progresses, without asking. Always follow
   [Conventional Commits](https://www.conventionalcommits.org) (`feat(zsh): ...`,
   `fix(core): ...`, `docs: ...`), scoped by package name when it applies, one logical

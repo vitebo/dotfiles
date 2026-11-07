@@ -59,7 +59,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | Package | Description |
 | --- | --- |
 | [01-mac-homebrew](01-mac-homebrew/README.md) | Homebrew |
-| [10-any-zsh](10-any-zsh/README.md) | zsh: history, completion, aliases, prompt |
+| [10-any-zsh](10-any-zsh/README.md) | zsh and its `~/.zshrc` loader |
 | [11-any-curl](11-any-curl/README.md) | curl |
 | [12-any-git](12-any-git/README.md) | git |
 | [13-any-build-tools](13-any-build-tools/README.md) | C compiler and make |
@@ -71,6 +71,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [19-mac-ghostty](19-mac-ghostty/README.md) | Ghostty terminal (config versioned in the repo) |
 | [20-any-nvchad](20-any-nvchad/README.md) | NvChad config for Neovim (versioned in the repo) |
 | [21-any-claude-code](21-any-claude-code/README.md) | Claude Code, with config shared across machines |
+| [22-any-oh-my-zsh](22-any-oh-my-zsh/README.md) | oh-my-zsh: prompt, plugins, completion, history (config versioned in the repo) |
 
 ## Local config
 
