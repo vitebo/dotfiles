@@ -32,8 +32,19 @@ Keep this list up to date whenever a new decision is made.
 - **Portability**: bash scripts with `set -euo pipefail`; resolve dirs with
   `cd "$(dirname ...)" && pwd` instead of `readlink -f` / `realpath`.
 - **Machine-specific config** goes in `~/.zshrc.local`, never in the repo.
-- **Start minimal**: only homebrew (mac bootstrap), zsh and vim for now; no plugin
-  managers or zsh plugins yet.
+- **Start minimal**: only homebrew (mac bootstrap), zsh and nvim for now; no zsh
+  plugins yet.
+- **Editor is Neovim + NvChad** (`20-any-nvim`), replacing vim:
+  - The [NvChad starter](https://github.com/NvChad/starter) is vendored in
+    `20-any-nvim/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
+    symlinks to it, so personal changes are versioned here. Plain NvChad for now.
+  - `lazy-lock.json` is committed; install runs `nvim --headless "+Lazy! restore" +qa`
+    so plugins match the lockfile. Update with `:Lazy sync` and commit the lockfile.
+  - linux: apt's Neovim is too old (NvChad needs 0.11+), so Neovim and tree-sitter
+    come from their GitHub releases; mac: brew (plus JetBrainsMono Nerd Font cask).
+- **Packages own their shell env**: a package may ship `config/<name>.zsh` and link it
+  into `~/.config/zsh/`, which `~/.zshrc` loads (eg `EDITOR` lives in `nvim.zsh`, not
+  in the zsh package).
 - **Commits**: Claude may commit as work progresses, without asking. Always follow
   [Conventional Commits](https://www.conventionalcommits.org) (`feat(zsh): ...`,
   `fix(core): ...`, `docs: ...`), scoped by package name when it applies, one logical
@@ -41,7 +52,7 @@ Keep this list up to date whenever a new decision is made.
 
 ## Adding a package
 
-1. Create `<NN>-<scope>-<name>/` following an existing package (eg `20-any-vim`).
+1. Create `<NN>-<scope>-<name>/` following an existing package (eg `20-any-nvim`).
 2. `install.sh`: resolve `DOT_PACKAGE_DIR` / `DOT_ROOT`, `source 00-core-dot/lib.sh`,
    `_dot_select_package_manager || true`, `_dot_install_with_package_manager`, `_dot_link`.
 3. Add `_apt.sh` / `_brew.sh` as needed, a `README.md`, and a row in the root README table.

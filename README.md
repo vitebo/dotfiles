@@ -49,7 +49,7 @@ To choose manually:
 
 ```sh
 DOT_SCOPES="any" bash install.sh        # cross-platform packages only
-bash 20-any-vim/install.sh              # a single package
+bash 20-any-nvim/install.sh             # a single package
 DOT_PM=brew bash install.sh             # force a package manager
 ```
 
@@ -59,7 +59,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | --- | --- |
 | [01-mac-homebrew](01-mac-homebrew/README.md) | Homebrew |
 | [10-any-zsh](10-any-zsh/README.md) | zsh: history, completion, aliases, prompt |
-| [20-any-vim](20-any-vim/README.md) | vim: basic config, no plugins |
+| [20-any-nvim](20-any-nvim/README.md) | Neovim with NvChad (config versioned in the repo) |
 
 ## Local config
 
