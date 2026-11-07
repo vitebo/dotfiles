@@ -64,6 +64,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
     focused window (gnugat has no focus indicator; AeroSpace's goodies recommend it):
     started by AeroSpace, configured by a versioned `bordersrc`.
   - AeroSpace's service mode `esc` reloads AeroSpace and every tool it starts.
+- **Ask before integrating packages**: when a new package can integrate with packages
+  already in the repo (eg fzf using fd as source and bat/eza for previews, delta as
+  git's pager), Claude lists each possible integration, explains how it would work,
+  and asks which ones to add before implementing them. Never wire integrations in
+  silently, even when gnugat does.
 - **Plugging into another package's config**: when a tool configures another one
   (eg delta in git), it ships its own linked file and the host config includes it
   with a mechanism that ignores missing files (git `[include]`), like gnugat; so the
