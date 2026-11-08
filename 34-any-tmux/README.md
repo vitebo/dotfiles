@@ -14,8 +14,14 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   `history-limit 10000`), which setup replaces in place.
 - `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
   top: sessions (`*` current, `-` last), windows, user, with rounded edges.
-  Neutral colors matching JankyBorders / SketchyBar, defined once as `@dot_*`
-  options at the top of the file.
+  Catppuccin colors, Latte or Mocha following the light / dark mode the terminal
+  reports (Ghostty follows macOS), switched live: the `@dot_*` options at the top
+  of the file pick each role's color from `client_theme`, and tmux's theme colours
+  (`light-theme-*` / `dark-theme-*`) hold the Catppuccin ones; tmux's messages,
+  menus and copy mode use the grey ones, readable in both. A terminal that doesn't
+  report its background gets Mocha.
+- tmux answers the apps inside it that ask for the light / dark mode (DSR 996),
+  so they follow the terminal too.
 - `~/.config/zsh/34-tmux.zsh` -> `config/tmux.zsh`: `tz <query>` opens (or goes
   back to) a session in the directory [33-any-zoxide](../33-any-zoxide) finds,
   named after it.
