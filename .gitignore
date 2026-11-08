@@ -2,6 +2,10 @@
 *.bak
 *.swp
 
-# OpenRig, when a rig runs in this repo (see CLAUDE.md)
+# OpenRig, when a rig runs in this repo (see CLAUDE.md). Its managed blocks in
+# CLAUDE.md can't be ignored: `rig down` removes them. `.claude/settings.local.json`
+# is ignored globally (12-any-git).
 .openrig/
 CLAUDE.local.md
+.mcp.json
+.claude/plugins/
