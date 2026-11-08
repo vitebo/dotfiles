@@ -12,5 +12,9 @@ _dot_install_with_package_manager "${DOT_PACKAGE_DIR}"
 
 # File by file: ~/.config/k9s also holds per-cluster state (clusters/), skins...
 _dot_link "${DOT_PACKAGE_DIR}/config/config.yaml" "${HOME}/.config/k9s/config.yaml"
+for skin in catppuccin-latte catppuccin-mocha; do
+    _dot_link "${DOT_PACKAGE_DIR}/config/skins/${skin}.yaml" "${HOME}/.config/k9s/skins/${skin}.yaml"
+done
+_dot_link_zsh "${DOT_PACKAGE_DIR}/config/k9s.zsh"
 
 _dot_ok "k9s installed"
