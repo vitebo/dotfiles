@@ -20,6 +20,10 @@ is logged in:
 - `settings.json` hooks: `SessionStart` runs herdr's hook
   (`~/.claude/hooks/herdr-agent-state.sh`, from [47-mac-herdr](../47-mac-herdr)) only
   when it exists, so machines without herdr are unaffected.
+- `settings.json` Orca hooks (every other event, plus the second `SessionStart`) and
+  `statusLine`: written by [51-mac-orca](../51-mac-orca) on launch and committed as
+  is. They run the scripts in `~/.orca/agent-hooks/` only when they exist, and those
+  exit right away outside Orca.
 - `settings.json` `"theme": "auto"` ("Auto (match terminal)" in `/theme`): Claude
   Code has no Catppuccin theme, so it uses its own light or dark one, following
   the terminal's mode (Ghostty follows macOS).

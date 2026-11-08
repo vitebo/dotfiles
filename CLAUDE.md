@@ -235,6 +235,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
     versions and links the script into `~/.claude/hooks/`; `settings.json` calls it
     through `$HOME` and only when the file exists (`[ ! -f "$f" ] || bash "$f"`),
     never with the absolute path the tool's installer writes.
+    Exception: apps that write their own hooks into `settings.json` on launch (eg
+    Orca: every hook event + `statusLine`, scripts in `~/.orca/agent-hooks/`) are
+    committed as the app writes them, since reverting just comes back on the next
+    launch; their commands already go through `$HOME`, check the file exists and
+    are no-ops outside the app.
   - Claude runs on the host; `rules/devcontainer.md` makes it run project commands
     inside the project's devcontainer (devcontainer CLI) when there is one.
   - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.
