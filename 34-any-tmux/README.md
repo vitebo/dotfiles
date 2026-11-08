@@ -13,7 +13,8 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   file instead of shadowing it. It holds OpenRig's managed block (mouse,
   `history-limit 10000`), which setup replaces in place.
 - `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
-  top: sessions (`*` current, `-` last), windows, user, with rounded edges.
+  top: windows and user, with rounded edges (no session list: `prefix s` lists
+  them).
   Catppuccin colors, Latte or Mocha following the light / dark mode the terminal
   reports (Ghostty follows macOS), switched live: the `@dot_*` options at the top
   of the file pick each role's color from `client_theme`, and tmux's theme colours
