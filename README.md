@@ -15,8 +15,9 @@ Scripts are idempotent: they can be run as many times as needed.
 
 ### Devcontainers
 
-With the [devcontainer CLI](https://github.com/devcontainers/cli), pass this
-repository when starting the container; it gets cloned and its `install.sh` runs:
+With the [devcontainer CLI](https://github.com/devcontainers/cli) (installed on the
+mac by [50-mac-devcontainer](50-mac-devcontainer/README.md)), pass this repository
+when starting the container; it gets cloned and its `install.sh` runs:
 
 ```sh
 devcontainer up --workspace-folder . --dotfiles-repository <repo>
@@ -99,6 +100,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [47-mac-herdr](47-mac-herdr/README.md) | herdr, terminal workspace for coding agents, with the Claude Code hook |
 | [48-mac-openrig](48-mac-openrig/README.md) | OpenRig, teams of coding agents in tmux / herdr |
 | [49-mac-wallpaper](49-mac-wallpaper/README.md) | Catppuccin Mocha wallpaper |
+| [50-mac-devcontainer](50-mac-devcontainer/README.md) | Dev Containers CLI (`devcontainer`), to run projects' devcontainers |
 
 ## Local config
 

@@ -123,8 +123,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   the old one (they never remove user files); Claude cleans the stale files on this
   machine by hand, after checking their content is now in the repo.
 - **Devcontainers via the devcontainer CLI** (not an editor integration): don't
-  mention any editor in docs. The repo may be cloned anywhere (eg `~/dotfiles`), so
-  paths are always resolved relative to the script, never hardcoded.
+  mention any editor in docs. The CLI is its own package (`50-mac-devcontainer`, a
+  mise npm tool), not part of Docker's, so devcontainer helper scripts go there.
+  The repo may be cloned anywhere (eg `~/dotfiles`), so paths are always resolved
+  relative to the script, never hardcoded.
 - **Non-interactive and idempotent**: no prompts (no `cp -i`), safe to re-run.
   Config files are symlinked with `_dot_link` (existing regular files become `.bak`).
 - **Portability**: bash scripts with `set -euo pipefail`; resolve dirs with
@@ -138,7 +140,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
   the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Dia, herdr,
-  OpenRig and a Catppuccin wallpaper for now; oh-my-zsh with its defaults.
+  OpenRig, a Catppuccin wallpaper and the Dev Containers CLI for now; oh-my-zsh
+  with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
