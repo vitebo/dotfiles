@@ -123,6 +123,14 @@ gaps.outer.right =      10
     # (like in i3)
     # alt-enter = '''exec-and-forget osascript -e \
     # 'tell application "Terminal" to tell (do script) to activate' '''
+    # dotfiles: alt-enter opens a new Ghostty (19-mac-ghostty) window, through its
+    # AppleScript `new window` (`ghostty +new-window` doesn't exist on macOS). When
+    # Ghostty isn't running, it's just launched: it opens its own first window.
+    alt-enter = '''exec-and-forget osascript \
+        -e 'if application "Ghostty" is running then' \
+        -e 'tell application "Ghostty" to new window' \
+        -e 'end if' \
+        -e 'tell application "Ghostty" to activate' '''
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'

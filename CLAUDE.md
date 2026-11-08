@@ -65,8 +65,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **AeroSpace is the only hotkey daemon**: no skhd (a second daemon would compete for
   the same keys). Hotkeys to launch apps or run commands go in `aerospace.toml`
   (`exec-and-forget`), never on `alt` + letter (it types characters like `ç`).
-  Planned, not done yet: `alt-enter` for a new Ghostty window, `ctrl-alt-<letter>`
-  to open apps; work-only hotkeys stay out of the repo.
+  `alt-enter` opens a new Ghostty window (Ghostty's AppleScript `new window`).
+  Planned, not done yet: `ctrl-alt-<letter>` to open apps; work-only hotkeys stay
+  out of the repo.
 - **Apps pinned to AeroSpace workspaces**: an app package that wants a fixed
   workspace adds an `[[on-window-detected]]` rule (by app id) at the end of
   `aerospace.toml`, with a comment naming the package (eg Slack on 9).

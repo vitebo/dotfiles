@@ -25,6 +25,7 @@ Main bindings (`alt` is `Option ⌥`):
 | `alt-/` / `alt-,` | tiles / accordion layout (toggles orientation) |
 | `alt--` / `alt-=` | resize |
 | `alt-tab` | previous workspace |
+| `alt-enter` | new Ghostty window (asks once to let AeroSpace control Ghostty) |
 | `alt-shift-;` | service mode (`esc` reload AeroSpace + SketchyBar + JankyBorders, `r` reset layout, `f` float/tile) |
 
 mac only: it's a GUI app, and linux is always a devcontainer.
