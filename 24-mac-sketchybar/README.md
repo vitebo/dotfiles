@@ -17,6 +17,11 @@ replacing the macOS menu bar (formula from the author's tap).
     from the macOS appearance. An invisible item reloads the bar when macOS switches
     (`AppleInterfaceThemeChangedNotification`) and re-runs JankyBorders' `bordersrc`
     ([25-mac-jankyborders](../25-mac-jankyborders)) when it's running.
+  - Light / Dark / System button (right side): the icon shows the macOS appearance
+    (sun, moon, or half for System, macOS' Auto); a click opens a popup to pick
+    another, and every tool follows. It calls SkyLight's private appearance
+    functions through JXA (`plugins/appearance_mode.sh`), since macOS has no public
+    command for Auto: a macOS update may break the button, nothing else.
 - Started by AeroSpace (`after-startup-command` in `23-mac-aerospace`), which also
   notifies it of workspace changes (`exec-on-workspace-change`) and leaves a 40px
   top gap for it.

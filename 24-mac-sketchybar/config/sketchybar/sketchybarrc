@@ -137,5 +137,31 @@ sketchybar --add event appearance_changed AppleInterfaceThemeChangedNotification
            --set appearance drawing=off script="$PLUGIN_DIR/appearance.sh" \
            --subscribe appearance appearance_changed
 
+# dotfiles: Light / Dark / System button, on the right: the icon shows the current
+# macOS appearance, a click opens a popup to pick another (plugins/appearance_mode.sh;
+# System is macOS' Auto appearance). Every tool follows from there.
+
+sketchybar --add event appearance_mode_changed \
+           --add item appearance_mode right \
+           --set appearance_mode script="$PLUGIN_DIR/appearance_mode.sh" \
+                 click_script="sketchybar --set appearance_mode popup.drawing=toggle" \
+                 popup.align=right popup.background.color=$POPUP_COLOR \
+                 popup.background.corner_radius=5 popup.background.border_width=1 \
+                 popup.background.border_color=$HIGHLIGHT_COLOR \
+           --subscribe appearance_mode appearance_mode_changed mouse.exited.global
+
+for mode in light dark system; do
+    case "$mode" in
+        light)  icon=󰖨 label="Light" ;;
+        dark)   icon=󰖔 label="Dark" ;;
+        system) icon=󰔎 label="System" ;;
+    esac
+    sketchybar --add item appearance_mode.$mode popup.appearance_mode \
+               --set appearance_mode.$mode icon="$icon" label="$label" \
+                     background.color=$HIGHLIGHT_COLOR background.corner_radius=5 \
+                     background.height=24 background.drawing=off \
+                     click_script="$PLUGIN_DIR/appearance_mode.sh $mode"
+done
+
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

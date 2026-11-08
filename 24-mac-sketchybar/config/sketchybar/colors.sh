@@ -8,6 +8,7 @@
 if [ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" = "Dark" ]; then
     # Mocha
     BAR_COLOR=0xcc181825     # mantle, translucent (the bar blurs what's behind)
+    POPUP_COLOR=0xff1e1e2e   # base: popup menus
     TEXT_COLOR=0xffcdd6f4    # text
     HIGHLIGHT_COLOR=0xff45475a  # surface1: focused workspace
     ACTIVE_FG=0xff11111b     # crust, on mauve: items asking for attention
@@ -16,6 +17,7 @@ if [ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" = "Dark" ]; then
 else
     # Latte
     BAR_COLOR=0xcce6e9ef     # mantle, translucent
+    POPUP_COLOR=0xffeff1f5   # base
     TEXT_COLOR=0xff4c4f69    # text
     HIGHLIGHT_COLOR=0xffbcc0cc  # surface1
     ACTIVE_FG=0xffeff1f5     # base, on mauve
