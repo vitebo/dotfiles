@@ -24,6 +24,11 @@ is logged in:
   `statusLine`: written by [51-mac-orca](../51-mac-orca) on launch and committed as
   is. They run the scripts in `~/.orca/agent-hooks/` only when they exist, and those
   exit right away outside Orca.
+- `settings.json` [agent teams](https://code.claude.com/docs/en/agent-teams)
+  (experimental): enabled with `env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`, and
+  `"teammateMode": "auto"` gives each teammate its own pane when Claude runs inside
+  tmux ([34-any-tmux](../34-any-tmux)), else they run in-process (arrows + Enter in
+  the agent panel). Ghostty has no split-pane support of its own.
 - `settings.json` `"theme": "auto"` ("Auto (match terminal)" in `/theme`): Claude
   Code has no Catppuccin theme, so it uses its own light or dark one, following
   the terminal's mode (Ghostty follows macOS).

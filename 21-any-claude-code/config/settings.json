@@ -206,5 +206,9 @@
     "claude-opus-5-5": {
       "effortLevel": "xhigh"
     }
-  }
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "teammateMode": "auto"
 }
