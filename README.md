@@ -101,6 +101,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [48-mac-openrig](48-mac-openrig/README.md) | OpenRig, teams of coding agents in tmux / herdr |
 | [49-mac-wallpaper](49-mac-wallpaper/README.md) | Catppuccin Mocha wallpaper |
 | [50-mac-devcontainer](50-mac-devcontainer/README.md) | Dev Containers CLI (`devcontainer`), to run projects' devcontainers |
+| [51-mac-orca](51-mac-orca/README.md) | Orca, desktop app to run coding agents in parallel worktrees |
 
 ## Local config
 
