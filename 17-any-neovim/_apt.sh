@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # apt ships an outdated Neovim: installed from the GitHub release instead,
-# unless a recent enough one (0.11+) is already there.
+# unless a recent enough one (0.12+, for 20-any-nvchad's theme) is already there.
 
 nvim_version="$(nvim --version 2>/dev/null | head -n 1 | sed -e 's/^NVIM v//' -e 's/-.*//')"
-if [ "$(printf '%s\n' 0.11.0 "${nvim_version:-0}" | sort -V | head -n 1)" = "0.11.0" ]; then
+if [ "$(printf '%s\n' 0.12.0 "${nvim_version:-0}" | sort -V | head -n 1)" = "0.12.0" ]; then
     return 0
 fi
 

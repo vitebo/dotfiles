@@ -6,7 +6,9 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
+	-- dotfiles: Catppuccin Latte or Mocha from 'background' (lua/theme.lua), so
+	-- NvChad's theme picker can't pin one.
+	theme = require("theme").name(),
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },

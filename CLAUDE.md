@@ -206,8 +206,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
     symlinks to it, so personal changes are versioned here. Plain NvChad for now.
   - `lazy-lock.json` is committed; install runs `nvim --headless "+Lazy! restore" +qa`
     so plugins match the lockfile. Update with `:Lazy sync` and commit the lockfile.
-  - linux: apt's Neovim is too old (NvChad needs 0.11+) and tree-sitter isn't packaged,
-    so both come from their GitHub releases (latest). mac: brew.
+  - linux: apt's Neovim is too old (our NvChad config needs 0.12+) and tree-sitter
+    isn't packaged, so both come from their GitHub releases (latest). mac: brew.
   - The nerd font is `mac` scope only: in a devcontainer the host terminal renders it.
 - **Same dotfiles on personal and work machines**: the repo holds one shared config;
   never version per-machine or per-account variants (no profiles), so nothing from

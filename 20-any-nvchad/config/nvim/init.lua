@@ -1,4 +1,6 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+-- dotfiles: one base46 cache per theme, Latte or Mocha from 'background' (lua/theme.lua).
+local theme = require "theme"
+vim.g.base46_cache = theme.cache(theme.name())
 vim.g.mapleader = " "
 
 -- bootstrap lazy and all plugins
@@ -25,12 +27,17 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
+-- load theme (dotfiles: compiled the first time each theme is used)
+if vim.uv.fs_stat(vim.g.base46_cache .. "defaults") then
+  dofile(vim.g.base46_cache .. "defaults")
+  dofile(vim.g.base46_cache .. "statusline")
+else
+  require("base46").load_all_highlights()
+end
 
 require "options"
 require "autocmds"
+theme.setup() -- dotfiles: follow the terminal's light / dark changes
 
 vim.schedule(function()
   require "mappings"
