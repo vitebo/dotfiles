@@ -20,8 +20,9 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   (`light-theme-*` / `dark-theme-*`) hold the Catppuccin ones; tmux's messages,
   menus and copy mode use the grey ones, readable in both. A terminal that doesn't
   report its background gets Mocha.
-- tmux answers the apps inside it that ask for the light / dark mode (DSR 996),
-  so they follow the terminal too.
+- Apps inside tmux follow the terminal's light / dark mode too: tmux answers their
+  DSR 996 queries and forwards mode 2031 change reports (after re-reading the
+  terminal's background, which Ghostty answers).
 - `~/.config/zsh/34-tmux.zsh` -> `config/tmux.zsh`: `tz <query>` opens (or goes
   back to) a session in the directory [33-any-zoxide](../33-any-zoxide) finds,
   named after it.
