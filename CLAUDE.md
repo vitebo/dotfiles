@@ -135,11 +135,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **System preferences are set by hand**: installers don't change macOS preferences
   (default browser, menu bar, Mission Control...), which may need confirmation
   dialogs or a logout; the steps are documented in the package README
-  (eg Dia as default browser in `46-mac-dia`).
+  (eg Chrome as default browser in `46-mac-google-chrome`).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
-  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Dia, herdr,
+  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Chrome, herdr,
   OpenRig, Orca, a Catppuccin wallpaper and the Dev Containers CLI for now; oh-my-zsh
   with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work

@@ -96,7 +96,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [43-mac-k9s](43-mac-k9s/README.md) | k9s, terminal UI for Kubernetes |
 | [44-mac-kubectl](44-mac-kubectl/README.md) | kubectl; local cluster from Docker Desktop's Kubernetes |
 | [45-mac-helm](45-mac-helm/README.md) | Helm, Kubernetes package manager |
-| [46-mac-dia](46-mac-dia/README.md) | Dia web browser, the default browser |
+| [46-mac-google-chrome](46-mac-google-chrome/README.md) | Google Chrome web browser, the default browser |
 | [47-mac-herdr](47-mac-herdr/README.md) | herdr, terminal workspace for coding agents, with the Claude Code hook |
 | [48-mac-openrig](48-mac-openrig/README.md) | OpenRig, teams of coding agents in tmux / herdr |
 | [49-mac-wallpaper](49-mac-wallpaper/README.md) | Catppuccin Mocha wallpaper |
