@@ -169,10 +169,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
     start) or a notification on each change (mode 2031, live); multiplexers (tmux,
     herdr) must pass both through to the apps inside them.
   - Only host GUI tools (SketchyBar, JankyBorders) listen to macOS directly.
-  - The wallpaper (`49-mac-wallpaper`) is a dynamic HEIC (a light and a dark image)
-    that macOS switches by itself; it's set by hand once, like other system
-    preferences. Images come from free-licensed photos recolored into Latte and
-    Mocha with lutgen, credited in the package README.
+  - The wallpaper (`49-mac-wallpaper`) is one Mocha image in both modes (a dynamic
+    HEIC built by hand wasn't recognized by macOS, so it was dropped for
+    simplicity); it's set by hand once, like other system preferences. It's a
+    free-licensed photo recolored with lutgen, credited in the package README.
   - Colors we set by hand come from the official Catppuccin palettes and live in one
     place per tool (eg tmux's `@dot_*` options, SketchyBar's `colors.sh`).
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
