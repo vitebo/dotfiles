@@ -98,6 +98,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [46-mac-dia](46-mac-dia/README.md) | Dia web browser, the default browser |
 | [47-mac-herdr](47-mac-herdr/README.md) | herdr, terminal workspace for coding agents, with the Claude Code hook |
 | [48-mac-openrig](48-mac-openrig/README.md) | OpenRig, teams of coding agents in tmux / herdr |
+| [49-mac-wallpaper](49-mac-wallpaper/README.md) | Catppuccin wallpaper, switching between Latte and Mocha with macOS |
 
 ## Local config
 

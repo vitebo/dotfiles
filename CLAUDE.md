@@ -136,8 +136,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
-  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Dia, herdr
-  and OpenRig for now; oh-my-zsh with its defaults.
+  the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Dia, herdr,
+  OpenRig and a Catppuccin wallpaper for now; oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
@@ -168,6 +168,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
     start) or a notification on each change (mode 2031, live); multiplexers (tmux,
     herdr) must pass both through to the apps inside them.
   - Only host GUI tools (SketchyBar, JankyBorders) listen to macOS directly.
+  - The wallpaper (`49-mac-wallpaper`) is a dynamic HEIC (a light and a dark image)
+    that macOS switches by itself; it's set by hand once, like other system
+    preferences. Images come from free-licensed photos recolored into Latte and
+    Mocha with lutgen, credited in the package README.
   - Colors we set by hand come from the official Catppuccin palettes and live in one
     place per tool (eg tmux's `@dot_*` options, SketchyBar's `colors.sh`).
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
