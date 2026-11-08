@@ -13,6 +13,10 @@ replacing the macOS menu bar (formula from the author's tap).
     mentions / DMs highlighted, `•` for unread channels, dimmed icon when Slack is
     closed. Refreshed every 10s and when the focused app changes; click opens Slack.
   - Right side: clock, volume, battery, Slack. Left side: user, workspaces, focused app.
+  - Catppuccin colors (`colors.sh`), Latte in light mode and Mocha in dark mode, read
+    from the macOS appearance. An invisible item reloads the bar when macOS switches
+    (`AppleInterfaceThemeChangedNotification`) and re-runs JankyBorders' `bordersrc`
+    ([25-mac-jankyborders](../25-mac-jankyborders)) when it's running.
 - Started by AeroSpace (`after-startup-command` in `23-mac-aerospace`), which also
   notifies it of workspace changes (`exec-on-workspace-change`) and leaves a 40px
   top gap for it.

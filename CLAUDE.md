@@ -169,8 +169,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     herdr) must pass both through to the apps inside them.
   - Only host GUI tools (SketchyBar, JankyBorders) listen to macOS directly.
   - Colors we set by hand come from the official Catppuccin palettes and live in one
-    place per tool (eg tmux's `@dot_*` options). Tools not migrated yet keep the old
-    neutral palette (light `#e2e2e3` on `#414550` for the active item, grays).
+    place per tool (eg tmux's `@dot_*` options, SketchyBar's `colors.sh`).
 - **Frameworks: external code, versioned config**: for a framework (NvChad,
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal

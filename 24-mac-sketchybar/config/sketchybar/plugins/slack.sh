@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 
-# dotfiles: Slack (38-mac-slack) state from its Dock badge,
-# styled with our neutral palette (active: light on #414550):
+# dotfiles: Slack (38-mac-slack) state from its Dock badge, in the bar's
+# Catppuccin colors (colors.sh):
 # - Slack closed: dimmed icon;
 # - nothing unread: icon only;
 # - unread channels only (badge "•"): the dot, not highlighted;
 # - mentions / direct messages (badge is a number): the number, highlighted.
 
-ACTIVE_FG=0xffe2e2e3
-ACTIVE_BG=0xff414550
-NORMAL=0xffffffff
-DIMMED=0x66ffffff
+source "$CONFIG_DIR/colors.sh"
+NORMAL=$TEXT_COLOR
+DIMMED=$DIMMED_COLOR
 
 if ! pgrep -xq Slack; then
     sketchybar --set "$NAME" icon.color=$DIMMED label.drawing=off background.drawing=off

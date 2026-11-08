@@ -5,12 +5,24 @@
 # Run by `borders` when started without arguments; running this script again
 # updates the running instance.
 
+# dotfiles: Catppuccin colors following the macOS appearance (CLAUDE.md "Themes"):
+# AppleInterfaceStyle is "Dark" in dark mode and unset in light mode. SketchyBar
+# (24-mac-sketchybar) runs this script again when the appearance changes.
+# Active: mauve; inactive: surface1. (example: 0xffe2e2e3 / 0xff414550)
+if [ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" = "Dark" ]; then
+	active_color=0xffcba6f7    # Mocha
+	inactive_color=0xff45475a
+else
+	active_color=0xff8839ef    # Latte
+	inactive_color=0xffbcc0cc
+fi
+
 options=(
 	style=round
 	width=6.0
 	hidpi=off
-	active_color=0xffe2e2e3
-	inactive_color=0xff414550
+	active_color=$active_color
+	inactive_color=$inactive_color
 )
 
 borders "${options[@]}"

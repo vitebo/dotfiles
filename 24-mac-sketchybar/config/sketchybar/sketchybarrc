@@ -9,6 +9,9 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+# dotfiles: Catppuccin colors following the macOS appearance (colors.sh).
+source "$CONFIG_DIR/colors.sh"
+
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
 # These are only some of the options available. For all options see:
@@ -16,21 +19,23 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
+# dotfiles: color from colors.sh (default: 0x40000000)
+sketchybar --bar position=top height=40 blur_radius=30 color=$BAR_COLOR
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-# dotfiles: JetBrainsMono Nerd Font (18-mac-nerd-font) instead of Hack Nerd Font
+# dotfiles: JetBrainsMono Nerd Font (18-mac-nerd-font) instead of Hack Nerd Font,
+# and text colors from colors.sh (default: 0xffffffff)
 default=(
   padding_left=5
   padding_right=5
   icon.font="JetBrainsMono Nerd Font:Bold:17.0"
   label.font="JetBrainsMono Nerd Font:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+  icon.color=$TEXT_COLOR
+  label.color=$TEXT_COLOR
   icon.padding_left=4
   icon.padding_right=4
   label.padding_left=4
@@ -68,7 +73,7 @@ for sid in $WORKSPACES; do
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
-        background.color=0x44ffffff \
+        background.color=$HIGHLIGHT_COLOR \
         background.corner_radius=5 \
         background.height=20 \
         background.drawing=off \
@@ -121,6 +126,16 @@ sketchybar --add item slack right \
                  click_script="open -a Slack" \
                  background.corner_radius=5 background.height=20 background.drawing=off \
            --subscribe slack front_app_switched system_woke
+
+##### Following the macOS Appearance #####
+# dotfiles: macOS posts AppleInterfaceThemeChangedNotification when it switches
+# between light and dark mode; an invisible item reloads the bar then (see
+# plugins/appearance.sh), so colors.sh picks the other Catppuccin flavor.
+
+sketchybar --add event appearance_changed AppleInterfaceThemeChangedNotification \
+           --add item appearance left \
+           --set appearance drawing=off script="$PLUGIN_DIR/appearance.sh" \
+           --subscribe appearance appearance_changed
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
