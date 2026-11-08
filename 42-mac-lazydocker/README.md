@@ -7,6 +7,8 @@ for docker and docker compose.
   yet); lazydocker's defaults apply for the rest (`lazydocker --config` prints them).
 - `~/.config/zsh/42-lazydocker.zsh` -> `config/lazydocker.zsh`: `lzd` alias.
 - mac only, like docker.
+- Colors: lazydocker's default theme, made of the terminal's ANSI colors, so it
+  follows Ghostty's Catppuccin Latte / Mocha.
 
 Prerequisites:
 

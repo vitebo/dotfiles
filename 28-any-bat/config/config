@@ -10,6 +10,14 @@
 # for a list of all available themes
 #--theme="TwoDark"
 
+# dotfiles: Catppuccin, Latte on a light terminal and Mocha on a dark one. The
+# default `--theme=auto` asks the terminal for its background each run, so it
+# follows Ghostty (and macOS), in devcontainers too. When bat can't ask (output
+# redirected), it falls back to the dark one; fzf previews use `ansi` instead
+# (32-any-fzf).
+--theme-light="Catppuccin Latte"
+--theme-dark="Catppuccin Mocha"
+
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):
 #--italic-text=always

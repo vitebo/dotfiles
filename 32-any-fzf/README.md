@@ -26,4 +26,7 @@ tool is installed):
 - [28-any-bat](../28-any-bat) preview of the highlighted file (`ctrl-t`, `**`).
 - [31-any-eza](../31-any-eza) tree preview of the highlighted directory (`alt-c`, `cd **`).
 
-No color theme, and the oh-my-zsh plugin instead of `fzf --zsh`.
+Colors: the terminal's 16 ANSI colors (`--color=16` in `FZF_DEFAULT_OPTS`), so fzf
+follows Ghostty's Catppuccin Latte / Mocha; bat previews use bat's `ansi` theme for
+the same reason (inside fzf, bat can't ask the terminal for its background). Key
+bindings come from the oh-my-zsh plugin instead of `fzf --zsh`.

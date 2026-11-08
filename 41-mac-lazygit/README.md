@@ -14,6 +14,9 @@ Installs [lazygit](https://github.com/jesseduffield/lazygit), a terminal UI for 
   installed.
 - [17-any-neovim](../17-any-neovim): files open in `$EDITOR` (nvim), no config needed.
 
+Colors: lazygit's default theme, made of the terminal's ANSI colors, so it follows
+Ghostty's Catppuccin Latte / Mocha.
+
 Prerequisites:
 
 - [12-any-git](../12-any-git)

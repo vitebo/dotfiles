@@ -22,8 +22,17 @@ elif (( $+commands[batcat] )); then
     _dot_fzf_bat="batcat"
 fi
 
-_dot_fzf_bat_preview="${_dot_fzf_bat} -n --color=always --line-range :500 {}"
+# bat's `ansi` theme: inside fzf, bat can't ask the terminal for its background,
+# and the 16 ANSI colors follow Ghostty's Catppuccin flavor anyway.
+_dot_fzf_bat_preview="${_dot_fzf_bat} -n --color=always --theme=ansi --line-range :500 {}"
 _dot_fzf_eza_preview="eza --tree --color=always {} | head -n 200"
+
+# Colors: the terminal's 16 ANSI colors (fzf's `base16` scheme) instead of its
+# fixed dark 256-color scheme, so fzf follows Ghostty's Catppuccin Latte / Mocha.
+# (Not again in nested shells, which inherit the exported variable.)
+if [[ " ${FZF_DEFAULT_OPTS} " != *" --color=16 "* ]]; then
+    export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:+${FZF_DEFAULT_OPTS} }--color=16"
+fi
 
 # Source: fd, with hidden files, without .git and .gitignore'd files.
 if [[ -n "${_dot_fzf_fd}" ]]; then

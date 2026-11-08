@@ -14,4 +14,5 @@ and uses it for the listing aliases (one level as a tree):
   installed. `NN` is above [22-any-oh-my-zsh](../22-any-oh-my-zsh), so they replace
   its `l` / `la` / `ll`; without eza, oh-my-zsh's (`ls`) ones apply.
 - Icons need a Nerd Font in the terminal ([18-mac-nerd-font](../18-mac-nerd-font)).
-- Colors and icons are `auto` (plain text when piped), no theme.
+- Colors and icons are `auto` (plain text when piped), no theme: eza's colors
+  are the terminal's ANSI ones, so they follow Ghostty's Catppuccin flavor.
