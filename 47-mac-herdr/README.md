@@ -6,7 +6,9 @@ working / blocked / idle, and a CLI / socket API agents can drive.
 
 - `~/.config/herdr/config.toml` -> `config/config.toml`: only our changes
   (`herdr --default-config` prints the defaults, `herdr config check` validates):
-  `theme.name = "terminal"`, following Ghostty's palette.
+  `theme.name = "terminal"`, following Ghostty's palette, so Catppuccin Latte or
+  Mocha with macOS (rather than `auto_switch` between herdr's built-in Catppuccin
+  themes: the terminal's colors come first, see CLAUDE.md "Themes").
 - Prefix `ctrl+b`, the default, like tmux ([34-any-tmux](../34-any-tmux)): use one
   or the other in a terminal, don't nest them.
 - herdr writes `onboarding = false` to its config once the first-run setup is

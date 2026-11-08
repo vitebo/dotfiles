@@ -20,6 +20,9 @@ is logged in:
 - `settings.json` hooks: `SessionStart` runs herdr's hook
   (`~/.claude/hooks/herdr-agent-state.sh`, from [47-mac-herdr](../47-mac-herdr)) only
   when it exists, so machines without herdr are unaffected.
+- `settings.json` `"theme": "auto"` ("Auto (match terminal)" in `/theme`): Claude
+  Code has no Catppuccin theme, so it uses its own light or dark one, following
+  the terminal's mode (Ghostty follows macOS).
 
 Claude Code writes `settings.json` itself (`/config`, `/model`...): those changes
 show up as a diff in this repo. Commit them if they apply to every machine,
