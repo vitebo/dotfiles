@@ -104,6 +104,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [51-mac-orca](51-mac-orca/README.md) | Orca, desktop app to run coding agents in parallel worktrees |
 | [52-mac-aws-vpn-client](52-mac-aws-vpn-client/README.md) | AWS Client VPN, VPN client for AWS networks |
 | [53-mac-chrome-devtools-mcp](53-mac-chrome-devtools-mcp/README.md) | Chrome DevTools MCP, lets Claude Code drive Chrome and take screenshots |
+| [54-any-chafa](54-any-chafa/README.md) | chafa, shows images in the terminal (also inside tmux) |
 
 ## Local config
 
