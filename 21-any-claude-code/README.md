@@ -31,8 +31,7 @@ is logged in:
   [Reference](https://code.claude.com/docs/en/interactive-mode.md#vim-editor-mode).
 - `~/.claude/statusline.sh` -> `config/statusline.sh`: the status line
   (`settings.json` `statusLine`, run through `$HOME` only when the file exists). It
-  prints the plan usage (`5h 37% · 7d 26%`) and saves it to
-  `~/.cache/claude-code/usage.json` for [24-mac-sketchybar](../24-mac-sketchybar).
+  prints the plan usage, 5-hour and 7-day windows (`5h 37% · 7d 26%`).
   Claude Code only sends that usage for claude.ai subscriptions, after the session's
   first response; otherwise the status line stays empty. With a status line, Claude
   Code hides most footer hints (eg `esc to interrupt`).
