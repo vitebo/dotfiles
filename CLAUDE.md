@@ -235,6 +235,13 @@ repo should behave is made (structure, conventions, tooling, workflow).
     `~/.claude/hooks/`; `settings.json` calls it through `$HOME` and only when the
     file exists (`[ ! -f "$f" ] || bash "$f"`), never with the absolute path the
     tool's installer writes.
+  - Browser automation: the chrome-devtools MCP (`53-mac-chrome-devtools-mcp`,
+    isolated Chrome) by default; the Claude in Chrome extension (installed by hand,
+    see `46-mac-google-chrome`) only for flows needing the real, logged-in Chrome,
+    eg Cloudflare Turnstile blocks the automated one. Sessions opt in with
+    `claude --chrome` ("Enabled by default" stays off); `rules/browser.md` tells
+    Claude which to use. Not the MCP's `--autoConnect`: it needs Chrome's remote
+    debugging left on.
   - Claude runs on the host; `rules/devcontainer.md` makes it run project commands
     inside the project's devcontainer (devcontainer CLI) when there is one.
   - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.

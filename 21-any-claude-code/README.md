@@ -13,6 +13,10 @@ is logged in:
   working style)
 - `~/.claude/rules/<name>.md` -> `config/rules/<name>.md` (each file linked on its own):
   - `git.md`: Conventional Commits, commit/push etiquette
+  - `browser.md`: chrome-devtools MCP by default, Claude in Chrome (sessions
+    started with `claude --chrome`) only for flows that need the real, logged-in
+    Chrome (Turnstile / CAPTCHAs, SSO); setup in
+    [46-mac-google-chrome](../46-mac-google-chrome)
   - `devcontainer.md`: when a project has a devcontainer, run project commands
     (tests, lint, build, servers...) inside it with the devcontainer CLI, while
     Claude itself runs on the host
