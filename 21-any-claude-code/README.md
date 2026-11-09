@@ -29,6 +29,9 @@ is logged in:
   `"teammateMode": "auto"` gives each teammate its own pane when Claude runs inside
   tmux ([34-any-tmux](../34-any-tmux)), else they run in-process (arrows + Enter in
   the agent panel). Ghostty has no split-pane support of its own.
+- `settings.json` `"preferredNotifChannel": "ghostty"`: desktop notifications
+  (task done, permission prompt) as Ghostty's, also inside tmux, where Claude Code
+  can't detect Ghostty (tmux passes them through, see [34-any-tmux](../34-any-tmux)).
 - `settings.json` `"theme": "auto"` ("Auto (match terminal)" in `/theme`): Claude
   Code has no Catppuccin theme, so it uses its own light or dark one, following
   the terminal's mode (Ghostty follows macOS).
