@@ -8,10 +8,6 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   splits in the current directory, `prefix h/j/k/l` for panes, vim copy mode,
   clipboard through the terminal, `prefix r` to reload, 10ms escape time).
   No theme or plugins.
-- `~/.tmux.conf` -> `config/tmux.conf` too: tmux reads `~/.tmux.conf` instead of the
-  XDG file when it exists, so tools that write to it (OpenRig's `rig setup`) edit this
-  file instead of shadowing it. It holds OpenRig's managed block (mouse,
-  `history-limit 10000`), which setup replaces in place.
 - `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
   top: current session, windows and user, with rounded edges (`prefix s` lists
   all the sessions).

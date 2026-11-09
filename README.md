@@ -97,11 +97,8 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [44-mac-kubectl](44-mac-kubectl/README.md) | kubectl; local cluster from Docker Desktop's Kubernetes |
 | [45-mac-helm](45-mac-helm/README.md) | Helm, Kubernetes package manager |
 | [46-mac-google-chrome](46-mac-google-chrome/README.md) | Google Chrome web browser, the default browser |
-| [47-mac-herdr](47-mac-herdr/README.md) | herdr, terminal workspace for coding agents, with the Claude Code hook |
-| [48-mac-openrig](48-mac-openrig/README.md) | OpenRig, teams of coding agents in tmux / herdr |
 | [49-mac-wallpaper](49-mac-wallpaper/README.md) | Catppuccin Mocha wallpaper |
 | [50-mac-devcontainer](50-mac-devcontainer/README.md) | Dev Containers CLI (`devcontainer`), to run projects' devcontainers |
-| [51-mac-orca](51-mac-orca/README.md) | Orca, desktop app to run coding agents in parallel worktrees |
 | [52-mac-aws-vpn-client](52-mac-aws-vpn-client/README.md) | AWS Client VPN, VPN client for AWS networks |
 | [53-mac-chrome-devtools-mcp](53-mac-chrome-devtools-mcp/README.md) | Chrome DevTools MCP, lets Claude Code drive Chrome and take screenshots |
 | [54-any-chafa](54-any-chafa/README.md) | chafa, shows images in the terminal (also inside tmux) |

@@ -17,13 +17,6 @@ is logged in:
     (tests, lint, build, servers...) inside it with the devcontainer CLI, while
     Claude itself runs on the host
 - `~/.config/zsh/21-claude-code.zsh` -> `config/claude-code.zsh`: puts `~/.local/bin` first in PATH
-- `settings.json` hooks: `SessionStart` runs herdr's hook
-  (`~/.claude/hooks/herdr-agent-state.sh`, from [47-mac-herdr](../47-mac-herdr)) only
-  when it exists, so machines without herdr are unaffected.
-- `settings.json` Orca hooks (every other event, plus the second `SessionStart`) and
-  `statusLine`: written by [51-mac-orca](../51-mac-orca) on launch and committed as
-  is. They run the scripts in `~/.orca/agent-hooks/` only when they exist, and those
-  exit right away outside Orca.
 - `settings.json` [agent teams](https://code.claude.com/docs/en/agent-teams)
   (experimental): enabled with `env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`, and
   `"teammateMode": "auto"` gives each teammate its own pane when Claude runs inside

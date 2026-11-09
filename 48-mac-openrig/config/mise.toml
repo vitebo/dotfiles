@@ -1,8 +1,0 @@
-# ~/.config/mise/conf.d/openrig.toml -> 48-mac-openrig/config/mise.toml
-#
-# OpenRig's CLI (`rig`, `openrig-tui`) as a mise tool (40-mac-mise loads
-# ~/.config/mise/conf.d/*.toml): installed with mise's Node.js, and kept across
-# Node.js upgrades, unlike `npm install -g`.
-
-[tools]
-"npm:@openrig/cli" = "latest"
