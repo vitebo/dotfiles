@@ -23,6 +23,17 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 - `allow-passthrough on`: apps can send sequences straight to the terminal, so
   [54-any-chafa](../54-any-chafa) shows real images (kitty graphics) inside tmux,
   and Claude Code's desktop notifications reach Ghostty.
+- Claude Code agents that need you: `~/.claude/hooks/tmux-agent-state.sh` ->
+  `config/claude-hook.sh`, run by Claude Code's hooks
+  ([21-any-claude-code](../21-any-claude-code)), records each pane's Claude state
+  in tmux options (`@claude_pane`, and the most urgent one in `@claude_window` /
+  `@claude_session`): `working` (prompt sent, tool done), `attention` (permission
+  prompt, MCP question), `done` (turn finished). It does nothing outside tmux.
+  - Status line: an icon before each window's name (bell = needs you, check = done,
+    hourglass = working); other windows needing you are drawn on red, and other
+    sessions needing you are listed on the right, on red.
+  - `prefix + a`: lists only the panes waiting for you (`attention` or `done`),
+    zoomed; Enter jumps there.
 - `focus-events on`: apps learn when the terminal gains / loses focus (Claude Code
   uses it to notify you when you're away). With extended keys and passthrough, this
   is the tmux setup [Claude Code's terminal docs](https://code.claude.com/docs/en/terminal-config.md)
