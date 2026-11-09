@@ -25,3 +25,10 @@ macos-titlebar-style = hidden
 window-padding-x = 12
 window-padding-y = 8
 window-padding-balance = true
+
+# dotfiles: the left option key acts as alt, so terminal apps get alt shortcuts
+# (eg Claude Code's option+enter newline, option+p model picker). The Brazilian
+# layout defaults to false (option types characters); the right option key still
+# does. AeroSpace (23-mac-aerospace) grabs its alt shortcuts first. (default: unset,
+# true only on U.S. layouts)
+macos-option-as-alt = left

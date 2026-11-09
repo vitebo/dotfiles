@@ -15,6 +15,9 @@ Installs the [Ghostty](https://ghostty.org) terminal (brew cask).
     rounded corners stay; `option`+drag on the frame still moves a window.
   - more padding around the text (12 points left / right, 8 top / bottom, balanced),
     instead of 2.
+  - left `option` acts as `alt` (`macos-option-as-alt = left`), so terminal apps
+    get alt shortcuts (eg Claude Code's `option+enter`, `option+p`); the Brazilian
+    layout defaults to option typing characters, which the right `option` still does.
 
 mac only: it's a GUI app, and linux is always a devcontainer.
 
