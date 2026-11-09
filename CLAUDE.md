@@ -140,8 +140,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
   the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Chrome, herdr,
-  OpenRig, Orca, a Catppuccin wallpaper and the Dev Containers CLI for now; oh-my-zsh
-  with its defaults.
+  OpenRig, Orca, AWS Client VPN, a Catppuccin wallpaper and the Dev Containers CLI
+  for now; oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.

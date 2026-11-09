@@ -102,6 +102,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [49-mac-wallpaper](49-mac-wallpaper/README.md) | Catppuccin Mocha wallpaper |
 | [50-mac-devcontainer](50-mac-devcontainer/README.md) | Dev Containers CLI (`devcontainer`), to run projects' devcontainers |
 | [51-mac-orca](51-mac-orca/README.md) | Orca, desktop app to run coding agents in parallel worktrees |
+| [52-mac-aws-vpn-client](52-mac-aws-vpn-client/README.md) | AWS Client VPN, VPN client for AWS networks |
 
 ## Local config
 
