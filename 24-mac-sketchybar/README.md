@@ -16,8 +16,13 @@ replacing the macOS menu bar (formula from the author's tap).
     with a lock when connected, crossed out and dimmed when disconnected or the
     client is closed, an outline with `…` while connecting. Read from the tray state the client logs to
     `~/.config/AWSVPNClient/logs`, refreshed every 5s; click opens the client.
-  - Right side: clock, volume, battery, Slack, AWS VPN. Left side: user, workspaces,
-    focused app.
+  - Claude Code ([21-any-claude-code](../21-any-claude-code)) plan usage: Claude
+    icon with the 5-hour and 7-day percentages (`37% · 26%`), highlighted from 80%,
+    hidden until Claude Code has saved usage. Read from
+    `~/.cache/claude-code/usage.json`, written by its status line, which also
+    triggers a refresh; every 60s too, so a window that reset shows 0%.
+  - Right side: clock, volume, battery, Slack, Claude usage, AWS VPN. Left side: user,
+    workspaces, focused app.
   - Catppuccin colors (`colors.sh`), Latte in light mode and Mocha in dark mode, read
     from the macOS appearance. An invisible item reloads the bar when macOS switches
     (`AppleInterfaceThemeChangedNotification`) and re-runs JankyBorders' `bordersrc`

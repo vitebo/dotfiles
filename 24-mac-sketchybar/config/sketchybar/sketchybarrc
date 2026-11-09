@@ -127,6 +127,18 @@ sketchybar --add item slack right \
                  background.corner_radius=5 background.height=20 background.drawing=off \
            --subscribe slack front_app_switched system_woke
 
+##### Adding Claude Code Usage Indicator #####
+# dotfiles: Claude Code (21-any-claude-code) plan usage, 5-hour and 7-day windows
+# (nf-cod-claude icon, see plugins/claude_usage.sh). Its status line triggers
+# claude_usage_changed each time it saves new usage; every 60s also catches a
+# window reset.
+
+sketchybar --add event claude_usage_changed \
+           --add item claude_usage right \
+           --set claude_usage icon= update_freq=60 script="$PLUGIN_DIR/claude_usage.sh" \
+                 background.corner_radius=5 background.height=20 background.drawing=off \
+           --subscribe claude_usage claude_usage_changed system_woke
+
 ##### Adding AWS Client VPN Indicator #####
 # dotfiles: AWS Client VPN (52-mac-aws-vpn-client) cloud icon, with a lock when
 # connected, crossed out and dimmed when not (see plugins/aws_vpn.sh). Refreshed every 5s; a click opens
