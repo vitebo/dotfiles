@@ -32,6 +32,10 @@ is logged in:
 - `settings.json` `"preferredNotifChannel": "ghostty"`: desktop notifications
   (task done, permission prompt) as Ghostty's, also inside tmux, where Claude Code
   can't detect Ghostty (tmux passes them through, see [34-any-tmux](../34-any-tmux)).
+- `settings.json` `"editorMode": "vim"`: vim keys in the prompt (`esc` for NORMAL
+  mode, `hjkl`, `v`, `d` / `c` / `y` with text objects); `enter` still submits in
+  INSERT mode, `o` / `O` or `ctrl+j` add a line.
+  [Reference](https://code.claude.com/docs/en/interactive-mode.md#vim-editor-mode).
 - `settings.json` `"theme": "auto"` ("Auto (match terminal)" in `/theme`): Claude
   Code has no Catppuccin theme, so it uses its own light or dark one, following
   the terminal's mode (Ghostty follows macOS).

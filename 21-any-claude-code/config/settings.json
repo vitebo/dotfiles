@@ -211,5 +211,6 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "teammateMode": "auto",
-  "preferredNotifChannel": "ghostty"
+  "preferredNotifChannel": "ghostty",
+  "editorMode": "vim"
 }
