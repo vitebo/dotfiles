@@ -89,6 +89,7 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 | `prefix h/j/k/l` | move between panes (or click) |
 | `prefix z` | zoom the pane in / out |
 | `prefix x` | close the pane (or `exit`) |
+| `prefix X` | kill the session (asks first); you land in another session |
 | `prefix [` | copy mode: `v` select, `y` copy, `q` quit; also to scroll back |
 | `prefix r` | reload the config |
 | `prefix Ctrl-s` / `prefix Ctrl-r` | save / restore sessions (tmux-resurrect) |
