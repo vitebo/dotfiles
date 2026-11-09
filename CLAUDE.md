@@ -178,6 +178,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal
   changes are tracked without vendoring the framework.
+  - tmux plugins go through TPM, the same way: `34-any-tmux`'s `install.sh` clones
+    each `@plugin` listed in `tmux.conf` into `~/.local/share/tmux/plugins` (not
+    TPM's `install_plugins`, which needs a running tmux server with this config).
+    Today: tmux-resurrect + tmux-continuum, so sessions survive a reboot.
 - **Shell: zsh + oh-my-zsh** (rather than setting up zsh by hand with
   setopt/compinit, or starship):
   - `10-any-zsh` is only the shell and its loader (`~/.zshrc`, `chsh`).

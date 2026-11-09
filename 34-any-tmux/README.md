@@ -7,7 +7,7 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   `Ctrl+b`) plus a few essentials marked `dotfiles:` (mouse, numbering from 1,
   splits in the current directory, `prefix h/j/k/l` for panes, vim copy mode,
   clipboard through the terminal, `prefix r` to reload, 10ms escape time).
-  No theme or plugins.
+  No theme; plugins below.
 - `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
   top: current session, windows and user, with rounded edges (`prefix s` lists
   all the sessions).
@@ -58,6 +58,20 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   is installed: `ta <name>` attach, `ts <name>` new session, `tl` list, `tds` session
   named after the current directory, `tkss <name>` kill a session, `tksv` kill all.
 
+- Plugins, through [TPM](https://github.com/tmux-plugins/tpm): `install.sh` clones
+  each `@plugin` of `tmux.conf` into `~/.local/share/tmux/plugins` (outside the repo,
+  like oh-my-zsh); `prefix + I` / `prefix + U` install / update them by hand.
+  - [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect): saves and
+    restores sessions, windows, panes (layout, current directory) and some programs:
+    nvim (with its arguments, eg `nvim .`, without its open buffers), lazygit, and
+    Claude Code, reopened as `claude --continue` (its latest conversation in that
+    directory). Saves go in `~/.local/share/tmux/resurrect`, not versioned. Pane
+    contents (the text on screen) aren't saved.
+  - [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum): saves every 15
+    minutes, and restores the last save when the tmux server starts, eg the first
+    `tmux` after a reboot. The Claude states (bell, check...) aren't restored: they
+    come back on each agent's next hook.
+
 ## Cheatsheet
 
 `prefix` is `Ctrl+b`: press it, release, then press the key.
@@ -77,6 +91,8 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 | `prefix x` | close the pane (or `exit`) |
 | `prefix [` | copy mode: `v` select, `y` copy, `q` quit; also to scroll back |
 | `prefix r` | reload the config |
+| `prefix Ctrl-s` / `prefix Ctrl-r` | save / restore sessions (tmux-resurrect) |
+| `prefix a` | menu of Claude Code agents |
 | `prefix ?` | list all bindings |
 
-Prerequisites: none ([33-any-zoxide](../33-any-zoxide) for `tz`).
+Prerequisites: [12-any-git](../12-any-git) (plugins); [33-any-zoxide](../33-any-zoxide) for `tz`.
