@@ -25,7 +25,12 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   DSR 996 queries and forwards mode 2031 change reports (after re-reading the
   terminal's background, which Ghostty answers).
 - `allow-passthrough on`: apps can send sequences straight to the terminal, so
-  [54-any-chafa](../54-any-chafa) shows real images (kitty graphics) inside tmux.
+  [54-any-chafa](../54-any-chafa) shows real images (kitty graphics) inside tmux,
+  and Claude Code's desktop notifications reach Ghostty.
+- `focus-events on`: apps learn when the terminal gains / loses focus (Claude Code
+  uses it to notify you when you're away). With extended keys and passthrough, this
+  is the tmux setup [Claude Code's terminal docs](https://code.claude.com/docs/en/terminal-config.md)
+  recommend.
 - `~/.config/zsh/34-tmux.zsh` -> `config/tmux.zsh`: `tz <query>` opens (or goes
   back to) a session in the directory [33-any-zoxide](../33-any-zoxide) finds,
   named after it.
