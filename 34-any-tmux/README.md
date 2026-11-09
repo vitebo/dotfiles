@@ -28,12 +28,15 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   ([21-any-claude-code](../21-any-claude-code)), records each pane's Claude state
   in tmux options (`@claude_pane`, and the most urgent one in `@claude_window` /
   `@claude_session`): `working` (prompt sent, tool done), `attention` (permission
-  prompt, MCP question), `done` (turn finished). It does nothing outside tmux.
+  prompt, MCP question), `done` (turn finished) and `read` (a `done` pane you've
+  looked at: tmux's `pane-focus-in` hook, or the turn ended while you were watching
+  it). It does nothing outside tmux.
   - Status line: an icon before each window's name (bell = needs you, check = done,
-    hourglass = working); other windows needing you are drawn on red, and other
+    double check = read, hourglass = working); other windows needing you are drawn on red, and other
     sessions needing you are listed on the right, on red.
-  - `prefix + a`: lists only the panes waiting for you (`attention` or `done`),
-    zoomed; Enter jumps there.
+  - `prefix + a`: lists only the panes waiting for you (`attention`, or `done` not
+    read yet), zoomed; Enter jumps there. Sessions show up once their Claude has
+    run a hook (after your next message there).
 - `focus-events on`: apps learn when the terminal gains / loses focus (Claude Code
   uses it to notify you when you're away). With extended keys and passthrough, this
   is the tmux setup [Claude Code's terminal docs](https://code.claude.com/docs/en/terminal-config.md)
