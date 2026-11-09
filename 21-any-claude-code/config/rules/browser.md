@@ -3,8 +3,9 @@
 Two ways to drive Chrome; pick by what the flow needs:
 
 - **chrome-devtools MCP** (`mcp__chrome-devtools__*`), the default: its own Chrome
-  with a separate profile. Use it for local apps and flows that don't need my
-  logins, and whenever network requests, performance or device emulation matter.
+  with a temporary profile per session (several agents can use it at once, no
+  logins kept). Use it for local apps and flows that don't need my logins, and
+  whenever network requests, performance or device emulation matter.
 - **Claude in Chrome** (`mcp__claude-in-chrome__*`): my real Chrome, logged in,
   tabs grouped per session. Use it only when the flow needs my real browser:
   bot protection (Cloudflare Turnstile, CAPTCHAs) that blocks the automated Chrome,

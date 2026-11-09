@@ -236,7 +236,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
     file exists (`[ ! -f "$f" ] || bash "$f"`), never with the absolute path the
     tool's installer writes.
   - Browser automation: the chrome-devtools MCP (`53-mac-chrome-devtools-mcp`,
-    isolated Chrome) by default; the Claude in Chrome extension (installed by hand,
+    `--isolated`: a temporary Chrome profile per session, so agents run it in
+    parallel) by default; the Claude in Chrome extension (installed by hand,
     see `46-mac-google-chrome`) only for flows needing the real, logged-in Chrome,
     eg Cloudflare Turnstile blocks the automated one. Sessions opt in with
     `claude --chrome` ("Enabled by default" stays off); `rules/browser.md` tells

@@ -15,11 +15,18 @@ _dot_link "${DOT_PACKAGE_DIR}/config/mise.toml" "${HOME}/.config/mise/conf.d/chr
 mise install --yes
 
 # User-scope MCP servers only live in ~/.claude.json (account state, not
-# versioned), so the server is registered there with Claude Code's own CLI.
-# The mise shim works whatever PATH Claude Code was started with.
-if ! claude mcp get chrome-devtools >/dev/null 2>&1; then
+# versioned), so the server is registered there with Claude Code's own CLI, and
+# registered again when its arguments changed. The mise shim works whatever PATH
+# Claude Code was started with. --isolated gives each Claude session its own
+# temporary Chrome profile, so several agents can use it at once (a shared profile
+# only allows one browser).
+mcp_args="--isolated"
+if [ "$(claude mcp get chrome-devtools 2>/dev/null | sed -n 's/^ *Args: *//p')" != "${mcp_args}" ]; then
+    if claude mcp get chrome-devtools >/dev/null 2>&1; then
+        claude mcp remove --scope user chrome-devtools >/dev/null
+    fi
     claude mcp add --scope user chrome-devtools -- \
-        "${HOME}/.local/share/mise/shims/chrome-devtools-mcp"
+        "${HOME}/.local/share/mise/shims/chrome-devtools-mcp" ${mcp_args}
 fi
 
 _dot_ok "chrome-devtools-mcp installed"

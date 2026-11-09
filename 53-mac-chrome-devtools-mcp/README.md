@@ -12,8 +12,12 @@ network requests, and take screenshots.
   with `claude mcp add --scope user` when it's missing. It runs the mise shim, so
   it works however Claude Code was started. Check it with `claude mcp get
   chrome-devtools`, or `/mcp` in a session.
-- Chrome opens with its own profile (`~/.cache/chrome-devtools-mcp/chrome-profile`),
-  separate from your browsing profile: log in there once for sites that need it.
+- `--isolated`: each Claude session gets its own temporary Chrome profile, deleted
+  when the browser closes, so several agents can use it at once (with one shared
+  profile, a second agent fails with "The browser is already running"). The cost:
+  no logins or cookies are kept between sessions; flows needing your logins go
+  through Claude in Chrome ([46-mac-google-chrome](../46-mac-google-chrome)).
+  `install.sh` registers the server again when its arguments change.
 - mac only: Claude Code and Chrome run on the host; apps in a devcontainer are
   reached through their forwarded ports (`localhost`).
 
