@@ -140,8 +140,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
   the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Chrome, herdr,
-  OpenRig, Orca, AWS Client VPN, a Catppuccin wallpaper and the Dev Containers CLI
-  for now; oh-my-zsh with its defaults.
+  OpenRig, Orca, AWS Client VPN, Chrome DevTools MCP, a Catppuccin wallpaper and the
+  Dev Containers CLI for now; oh-my-zsh with its defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
@@ -243,6 +243,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - Claude runs on the host; `rules/devcontainer.md` makes it run project commands
     inside the project's devcontainer (devcontainer CLI) when there is one.
   - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.
+  - MCP servers for every project: each is its own package (eg
+    `53-mac-chrome-devtools-mcp`); the server is a mise tool and `install.sh`
+    registers it with `claude mcp add --scope user` when `claude mcp get` doesn't
+    find it, since user-scope servers only live in `~/.claude.json`. The only
+    exception to "installers never edit `$HOME`", done through Claude Code's CLI.
   - Work-only: managed settings from the org, plain files in `~/.claude/rules/`,
     env vars in `~/.zshrc.local`.
   - Claude Code rewrites `settings.json` (`/config`, `/model`); review those diffs:

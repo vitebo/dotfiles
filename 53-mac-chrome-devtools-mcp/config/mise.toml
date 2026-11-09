@@ -1,0 +1,8 @@
+# ~/.config/mise/conf.d/chrome-devtools-mcp.toml -> 53-mac-chrome-devtools-mcp/config/mise.toml
+#
+# Chrome DevTools MCP server as a mise tool (40-mac-mise loads
+# ~/.config/mise/conf.d/*.toml): installed with mise's Node.js, and kept across
+# Node.js upgrades, unlike `npm install -g`.
+
+[tools]
+"npm:chrome-devtools-mcp" = "latest"
