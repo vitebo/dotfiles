@@ -19,6 +19,7 @@ _dot_link_zsh "${DOT_PACKAGE_DIR}/config/claude-code.zsh"
 # Shared config only, linked file by file: ~/.claude also holds per-machine
 # state and files that stay out of the repo (eg work-only rules).
 _dot_link "${DOT_PACKAGE_DIR}/config/settings.json" "${HOME}/.claude/settings.json"
+_dot_link "${DOT_PACKAGE_DIR}/config/statusline.sh" "${HOME}/.claude/statusline.sh"
 if [ -f "${DOT_PACKAGE_DIR}/config/CLAUDE.md" ]; then
     _dot_link "${DOT_PACKAGE_DIR}/config/CLAUDE.md" "${HOME}/.claude/CLAUDE.md"
 fi

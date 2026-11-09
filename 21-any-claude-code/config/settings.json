@@ -14,5 +14,9 @@
   },
   "teammateMode": "auto",
   "preferredNotifChannel": "ghostty",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "statusLine": {
+    "type": "command",
+    "command": "f=\"$HOME/.claude/statusline.sh\"; [ ! -f \"$f\" ] || bash \"$f\""
+  }
 }
