@@ -24,6 +24,8 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 - Apps inside tmux follow the terminal's light / dark mode too: tmux answers their
   DSR 996 queries and forwards mode 2031 change reports (after re-reading the
   terminal's background, which Ghostty answers).
+- `allow-passthrough on`: apps can send sequences straight to the terminal, so
+  [54-any-chafa](../54-any-chafa) shows real images (kitty graphics) inside tmux.
 - `~/.config/zsh/34-tmux.zsh` -> `config/tmux.zsh`: `tz <query>` opens (or goes
   back to) a session in the directory [33-any-zoxide](../33-any-zoxide) finds,
   named after it.
