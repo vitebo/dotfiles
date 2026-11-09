@@ -18,5 +18,78 @@
   "statusLine": {
     "type": "command",
     "command": "f=\"$HOME/.claude/statusline.sh\"; [ ! -f \"$f\" ] || bash \"$f\""
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$HOME/.claude/hooks/tmux-agent-state.sh\"; [ ! -f \"$f\" ] || bash \"$f\" working"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$HOME/.claude/hooks/tmux-agent-state.sh\"; [ ! -f \"$f\" ] || bash \"$f\" working"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$HOME/.claude/hooks/tmux-agent-state.sh\"; [ ! -f \"$f\" ] || bash \"$f\" attention"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt|elicitation_dialog|elicitation_url_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$HOME/.claude/hooks/tmux-agent-state.sh\"; [ ! -f \"$f\" ] || bash \"$f\" attention"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$HOME/.claude/hooks/tmux-agent-state.sh\"; [ ! -f \"$f\" ] || bash \"$f\" done"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$HOME/.claude/hooks/tmux-agent-state.sh\"; [ ! -f \"$f\" ] || bash \"$f\" done"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$HOME/.claude/hooks/tmux-agent-state.sh\"; [ ! -f \"$f\" ] || bash \"$f\" clear"
+          }
+        ]
+      }
+    ]
   }
 }

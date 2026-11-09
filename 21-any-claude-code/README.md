@@ -35,6 +35,11 @@ is logged in:
   Claude Code only sends that usage for claude.ai subscriptions, after the session's
   first response; otherwise the status line stays empty. With a status line, Claude
   Code hides most footer hints (eg `esc to interrupt`).
+- `settings.json` hooks: `UserPromptSubmit` / `PostToolUse` (working),
+  `PermissionRequest` / `Notification` for permission prompts and MCP questions
+  (needs you), `Stop` / `StopFailure` (done) and `SessionEnd` (cleared) run
+  [34-any-tmux](../34-any-tmux)'s `~/.claude/hooks/tmux-agent-state.sh`, only when
+  it exists, so tmux shows which agents need you.
 - `settings.json` `"theme": "auto"` ("Auto (match terminal)" in `/theme`): Claude
   Code has no Catppuccin theme, so it uses its own light or dark one, following
   the terminal's mode (Ghostty follows macOS).
