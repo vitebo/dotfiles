@@ -7,3 +7,9 @@ reach the VPN through the host.
 - The cask is a `.pkg`, so brew asks for the admin password on the first install.
 - Not versioned: VPN profiles (`.ovpn` files from each VPN's admin), imported per
   machine with *File > Manage Profiles*, like the AWS CLI's `~/.aws`.
+
+## Integrations
+
+- [24-mac-sketchybar](../24-mac-sketchybar): VPN icon, lit when connected, dimmed
+  when not, read from the client's logs (`~/.config/AWSVPNClient/logs`); click opens
+  the client.

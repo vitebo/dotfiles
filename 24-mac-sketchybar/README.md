@@ -12,7 +12,12 @@ replacing the macOS menu bar (formula from the author's tap).
   - Slack ([38-mac-slack](../38-mac-slack)) icon with its unread state: number of
     mentions / DMs highlighted, `•` for unread channels, dimmed icon when Slack is
     closed. Refreshed every 10s and when the focused app changes; click opens Slack.
-  - Right side: clock, volume, battery, Slack. Left side: user, workspaces, focused app.
+  - AWS Client VPN ([52-mac-aws-vpn-client](../52-mac-aws-vpn-client)) icon: lit
+    when connected, dimmed when disconnected or the client is closed, `…` while
+    connecting. Read from the tray state the client logs to
+    `~/.config/AWSVPNClient/logs`, refreshed every 5s; click opens the client.
+  - Right side: clock, volume, battery, Slack, AWS VPN. Left side: user, workspaces,
+    focused app.
   - Catppuccin colors (`colors.sh`), Latte in light mode and Mocha in dark mode, read
     from the macOS appearance. An invisible item reloads the bar when macOS switches
     (`AppleInterfaceThemeChangedNotification`) and re-runs JankyBorders' `bordersrc`
