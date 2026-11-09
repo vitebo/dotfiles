@@ -12,9 +12,9 @@ replacing the macOS menu bar (formula from the author's tap).
   - Slack ([38-mac-slack](../38-mac-slack)) icon with its unread state: number of
     mentions / DMs highlighted, `•` for unread channels, dimmed icon when Slack is
     closed. Refreshed every 10s and when the focused app changes; click opens Slack.
-  - AWS Client VPN ([52-mac-aws-vpn-client](../52-mac-aws-vpn-client)) icon: lit
-    when connected, dimmed when disconnected or the client is closed, `…` while
-    connecting. Read from the tray state the client logs to
+  - AWS Client VPN ([52-mac-aws-vpn-client](../52-mac-aws-vpn-client)) cloud icon:
+    with a lock when connected, crossed out and dimmed when disconnected or the
+    client is closed, an outline with `…` while connecting. Read from the tray state the client logs to
     `~/.config/AWSVPNClient/logs`, refreshed every 5s; click opens the client.
   - Right side: clock, volume, battery, Slack, AWS VPN. Left side: user, workspaces,
     focused app.

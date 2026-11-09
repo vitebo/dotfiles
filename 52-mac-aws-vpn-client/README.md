@@ -10,6 +10,6 @@ reach the VPN through the host.
 
 ## Integrations
 
-- [24-mac-sketchybar](../24-mac-sketchybar): VPN icon, lit when connected, dimmed
-  when not, read from the client's logs (`~/.config/AWSVPNClient/logs`); click opens
+- [24-mac-sketchybar](../24-mac-sketchybar): cloud icon, with a lock when connected,
+  crossed out when not, read from the client's logs (`~/.config/AWSVPNClient/logs`); click opens
   the client.

@@ -128,12 +128,12 @@ sketchybar --add item slack right \
            --subscribe slack front_app_switched system_woke
 
 ##### Adding AWS Client VPN Indicator #####
-# dotfiles: AWS Client VPN (52-mac-aws-vpn-client) icon (nf-md-vpn), dimmed
-# unless connected (see plugins/aws_vpn.sh). Refreshed every 5s; a click opens
+# dotfiles: AWS Client VPN (52-mac-aws-vpn-client) cloud icon, with a lock when
+# connected, crossed out and dimmed when not (see plugins/aws_vpn.sh). Refreshed every 5s; a click opens
 # the client.
 
 sketchybar --add item aws_vpn right \
-           --set aws_vpn icon=󰖂 update_freq=5 script="$PLUGIN_DIR/aws_vpn.sh" \
+           --set aws_vpn icon=󰅤 update_freq=5 script="$PLUGIN_DIR/aws_vpn.sh" \
                  click_script="open -a 'AWS VPN Client'" \
            --subscribe aws_vpn system_woke
 

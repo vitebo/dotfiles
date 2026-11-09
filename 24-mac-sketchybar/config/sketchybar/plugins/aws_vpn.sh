@@ -4,9 +4,9 @@
 # colors (colors.sh). The client logs each change of its tray state ("Tray state
 # changed to connected") to ~/.config/AWSVPNClient/logs, one file per day; the
 # last one logged is the current state:
-# - client closed, or disconnected: dimmed icon;
-# - connecting: dimmed icon with "…";
-# - connected: icon only.
+# - client closed, or disconnected: crossed-out cloud (nf-md-cloud_off_outline), dimmed;
+# - connecting: cloud outline (nf-md-cloud_outline), dimmed, with "…";
+# - connected: cloud with a lock (nf-md-cloud_lock).
 
 source "$CONFIG_DIR/colors.sh"
 
@@ -21,13 +21,13 @@ fi
 
 case "$STATE" in
     connected)
-        sketchybar --set "$NAME" icon.color=$TEXT_COLOR label.drawing=off
+        sketchybar --set "$NAME" icon=󱇱 icon.color=$TEXT_COLOR label.drawing=off
         ;;
     connecting|reconnecting)
-        sketchybar --set "$NAME" icon.color=$DIMMED_COLOR \
+        sketchybar --set "$NAME" icon=󰅣 icon.color=$DIMMED_COLOR \
             label="…" label.color=$DIMMED_COLOR label.drawing=on
         ;;
     *)
-        sketchybar --set "$NAME" icon.color=$DIMMED_COLOR label.drawing=off
+        sketchybar --set "$NAME" icon=󰅤 icon.color=$DIMMED_COLOR label.drawing=off
         ;;
 esac
