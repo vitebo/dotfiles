@@ -16,7 +16,12 @@ if ! pgrep -xq Slack; then
     exit 0
 fi
 
-LABEL="$(lsappinfo info -only StatusLabel Slack | sed -n 's/.*"label"="\(.*\)".*/\1/p')"
+# The badge is read from the Dock's accessibility tree (`lsappinfo`'s StatusLabel
+# no longer reports it since macOS 27). That needs the Accessibility permission,
+# which SketchyBar inherits from AeroSpace, the app that starts it (23-mac-aerospace).
+# "missing value" means no badge.
+LABEL="$(osascript -e 'tell application "System Events" to tell process "Dock" to get value of attribute "AXStatusLabel" of UI element "Slack" of list 1' 2>/dev/null)"
+[ "$LABEL" = "missing value" ] && LABEL=""
 
 case "$LABEL" in
     "")
