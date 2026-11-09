@@ -27,13 +27,21 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   `config/claude-hook.sh`, run by Claude Code's hooks
   ([21-any-claude-code](../21-any-claude-code)), records each pane's Claude state
   in tmux options (`@claude_pane`, and the most urgent one in `@claude_window` /
-  `@claude_session`): `working` (prompt sent, tool done), `attention` (permission
-  prompt, MCP question), `done` (turn finished) and `read` (a `done` pane you've
-  looked at: tmux's `pane-focus-in` hook, or the turn ended while you were watching
-  it). It does nothing outside tmux.
-  - Status line: an icon before each window's name (bell = needs you, check = done,
-    double check = read, hourglass = working); other windows needing you are drawn on red, and other
-    sessions needing you are listed on the right, on red.
+  `@claude_session`). It does nothing outside tmux.
+  - States, most urgent first (a window or session shows its most urgent pane):
+
+    | Icon | State | Meaning | Set by |
+    | :-: | - | - | - |
+    | 󰂞 bell | `attention` | Claude is blocked on you: a permission prompt or an MCP question. Looking at it doesn't clear it, answering does | `PermissionRequest`, `Notification` (permission / MCP prompts) |
+    | 󰄬 check | `done` | Claude finished its turn and waits for your next message; you haven't looked at it yet | `Stop`, `StopFailure` |
+    | 󰔟 hourglass | `working` | Claude is working: you sent a prompt, or a tool just ran (eg right after you approved it) | `UserPromptSubmit`, `PostToolUse` |
+    | 󰄭 double check | `read` | A `done` turn you've already seen: you focused its pane, or it finished while you were watching it | tmux's `pane-focus-in` hook, `Stop` |
+    | 󰧟 dot | none | Claude runs there but hasn't run a hook yet (started before the hooks, or idle since); `prefix + a` only | `prefix + a` finds its `claude` process |
+
+    The state is cleared when the session ends (`SessionEnd`).
+  - Status line: the state icon before each window's name; other windows in
+    `attention` are drawn on red, and other sessions in `attention` are listed on the
+    right, on red.
   - `prefix + a`: a menu (`~/.config/tmux/claude-agents.sh` ->
     `config/claude-agents.sh`) with every pane running Claude Code, found by its
     `claude` process: state icon (a dot until it runs a hook), session and window,
