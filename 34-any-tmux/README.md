@@ -34,9 +34,11 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   - Status line: an icon before each window's name (bell = needs you, check = done,
     double check = read, hourglass = working); other windows needing you are drawn on red, and other
     sessions needing you are listed on the right, on red.
-  - `prefix + a`: lists only the panes waiting for you (`attention`, or `done` not
-    read yet), zoomed; Enter jumps there. Sessions show up once their Claude has
-    run a hook (after your next message there).
+  - `prefix + a`: a menu (`~/.config/tmux/claude-agents.sh` ->
+    `config/claude-agents.sh`) with every pane running Claude Code, found by its
+    `claude` process: state icon (a dot until it runs a hook), session and window,
+    and Claude's session title. The ones that need you come first, then done, working
+    and read; Enter or the item's number jumps there.
 - `focus-events on`: apps learn when the terminal gains / loses focus (Claude Code
   uses it to notify you when you're away). With extended keys and passthrough, this
   is the tmux setup [Claude Code's terminal docs](https://code.claude.com/docs/en/terminal-config.md)
