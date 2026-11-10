@@ -9,8 +9,10 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   clipboard through the terminal, `prefix r` to reload, 10ms escape time).
   No theme; plugins below.
 - `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
-  top: current session, windows and user, with rounded edges (`prefix s` lists
-  all the sessions).
+  top: current session, windows and the current kubectl context (cluster name
+  only, refreshed every 15s, hidden without kubectl or a context; see
+  [44-mac-kubectl](../44-mac-kubectl)), with rounded edges (`prefix s` lists all
+  the sessions).
   Catppuccin colors, Latte or Mocha following the light / dark mode the terminal
   reports (Ghostty follows macOS), switched live: the `@dot_*` options at the top
   of the file pick each role's color from `client_theme`, and tmux's theme colours

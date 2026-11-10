@@ -10,6 +10,9 @@ Installs [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 - oh-my-zsh's `kubectl` plugin ([22-any-oh-my-zsh](../22-any-oh-my-zsh)), when
   kubectl is installed: completion and aliases (`k`, `kgp` get pods, `kaf` apply -f,
   `kl` logs, `kcuc` use-context...).
+- tmux's status line ([34-any-tmux](../34-any-tmux)) shows the current context on
+  the right (`kubectl config current-context`, cut to the cluster name for EKS
+  ARNs), when kubectl is installed.
 - mac only: inside devcontainers, projects bring their own tools.
 
 ## Local cluster
