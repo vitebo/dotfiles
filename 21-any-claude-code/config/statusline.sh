@@ -46,13 +46,17 @@ jq -r --arg branch "$branch" '
       | " " + dim("(") + paint(36; $t) + dim(")")
     end;
 
-  def rate(name):
+  def rate(icon; name):
     (.used_percentage // empty | clamp | round) as $p
-    | dim("\(name):") + paint(level($p); "\($p)%") + countdown(.resets_at);
+    | dim("\(icon) \(name):") + paint(level($p); "\($p)%") + countdown(.resets_at);
 
-  [ bar(.context_window.used_percentage),
-    (.rate_limits.five_hour // empty | rate("5h")),
-    (.rate_limits.seven_day // empty | rate("7d")),
-    ($branch | select(. != "") | paint(32; .))
+  [ dim("󰧑") + " " + bar(.context_window.used_percentage),  # brain (\U000F09D1)
+    (.rate_limits.five_hour // empty | rate("󰔟"; "5h")),      # timer sand (\U000F051F)
+    (.rate_limits.seven_day // empty | rate("󰃭"; "7d")),      # calendar (\U000F00ED)
+    ($branch | select(. != "") | paint(32; " \(.)"))          # git branch (\ue725)
   ] | join(" " + dim("│") + " ")
 ' <<<"$input"
+
+# A second, blank-looking line: a small gap above Claude Code's footer (eg vim mode).
+# It holds a braille blank (U+2800): Claude Code drops lines made of whitespace only.
+echo "⠀"
