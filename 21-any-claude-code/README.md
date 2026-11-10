@@ -34,11 +34,15 @@ is logged in:
   INSERT mode, `o` / `O` or `ctrl+j` add a line.
   [Reference](https://code.claude.com/docs/en/interactive-mode.md#vim-editor-mode).
 - `~/.claude/statusline.sh` -> `config/statusline.sh`: the status line
-  (`settings.json` `statusLine`, run through `$HOME` only when the file exists). It
-  prints the plan usage, 5-hour and 7-day windows (`5h 37% · 7d 26%`).
-  Claude Code only sends that usage for claude.ai subscriptions, after the session's
-  first response; otherwise the status line stays empty. With a status line, Claude
-  Code hides most footer hints (eg `esc to interrupt`).
+  (`settings.json` `statusLine`, run through `$HOME` only when the file exists).
+  Styled after [cc-hud](https://github.com/WaterTian/cc-hud), but a jq script (no
+  Node.js, no OAuth token read, ANSI colors that follow the terminal's theme): a
+  context bar, the plan usage of the 5-hour and 7-day windows with the time to
+  reset, and the git branch (`*` when dirty):
+  `████▍░░░░░ 44% │ 5h:72% (1.5h) │ 7d:26% (3.5d) │ main*`.
+  Claude Code only sends the plan usage for claude.ai subscriptions, after the
+  session's first response; until then those segments are hidden. With a status
+  line, Claude Code hides most footer hints (eg `esc to interrupt`).
 - `settings.json` hooks: `UserPromptSubmit` / `PostToolUse` (working),
   `PermissionRequest` / `Notification` for permission prompts and MCP questions
   (needs you), `Stop` / `StopFailure` (done) and `SessionEnd` (cleared) run
