@@ -55,9 +55,16 @@ is logged in:
   Code has no Catppuccin theme, so it uses its own light or dark one, following
   the terminal's mode (Ghostty follows macOS).
 
-Claude Code writes `settings.json` itself (`/config`, `/model`...): those changes
-show up as a diff in this repo. Commit them if they apply to every machine,
-otherwise revert them and set them locally (below).
+Claude Code writes `settings.json` itself (`/config`, `/model`, `/effort`...), and
+there's no user-level local file for per-machine values. A git clean filter
+(`git-clean-settings.sh`, wired in the root `.gitattributes`, set up in the repo's
+`.git/config` by `install.sh`) drops the per-machine keys (`model`,
+`effortLevel`, `modelSettings`) and sorts the top-level keys on `git add`: those
+stay in the linked file on this machine and never show up as a diff. Other
+changes still show up: commit them if they apply to every machine, otherwise
+revert them and set them locally (below). A checkout that changes `settings.json`
+(eg a pull) rewrites the file without the per-machine keys, so they're picked
+again with `/model` / `/effort`.
 
 ## Per-machine config (out of the repo)
 

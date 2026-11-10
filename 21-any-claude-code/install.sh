@@ -29,4 +29,10 @@ for rule_file in "${DOT_PACKAGE_DIR}"/config/rules/*.md; do
     fi
 done
 
+# Git filter keeping settings.json's per-machine keys out of the repo (.gitattributes).
+if command -v git >/dev/null && git -C "${DOT_ROOT}" rev-parse --git-dir >/dev/null 2>&1; then
+    git -C "${DOT_ROOT}" config filter.dot-claude-settings.clean \
+        "bash 21-any-claude-code/git-clean-settings.sh"
+fi
+
 _dot_ok "claude-code installed"

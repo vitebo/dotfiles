@@ -253,8 +253,12 @@ repo should behave is made (structure, conventions, tooling, workflow).
     exception to "installers never edit `$HOME`", done through Claude Code's CLI.
   - Work-only: managed settings from the org, plain files in `~/.claude/rules/`,
     env vars in `~/.zshrc.local`.
-  - Claude Code rewrites `settings.json` (`/config`, `/model`); review those diffs:
-    commit if shared, otherwise revert and set locally.
+  - Claude Code rewrites `settings.json` (`/config`, `/model`, `/effort`). A git clean
+    filter (`.gitattributes` + `21-any-claude-code/git-clean-settings.sh`, set up in
+    `.git/config` by its `install.sh`) strips the per-machine keys (`model`,
+    `effortLevel`, `modelSettings`) and sorts the top-level keys, so they stay in the
+    linked file but never reach git. Other diffs are reviewed: commit if shared,
+    otherwise revert and set locally.
 - **Packages own their shell env**: a package may ship `config/<name>.zsh` and link it
   with `_dot_link_zsh` to `~/.config/zsh/<NN>-<name>.zsh`; `~/.zshrc` loads them in
   package order (skipping dangling symlinks). Eg `EDITOR` lives in
