@@ -38,10 +38,10 @@ is logged in:
   Styled after [cc-hud](https://github.com/WaterTian/cc-hud), but a jq script (no
   Node.js, no OAuth token read, ANSI colors that follow the terminal's theme): a
   context bar, the plan usage of the 5-hour and 7-day windows with the time to
-  reset, and the git branch (`*` when dirty), with nerd font icons:
-  `󰧑 ████▍░░░░░ 44% │ 󰔟 5h:72% (1.5h) │ 󰃭 7d:26% (3.5d) │  main*`.
-  A second line holding a braille blank (U+2800, since Claude Code drops
-  whitespace-only lines) leaves a small gap above the footer (eg vim mode).
+  reset, and the effort level, with nerd font icons:
+  `󰧑  ████▍░░░░░ 44% │ 󰔟 5h:72% (1.5h) │ 󰃭 7d:26% (3.5d) │ 󰓅 medium`.
+  A line holding a braille blank (U+2800, since Claude Code drops
+  whitespace-only lines) above and below it leaves a small gap around it.
   Claude Code only sends the plan usage for claude.ai subscriptions, after the
   session's first response; until then those segments are hidden. With a status
   line, Claude Code hides most footer hints (eg `esc to interrupt`).
