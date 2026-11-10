@@ -41,13 +41,17 @@ jq -r '
       | " " + dim("(") + paint(36; $t) + dim(")")
     end;
 
+  # Claude Code drops a window once it resets, until the next response brings the
+  # new one: show it as —% meanwhile instead of hiding it.
   def rate(icon; name):
-    (.used_percentage // empty | clamp | round) as $p
-    | dim("\(icon) \(name):") + paint(level($p); "\($p)%") + countdown(.resets_at);
+    if .used_percentage == null then dim("\(icon) \(name):—%")
+    else (.used_percentage | clamp | round) as $p
+      | dim("\(icon) \(name):") + paint(level($p); "\($p)%") + countdown(.resets_at)
+    end;
 
   [ dim("󰧑") + "  " + bar(.context_window.used_percentage),  # brain (\U000F09D1)
-    (.rate_limits.five_hour // empty | rate("󰔟"; "5h")),      # timer sand (\U000F051F)
-    (.rate_limits.seven_day // empty | rate("󰃭"; "7d")),      # calendar (\U000F00ED)
+    (.rate_limits // empty | .five_hour | rate("󰔟"; "5h")),   # timer sand (\U000F051F)
+    (.rate_limits // empty | .seven_day | rate("󰃭"; "7d")),   # calendar (\U000F00ED)
     (.effort.level // empty | dim("󰓅 ") + paint(35; .))       # speedometer (\U000F04C5)
   ] | join(" " + dim("│") + " ")
 '

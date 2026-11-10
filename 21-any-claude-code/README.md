@@ -43,7 +43,8 @@ is logged in:
   A line holding a braille blank (U+2800, since Claude Code drops
   whitespace-only lines) above and below it leaves a small gap around it.
   Claude Code only sends the plan usage for claude.ai subscriptions, after the
-  session's first response; until then those segments are hidden. With a status
+  session's first response; until then those segments are hidden. When a window
+  resets, Claude Code drops it until the next response, so it shows as `—%`. With a status
   line, Claude Code hides most footer hints (eg `esc to interrupt`).
 - `settings.json` hooks: `UserPromptSubmit` / `PostToolUse` (working),
   `PermissionRequest` / `Notification` for permission prompts and MCP questions
