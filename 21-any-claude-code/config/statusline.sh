@@ -2,26 +2,21 @@
 # ~/.claude/statusline.sh -> 21-any-claude-code/config/statusline.sh
 #
 # Claude Code's status line, styled after cc-hud (https://github.com/WaterTian/cc-hud):
-#   context bar │ 5h usage (reset) │ 7d usage (reset) │ git branch
-# Everything comes from the JSON Claude Code sends on stdin, plus git for the branch.
+#   context bar │ 5h usage (reset) │ 7d usage (reset) │ effort level
+# Everything comes from the JSON Claude Code sends on stdin.
 # `rate_limits` only comes for claude.ai subscriptions, after the session's first
-# response; segments without data are dropped.
+# response, and `effort` only for models with effort levels; segments without data
+# are dropped.
 # Colors are the 16 ANSI ones, so they follow the terminal's Catppuccin palette.
 # Docs: https://code.claude.com/docs/en/statusline.md
 set -euo pipefail
 
-input=$(cat)
+# Blank-looking lines around the status line leave a small gap above and below it.
+# They hold a braille blank (U+2800): Claude Code drops lines made of whitespace only.
+gap="⠀"
 
-branch=""
-cwd=$(jq -r '.cwd // empty' <<<"$input")
-if [[ -n "$cwd" ]] && branch=$(git -C "$cwd" symbolic-ref --short -q HEAD 2>/dev/null); then
-  # --no-optional-locks: never take index.lock while the session runs git
-  if [[ -n $(git -C "$cwd" --no-optional-locks status --porcelain --untracked-files=no 2>/dev/null) ]]; then
-    branch+="*"
-  fi
-fi
-
-jq -r --arg branch "$branch" '
+echo "$gap"
+jq -r '
   def paint(code; s): "\u001b[\(code)m\(s)\u001b[0m";
   def dim(s): paint(90; s);
   def level(p): if p <= 50 then 32 elif p <= 85 then 33 else 31 end;
@@ -50,13 +45,10 @@ jq -r --arg branch "$branch" '
     (.used_percentage // empty | clamp | round) as $p
     | dim("\(icon) \(name):") + paint(level($p); "\($p)%") + countdown(.resets_at);
 
-  [ dim("󰧑") + " " + bar(.context_window.used_percentage),  # brain (\U000F09D1)
+  [ dim("󰧑") + "  " + bar(.context_window.used_percentage),  # brain (\U000F09D1)
     (.rate_limits.five_hour // empty | rate("󰔟"; "5h")),      # timer sand (\U000F051F)
     (.rate_limits.seven_day // empty | rate("󰃭"; "7d")),      # calendar (\U000F00ED)
-    ($branch | select(. != "") | paint(32; " \(.)"))          # git branch (\ue725)
+    (.effort.level // empty | dim("󰓅 ") + paint(35; .))       # speedometer (\U000F04C5)
   ] | join(" " + dim("│") + " ")
-' <<<"$input"
-
-# A second, blank-looking line: a small gap above Claude Code's footer (eg vim mode).
-# It holds a braille blank (U+2800): Claude Code drops lines made of whitespace only.
-echo "⠀"
+'
+echo "$gap"
