@@ -85,6 +85,19 @@ for sid in $WORKSPACES; do
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
+##### Adding AeroSpace Mode Indicator #####
+# dotfiles: AeroSpace's binding mode (eg "service"), highlighted next to the
+# workspaces and hidden in the main mode (see plugins/aerospace_mode.sh).
+# AeroSpace triggers aerospace_mode_change (see its on-mode-changed).
+
+sketchybar --add event aerospace_mode_change \
+           --add item aerospace_mode left \
+           --set aerospace_mode drawing=off icon.drawing=off \
+                 label.color=$ACTIVE_FG background.color=$ACTIVE_BG \
+                 background.corner_radius=5 background.height=20 \
+                 script="$PLUGIN_DIR/aerospace_mode.sh" \
+           --subscribe aerospace_mode aerospace_mode_change
+
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar, where
 # only the properties deviating from the current defaults need to be set

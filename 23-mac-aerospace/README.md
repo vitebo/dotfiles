@@ -8,7 +8,7 @@ manager for macOS (brew cask from the author's tap).
   on save, numbered workspaces only so `alt-<letter>` keeps typing characters
   like `ç`), 10px gaps around windows (the top one per monitor, since the MacBook's
   notched display reserves 32pt at the top), and the SketchyBar / JankyBorders
-  integration (starts them, notifies SketchyBar of workspace changes, extra top
+  integration (starts them, notifies SketchyBar of workspace and mode changes, extra top
   gap for the bar), and apps pinned to workspaces (Slack on 9).
 
 First launch: open AeroSpace and grant it the Accessibility permission

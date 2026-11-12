@@ -7,6 +7,8 @@ replacing the macOS menu bar (formula from the author's tap).
   changes marked `dotfiles:`:
   - AeroSpace workspaces (clickable, focused one highlighted) instead of Mission
     Control spaces, from [AeroSpace's integration](https://nikitabobko.github.io/AeroSpace/goodies);
+  - AeroSpace's binding mode (eg `service`), highlighted next to the workspaces
+    while it isn't `main`; AeroSpace notifies the bar (`on-mode-changed`).
   - JetBrainsMono Nerd Font.
   - Apple logo and user name, first on the left.
   - Slack ([38-mac-slack](../38-mac-slack)) icon with its unread state: number of
@@ -28,7 +30,8 @@ replacing the macOS menu bar (formula from the author's tap).
     functions through JXA (`plugins/appearance_mode.sh`), since macOS has no public
     command for Auto: a macOS update may break the button, nothing else.
 - Started by AeroSpace (`after-startup-command` in `23-mac-aerospace`), which also
-  notifies it of workspace changes (`exec-on-workspace-change`) and leaves a 40px
+  notifies it of workspace and mode changes (`exec-on-workspace-change`,
+  `on-mode-changed`) and leaves a 40px
   top gap for it.
 
 Setup: hide the macOS menu bar (System Settings → Control Center → Automatically
