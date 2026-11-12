@@ -103,6 +103,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [53-mac-chrome-devtools-mcp](53-mac-chrome-devtools-mcp/README.md) | Chrome DevTools MCP, lets Claude Code drive Chrome and take screenshots |
 | [54-any-chafa](54-any-chafa/README.md) | chafa, shows images in the terminal (also inside tmux) |
 | [55-mac-grafana-mcp](55-mac-grafana-mcp/README.md) | Grafana MCP, lets Claude Code query Grafana (servers added per machine) |
+| [56-mac-cloudflared](56-mac-cloudflared/README.md) | cloudflared, exposes a local server on a public URL (Cloudflare Tunnel) |
 
 ## Local config
 
