@@ -105,6 +105,7 @@ DOT_PM=brew bash install.sh             # force a package manager
 | [55-mac-grafana-mcp](55-mac-grafana-mcp/README.md) | Grafana MCP, lets Claude Code query Grafana (servers added per machine) |
 | [56-mac-cloudflared](56-mac-cloudflared/README.md) | cloudflared, exposes a local server on a public URL (Cloudflare Tunnel) |
 | [57-mac-nordpass](57-mac-nordpass/README.md) | NordPass, password manager |
+| [58-mac-btop](58-mac-btop/README.md) | btop, terminal resource monitor |
 
 ## Local config
 
