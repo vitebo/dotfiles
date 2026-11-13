@@ -18,3 +18,10 @@ Apply to every project, on every machine (personal and work).
   files, rewriting history, pushing).
 - Verify changes by running them (tests, the script, the app) and say plainly
   what was and wasn't verified.
+
+## Commits
+
+- No AI attribution in commits, even when an AI agent wrote them: no
+  `Co-Authored-By` trailer for an agent, no "Generated with" line, no agent
+  signature. Author and committer are always my git user (from git config),
+  never an agent identity. Same for pull request descriptions.

@@ -277,6 +277,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   [Conventional Commits](https://www.conventionalcommits.org) (`feat(zsh): ...`,
   `fix(core): ...`, `docs: ...`), scoped by package name when it applies, one logical
   change per commit.
+  - No AI attribution: no `Co-Authored-By` trailer or signature of an AI agent, even
+    when Claude wrote the commit; author and committer are always the user's own git
+    user (see `21-any-claude-code/config/CLAUDE.md`).
   - Several Claude sessions may work on this repo: before committing, Claude checks
     `git status` for changes it didn't make and asks about them instead of
     committing them silently. Git commands run one at a time (never in parallel
