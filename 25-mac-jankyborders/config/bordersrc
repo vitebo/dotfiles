@@ -17,9 +17,10 @@ else
 	inactive_color=0xffbcc0cc
 fi
 
+# dotfiles: wider border, so the focused window stands out more (example: 6.0)
 options=(
 	style=round
-	width=6.0
+	width=8.0
 	hidpi=off
 	active_color=$active_color
 	inactive_color=$inactive_color
