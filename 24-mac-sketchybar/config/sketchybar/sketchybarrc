@@ -57,6 +57,9 @@ sketchybar --add item user left \
 # AeroSpace triggers aerospace_workspace_change (see its exec-on-workspace-change).
 # dotfiles: no icon and even label padding (like the demo's space items), so the
 # number stays centered in the highlight.
+# dotfiles: workspaces without windows are dimmed; AeroSpace has no event for
+# windows opening / closing, so the items also follow macOS' window changes
+# (space_windows_change) and app switches.
 
 sketchybar --add event aerospace_workspace_change
 
@@ -71,7 +74,7 @@ fi
 
 for sid in $WORKSPACES; do
     sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
+        --subscribe space.$sid aerospace_workspace_change space_windows_change front_app_switched \
         --set space.$sid \
         background.color=$HIGHLIGHT_COLOR \
         background.corner_radius=5 \

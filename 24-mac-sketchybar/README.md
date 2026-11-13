@@ -5,8 +5,8 @@ replacing the macOS menu bar (formula from the author's tap).
 
 - `~/.config/sketchybar` -> `config/sketchybar`: SketchyBar's demo config, with
   changes marked `dotfiles:`:
-  - AeroSpace workspaces (clickable, focused one highlighted) instead of Mission
-    Control spaces, from [AeroSpace's integration](https://nikitabobko.github.io/AeroSpace/goodies);
+  - AeroSpace workspaces (clickable, focused one highlighted, the ones without
+    windows dimmed) instead of Mission Control spaces, from [AeroSpace's integration](https://nikitabobko.github.io/AeroSpace/goodies);
   - AeroSpace's binding mode (eg `service`), highlighted in place of the
     focused app while it isn't `main`, so the other items don't move; AeroSpace
     notifies the bar (`on-mode-changed`).
