@@ -6,7 +6,7 @@ manager for macOS (brew cask from the author's tap).
 - `~/.config/aerospace/aerospace.toml` -> `config/aerospace.toml`: AeroSpace's
   default config, with a few changes marked `dotfiles:` (starts at login, reloads
   on save, numbered workspaces only so `alt-<letter>` keeps typing characters
-  like `ç`), 10px gaps around windows (the top one per monitor, since the MacBook's
+  like `ç`), 14px gaps around windows (the top one per monitor, since the MacBook's
   notched display reserves 32pt at the top), and the SketchyBar / JankyBorders
   integration (starts them, notifies SketchyBar of workspace and mode changes and
   of windows moved to another workspace, extra top gap for the bar), and apps
