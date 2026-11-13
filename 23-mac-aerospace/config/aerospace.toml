@@ -91,13 +91,14 @@ key-mapping.preset = 'qwerty'
 # The MacBook's built-in display (notch) always reserves 32pt at the top, even with
 # the menu bar hidden, and the gap is added below it: 40 + 14 - 32 = 22 there.
 # Left / right line windows up with SketchyBar's first and last items: bar padding
-# (20) + item padding (5) + icon / label padding (4) = 29.
+# (20) + item padding (5) + icon / label padding (4) = 29, minus 2 since
+# JankyBorders' border (25-mac-jankyborders) makes windows look wider.
 gaps.inner.horizontal = 14
 gaps.inner.vertical =   14
-gaps.outer.left =       29
+gaps.outer.left =       27
 gaps.outer.bottom =     14
 gaps.outer.top =        [{ monitor."built-in" = 22 }, 54]
-gaps.outer.right =      29
+gaps.outer.right =      27
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
