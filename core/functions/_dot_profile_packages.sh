@@ -2,7 +2,8 @@
 # Prints the packages of a profile (`profiles/<name>`), one per line, in install
 # order. A profile lists one package per line; `include <profile>` expands another
 # profile in place; `#` starts a comment. A package already listed is skipped.
-# Fails on an unknown profile or package, or an include loop.
+# Fails on an unknown profile or package, a package without uninstall.sh, or an
+# include loop.
 #
 #   _dot_profile_packages work
 
@@ -42,6 +43,10 @@ _dot_profile_expand() {
 
         if [ ! -f "${root}/packages/${word}/install.sh" ]; then
             _dot_err "Unknown package in profiles/${profile}: ${word}"
+            return 1
+        fi
+        if [ ! -f "${root}/packages/${word}/uninstall.sh" ]; then
+            _dot_err "Package without uninstall.sh: ${word}"
             return 1
         fi
         case "${_dot_profile_seen}" in

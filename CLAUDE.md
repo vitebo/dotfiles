@@ -14,8 +14,24 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Own naming**: our prefix is `dot`: functions `_dot_*`, variables `DOT_*`,
   internal library `core/`.
 - **Small packages**: each tool is a self-contained `packages/<name>/` folder with
-  `install.sh`, optional `_apt.sh` / `_brew.sh`, `config/` and `README.md`.
+  `install.sh`, `uninstall.sh`, optional `_apt.sh` / `_brew.sh` (and their
+  `_apt_uninstall.sh` / `_brew_uninstall.sh`), `config/` and `README.md`.
   Package-specific helpers stay inside the package folder.
+- **Every package can be uninstalled**: every package has an `uninstall.sh` that
+  undoes everything its `install.sh` did, in reverse order; `_dot_profile_packages`
+  refuses a package without one. Any change to an `install.sh` updates its
+  `uninstall.sh` in the same change.
+  - It removes what the install created: the tool (brew / apt / release binary),
+    every symlink (`_dot_unlink` / `_dot_unlink_zsh` for each `_dot_link` /
+    `_dot_link_zsh`, restoring a `.bak` and removing the dirs left empty), clones and
+    plugins, mise tools, registrations (MCP servers, git config).
+  - User state stays: shell history, logins (`hosts.yml`, `~/.claude.json`,
+    `~/.aws`), sessions, app data (casks are uninstalled without `--zap`), Docker
+    images. Reinstalling gets back to the same point, logins included.
+  - Idempotent like the install: nothing to remove is a no-op; it never fails
+    because its prerequisites are already gone (guard with `command -v`).
+  - `bash uninstall.sh <profile>` runs a profile's `uninstall.sh` in reverse order.
+    `homebrew`'s removes Homebrew itself, with everything brew installed.
 - **Device profiles**: each device (work MacBook, personal MacBook, iMac,
   devcontainer) has a profile, `profiles/<name>`: the list of its packages, in install
   order (one per line, `#` comments). Shared lists are profiles too, reused with
@@ -319,15 +335,20 @@ repo should behave is made (structure, conventions, tooling, workflow).
 3. `install.sh`: resolve `DOT_PACKAGE_DIR` / `DOT_ROOT`, `source core/lib.sh`,
    then `_dot_require` (prerequisites), `_dot_select_package_manager || true` +
    `_dot_install_with_package_manager` (installs), `_dot_link` / `_dot_link_zsh` (config).
-4. Add `_apt.sh` / `_brew.sh` as needed, a `README.md` (with "Prerequisites"), and a
-   row in the root README table.
-5. Add it to the profiles of the devices that need it (`base` / `mac` when shared), after
+4. `uninstall.sh` undoing all of it in reverse (see "Every package can be uninstalled"):
+   `_dot_unlink` / `_dot_unlink_zsh`, `_dot_select_package_manager || true` +
+   `_dot_uninstall_with_package_manager`, plus removing clones / registrations.
+5. Add `_apt.sh` / `_brew.sh` as needed, each with its `_apt_uninstall.sh` /
+   `_brew_uninstall.sh`, a `README.md` (with "Prerequisites"), and a row in the root
+   README table.
+6. Add it to the profiles of the devices that need it (`base` / `mac` when shared), after
    its prerequisites.
 
 ## Verifying
 
 ```sh
-for f in install.sh packages/*/install.sh packages/*/_*.sh core/lib.sh core/functions/*.sh; do bash -n "$f"; done
+for f in install.sh uninstall.sh packages/*/install.sh packages/*/uninstall.sh packages/*/_*.sh core/lib.sh core/functions/*.sh; do bash -n "$f"; done
 bash install.sh <profile> && bash install.sh <profile>   # second run must not create .bak files or duplicate lines
+bash packages/<name>/uninstall.sh && bash packages/<name>/uninstall.sh   # removes all, then a no-op; reinstall after
 zsh -i -c 'echo ok'
 ```

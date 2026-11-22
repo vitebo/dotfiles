@@ -14,6 +14,19 @@ git clone <repo> ~/.dotfiles && bash ~/.dotfiles/install.sh <profile>
 On a mac the profile is required (eg `work`); on linux it defaults to `devcontainer`.
 Scripts are idempotent: they can be run as many times as needed.
 
+### Uninstall
+
+```sh
+bash ~/.dotfiles/uninstall.sh <profile>          # every package of a profile, in reverse order
+bash ~/.dotfiles/packages/<name>/uninstall.sh   # a single package
+```
+
+Same profile rules as `install.sh`. A package's `uninstall.sh` removes everything its
+`install.sh` created: the tool, its symlinks (a `.bak` the install made is restored),
+clones and plugins, mise tools, MCP registrations. User state stays (shell history,
+logins, sessions, app data, Docker images), so reinstalling keeps your logins.
+`homebrew`'s uninstall removes Homebrew itself, with everything brew installed.
+
 ### Devcontainers
 
 With the [devcontainer CLI](https://github.com/devcontainers/cli) (installed on the
@@ -44,7 +57,7 @@ that need them (they check with `_dot_require`).
 | [imac](profiles/imac) | iMac |
 
 Removing a package from a profile doesn't uninstall it from machines that already have
-it: uninstall it by hand (its zsh snippet link then dangles and is skipped).
+it: run its `uninstall.sh` there.
 
 ## Structure
 
@@ -53,12 +66,14 @@ it: uninstall it by hand (its zsh snippet link then dangles and is skipped).
 ├── core/              # internal functions (`_dot_*`), see core/README.md
 ├── packages/<name>/
 │   ├── install.sh     # installs the package and creates the symlinks
-│   ├── _apt.sh        # (optional) install with apt
-│   ├── _brew.sh       # (optional) install with brew
+│   ├── uninstall.sh   # removes all of it, symlinks included
+│   ├── _apt.sh        # (optional) install with apt, undone by _apt_uninstall.sh
+│   ├── _brew.sh       # (optional) install with brew, undone by _brew_uninstall.sh
 │   ├── config/        # config files (symlinked into $HOME)
 │   └── README.md
 ├── profiles/<name>    # packages of a device, in install order
-└── install.sh         # runs a profile's packages in order
+├── install.sh         # runs a profile's packages in order
+└── uninstall.sh       # runs a profile's uninstalls in reverse order
 ```
 
 A package runs where its profiles include it: mac-only packages (GUI apps) have just a

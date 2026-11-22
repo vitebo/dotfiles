@@ -21,6 +21,8 @@ read alerts and incidents.
 
   The mise shim works however Claude Code was started. Check it with
   `claude mcp get grafana-<env>`, or `/mcp` in a session.
+  `uninstall.sh` removes the binary only; remove each server by hand with
+  `claude mcp remove --scope user grafana-<env>`.
 - Use a service account with the **Viewer** role, at least for production, so
   Claude can read but not change dashboards, alerts or annotations.
 - mac only: Claude Code runs on the host.
