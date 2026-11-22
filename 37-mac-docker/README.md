@@ -15,7 +15,10 @@ Installs [Docker Desktop](https://www.docker.com/products/docker-desktop/)
   registry logins (`docker login`), per machine like gh's `hosts.yml`.
 - Completions for `docker` / `docker-compose` come with the cask. oh-my-zsh's
   `docker` plugin ([22-any-oh-my-zsh](../22-any-oh-my-zsh)) adds aliases (`dps`,
-  `dils`, `dxcit`...), enabled when docker is installed.
+  `dils`, `dxcit`...), enabled when docker is installed. Skip Docker Desktop's
+  "install shell completions" option: it appends a block to `~/.zshrc` (the
+  versioned `10-any-zsh/config/zshrc`) with a hardcoded home path and a second
+  `compinit`, and adds nothing; if it was clicked, revert that file.
 - Kubernetes: Docker Desktop's built-in cluster is the local one (Settings →
   Kubernetes → Enable Kubernetes); see [44-mac-kubectl](../44-mac-kubectl).
 - Licensing: free for personal use and small companies; larger companies need a
