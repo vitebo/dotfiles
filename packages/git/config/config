@@ -1,0 +1,15 @@
+# ~/.config/git/config -> packages/git/config/config
+
+[user]
+    name = vitebo
+    email = vitebo@hotmail.com
+
+# delta (packages/git-delta) as the pager; ignored when the file doesn't exist,
+# ie where the package isn't installed.
+[include]
+    path = ~/.config/git-delta/git-delta.config
+
+# gh's login as credentials for https on GitHub (packages/gh); ignored when the file
+# doesn't exist, ie where the package isn't installed.
+[include]
+    path = ~/.config/gh/git-credential.config

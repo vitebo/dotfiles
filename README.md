@@ -1,23 +1,25 @@
 # dotfiles
 
-Shell and tooling configuration, organized in small, self-contained packages.
-Works on **macOS** (brew) and **Linux / devcontainers** (apt).
+Shell and tooling configuration, organized in small, self-contained packages, installed
+per device through profiles. Works on **macOS** (brew) and **Linux / devcontainers** (apt).
 
 Inspired by [gnugat/dotfiles](https://github.com/gnugat/dotfiles).
 
 ## Installation
 
 ```sh
-git clone <repo> ~/.dotfiles && bash ~/.dotfiles/install.sh
+git clone <repo> ~/.dotfiles && bash ~/.dotfiles/install.sh <profile>
 ```
 
+On a mac the profile is required (eg `work`); on linux it defaults to `devcontainer`.
 Scripts are idempotent: they can be run as many times as needed.
 
 ### Devcontainers
 
 With the [devcontainer CLI](https://github.com/devcontainers/cli) (installed on the
-mac by [50-mac-devcontainer](50-mac-devcontainer/README.md)), pass this repository
-when starting the container; it gets cloned and its `install.sh` runs:
+mac by [devcontainer](packages/devcontainer/README.md)), pass this repository
+when starting the container; it gets cloned and its `install.sh` runs with the
+`devcontainer` profile:
 
 ```sh
 devcontainer up --workspace-folder . --dotfiles-repository <repo>
@@ -25,87 +27,101 @@ devcontainer up --workspace-folder . --dotfiles-repository <repo>
 
 Nothing depends on the `~/.dotfiles` path, and the installation never prompts.
 
+## Profiles
+
+A profile (`profiles/<name>`) lists the packages of a device, in install order: one
+package per line, `include <profile>` to reuse another profile, `#` for comments. A
+package listed twice is installed once. Prerequisites must come before the packages
+that need them (they check with `_dot_require`).
+
+| Profile | Device |
+| --- | --- |
+| [base](profiles/base) | cross-platform shell and CLI tools (included by the others) |
+| [devcontainer](profiles/devcontainer) | Linux devcontainers |
+| [mac](profiles/mac) | shared by every mac (included by the mac profiles) |
+| [work](profiles/work) | work MacBook |
+| [personal](profiles/personal) | personal MacBook |
+| [imac](profiles/imac) | iMac |
+
+Removing a package from a profile doesn't uninstall it from machines that already have
+it: uninstall it by hand (its zsh snippet link then dangles and is skipped).
+
 ## Structure
 
 ```
 .
-├── <NN>-<scope>-<name>/
+├── core/              # internal functions (`_dot_*`), see core/README.md
+├── packages/<name>/
 │   ├── install.sh     # installs the package and creates the symlinks
 │   ├── _apt.sh        # (optional) install with apt
 │   ├── _brew.sh       # (optional) install with brew
 │   ├── config/        # config files (symlinked into $HOME)
 │   └── README.md
-└── install.sh         # runs the packages in order
+├── profiles/<name>    # packages of a device, in install order
+└── install.sh         # runs a profile's packages in order
 ```
 
-- `NN`: execution order (00–99). Prerequisites are packages too, with a lower `NN`
-  than the packages that need them.
-- `scope`: where the package runs.
-  - `core`: internal functions (`_dot_*`), nothing to install — see [00-core-dot](00-core-dot/README.md)
-  - `any`: mac and linux
-  - `mac`: macOS only
-  - `linux`: linux only
-
-The root `install.sh` detects the OS and runs the `any` + `mac` or `any` + `linux` scopes.
-To choose manually:
+A package runs where its profiles include it: mac-only packages (GUI apps) have just a
+`_brew.sh` and are only in mac profiles. zsh snippets are named `config/<NN>-<name>.zsh`;
+`NN` is the shell load order (eg oh-my-zsh is 22, eza's aliases load after it at 31).
 
 ```sh
-DOT_SCOPES="any" bash install.sh        # cross-platform packages only
-bash 15-any-ripgrep/install.sh          # a single package (its prerequisites must be installed)
-DOT_PM=brew bash install.sh             # force a package manager
+bash install.sh work                   # a device profile
+bash packages/ripgrep/install.sh       # a single package (its prerequisites must be installed)
+DOT_PM=brew bash install.sh work       # force a package manager
 ```
 
 ## Packages
 
 | Package | Description |
 | --- | --- |
-| [01-mac-homebrew](01-mac-homebrew/README.md) | Homebrew |
-| [10-any-zsh](10-any-zsh/README.md) | zsh and its `~/.zshrc` loader |
-| [11-any-curl](11-any-curl/README.md) | curl |
-| [12-any-git](12-any-git/README.md) | git |
-| [13-any-build-tools](13-any-build-tools/README.md) | C compiler and make |
-| [14-any-unzip](14-any-unzip/README.md) | unzip |
-| [15-any-ripgrep](15-any-ripgrep/README.md) | ripgrep (`rg`) |
-| [16-any-tree-sitter](16-any-tree-sitter/README.md) | tree-sitter CLI |
-| [17-any-neovim](17-any-neovim/README.md) | Neovim, as the default editor |
-| [18-mac-nerd-font](18-mac-nerd-font/README.md) | JetBrainsMono Nerd Font |
-| [19-mac-ghostty](19-mac-ghostty/README.md) | Ghostty terminal (config versioned in the repo) |
-| [20-any-nvchad](20-any-nvchad/README.md) | NvChad config for Neovim (versioned in the repo) |
-| [21-any-claude-code](21-any-claude-code/README.md) | Claude Code, with config shared across machines |
-| [22-any-oh-my-zsh](22-any-oh-my-zsh/README.md) | oh-my-zsh: prompt, plugins, completion, history (config versioned in the repo) |
-| [23-mac-aerospace](23-mac-aerospace/README.md) | AeroSpace tiling window manager (config versioned in the repo) |
-| [24-mac-sketchybar](24-mac-sketchybar/README.md) | SketchyBar status bar, with AeroSpace workspaces |
-| [25-mac-jankyborders](25-mac-jankyborders/README.md) | JankyBorders: border around the focused window |
-| [26-any-tree](26-any-tree/README.md) | tree, directory listing as a tree |
-| [27-mac-fastfetch](27-mac-fastfetch/README.md) | fastfetch system summary, shown when a terminal opens |
-| [28-any-bat](28-any-bat/README.md) | bat (`cat` with syntax highlighting), also for man pages |
-| [29-any-git-delta](29-any-git-delta/README.md) | delta, syntax-highlighting pager for git |
-| [30-any-fd](30-any-fd/README.md) | fd, a fast alternative to `find` |
-| [31-any-eza](31-any-eza/README.md) | eza, a modern `ls`, used by the `l` / `la` / `ll` / `lla` aliases |
-| [32-any-fzf](32-any-fzf/README.md) | fzf fuzzy finder: history, files, `cd`, `**` completion |
-| [33-any-zoxide](33-any-zoxide/README.md) | zoxide, a smarter `cd` (`z`, `zi`) |
-| [34-any-tmux](34-any-tmux/README.md) | tmux terminal multiplexer, with `tz` (zoxide sessions) |
-| [35-any-gh](35-any-gh/README.md) | GitHub CLI, also git's credentials for github.com |
-| [36-any-jq](36-any-jq/README.md) | jq, command-line JSON processor |
-| [37-mac-docker](37-mac-docker/README.md) | Docker Desktop (container runtime and `docker` CLI) |
-| [38-mac-slack](38-mac-slack/README.md) | Slack, on AeroSpace workspace 9 with unread count in SketchyBar |
-| [39-mac-aws-cli](39-mac-aws-cli/README.md) | AWS CLI v2 |
-| [40-mac-mise](40-mac-mise/README.md) | mise runtime manager, with Node.js 22 as the global `node` |
-| [41-mac-lazygit](41-mac-lazygit/README.md) | lazygit, terminal UI for git (`lg`), with delta diffs |
-| [42-mac-lazydocker](42-mac-lazydocker/README.md) | lazydocker, terminal UI for docker (`lzd`) |
-| [43-mac-k9s](43-mac-k9s/README.md) | k9s, terminal UI for Kubernetes |
-| [44-mac-kubectl](44-mac-kubectl/README.md) | kubectl; local cluster from Docker Desktop's Kubernetes |
-| [45-mac-helm](45-mac-helm/README.md) | Helm, Kubernetes package manager |
-| [46-mac-google-chrome](46-mac-google-chrome/README.md) | Google Chrome web browser, the default browser |
-| [49-mac-wallpaper](49-mac-wallpaper/README.md) | Catppuccin Mocha wallpaper |
-| [50-mac-devcontainer](50-mac-devcontainer/README.md) | Dev Containers CLI (`devcontainer`), to run projects' devcontainers |
-| [52-mac-aws-vpn-client](52-mac-aws-vpn-client/README.md) | AWS Client VPN, VPN client for AWS networks |
-| [53-mac-chrome-devtools-mcp](53-mac-chrome-devtools-mcp/README.md) | Chrome DevTools MCP, lets Claude Code drive Chrome and take screenshots |
-| [54-any-chafa](54-any-chafa/README.md) | chafa, shows images in the terminal (also inside tmux) |
-| [55-mac-grafana-mcp](55-mac-grafana-mcp/README.md) | Grafana MCP, lets Claude Code query Grafana (servers added per machine) |
-| [56-mac-cloudflared](56-mac-cloudflared/README.md) | cloudflared, exposes a local server on a public URL (Cloudflare Tunnel) |
-| [57-mac-nordpass](57-mac-nordpass/README.md) | NordPass, password manager |
-| [58-mac-btop](58-mac-btop/README.md) | btop, terminal resource monitor |
+| [homebrew](packages/homebrew/README.md) | Homebrew |
+| [zsh](packages/zsh/README.md) | zsh and its `~/.zshrc` loader |
+| [curl](packages/curl/README.md) | curl |
+| [git](packages/git/README.md) | git |
+| [build-tools](packages/build-tools/README.md) | C compiler and make |
+| [unzip](packages/unzip/README.md) | unzip |
+| [ripgrep](packages/ripgrep/README.md) | ripgrep (`rg`) |
+| [tree-sitter](packages/tree-sitter/README.md) | tree-sitter CLI |
+| [neovim](packages/neovim/README.md) | Neovim, as the default editor |
+| [nerd-font](packages/nerd-font/README.md) | JetBrainsMono Nerd Font |
+| [ghostty](packages/ghostty/README.md) | Ghostty terminal (config versioned in the repo) |
+| [nvchad](packages/nvchad/README.md) | NvChad config for Neovim (versioned in the repo) |
+| [claude-code](packages/claude-code/README.md) | Claude Code, with config shared across machines |
+| [oh-my-zsh](packages/oh-my-zsh/README.md) | oh-my-zsh: prompt, plugins, completion, history (config versioned in the repo) |
+| [aerospace](packages/aerospace/README.md) | AeroSpace tiling window manager (config versioned in the repo) |
+| [sketchybar](packages/sketchybar/README.md) | SketchyBar status bar, with AeroSpace workspaces |
+| [jankyborders](packages/jankyborders/README.md) | JankyBorders: border around the focused window |
+| [tree](packages/tree/README.md) | tree, directory listing as a tree |
+| [fastfetch](packages/fastfetch/README.md) | fastfetch system summary, shown when a terminal opens |
+| [bat](packages/bat/README.md) | bat (`cat` with syntax highlighting), also for man pages |
+| [git-delta](packages/git-delta/README.md) | delta, syntax-highlighting pager for git |
+| [fd](packages/fd/README.md) | fd, a fast alternative to `find` |
+| [eza](packages/eza/README.md) | eza, a modern `ls`, used by the `l` / `la` / `ll` / `lla` aliases |
+| [fzf](packages/fzf/README.md) | fzf fuzzy finder: history, files, `cd`, `**` completion |
+| [zoxide](packages/zoxide/README.md) | zoxide, a smarter `cd` (`z`, `zi`) |
+| [tmux](packages/tmux/README.md) | tmux terminal multiplexer, with `tz` (zoxide sessions) |
+| [gh](packages/gh/README.md) | GitHub CLI, also git's credentials for github.com |
+| [jq](packages/jq/README.md) | jq, command-line JSON processor |
+| [docker](packages/docker/README.md) | Docker Desktop (container runtime and `docker` CLI) |
+| [slack](packages/slack/README.md) | Slack, on AeroSpace workspace 9 with unread count in SketchyBar |
+| [aws-cli](packages/aws-cli/README.md) | AWS CLI v2 |
+| [mise](packages/mise/README.md) | mise runtime manager, with Node.js 22 as the global `node` |
+| [lazygit](packages/lazygit/README.md) | lazygit, terminal UI for git (`lg`), with delta diffs |
+| [lazydocker](packages/lazydocker/README.md) | lazydocker, terminal UI for docker (`lzd`) |
+| [k9s](packages/k9s/README.md) | k9s, terminal UI for Kubernetes |
+| [kubectl](packages/kubectl/README.md) | kubectl; local cluster from Docker Desktop's Kubernetes |
+| [helm](packages/helm/README.md) | Helm, Kubernetes package manager |
+| [google-chrome](packages/google-chrome/README.md) | Google Chrome web browser, the default browser |
+| [wallpaper](packages/wallpaper/README.md) | Catppuccin Mocha wallpaper |
+| [devcontainer](packages/devcontainer/README.md) | Dev Containers CLI (`devcontainer`), to run projects' devcontainers |
+| [aws-vpn-client](packages/aws-vpn-client/README.md) | AWS Client VPN, VPN client for AWS networks |
+| [chrome-devtools-mcp](packages/chrome-devtools-mcp/README.md) | Chrome DevTools MCP, lets Claude Code drive Chrome and take screenshots |
+| [chafa](packages/chafa/README.md) | chafa, shows images in the terminal (also inside tmux) |
+| [grafana-mcp](packages/grafana-mcp/README.md) | Grafana MCP, lets Claude Code query Grafana (servers added per machine) |
+| [cloudflared](packages/cloudflared/README.md) | cloudflared, exposes a local server on a public URL (Cloudflare Tunnel) |
+| [nordpass](packages/nordpass/README.md) | NordPass, password manager |
+| [btop](packages/btop/README.md) | btop, terminal resource monitor |
 
 ## Local config
 

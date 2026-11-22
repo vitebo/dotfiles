@@ -1,2 +1,2 @@
-# Claude Code's settings.json: per-machine keys are stripped on git add (21-any-claude-code)
-21-any-claude-code/config/settings.json filter=dot-claude-settings
+# Claude Code's settings.json: per-machine keys are stripped on git add (claude-code)
+packages/claude-code/config/settings.json filter=dot-claude-settings

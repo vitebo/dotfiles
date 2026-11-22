@@ -1,0 +1,15 @@
+# ~/.zshrc -> packages/zsh/config/zshrc
+#
+# Loads the packages' snippets from ~/.config/zsh/<NN>-<name>.zsh (sorted by
+# their NN: the shell load order, eg oh-my-zsh before eza), then
+# ~/.zshrc.local (machine specific config, kept out of the repository).
+# `(N-.)` skips dangling symlinks, eg from a removed package.
+
+for _dot_zsh_file in "${HOME}"/.config/zsh/*.zsh(N-.); do
+    source "${_dot_zsh_file}"
+done
+unset _dot_zsh_file
+
+if [[ -f "${HOME}/.zshrc.local" ]]; then
+    source "${HOME}/.zshrc.local"
+fi

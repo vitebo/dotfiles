@@ -1,0 +1,9 @@
+# ~/.config/lazygit/delta.yml -> packages/lazygit/config/delta.yml
+#
+# Diffs rendered by delta (packages/git-delta). Merged on top of config.yml through
+# LG_CONFIG_FILE (see config/41-lazygit.zsh), only when delta is installed.
+# Reference: https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_DiffRenderers.md
+
+git:
+  diffRenderers:
+    - command: delta --{{colorScheme}} --paging=never

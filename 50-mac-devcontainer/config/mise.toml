@@ -1,8 +1,0 @@
-# ~/.config/mise/conf.d/devcontainer.toml -> 50-mac-devcontainer/config/mise.toml
-#
-# The Dev Containers CLI (`devcontainer`) as a mise tool (40-mac-mise loads
-# ~/.config/mise/conf.d/*.toml): installed with mise's Node.js, and kept across
-# Node.js upgrades, unlike `npm install -g`.
-
-[tools]
-"npm:@devcontainers/cli" = "latest"

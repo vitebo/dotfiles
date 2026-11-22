@@ -1,0 +1,25 @@
+# ghostty
+
+Installs the [Ghostty](https://ghostty.org) terminal (brew cask).
+
+- `~/.config/ghostty/config.ghostty` -> `config/config.ghostty`: versioned here so
+  changes can be tracked. Ghostty defaults, except:
+  - Catppuccin theme, Latte in light mode and Mocha in dark mode, switching live
+    with the macOS appearance. Terminal tools (on the mac and in devcontainers)
+    are configured to follow Ghostty's colors and light / dark mode.
+  - `cmd+t` opens a new window instead of a native tab: native tabs are separate
+    windows for AeroSpace, which would tile each one. Use AeroSpace's accordion
+    layout (`alt-,`) for tabs, or Ghostty splits (`cmd+d` / `cmd+shift+d`).
+  - no titlebar (`macos-titlebar-style = hidden`): AeroSpace places and sizes the
+    windows, so the close / minimize / maximize bar only takes space. The frame and
+    rounded corners stay; `option`+drag on the frame still moves a window.
+  - more padding around the text (12 points left / right, 8 top / bottom, balanced),
+    instead of 2.
+  - left `option` acts as `alt` (`macos-option-as-alt = left`), so terminal apps
+    get alt shortcuts (eg Claude Code's `option+enter`, `option+p`); the Brazilian
+    layout defaults to option typing characters, which the right `option` still does.
+
+mac only: it's a GUI app, and linux is always a devcontainer.
+
+Ghostty embeds JetBrains Mono and Nerd Font symbols, so NvChad icons render
+without extra font setup.

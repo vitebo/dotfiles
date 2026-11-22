@@ -12,26 +12,35 @@ repo should behave is made (structure, conventions, tooling, workflow).
   decisions on their own, without comparing to it.
 - **Language**: everything in the repo (code, comments, messages, docs) is in English.
 - **Own naming**: our prefix is `dot`: functions `_dot_*`, variables `DOT_*`,
-  internal package `00-core-dot`.
-- **Small packages**: each tool is a self-contained `<NN>-<scope>-<name>/` folder with
+  internal library `core/`.
+- **Small packages**: each tool is a self-contained `packages/<name>/` folder with
   `install.sh`, optional `_apt.sh` / `_brew.sh`, `config/` and `README.md`.
   Package-specific helpers stay inside the package folder.
+- **Device profiles**: each device (work MacBook, personal MacBook, iMac,
+  devcontainer) has a profile, `profiles/<name>`: the list of its packages, in install
+  order (one per line, `#` comments). Shared lists are profiles too, reused with
+  `include <profile>` (`base`: cross-platform, every device; `mac`: every mac); a
+  package listed twice is installed once. `core/functions/_dot_profile_packages.sh`
+  resolves them.
+  - `bash install.sh <profile>`: required on mac; on linux it defaults to
+    `devcontainer`, since the devcontainer CLI runs `install.sh` without arguments.
+  - A device-only package goes in that device's profile (eg Slack, the AWS CLI and
+    kubectl only in `work`); a package every mac needs goes in `mac`.
+  - Folder names carry no order or platform: install order is the profile's, shell
+    load order is the zsh snippet's `NN` (see "Packages own their shell env"), and
+    platform is which profiles include it (plus which `_<pm>.sh` it has).
 - **One package per prerequisite**: every tool a package needs (eg nvchad needs
   neovim, git, build tools, unzip, ripgrep, tree-sitter, a nerd font) is its own
   package, even when it's a single apt line, so shared prerequisites stay reusable
   and explicit. A package never installs another package's tool:
-  - the prerequisite gets a lower `NN` than its dependents (ordering is the only
-    dependency mechanism, no automatic resolution);
+  - the prerequisite comes before its dependents in every profile that has them
+    (profile order is the only dependency mechanism, no automatic resolution);
   - the dependent checks them with `_dot_require <cmds>` and lists them, as links,
     under "Prerequisites" in its README.
   - Tools the OS already ships on one platform only get the other platform's script
-    (eg `11-any-curl` has `_apt.sh` only, macOS ships curl).
+    (eg `curl` has `_apt.sh` only, macOS ships curl).
   - A tool and its config are separate packages when the config is a project of its
-    own (eg `17-any-neovim` installs nvim, `20-any-nvchad` is the config).
-- **Folder prefix** `<NN>-<scope>-<name>`:
-  - `NN`: global execution order (00–99), the shell glob sorts them.
-  - `scope`: `core` (library, no `install.sh`), `any` (mac + linux), `mac`, `linux`.
-  - Root `install.sh` runs `DOT_SCOPES="any <os>"` by default; overridable via env.
+    own (eg `neovim` installs nvim, `nvchad` is the config).
 - **Platforms**: macOS (brew) and Linux devcontainers (apt, Debian/Ubuntu).
   - `_<pm>.sh` is sourced in a subshell (so `_dot_*` functions are available);
     a missing script means nothing to install for that package manager.
@@ -41,14 +50,14 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - Tools that Debian/Ubuntu install under another name (`batcat`, `fdfind`) get an
     alias back to their usual name in the package's zsh snippet, so commands are the
     same on mac and linux.
-- **Linux is always a devcontainer**: GUI apps (brew casks, eg `19-mac-ghostty`,
-  `18-mac-nerd-font`) and anything rendered by the host are `mac` scope only, with
+- **Linux is always a devcontainer**: GUI apps (brew casks, eg `ghostty`,
+  `nerd-font`) and anything rendered by the host are only in mac profiles, with
   just a `_brew.sh`.
 - **Versioned app config**: when a package configures an app, its config file lives in
   the package's `config/` and is symlinked to where the app reads it (eg
   `~/.config/ghostty/config.ghostty`, `~/.config/nvim`). Start from the app defaults:
   when the app ships a default config file, copy it as is and mark each of our
-  changes with a `dotfiles:` comment explaining why (eg `23-mac-aerospace`). When the
+  changes with a `dotfiles:` comment explaining why (eg `aerospace`). When the
   app only prints a full dump of its defaults (eg `lazygit --config`), start from a
   minimal file instead (header + link to the docs + our changes): copying the dump
   would freeze today's defaults.
@@ -80,8 +89,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
   integration. AeroSpace starts it (`after-startup-command`) instead of
   `brew services`, so there's no LaunchAgent written in `~/Library`.
   The glue lives in `aerospace.toml` (one file can't be split across packages), so
-  `24-mac-sketchybar` requires `aerospace` and the AeroSpace config mentions it.
-  - Same pattern for JankyBorders (`25-mac-jankyborders`), which highlights the
+  `sketchybar` requires `aerospace` and the AeroSpace config mentions it.
+  - Same pattern for JankyBorders (`jankyborders`), which highlights the
     focused window (AeroSpace's goodies recommend it): started by AeroSpace,
     configured by a versioned `bordersrc`.
   - AeroSpace's service mode `esc` reloads AeroSpace and every tool it starts.
@@ -106,7 +115,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Third-party brew taps**: when a tool isn't in the official casks/formulae,
   `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap (eg
   `nikitabobko/tap/aerospace`).
-- **`XDG_CONFIG_HOME=~/.config`** is exported by `10-any-zsh` (`xdg.zsh`),
+- **`XDG_CONFIG_HOME=~/.config`** is exported by `zsh` (`10-xdg.zsh`),
   so XDG tools (lazygit, lazydocker, k9s...) use `~/.config` on macOS instead of
   `~/Library/Application Support`. Only the config dir: data / cache / state stay
   where each tool puts them.
@@ -119,7 +128,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
   the old one (they never remove user files); Claude cleans the stale files on this
   machine by hand, after checking their content is now in the repo.
 - **Devcontainers via the devcontainer CLI** (not an editor integration): don't
-  mention any editor in docs. The CLI is its own package (`50-mac-devcontainer`, a
+  mention any editor in docs. The CLI is its own package (`devcontainer`, a
   mise npm tool), not part of Docker's, so devcontainer helper scripts go there.
   The repo may be cloned anywhere (eg `~/dotfiles`), so paths are always resolved
   relative to the script, never hardcoded.
@@ -131,7 +140,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **System preferences are set by hand**: installers don't change macOS preferences
   (default browser, menu bar, Mission Control...), which may need confirmation
   dialogs or a logout; the steps are documented in the package README
-  (eg Chrome as default browser in `46-mac-google-chrome`).
+  (eg Chrome as default browser in `google-chrome`).
 - **Start minimal**: only homebrew (mac bootstrap), zsh + oh-my-zsh, NvChad and its
   prerequisites, Ghostty, Claude Code, AeroSpace, SketchyBar, JankyBorders, tree,
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
@@ -140,19 +149,19 @@ repo should behave is made (structure, conventions, tooling, workflow).
   btop, a Catppuccin wallpaper and the Dev Containers CLI for now; oh-my-zsh with its
   defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
-  (eg the AWS CLI, runtimes managed by mise) are `mac` scope here; inside devcontainers each project installs
+  (eg the AWS CLI, runtimes managed by mise) are only in mac profiles here; inside devcontainers each project installs
   them from its own `devcontainer.json`, with its own credentials.
 - **Runtimes via mise**: language runtimes on the mac (eg Node.js 22, the global
-  `node`) are declared in mise's versioned global config (`40-mac-mise`) and
+  `node`) are declared in mise's versioned global config (`mise`) and
   installed by its `install.sh`; never through brew (`brew install node`).
   - CLIs distributed through npm (eg the Dev Containers CLI) are mise tools too (`npm:<package>`),
     never `npm install -g` (lost on Node.js upgrades): their package links its own
     `~/.config/mise/conf.d/<name>.toml` and runs `mise install`, without editing
     mise's package.
-- **Docker**: Docker Desktop on every mac (`37-mac-docker`), the same runtime on
+- **Docker**: Docker Desktop on every mac (`docker`), the same runtime on
   each, not inside devcontainers.
 - **Kubernetes**: the local cluster is Docker Desktop's built-in one (enabled in its
-  settings), no kind / minikube. kubectl is its own brew package (`44-mac-kubectl`),
+  settings), no kind / minikube. kubectl is its own brew package (`kubectl`),
   not the one Docker Desktop ships; kubeconfig and Helm repos stay per machine.
 - **Themes: Catppuccin, following the macOS appearance**: Latte in light mode,
   Mocha in dark mode, switching live when macOS switches. Tools without a
@@ -169,7 +178,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
     start) or a notification on each change (mode 2031, live); multiplexers (tmux)
     must pass both through to the apps inside them.
   - Only host GUI tools (SketchyBar, JankyBorders) listen to macOS directly.
-  - The wallpaper (`49-mac-wallpaper`) is one Mocha image in both modes (a dynamic
+  - The wallpaper (`wallpaper`) is one Mocha image in both modes (a dynamic
     HEIC built by hand wasn't recognized by macOS, so it was dropped for
     simplicity); it's set by hand once, like other system preferences. It's a
     free-licensed photo recolored with lutgen, credited in the package README.
@@ -179,52 +188,54 @@ repo should behave is made (structure, conventions, tooling, workflow).
   oh-my-zsh), the framework itself is installed outside the repo (plugin manager,
   `~/.local/share/<name>`) and only our config of it is versioned, so personal
   changes are tracked without vendoring the framework.
-  - tmux plugins go through TPM, the same way: `34-any-tmux`'s `install.sh` clones
+  - tmux plugins go through TPM, the same way: `tmux`'s `install.sh` clones
     each `@plugin` listed in `tmux.conf` into `~/.local/share/tmux/plugins` (not
     TPM's `install_plugins`, which needs a running tmux server with this config).
     Today: tmux-resurrect + tmux-continuum, so sessions survive a reboot.
 - **Shell: zsh + oh-my-zsh** (rather than setting up zsh by hand with
   setopt/compinit, or starship):
-  - `10-any-zsh` is only the shell and its loader (`~/.zshrc`, `chsh`).
-  - `22-any-oh-my-zsh` owns the shell setup: theme/prompt, plugins, completion
+  - `zsh` is only the shell and its loader (`~/.zshrc`, `chsh`).
+  - `oh-my-zsh` owns the shell setup: theme/prompt, plugins, completion
     (`compinit`), history options, key bindings, common aliases. Don't re-set those
     elsewhere. It's cloned (not the official installer, which replaces `~/.zshrc`)
-    into `~/.local/share/oh-my-zsh`; its config is the `oh-my-zsh.zsh` snippet.
+    into `~/.local/share/oh-my-zsh`; its config is the `22-oh-my-zsh.zsh` snippet.
   - A tool's oh-my-zsh plugin (eg `fzf`, `zoxide`, `tmux`, `docker`, `aws`, `mise`,
-    `kubectl`, `helm`) is enabled in `oh-my-zsh.zsh` only when the
+    `kubectl`, `helm`) is enabled in `22-oh-my-zsh.zsh` only when the
     tool is installed (`(( $+commands[fzf] ))`), since plugins may error out without
     it; the tool's package keeps its own settings (eg fzf's integrations) in its
     snippet. These plugins share one list in a loop (plugin named like its
     command), so adding one is one word plus a comment line. The check runs at
-    shell startup, not at install time, so package order doesn't matter for
+    shell startup, not at install time, so install order doesn't matter for
     enabling them.
   - Functions in package snippets call tools with `command <tool>` when oh-my-zsh
     aliases that tool (eg `tmux`): aliases expand when the function is defined.
-  - Our own aliases/options go in package snippets (no `$ZSH_CUSTOM`). Packages that
-    extend `fpath` need a lower `NN` than oh-my-zsh, which runs `compinit`.
-  - A tool package may deliberately replace an oh-my-zsh alias from its snippet: it
-    needs a higher `NN` than oh-my-zsh (loaded after it), defines it only when the
-    tool is installed, and says so in its README (eg `31-any-eza` replaces `l` /
+  - Our own aliases/options go in package snippets (no `$ZSH_CUSTOM`). Snippets that
+    extend `fpath` need an `NN` below oh-my-zsh's (22), which runs `compinit`.
+  - A tool package may deliberately replace an oh-my-zsh alias from its snippet: its
+    snippet needs an `NN` above oh-my-zsh's (loaded after it), defines it only when the
+    tool is installed, and says so in its README (eg `eza` replaces `l` /
     `la` / `ll`).
   - One owner per alias: never define the same alias in two packages relying on
-    `NN` order to pick one (eg `l` / `ll`... are only defined by eza, not by tree).
-- **Editor is Neovim + NvChad** (`17-any-neovim` + `20-any-nvchad`), replacing vim:
+    load order to pick one (eg `l` / `ll`... are only defined by eza, not by tree).
+- **Editor is Neovim + NvChad** (`neovim` + `nvchad`), replacing vim:
   - The [NvChad starter](https://github.com/NvChad/starter) is vendored in
-    `20-any-nvchad/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
+    `packages/nvchad/config/nvim` (no `.git`, no starter README) and `~/.config/nvim`
     symlinks to it, so personal changes are versioned here. Plain NvChad for now.
   - `lazy-lock.json` is committed; install runs `nvim --headless "+Lazy! restore" +qa`
     so plugins match the lockfile. Update with `:Lazy sync` and commit the lockfile.
   - linux: apt's Neovim is too old (our NvChad config needs 0.12+) and tree-sitter
     isn't packaged, so both come from their GitHub releases (latest). mac: brew.
-  - The nerd font is `mac` scope only: in a devcontainer the host terminal renders it.
+  - The nerd font is only in mac profiles: in a devcontainer the host terminal renders it.
 - **Same dotfiles on personal and work machines**: the repo holds one shared config;
-  never version per-machine or per-account variants (no profiles), so nothing from
-  the company ends up in this repo. Per-machine differences live out of the repo:
+  never version per-machine or per-account variants of a config, so nothing from
+  the company ends up in this repo. Device profiles only choose *which* packages a
+  device gets (they name public tools); a package's config is the same wherever
+  it's installed. Per-machine differences live out of the repo:
   credentials stay where the tool keeps them, env vars go in `~/.zshrc.local`, extra
   files sit next to the linked ones, and org policy comes from the org's own tooling.
   This is why config dirs that mix shared files and machine files (eg `~/.claude`)
   are linked file by file, never as a whole directory.
-- **Claude Code** (`21-any-claude-code`): native installer (`curl … | bash`) on mac and
+- **Claude Code** (`claude-code`): native installer (`curl … | bash`) on mac and
   linux, so it auto-updates; `~/.local/bin` is put in PATH by its zsh snippet (the
   installer itself doesn't edit rc files).
   - Versioned: `~/.claude/settings.json`, `~/.claude/CLAUDE.md` (personal
@@ -236,10 +247,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
     `~/.claude/hooks/`; `settings.json` calls it through `$HOME` and only when the
     file exists (`[ ! -f "$f" ] || bash "$f"`), never with the absolute path the
     tool's installer writes.
-  - Browser automation: the chrome-devtools MCP (`53-mac-chrome-devtools-mcp`,
+  - Browser automation: the chrome-devtools MCP (`chrome-devtools-mcp`,
     `--isolated`: a temporary Chrome profile per session, so agents run it in
     parallel) by default; the Claude in Chrome extension (installed by hand,
-    see `46-mac-google-chrome`) only for flows needing the real, logged-in Chrome,
+    see `google-chrome`) only for flows needing the real, logged-in Chrome,
     eg Cloudflare Turnstile blocks the automated one. Sessions opt in with
     `claude --chrome` ("Enabled by default" stays off); `rules/browser.md` tells
     Claude which to use. Not the MCP's `--autoConnect`: it needs Chrome's remote
@@ -248,29 +259,32 @@ repo should behave is made (structure, conventions, tooling, workflow).
     inside the project's devcontainer (devcontainer CLI) when there is one.
   - Not versioned: `~/.claude.json` + keychain (account), sessions, history, caches.
   - MCP servers for every project: each is its own package (eg
-    `53-mac-chrome-devtools-mcp`); the server is a mise tool and `install.sh`
+    `chrome-devtools-mcp`); the server is a mise tool and `install.sh`
     registers it with `claude mcp add --scope user` when `claude mcp get` doesn't
     find it, since user-scope servers only live in `~/.claude.json`. The only
     exception to "installers never edit `$HOME`", done through Claude Code's CLI.
-    MCP servers that need an account or an instance (eg `55-mac-grafana-mcp`: one
+    MCP servers that need an account or an instance (eg `grafana-mcp`: one
     server per Grafana instance, each with its URL and token) only install the
     binary; each machine registers its servers by hand, as the package README shows.
   - Work-only: managed settings from the org, plain files in `~/.claude/rules/`,
     env vars in `~/.zshrc.local`.
   - Claude Code rewrites `settings.json` (`/config`, `/model`, `/effort`). A git clean
-    filter (`.gitattributes` + `21-any-claude-code/git-clean-settings.sh`, set up in
+    filter (`.gitattributes` + `packages/claude-code/git-clean-settings.sh`, set up in
     `.git/config` by its `install.sh`) strips the per-machine keys (`model`,
     `effortLevel`, `modelSettings`) and sorts the top-level keys, so they stay in the
     linked file but never reach git. Other diffs are reviewed: commit if shared,
     otherwise revert and set locally.
-- **Packages own their shell env**: a package may ship `config/<name>.zsh` and link it
-  with `_dot_link_zsh` to `~/.config/zsh/<NN>-<name>.zsh`; `~/.zshrc` loads them in
-  package order (skipping dangling symlinks). Eg `EDITOR` lives in
-  `17-any-neovim/config/neovim.zsh`, brew's env in `01-mac-homebrew/config/homebrew.zsh`.
+- **Packages own their shell env**: a package may ship `config/<NN>-<name>.zsh` and link
+  it with `_dot_link_zsh` to `~/.config/zsh/`; `~/.zshrc` loads them sorted (skipping
+  dangling symlinks), so `NN` is the shell load order, the same on every device
+  whatever the profile. Pick `NN` by what the snippet must load before or after (eg
+  brew's PATH 01, XDG 10, oh-my-zsh 22, its alias overrides above). Eg `EDITOR` lives
+  in `packages/neovim/config/17-neovim.zsh`, brew's env in
+  `packages/homebrew/config/01-homebrew.zsh`.
   - Only `~/.zshrc` is used: no `~/.zprofile` / `~/.zshenv` (PATH included).
     Interactive shells are the target.
   - `compinit` is run by oh-my-zsh, from its snippet (see "Shell: zsh + oh-my-zsh").
-  - A snippet that prints something at startup (eg `27-mac-fastfetch`) only does it
+  - A snippet that prints something at startup (eg `fastfetch`) only does it
     when stdout is a terminal (`[[ -t 1 ]]`), so scripts and tools spawning a shell
     get no extra output.
 - **Commits**: Claude may commit as work progresses, without asking. Always follow
@@ -279,7 +293,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
   change per commit.
   - No AI attribution: no `Co-Authored-By` trailer or signature of an AI agent, even
     when Claude wrote the commit; author and committer are always the user's own git
-    user (see `21-any-claude-code/config/CLAUDE.md`).
+    user (see `packages/claude-code/config/CLAUDE.md`).
   - Several Claude sessions may work on this repo: before committing, Claude checks
     `git status` for changes it didn't make and asks about them instead of
     committing them silently. Git commands run one at a time (never in parallel
@@ -299,18 +313,21 @@ repo should behave is made (structure, conventions, tooling, workflow).
 ## Adding a package
 
 1. Create a package for each missing prerequisite first (see "One package per prerequisite").
-2. Create `<NN>-<scope>-<name>/` following an existing package (eg `15-any-ripgrep` for
-   a tool, `20-any-nvchad` for a config), with `NN` above its prerequisites.
-3. `install.sh`: resolve `DOT_PACKAGE_DIR` / `DOT_ROOT`, `source 00-core-dot/lib.sh`,
+2. Create `packages/<name>/` following an existing package (eg `packages/ripgrep` for
+   a tool, `packages/nvchad` for a config). A zsh snippet is `config/<NN>-<name>.zsh`,
+   `NN` picked for the shell load order.
+3. `install.sh`: resolve `DOT_PACKAGE_DIR` / `DOT_ROOT`, `source core/lib.sh`,
    then `_dot_require` (prerequisites), `_dot_select_package_manager || true` +
    `_dot_install_with_package_manager` (installs), `_dot_link` / `_dot_link_zsh` (config).
 4. Add `_apt.sh` / `_brew.sh` as needed, a `README.md` (with "Prerequisites"), and a
    row in the root README table.
+5. Add it to the profiles of the devices that need it (`base` / `mac` when shared), after
+   its prerequisites.
 
 ## Verifying
 
 ```sh
-for f in install.sh */install.sh */_*.sh 00-core-dot/lib.sh 00-core-dot/functions/*.sh; do bash -n "$f"; done
-bash install.sh && bash install.sh   # second run must not create .bak files or duplicate lines
+for f in install.sh packages/*/install.sh packages/*/_*.sh core/lib.sh core/functions/*.sh; do bash -n "$f"; done
+bash install.sh <profile> && bash install.sh <profile>   # second run must not create .bak files or duplicate lines
 zsh -i -c 'echo ok'
 ```

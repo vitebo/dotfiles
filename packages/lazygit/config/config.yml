@@ -1,0 +1,5 @@
+# ~/.config/lazygit/config.yml -> packages/lazygit/config/config.yml
+#
+# lazygit config: only our changes, lazygit's defaults apply for everything else
+# (see them with `lazygit --config`).
+# Reference: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md

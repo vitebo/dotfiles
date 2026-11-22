@@ -1,7 +1,0 @@
-# ~/.config/mise/conf.d/grafana-mcp.toml -> 55-mac-grafana-mcp/config/mise.toml
-#
-# Grafana MCP server as a mise tool (40-mac-mise loads ~/.config/mise/conf.d/*.toml):
-# a Go binary taken from the project's GitHub releases.
-
-[tools]
-"github:grafana/mcp-grafana" = "latest"
