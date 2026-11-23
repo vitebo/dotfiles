@@ -205,7 +205,8 @@ gaps.outer.right =      27
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
     # dotfiles: render this config again before reloading it (see the top of the file),
-    # and also reload SketchyBar (packages/sketchybar) and JankyBorders (packages/jankyborders)
+    # and also reload SketchyBar (packages/sketchybar) and JankyBorders (packages/jankyborders);
+    # SketchyBar's reload button does the same (its plugins/reload.sh)
     esc = ['exec-and-forget bash "@DOT_ROOT@/packages/aerospace/render.sh" && aerospace reload-config',
            'exec-and-forget sketchybar --reload',
            'exec-and-forget ~/.config/borders/bordersrc', 'mode main']

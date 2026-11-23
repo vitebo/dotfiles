@@ -194,5 +194,14 @@ for mode in light dark system; do
                      click_script="$PLUGIN_DIR/appearance_mode.sh $mode"
 done
 
+##### Adding the Reload Button #####
+# dotfiles: reload icon (nf-md-reload), next to the appearance button: a click
+# reloads AeroSpace, JankyBorders and the bar (plugins/reload.sh), like AeroSpace's
+# service mode `esc`.
+
+sketchybar --add item reload right \
+           --set reload icon=󰑓 label.drawing=off \
+                 click_script="$PLUGIN_DIR/reload.sh"
+
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
