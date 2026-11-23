@@ -5,8 +5,9 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 
 - `~/.config/tmux/tmux.conf` -> `config/tmux.conf`: tmux defaults (prefix
   `Ctrl+b`) plus a few essentials marked `dotfiles:` (mouse, numbering from 1,
-  splits in the current directory, `prefix h/j/k/l` for panes, vim copy mode,
-  clipboard through the terminal, `prefix r` to reload, 10ms escape time).
+  splits in the current directory, `prefix h/j/k/l` for panes, `prefix H/J/K/L`
+  to resize them, vim copy mode, clipboard through the terminal, `prefix r` to
+  reload, 10ms escape time).
   No theme; plugins below.
 - `~/.config/tmux/status-line.conf` -> `config/status-line.conf`: status line at the
   top: current session, windows and the current kubectl context (cluster name
@@ -85,10 +86,11 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 | `prefix $` | rename the session |
 | `prefix c` | new window |
 | `prefix 1` … `9` | go to window |
-| `prefix n` / `p` / `L` | next / previous / last window |
+| `prefix n` / `p` / `Tab` | next / previous / last window |
 | `prefix ,` | rename the window |
 | `prefix %` / `"` | split left-right / top-bottom |
 | `prefix h/j/k/l` | move between panes (or click) |
+| `prefix H/J/K/L` | resize the pane by 5 cells, repeat the key to keep going (or drag the border) |
 | `prefix z` | zoom the pane in / out |
 | `prefix x` | close the pane (or `exit`) |
 | `prefix X` | kill the session (asks first); you land in another session |
