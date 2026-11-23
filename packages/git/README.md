@@ -10,3 +10,11 @@ Installs git on linux. On macOS it comes with the Xcode Command Line Tools
   [git-delta](../git-delta), ignored when that package isn't installed.
 - It includes `~/.config/gh/git-credential.config` from [gh](../gh)
   (gh's login for https on github.com), ignored the same way.
+- Last, it includes `~/.config/git/config.local`, a machine-only file that isn't
+  versioned (ignored when missing). Use it for per-machine overrides, eg the work
+  identity on the work MacBook:
+
+  ```sh
+  git config --file ~/.config/git/config.local user.name andre.vitebo
+  git config --file ~/.config/git/config.local user.email <work email>
+  ```

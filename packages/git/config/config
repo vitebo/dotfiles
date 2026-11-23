@@ -13,3 +13,8 @@
 # doesn't exist, ie where the package isn't installed.
 [include]
     path = ~/.config/gh/git-credential.config
+
+# Machine-only overrides (eg the work identity in [user]), kept out of the repo;
+# ignored when the file doesn't exist. Last, so it wins over everything above.
+[include]
+    path = ~/.config/git/config.local

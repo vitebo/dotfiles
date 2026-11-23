@@ -138,6 +138,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   such include, its snippet adds the file only when the tool exists (eg lazygit's
   `LG_CONFIG_FILE` merges `delta.yml` when delta is installed). The include line lives
   in the host config with a comment naming the package.
+- **Per-machine git identity**: the versioned git config has the personal
+  `[user]`; its last `[include]` is `~/.config/git/config.local` (not versioned,
+  ignored when missing), where a machine overrides it (eg the work identity), so
+  the work email never enters the repo.
 - **Third-party brew taps**: when a tool isn't in the official casks/formulae,
   `_brew.sh` runs `brew tap` + `brew trust` + `brew install` from that tap (eg
   `nikitabobko/tap/aerospace`).
