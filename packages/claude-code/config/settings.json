@@ -85,6 +85,6 @@
     "type": "command",
     "command": "f=\"$HOME/.claude/statusline.sh\"; [ ! -f \"$f\" ] || bash \"$f\""
   },
-  "teammateMode": "auto",
+  "teammateMode": "tmux",
   "theme": "auto"
 }

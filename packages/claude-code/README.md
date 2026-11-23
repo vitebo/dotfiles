@@ -23,9 +23,10 @@ is logged in:
 - `~/.config/zsh/21-claude-code.zsh` -> `config/21-claude-code.zsh`: puts `~/.local/bin` first in PATH
 - `settings.json` [agent teams](https://code.claude.com/docs/en/agent-teams)
   (experimental): enabled with `env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`, and
-  `"teammateMode": "auto"` gives each teammate its own pane when Claude runs inside
-  tmux ([tmux](../tmux)), else they run in-process (arrows + Enter in
-  the agent panel). Ghostty has no split-pane support of its own.
+  `"teammateMode": "tmux"` gives each teammate its own [tmux](../tmux) pane: in
+  Claude's window when it runs inside tmux, else in a separate tmux session (the
+  `View teammates` line shows how to attach). Ghostty has no split-pane support
+  of its own.
 - `settings.json` `"preferredNotifChannel": "ghostty"`: desktop notifications
   (task done, permission prompt) as Ghostty's, also inside tmux, where Claude Code
   can't detect Ghostty (tmux passes them through, see [tmux](../tmux)).
