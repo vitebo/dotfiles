@@ -30,6 +30,12 @@ is logged in:
 - `settings.json` `"preferredNotifChannel": "ghostty"`: desktop notifications
   (task done, permission prompt) as Ghostty's, also inside tmux, where Claude Code
   can't detect Ghostty (tmux passes them through, see [tmux](../tmux)).
+- `settings.json` `"agentPushNotifEnabled"` / `"inputNeededNotifEnabled"`: push
+  notifications to the phone (Claude app) when an agent finishes and when it needs
+  input; a no-op on machines without the app logged in.
+- `settings.json` `"language": "PT-BR"`: Claude replies in Brazilian Portuguese.
+  Its injected instruction also mentions comments, so `config/CLAUDE.md` keeps
+  saying code, comments and commits are in English (more specific, it wins there).
 - `settings.json` `"editorMode": "vim"`: vim keys in the prompt (`esc` for NORMAL
   mode, `hjkl`, `v`, `d` / `c` / `y` with text objects); `enter` still submits in
   INSERT mode, `o` / `O` or `ctrl+j` add a line.

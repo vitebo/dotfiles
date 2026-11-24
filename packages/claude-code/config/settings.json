@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "agentPushNotifEnabled": true,
   "editorMode": "vim",
   "enabledPlugins": {
     "swift-lsp@claude-plugins-official": true
@@ -80,6 +81,8 @@
       }
     ]
   },
+  "inputNeededNotifEnabled": true,
+  "language": "PT-BR",
   "preferredNotifChannel": "ghostty",
   "statusLine": {
     "type": "command",
