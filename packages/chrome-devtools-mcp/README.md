@@ -18,8 +18,15 @@ network requests, and take screenshots.
   no logins or cookies are kept between sessions; flows needing your logins go
   through Claude in Chrome ([google-chrome](../google-chrome)).
   `install.sh` registers the server again when its arguments change.
+- Claude Desktop ([claude-desktop](../claude-desktop)), when installed: the same
+  server (shim and arguments) under `mcpServers.chrome-devtools` in
+  `~/Library/Application Support/Claude/claude_desktop_config.json`. That file
+  also holds the app's own state (per-account preferences), so it isn't
+  versioned: `install.sh` sets only that key with jq, when it differs, and
+  `uninstall.sh` removes it. Restart Claude Desktop to load it. Install
+  `claude-desktop` first, or it's skipped.
 - mac only: Claude Code and Chrome run on the host; apps in a devcontainer are
   reached through their forwarded ports (`localhost`).
 
-Prerequisites: [mise](../mise), [claude-code](../claude-code),
+Prerequisites: [mise](../mise), [claude-code](../claude-code), [jq](../jq),
 [google-chrome](../google-chrome).

@@ -8,6 +8,14 @@ source "${DOT_ROOT}/core/lib.sh"
 
 _dot_title "chrome-devtools-mcp (uninstall)"
 
+desktop_config="${HOME}/Library/Application Support/Claude/claude_desktop_config.json"
+if command -v jq >/dev/null && [ -f "${desktop_config}" ] \
+    && jq -e '.mcpServers["chrome-devtools"] != null' "${desktop_config}" >/dev/null; then
+    tmp="$(mktemp "${desktop_config}.XXXXXX")"
+    jq 'del(.mcpServers["chrome-devtools"])' "${desktop_config}" > "${tmp}"
+    mv "${tmp}" "${desktop_config}"
+fi
+
 if command -v claude >/dev/null && claude mcp get chrome-devtools >/dev/null 2>&1; then
     claude mcp remove --scope user chrome-devtools >/dev/null
 fi

@@ -300,6 +300,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
     registers it with `claude mcp add --scope user` when `claude mcp get` doesn't
     find it, since user-scope servers only live in `~/.claude.json`. The only
     exception to "installers never edit `$HOME`", done through Claude Code's CLI.
+    In Claude Desktop (`claude-desktop`), the same server goes under
+    `mcpServers` in `claude_desktop_config.json`: the file mixes app state, so it
+    isn't versioned; the MCP package sets only its own key with jq (when the app is
+    installed, so `claude-desktop` comes first in the `mac` preset) and its
+    `uninstall.sh` removes it.
     MCP servers that need an account or an instance (eg `grafana-mcp`: one
     server per Grafana instance, each with its URL and token) only install the
     binary; each machine registers its servers by hand, as the package README shows.

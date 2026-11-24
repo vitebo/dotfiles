@@ -15,7 +15,7 @@ package lazydocker
 package google-chrome
 package wallpaper
 package devcontainer
+package claude-desktop
 package chrome-devtools-mcp
 package cloudflared
 package btop
-package claude-desktop
