@@ -183,7 +183,7 @@ repo should behave is made (structure, conventions, tooling, workflow).
   fastfetch, bat, delta, fd, eza, fzf, zoxide, tmux, gh, jq, Docker Desktop, Slack,
   the AWS CLI, mise (Node.js 22), lazygit, lazydocker, k9s, kubectl, Helm, Chrome,
   AWS Client VPN, Chrome DevTools MCP, Grafana MCP, cloudflared, NordPass, chafa,
-  btop, a Catppuccin wallpaper and the Dev Containers CLI for now; oh-my-zsh with its
+  btop, Claude Desktop, a Catppuccin wallpaper and the Dev Containers CLI for now; oh-my-zsh with its
   defaults.
 - **Project tools stay in the project's devcontainer**: tools a project needs at work
   (eg the AWS CLI, runtimes managed by mise) are only in mac profiles here; inside devcontainers each project installs

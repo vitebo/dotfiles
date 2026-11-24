@@ -149,6 +149,7 @@ DOT_PM=brew bash install.sh work       # force a package manager
 | [cloudflared](packages/cloudflared/README.md) | cloudflared, exposes a local server on a public URL (Cloudflare Tunnel) |
 | [nordpass](packages/nordpass/README.md) | NordPass, password manager |
 | [btop](packages/btop/README.md) | btop, terminal resource monitor |
+| [claude-desktop](packages/claude-desktop/README.md) | Claude Desktop, Claude's desktop app |
 
 ## Local config
 

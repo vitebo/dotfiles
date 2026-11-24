@@ -18,3 +18,4 @@ package devcontainer
 package chrome-devtools-mcp
 package cloudflared
 package btop
+package claude-desktop
