@@ -26,7 +26,10 @@ is logged in:
   `"teammateMode": "tmux"` gives each teammate its own [tmux](../tmux) pane: in
   Claude's window when it runs inside tmux, else in a separate tmux session (the
   `View teammates` line shows how to attach). Ghostty has no split-pane support
-  of its own.
+  of its own. Background sessions (dispatched from agent view, `claude --bg`, or
+  moved there with `←`) run under Claude Code's daemon, outside any tmux pane,
+  so their teammates always go to that separate session: start the lead as a
+  plain `claude` in the pane to get them as splits of its window.
 - `settings.json` `"preferredNotifChannel": "ghostty"`: desktop notifications
   (task done, permission prompt) as Ghostty's, also inside tmux, where Claude Code
   can't detect Ghostty (tmux passes them through, see [tmux](../tmux)).
