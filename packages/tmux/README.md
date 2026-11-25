@@ -22,9 +22,11 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   report its background gets Mocha.
 - Pane borders, in the same file and palette: a thin surface1 line between panes,
   mauve around the current one (the whole border: no half-coloured indicator),
-  and a rounded label above each pane
-  (`index command`, mauve for the current one, Claude Code shown as `claude`
-  rather than its version). Labels only show in windows with splits:
+  and a rounded label above each pane (`index name`, mauve for the current one).
+  The name is set with `prefix T` (a pane option, `@dot_pane_name`; not restored
+  by tmux-resurrect), else it's the running command, Claude Code shown as
+  `claude` rather than its version. `prefix T` replaces the default pane title
+  prompt: apps overwrite the title (Claude Code keeps its session title there). Labels only show in windows with splits:
   `~/.config/tmux/pane-labels.sh` -> `config/pane-labels.sh`, run by tmux's hooks
   when panes come and go, turns `pane-border-status` on and off per window.
 - Apps inside tmux follow the terminal's light / dark mode too: tmux answers their
@@ -98,6 +100,7 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 | `prefix %` / `"` | split left-right / top-bottom |
 | `prefix h/j/k/l` | move between panes (or click) |
 | `prefix H/J/K/L` | resize the pane by 5 cells, repeat the key to keep going (or drag the border) |
+| `prefix T` | name the pane, shown in its label (empty: back to the command) |
 | `prefix z` | zoom the pane in / out |
 | `prefix x` | close the pane (or `exit`) |
 | `prefix X` | kill the session (asks first); you land in another session |
