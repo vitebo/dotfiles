@@ -20,6 +20,12 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   (`light-theme-*` / `dark-theme-*`) hold the Catppuccin ones; tmux's messages,
   menus and copy mode use the grey ones, readable in both. A terminal that doesn't
   report its background gets Mocha.
+- Pane borders, in the same file and palette: a thin surface1 line between panes,
+  mauve around the current one, and a rounded label above each pane
+  (`index command`, mauve for the current one, Claude Code shown as `claude`
+  rather than its version). Labels only show in windows with splits:
+  `~/.config/tmux/pane-labels.sh` -> `config/pane-labels.sh`, run by tmux's hooks
+  when panes come and go, turns `pane-border-status` on and off per window.
 - Apps inside tmux follow the terminal's light / dark mode too: tmux answers their
   DSR 996 queries and forwards mode 2031 change reports (after re-reading the
   terminal's background, which Ghostty answers).

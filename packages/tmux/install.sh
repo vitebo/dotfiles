@@ -14,6 +14,7 @@ _dot_install_with_package_manager "${DOT_PACKAGE_DIR}"
 _dot_link "${DOT_PACKAGE_DIR}/config/tmux.conf" "${HOME}/.config/tmux/tmux.conf"
 _dot_link "${DOT_PACKAGE_DIR}/config/status-line.conf" "${HOME}/.config/tmux/status-line.conf"
 _dot_link "${DOT_PACKAGE_DIR}/config/claude-agents.sh" "${HOME}/.config/tmux/claude-agents.sh"
+_dot_link "${DOT_PACKAGE_DIR}/config/pane-labels.sh" "${HOME}/.config/tmux/pane-labels.sh"
 _dot_link_zsh "${DOT_PACKAGE_DIR}/config/34-tmux.zsh"
 # Claude Code hook marking the pane's Claude state, called by ~/.claude/settings.json
 # (packages/claude-code) only when this file exists.

@@ -21,6 +21,7 @@ done
 
 _dot_unlink "${DOT_PACKAGE_DIR}/config/claude-hook.sh" "${HOME}/.claude/hooks/tmux-agent-state.sh"
 _dot_unlink_zsh "${DOT_PACKAGE_DIR}/config/34-tmux.zsh"
+_dot_unlink "${DOT_PACKAGE_DIR}/config/pane-labels.sh" "${HOME}/.config/tmux/pane-labels.sh"
 _dot_unlink "${DOT_PACKAGE_DIR}/config/claude-agents.sh" "${HOME}/.config/tmux/claude-agents.sh"
 _dot_unlink "${DOT_PACKAGE_DIR}/config/status-line.conf" "${HOME}/.config/tmux/status-line.conf"
 _dot_unlink "${DOT_PACKAGE_DIR}/config/tmux.conf" "${HOME}/.config/tmux/tmux.conf"
