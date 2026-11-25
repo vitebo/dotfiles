@@ -21,7 +21,8 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
   menus and copy mode use the grey ones, readable in both. A terminal that doesn't
   report its background gets Mocha.
 - Pane borders, in the same file and palette: a thin surface1 line between panes,
-  mauve around the current one, and a rounded label above each pane
+  mauve around the current one (the whole border: no half-coloured indicator),
+  and a rounded label above each pane
   (`index command`, mauve for the current one, Claude Code shown as `claude`
   rather than its version). Labels only show in windows with splits:
   `~/.config/tmux/pane-labels.sh` -> `config/pane-labels.sh`, run by tmux's hooks
