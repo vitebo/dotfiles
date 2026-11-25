@@ -99,6 +99,7 @@ that survive closing the terminal, with windows (tabs) and panes (splits).
 | `prefix ,` | rename the window |
 | `prefix %` / `"` | split left-right / top-bottom |
 | `prefix h/j/k/l` | move between panes (or click) |
+| `prefix q` + number | jump to the pane with that number (shown for 3s) |
 | `prefix H/J/K/L` | resize the pane by 5 cells, repeat the key to keep going (or drag the border) |
 | `prefix T` | name the pane, shown in its label (empty: back to the command) |
 | `prefix z` | zoom the pane in / out |
