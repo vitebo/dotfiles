@@ -3,7 +3,10 @@
 PERCENTAGE="$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)"
 CHARGING="$(pmset -g batt | grep 'AC Power')"
 
+# dotfiles: hide the item on Macs without a battery (eg the iMac), otherwise it's
+# drawn empty and leaves a gap; show it again once there's a percentage
 if [ "$PERCENTAGE" = "" ]; then
+  sketchybar --set "$NAME" drawing=off
   exit 0
 fi
 
@@ -25,4 +28,4 @@ fi
 
 # The item invoking this script (name $NAME) will get its icon and label
 # updated with the current battery status
-sketchybar --set "$NAME" icon="$ICON" label="${PERCENTAGE}%"
+sketchybar --set "$NAME" drawing=on icon="$ICON" label="${PERCENTAGE}%"
