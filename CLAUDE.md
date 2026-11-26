@@ -40,6 +40,11 @@ repo should behave is made (structure, conventions, tooling, workflow).
   resolves them.
   - `bash install.sh <profile>`: required on mac; on linux it defaults to
     `devcontainer`, since the devcontainer CLI runs `install.sh` without arguments.
+  - `set DOT_<NAME>=<value>` in a profile is a value that differs per device because
+    of its hardware (eg `profiles/imac`: no notch, so a different AeroSpace top gap).
+    `install.sh` exports them (a later `set` wins, so a device overrides what it
+    includes); the package's `install.sh` has the default. Never for accounts or
+    company data (see "Same dotfiles on personal and work machines").
   - A device-only package goes in that device's profile (eg Slack, the AWS CLI and
     kubectl only in `work`); a package every mac needs goes in `mac`.
   - Folder names carry no order or platform: install order is the profile's, shell
@@ -140,6 +145,10 @@ repo should behave is made (structure, conventions, tooling, workflow).
   XDG location (`~/.config/<app>/`) when the app supports it (eg git uses
   `~/.config/git/config`, so `~/.gitconfig` must not exist). State files (shell
   history, `.zcompdump`, caches) are not versioned and stay where the tool puts them.
+  - Exception: a config with per-device values (profile `set`) whose app can't
+    include another file is rendered from the versioned template with `_dot_render`
+    (`@DOT_<NAME>@` placeholders) instead of linked, and removed with
+    `_dot_unrender` (eg `aerospace.toml`). Prefer an include when the app has one.
 - **Migrations**: when a change moves or renames a linked file, installers don't delete
   the old one (they never remove user files); Claude cleans the stale files on this
   machine by hand, after checking their content is now in the repo.
@@ -245,8 +254,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 - **Same dotfiles on personal and work machines**: the repo holds one shared config;
   never version per-machine or per-account variants of a config, so nothing from
   the company ends up in this repo. Device profiles only choose *which* packages a
-  device gets (they name public tools); a package's config is the same wherever
-  it's installed. Per-machine differences live out of the repo:
+  device gets (they name public tools) and hardware values (`set`); a package's
+  config is otherwise the same wherever it's installed. Per-machine differences live out of the repo:
   credentials stay where the tool keeps them, env vars go in `~/.zshrc.local`, extra
   files sit next to the linked ones, and org policy comes from the org's own tooling.
   This is why config dirs that mix shared files and machine files (eg `~/.claude`)

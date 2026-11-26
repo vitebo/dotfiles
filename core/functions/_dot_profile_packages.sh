@@ -1,20 +1,27 @@
 #!/usr/bin/env bash
-# Prints the packages of a profile (`profiles/<name>`), one per line, in install
-# order. A profile lists one package per line; `include <profile>` expands another
-# profile in place; `#` starts a comment. A package already listed is skipped.
-# Fails on an unknown profile or package, a package without uninstall.sh, or an
-# include loop.
+# Reads a profile (`profiles/<name>`). A profile lists one package per line;
+# `include <profile>` expands another profile in place; `set DOT_<NAME>=<value>`
+# sets a value for the packages' installers (no spaces; a later `set` wins, so a
+# device overrides what it includes); `#` starts a comment.
+# Fails on an unknown profile or package, a package without uninstall.sh, a bad
+# `set` or an include loop.
 #
-#   _dot_profile_packages work
+#   _dot_profile_packages work   # packages in install order, one per line (duplicates skipped)
+#   _dot_profile_env imac        # `DOT_<NAME>=<value>` lines, in profile order
 
 _dot_profile_packages() {
     _dot_profile_seen=" "
-    _dot_profile_expand "$1" " "
+    _dot_profile_expand packages "$1" " "
+}
+
+_dot_profile_env() {
+    _dot_profile_expand env "$1" " "
 }
 
 _dot_profile_expand() {
-    local profile="$1"
-    local stack="$2"
+    local mode="$1"
+    local profile="$2"
+    local stack="$3"
     local root file line word arg
     root="$(cd "${DOT_LIB_DIR}/.." && pwd)"
     file="${root}/profiles/${profile}"
@@ -37,10 +44,24 @@ _dot_profile_expand() {
         fi
 
         if [ "${word}" = "include" ]; then
-            _dot_profile_expand "${arg}" "${stack}${profile} " || return 1
+            _dot_profile_expand "${mode}" "${arg}" "${stack}${profile} " || return 1
             continue
         fi
 
+        if [ "${word}" = "set" ]; then
+            if [[ ! "${arg:-}" =~ ^DOT_[A-Z0-9_]+=[^[:space:]]*$ ]]; then
+                _dot_err "Bad set in profiles/${profile}: ${line}"
+                return 1
+            fi
+            if [ "${mode}" = "env" ]; then
+                echo "${arg}"
+            fi
+            continue
+        fi
+
+        if [ "${mode}" != "packages" ]; then
+            continue
+        fi
         if [ ! -f "${root}/packages/${word}/install.sh" ]; then
             _dot_err "Unknown package in profiles/${profile}: ${word}"
             return 1

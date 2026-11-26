@@ -47,6 +47,11 @@ package per line, `include <profile>` to reuse another profile, `#` for comments
 package listed twice is installed once. Prerequisites must come before the packages
 that need them (they check with `_dot_require`).
 
+`set DOT_<NAME>=<value>` sets a value that differs per device for the packages'
+installers (eg `profiles/imac`: the AeroSpace top gap of a display without a notch);
+`install.sh` exports them. Running a package's `install.sh` on its own uses its
+defaults, so re-run `bash install.sh <profile>` on devices that set values.
+
 | Profile | Device |
 | --- | --- |
 | [base](profiles/base) | cross-platform shell and CLI tools (included by the others) |
