@@ -1,6 +1,6 @@
 # iMac.
 
-include mac
+preset mac
 
 # Built-in display without a notch: nothing reserved above SketchyBar (see
 # packages/aerospace/config/aerospace.toml).

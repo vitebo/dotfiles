@@ -1,6 +1,6 @@
 # Work MacBook.
 
-include mac
+preset mac
 slack
 aws-cli
 k9s

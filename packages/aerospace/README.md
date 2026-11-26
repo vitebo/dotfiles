@@ -16,7 +16,7 @@ manager for macOS (brew cask from the author's tap).
   It's generated, not a symlink: built-in displays all have the same name, but only
   the MacBook's has a notch, so the top gap of built-in displays is
   `@DOT_AEROSPACE_GAP_TOP_BUILTIN@`, 22 by default and 54 on devices without a notch
-  (`set` in `profiles/imac`). AeroSpace can't include another file. `render.sh`
+  (`set` in `profiles/studio`). AeroSpace can't include another file. `render.sh`
   generates it with the values of the profile `install.sh` saved; after editing
   `config/aerospace.toml`, apply it with `alt-shift-;` then `esc`, which renders it
   again and reloads AeroSpace.

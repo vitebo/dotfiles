@@ -43,24 +43,28 @@ Nothing depends on the `~/.dotfiles` path, and the installation never prompts.
 ## Profiles
 
 A profile (`profiles/<name>`) lists the packages of a device, in install order: one
-package per line, `include <profile>` to reuse another profile, `#` for comments. A
-package listed twice is installed once. Prerequisites must come before the packages
+package per line, `preset <name>` to reuse a shared list (`presets/<name>`, same
+format, may use other presets), `#` for comments. A package listed twice is
+installed once. Prerequisites must come before the packages
 that need them (they check with `_dot_require`).
 
 `set DOT_<NAME>=<value>` sets a value that differs per device for the packages'
-installers (eg `profiles/imac`: the AeroSpace top gap of a display without a notch);
+installers (eg `profiles/studio`: the AeroSpace top gap of a display without a notch);
 `install.sh` exports them and saves the profile in `~/.local/state/dotfiles/profile`,
 so a package's own `install.sh` (or a config re-render, eg AeroSpace's reload) uses
 the same values later.
 
 | Profile | Device |
 | --- | --- |
-| [base](profiles/base) | cross-platform shell and CLI tools (included by the others) |
-| [devcontainer](profiles/devcontainer) | Linux devcontainers |
-| [mac](profiles/mac) | shared by every mac (included by the mac profiles) |
 | [work](profiles/work) | work MacBook |
-| [personal](profiles/personal) | personal MacBook |
-| [imac](profiles/imac) | iMac |
+| [notebook](profiles/notebook) | personal MacBook |
+| [studio](profiles/studio) | iMac |
+| [devcontainer](profiles/devcontainer) | Linux devcontainers |
+
+| Preset | Packages |
+| --- | --- |
+| [base](presets/base) | cross-platform shell and CLI tools (every profile) |
+| [mac](presets/mac) | shared by every mac (uses `base`) |
 
 Removing a package from a profile doesn't uninstall it from machines that already have
 it: run its `uninstall.sh` there.
@@ -78,6 +82,7 @@ it: run its `uninstall.sh` there.
 │   ├── config/        # config files (symlinked into $HOME)
 │   └── README.md
 ├── profiles/<name>    # packages of a device, in install order
+├── presets/<name>     # shared package lists used by profiles
 ├── install.sh         # runs a profile's packages in order
 └── uninstall.sh       # runs a profile's uninstalls in reverse order
 ```
