@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Reads a device profile (`profiles/<name>`). A profile lists one package per line;
-# `preset <name>` expands a shared list (`presets/<name>`, same format, may use
-# other presets) in place; `set DOT_<NAME>=<value>` sets a value for the packages'
-# installers (no spaces; a later `set` wins, so a device overrides its presets);
-# `#` starts a comment.
-# Fails on an unknown profile, preset or package, a package without uninstall.sh,
-# a bad `set` or a preset loop.
+# Reads a device profile (`profiles/<name>`). Each line is `<keyword> <argument>`:
+# `package <name>` installs a package (in line order); `preset <name>` expands a
+# shared list (`presets/<name>`, same format, may use other presets) in place;
+# `set DOT_<NAME>=<value>` sets a value for the packages' installers (no spaces; a
+# later `set` wins, so a device overrides its presets); `#` starts a comment.
+# Fails on an unknown profile, preset, package or keyword, a package without
+# uninstall.sh, a bad `set` or a preset loop.
 #
 #   _dot_profile_packages work   # packages in install order, one per line (duplicates skipped)
 #   _dot_profile_env studio      # `DOT_<NAME>=<value>` lines, in profile order
@@ -69,38 +69,42 @@ _dot_profile_expand() {
             continue
         fi
 
-        if [ "${word}" = "preset" ]; then
-            _dot_profile_expand "${mode}" presets "${arg:-}" "${stack}${name} " || return 1
-            continue
-        fi
-
-        if [ "${word}" = "set" ]; then
-            if [[ ! "${arg:-}" =~ ^DOT_[A-Z0-9_]+=[^[:space:]]*$ ]]; then
-                _dot_err "Bad set in ${kind}/${name}: ${line}"
-                return 1
-            fi
-            if [ "${mode}" = "env" ]; then
-                echo "${arg}"
-            fi
-            continue
-        fi
-
-        if [ "${mode}" != "packages" ]; then
-            continue
-        fi
-        if [ ! -f "${root}/packages/${word}/install.sh" ]; then
-            _dot_err "Unknown package in ${kind}/${name}: ${word}"
-            return 1
-        fi
-        if [ ! -f "${root}/packages/${word}/uninstall.sh" ]; then
-            _dot_err "Package without uninstall.sh: ${word}"
-            return 1
-        fi
-        case "${_dot_profile_seen}" in
-            *" ${word} "*) ;;
+        case "${word}" in
+            preset)
+                _dot_profile_expand "${mode}" presets "${arg:-}" "${stack}${name} " || return 1
+                ;;
+            set)
+                if [[ ! "${arg:-}" =~ ^DOT_[A-Z0-9_]+=[^[:space:]]*$ ]]; then
+                    _dot_err "Bad set in ${kind}/${name}: ${line}"
+                    return 1
+                fi
+                if [ "${mode}" = "env" ]; then
+                    echo "${arg}"
+                fi
+                ;;
+            package)
+                if [ ! -f "${root}/packages/${arg:-}/install.sh" ]; then
+                    _dot_err "Unknown package in ${kind}/${name}: ${arg:-}"
+                    return 1
+                fi
+                if [ ! -f "${root}/packages/${arg}/uninstall.sh" ]; then
+                    _dot_err "Package without uninstall.sh: ${arg}"
+                    return 1
+                fi
+                if [ "${mode}" != "packages" ]; then
+                    continue
+                fi
+                case "${_dot_profile_seen}" in
+                    *" ${arg} "*) ;;
+                    *)
+                        _dot_profile_seen="${_dot_profile_seen}${arg} "
+                        echo "${arg}"
+                        ;;
+                esac
+                ;;
             *)
-                _dot_profile_seen="${_dot_profile_seen}${word} "
-                echo "${word}"
+                _dot_err "Unknown keyword in ${kind}/${name}: ${word}"
+                return 1
                 ;;
         esac
     done < "${file}"

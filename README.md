@@ -42,9 +42,10 @@ Nothing depends on the `~/.dotfiles` path, and the installation never prompts.
 
 ## Profiles
 
-A profile (`profiles/<name>`) lists the packages of a device, in install order: one
-package per line, `preset <name>` to reuse a shared list (`presets/<name>`, same
-format, may use other presets), `#` for comments. A package listed twice is
+A profile (`profiles/<name>`) lists the packages of a device, in install order. Each
+line is a keyword and its argument: `package <name>` for a package, `preset <name>`
+to reuse a shared list (`presets/<name>`, same format, may use other presets),
+`set DOT_<NAME>=<value>` (below); `#` for comments. A package listed twice is
 installed once. Prerequisites must come before the packages
 that need them (they check with `_dot_require`).
 

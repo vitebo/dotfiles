@@ -1,11 +1,11 @@
 # Work MacBook.
 
 preset mac
-slack
-aws-cli
-k9s
-kubectl
-helm
-aws-vpn-client
-grafana-mcp
-nordpass
+package slack
+package aws-cli
+package k9s
+package kubectl
+package helm
+package aws-vpn-client
+package grafana-mcp
+package nordpass

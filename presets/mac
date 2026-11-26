@@ -1,20 +1,20 @@
 # Shared by every mac. Order matters: a package comes after its prerequisites.
 
-homebrew
+package homebrew
 preset base
-nerd-font
-ghostty
-aerospace
-sketchybar
-jankyborders
-fastfetch
-docker
-mise
-lazygit
-lazydocker
-google-chrome
-wallpaper
-devcontainer
-chrome-devtools-mcp
-cloudflared
-btop
+package nerd-font
+package ghostty
+package aerospace
+package sketchybar
+package jankyborders
+package fastfetch
+package docker
+package mise
+package lazygit
+package lazydocker
+package google-chrome
+package wallpaper
+package devcontainer
+package chrome-devtools-mcp
+package cloudflared
+package btop

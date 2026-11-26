@@ -1,25 +1,25 @@
 # Cross-platform shell and CLI tools: every mac and the devcontainers.
 # Order matters: a package comes after its prerequisites.
 
-zsh
-curl
-git
-build-tools
-unzip
-ripgrep
-tree-sitter
-neovim
-nvchad
-claude-code
-oh-my-zsh
-tree
-bat
-git-delta
-fd
-eza
-fzf
-zoxide
-tmux
-gh
-jq
-chafa
+package zsh
+package curl
+package git
+package build-tools
+package unzip
+package ripgrep
+package tree-sitter
+package neovim
+package nvchad
+package claude-code
+package oh-my-zsh
+package tree
+package bat
+package git-delta
+package fd
+package eza
+package fzf
+package zoxide
+package tmux
+package gh
+package jq
+package chafa

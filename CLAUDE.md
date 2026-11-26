@@ -34,7 +34,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
     `homebrew`'s removes Homebrew itself, with everything brew installed.
 - **Device profiles**: each device has a profile, `profiles/<name>` (`work`: work
   MacBook, `notebook`: personal MacBook, `studio`: iMac, `devcontainer`): the list
-  of its packages, in install order (one per line, `#` comments). Only devices are
+  of its packages, in install order (one `<keyword> <argument>` per line:
+  `package <name>`, `preset <name>`, `set ...`; `#` comments). Only devices are
   profiles; shared lists are presets, `presets/<name>`, reused with
   `preset <name>` (`base`: cross-platform, every device; `mac`: every mac, uses
   `base`). A preset can use another preset, a profile never uses a profile; a
@@ -357,8 +358,8 @@ repo should behave is made (structure, conventions, tooling, workflow).
 5. Add `_apt.sh` / `_brew.sh` as needed, each with its `_apt_uninstall.sh` /
    `_brew_uninstall.sh`, a `README.md` (with "Prerequisites"), and a row in the root
    README table.
-6. Add it to the profiles of the devices that need it (the `base` / `mac` presets when shared), after
-   its prerequisites.
+6. Add `package <name>` to the profiles of the devices that need it (the `base` / `mac`
+   presets when shared), after its prerequisites.
 
 ## Verifying
 
