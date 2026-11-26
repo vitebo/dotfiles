@@ -3,7 +3,7 @@
 [AeroSpace](https://github.com/nikitabobko/AeroSpace): i3-like tiling window
 manager for macOS (brew cask from the author's tap).
 
-- `~/.config/aerospace/aerospace.toml` -> `config/aerospace.toml`: AeroSpace's
+- `~/.config/aerospace/aerospace.toml`, rendered from `config/aerospace.toml`: AeroSpace's
   default config, with a few changes marked `dotfiles:` (starts at login, reloads
   on save, numbered workspaces only so `alt-<letter>` keeps typing characters
   like `ç`), 14px gaps around windows (27px on the sides, lined up with
@@ -12,6 +12,13 @@ manager for macOS (brew cask from the author's tap).
   integration (starts them, notifies SketchyBar of workspace and mode changes and
   of windows moved to another workspace, extra top gap for the bar), and apps
   pinned to workspaces (Slack on 9).
+
+  It's generated, not a symlink: built-in displays all have the same name, but only
+  the MacBook's has a notch, so the top gap of built-in displays is
+  `@DOT_AEROSPACE_GAP_TOP_BUILTIN@`, 22 by default and 54 on devices without a notch
+  (`set` in `profiles/imac`). AeroSpace can't include another file. After editing
+  `config/aerospace.toml`, re-run `bash install.sh <profile>` (a plain
+  `packages/aerospace/install.sh` uses the default 22); AeroSpace reloads it.
 
 First launch: open AeroSpace and grant it the Accessibility permission
 (System Settings → Privacy & Security → Accessibility).

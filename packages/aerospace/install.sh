@@ -10,6 +10,10 @@ _dot_title "aerospace"
 _dot_select_package_manager || true
 _dot_install_with_package_manager "${DOT_PACKAGE_DIR}"
 
-_dot_link "${DOT_PACKAGE_DIR}/config/aerospace.toml" "${HOME}/.config/aerospace/aerospace.toml"
+# Rendered, not linked: the top gap of built-in displays differs per device
+# (see aerospace.toml) and AeroSpace can't include another file. Profiles of
+# devices without a notch set it (eg `profiles/imac`).
+export DOT_AEROSPACE_GAP_TOP_BUILTIN="${DOT_AEROSPACE_GAP_TOP_BUILTIN:-22}"
+_dot_render "${DOT_PACKAGE_DIR}/config/aerospace.toml" "${HOME}/.config/aerospace/aerospace.toml"
 
 _dot_ok "aerospace installed"

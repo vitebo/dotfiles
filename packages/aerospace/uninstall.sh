@@ -8,7 +8,7 @@ source "${DOT_ROOT}/core/lib.sh"
 
 _dot_title "aerospace (uninstall)"
 
-_dot_unlink "${DOT_PACKAGE_DIR}/config/aerospace.toml" "${HOME}/.config/aerospace/aerospace.toml"
+_dot_unrender "${HOME}/.config/aerospace/aerospace.toml"
 
 _dot_select_package_manager || true
 _dot_uninstall_with_package_manager "${DOT_PACKAGE_DIR}"

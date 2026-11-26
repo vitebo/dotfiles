@@ -1,3 +1,7 @@
 # iMac.
 
 include mac
+
+# Built-in display without a notch: nothing reserved above SketchyBar (see
+# packages/aerospace/config/aerospace.toml).
+set DOT_AEROSPACE_GAP_TOP_BUILTIN=54
