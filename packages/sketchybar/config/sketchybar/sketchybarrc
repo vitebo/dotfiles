@@ -136,23 +136,27 @@ sketchybar --add item clock right \
 # dotfiles: Slack (packages/slack) icon (nf-fa-slack) with its unread state (see
 # plugins/slack.sh). Refreshed every 10s and when the focused app changes (eg
 # after reading messages); a click opens Slack (AeroSpace then shows its
-# workspace, 9).
+# workspace, 9). Only when Slack is installed (only in some profiles).
 
-sketchybar --add item slack right \
-           --set slack icon= update_freq=10 script="$PLUGIN_DIR/slack.sh" \
-                 click_script="open -a Slack" \
-                 background.corner_radius=5 background.height=20 background.drawing=off \
-           --subscribe slack front_app_switched system_woke
+if [ -d /Applications/Slack.app ]; then
+  sketchybar --add item slack right \
+             --set slack icon= update_freq=10 script="$PLUGIN_DIR/slack.sh" \
+                   click_script="open -a Slack" \
+                   background.corner_radius=5 background.height=20 background.drawing=off \
+             --subscribe slack front_app_switched system_woke
+fi
 
 ##### Adding AWS Client VPN Indicator #####
 # dotfiles: AWS Client VPN (packages/aws-vpn-client) cloud icon, with a lock when
 # connected, crossed out and dimmed when not (see plugins/aws_vpn.sh). Refreshed every 5s; a click opens
-# the client.
+# the client. Only when the client is installed (only in some profiles).
 
-sketchybar --add item aws_vpn right \
-           --set aws_vpn icon=󰅤 update_freq=5 script="$PLUGIN_DIR/aws_vpn.sh" \
-                 click_script="open -a 'AWS VPN Client'" \
-           --subscribe aws_vpn system_woke
+if [ -d "/Applications/AWS VPN Client/AWS VPN Client.app" ]; then
+  sketchybar --add item aws_vpn right \
+             --set aws_vpn icon=󰅤 update_freq=5 script="$PLUGIN_DIR/aws_vpn.sh" \
+                   click_script="open -a 'AWS VPN Client'" \
+             --subscribe aws_vpn system_woke
+fi
 
 ##### Following the macOS Appearance #####
 # dotfiles: macOS posts AppleInterfaceThemeChangedNotification when it switches

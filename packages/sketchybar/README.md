@@ -19,7 +19,8 @@ replacing the macOS menu bar (formula from the author's tap).
     with a lock when connected, crossed out and dimmed when disconnected or the
     client is closed, an outline with `…` while connecting. Read from the tray state the client logs to
     `~/.config/AWSVPNClient/logs`, refreshed every 5s; click opens the client.
-  - Right side: clock, volume, battery, Slack, AWS VPN. Left side: user,
+  - Right side: clock, volume, battery, Slack, AWS VPN (Slack and AWS VPN only
+    when the app is installed, checked when the bar loads). Left side: user,
     workspaces, focused app.
   - Catppuccin colors (`colors.sh`), Latte in light mode and Mocha in dark mode, read
     from the macOS appearance. An invisible item reloads the bar when macOS switches
