@@ -49,8 +49,9 @@ that need them (they check with `_dot_require`).
 
 `set DOT_<NAME>=<value>` sets a value that differs per device for the packages'
 installers (eg `profiles/imac`: the AeroSpace top gap of a display without a notch);
-`install.sh` exports them. Running a package's `install.sh` on its own uses its
-defaults, so re-run `bash install.sh <profile>` on devices that set values.
+`install.sh` exports them and saves the profile in `~/.local/state/dotfiles/profile`,
+so a package's own `install.sh` (or a config re-render, eg AeroSpace's reload) uses
+the same values later.
 
 | Profile | Device |
 | --- | --- |

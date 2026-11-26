@@ -34,4 +34,8 @@ for package in ${packages}; do
     bash "${DOT_ROOT}/packages/${package}/uninstall.sh"
 done
 
+# The profile saved by install.sh.
+rm -f "${DOT_PROFILE_FILE}"
+rmdir "$(dirname "${DOT_PROFILE_FILE}")" 2>/dev/null || true
+
 _dot_title "done! open a new terminal"

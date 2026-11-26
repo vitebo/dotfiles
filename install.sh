@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Installs the packages of a device profile (`profiles/<name>`), in its order,
-# with the profile's `set DOT_<NAME>=<value>` exported to their installers.
+# with the profile's `set DOT_<NAME>=<value>` exported to their installers. The
+# profile is saved (~/.local/state/dotfiles/profile) so a package can render its
+# config again later with the same values (eg AeroSpace's reload).
 #
 #   bash install.sh work     # a mac: the profile is required
 #   bash install.sh          # linux: defaults to the devcontainer profile
@@ -23,10 +25,8 @@ if [ -z "${profile}" ]; then
 fi
 
 packages="$(_dot_profile_packages "${profile}")"
-profile_env="$(_dot_profile_env "${profile}")"
-for assignment in ${profile_env}; do
-    export "${assignment}"
-done
+_dot_profile_export "${profile}"
+_dot_profile_save "${profile}"
 
 _dot_title "dotfiles · os: ${DOT_OS} · profile: ${profile}"
 

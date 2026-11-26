@@ -43,7 +43,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
   - `set DOT_<NAME>=<value>` in a profile is a value that differs per device because
     of its hardware (eg `profiles/imac`: no notch, so a different AeroSpace top gap).
     `install.sh` exports them (a later `set` wins, so a device overrides what it
-    includes); the package's `install.sh` has the default. Never for accounts or
+    includes) and saves the profile name in `~/.local/state/dotfiles/profile` (state,
+    removed by `uninstall.sh`), so a package re-rendering its config later uses the
+    same values (`_dot_profile_export_saved`); the package has the default. Never for accounts or
     company data (see "Same dotfiles on personal and work machines").
   - A device-only package goes in that device's profile (eg Slack, the AWS CLI and
     kubectl only in `work`); a package every mac needs goes in `mac`.
@@ -149,6 +151,9 @@ repo should behave is made (structure, conventions, tooling, workflow).
     include another file is rendered from the versioned template with `_dot_render`
     (`@DOT_<NAME>@` placeholders) instead of linked, and removed with
     `_dot_unrender` (eg `aerospace.toml`). Prefer an include when the app has one.
+    The package's `render.sh` re-renders it, hooked to the app's own reload when it
+    has one (AeroSpace's service mode `esc`), so editing the template doesn't need
+    a reinstall.
 - **Migrations**: when a change moves or renames a linked file, installers don't delete
   the old one (they never remove user files); Claude cleans the stale files on this
   machine by hand, after checking their content is now in the repo.

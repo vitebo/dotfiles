@@ -8,6 +8,11 @@
 #
 #   _dot_profile_packages work   # packages in install order, one per line (duplicates skipped)
 #   _dot_profile_env imac        # `DOT_<NAME>=<value>` lines, in profile order
+#   _dot_profile_export imac     # exports them
+#   _dot_profile_save imac       # remembers this device's profile (install.sh)
+#   _dot_profile_export_saved    # exports the saved profile's values, if any
+
+DOT_PROFILE_FILE="${HOME}/.local/state/dotfiles/profile"
 
 _dot_profile_packages() {
     _dot_profile_seen=" "
@@ -16,6 +21,25 @@ _dot_profile_packages() {
 
 _dot_profile_env() {
     _dot_profile_expand env "$1" " "
+}
+
+_dot_profile_export() {
+    local env assignment
+    env="$(_dot_profile_env "$1")" || return 1
+    for assignment in ${env}; do
+        export "${assignment}"
+    done
+}
+
+_dot_profile_save() {
+    mkdir -p "$(dirname "${DOT_PROFILE_FILE}")"
+    echo "$1" > "${DOT_PROFILE_FILE}"
+}
+
+_dot_profile_export_saved() {
+    if [ -f "${DOT_PROFILE_FILE}" ]; then
+        _dot_profile_export "$(cat "${DOT_PROFILE_FILE}")"
+    fi
 }
 
 _dot_profile_expand() {

@@ -18,7 +18,7 @@ _dot_render() {
     mkdir -p "$(dirname "${target}")"
     tmp="${target}.dot-render"
     {
-        echo "${DOT_RENDER_HEADER} from ${template#"${DOT_ROOT:-}/"}: edit that file and re-run install.sh"
+        echo "${DOT_RENDER_HEADER} from ${template#"${DOT_ROOT:-}/"}: edit that file, not this one"
         awk '{
             out = ""
             while (match($0, /@DOT_[A-Z0-9_]+@/)) {
