@@ -16,9 +16,10 @@ manager for macOS (brew cask from the author's tap).
   It's generated, not a symlink: built-in displays all have the same name, but only
   the MacBook's has a notch, so the top gap of built-in displays is
   `@DOT_AEROSPACE_GAP_TOP_BUILTIN@`, 22 by default and 54 on devices without a notch
-  (`set` in `profiles/imac`). AeroSpace can't include another file. After editing
-  `config/aerospace.toml`, re-run `bash install.sh <profile>` (a plain
-  `packages/aerospace/install.sh` uses the default 22); AeroSpace reloads it.
+  (`set` in `profiles/imac`). AeroSpace can't include another file. `render.sh`
+  generates it with the values of the profile `install.sh` saved; after editing
+  `config/aerospace.toml`, apply it with `alt-shift-;` then `esc`, which renders it
+  again and reloads AeroSpace.
 
 First launch: open AeroSpace and grant it the Accessibility permission
 (System Settings → Privacy & Security → Accessibility).
@@ -35,6 +36,6 @@ Main bindings (`alt` is `Option ⌥`):
 | `alt--` / `alt-=` | resize |
 | `alt-tab` | previous workspace |
 | `alt-enter` | new Ghostty window (asks once to let AeroSpace control Ghostty) |
-| `alt-shift-;` | service mode (`esc` reload AeroSpace + SketchyBar + JankyBorders, `r` reset layout, `f` float/tile) |
+| `alt-shift-;` | service mode (`esc` render + reload AeroSpace, reload SketchyBar + JankyBorders, `r` reset layout, `f` float/tile) |
 
 mac only: it's a GUI app, and linux is always a devcontainer.

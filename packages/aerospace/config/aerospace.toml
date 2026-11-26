@@ -1,5 +1,6 @@
-# ~/.config/aerospace/aerospace.toml is rendered from this file by install.sh
-# (`@DOT_*@` values come from the device profile): edit here and re-run it.
+# ~/.config/aerospace/aerospace.toml is rendered from this file by render.sh
+# (`@DOT_*@` values come from the device profile): edit here, then apply with the
+# service mode's `esc` (alt-shift-; esc).
 #
 # AeroSpace default config, with a few changes marked "dotfiles:".
 # Reference: https://nikitabobko.github.io/AeroSpace/guide
@@ -27,7 +28,7 @@ start-at-login = true
 
 # Automatically reload the config when the config file is saved
 # After setting this to true, reload once manually to start the auto-reloading
-# dotfiles: true, to see config changes as soon as they're saved, ie when install.sh
+# dotfiles: true, to see config changes as soon as they're saved, ie when render.sh
 # renders it (default: false)
 auto-reload-config = true
 
@@ -203,8 +204,10 @@ gaps.outer.right =      27
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-    # dotfiles: also reload SketchyBar (packages/sketchybar) and JankyBorders (packages/jankyborders)
-    esc = ['reload-config', 'exec-and-forget sketchybar --reload',
+    # dotfiles: render this config again before reloading it (see the top of the file),
+    # and also reload SketchyBar (packages/sketchybar) and JankyBorders (packages/jankyborders)
+    esc = ['exec-and-forget bash "@DOT_ROOT@/packages/aerospace/render.sh" && aerospace reload-config',
+           'exec-and-forget sketchybar --reload',
            'exec-and-forget ~/.config/borders/bordersrc', 'mode main']
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
